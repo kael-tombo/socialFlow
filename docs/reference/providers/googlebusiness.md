@@ -6,7 +6,7 @@ description: Understand Google Business Profile's implemented adapter boundary a
 
 This page is for operators reviewing Google Business Profile's certification boundary.
 
-Google Business Profile is **not publicly available in OpenPost**. The repository contains adapter and contract paths for controlled development and certification, but an implementation, configured credential, or mocked test is not a Hosted service availability claim.
+Google Business Profile is **not publicly available in SocialFlow.ai**. The repository contains adapter and contract paths for controlled development and certification, but an implementation, configured credential, or mocked test is not a Hosted service availability claim.
 
 Do not advertise or enable public Google Business connection, publishing, discovery, or analytics operations unless the exact app, account, scopes, output profile, policy mode, runtime controls, and current live evidence pass the [Provider Readiness and Launch Gate](../operations/provider-launch-matrix.md).
 

@@ -1,6 +1,6 @@
 # App branding
 
-App branding changes the name and artwork inside an authenticated OpenPost workspace. It is independent of the theme library, organization/workspace names and avatars, and the content-creation Brand kit.
+App branding changes the name and artwork inside an authenticated SocialFlow.ai workspace. It is independent of the theme library, organization/workspace names and avatars, and the content-creation Brand kit.
 
 ## Configure branding
 
@@ -16,9 +16,9 @@ Names contain 1–60 characters without control characters. Each image accepts P
 
 The web app applies branding to navigation, contextual logos/loading screens, document titles and the browser favicon. Native workspace headers and contextual loading screens resolve the same profile and appearance. Native images receive credentials only for same-origin branding endpoints and stay out of the disk cache.
 
-Sign-in and other public entry screens, public profiles, emails, installed PWA/native icons, store listings, documentation, provider authorization, billing/operator identity and technical identifiers retain OpenPost or their existing identity. Branding is not a global string replacement. Custom domains and public entry branding require a separate product boundary.
+Sign-in and other public entry screens, public profiles, emails, installed PWA/native icons, store listings, documentation, provider authorization, billing/operator identity and technical identifiers retain SocialFlow.ai or their existing identity. Branding is not a global string replacement. Custom domains and public entry branding require a separate product boundary.
 
-Web runtime identity is memory-only and bound to the current user and workspace. Workspace changes, sign-out and public routes must never retain another workspace's identity. Missing branding resolves to OpenPost. Theme selection and scheme changes do not mutate branding.
+Web runtime identity is memory-only and bound to the current user and workspace. Workspace changes, sign-out and public routes must never retain another workspace's identity. Missing branding resolves to SocialFlow.ai. Theme selection and scheme changes do not mutate branding.
 
 ## Persistence and authorization
 

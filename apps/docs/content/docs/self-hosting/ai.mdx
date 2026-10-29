@@ -9,7 +9,7 @@ Add an OpenRouter key to enable AI post generation and automatic image captions.
 ## Add a key
 
 1. Create an API key in [OpenRouter](https://openrouter.ai/settings/keys). Check the account's billing and model access before inviting others to use generation.
-2. Add the key to the `.env` file used by your OpenPost container. Choose model IDs available to that key:
+2. Add the key to the `.env` file used by your SocialFlow.ai container. Choose model IDs available to that key:
 
 ```dotenv
 OPENROUTER_API_KEY=your-openrouter-key
@@ -22,7 +22,7 @@ Run `docker compose up -d --force-recreate openpost` to recreate the container w
 
 The text model builds post copy from an idea. The image caption model writes suggested alt text. The shown IDs match this release's defaults; confirm that [OpenRouter still offers](https://openrouter.ai/models) them before relying on the example.
 
-You can leave the model values unset to use OpenPost's defaults. `OPENPOST_CONTENT_AI_PROVIDER` optionally selects an exact OpenRouter provider for text and meme generation. `OPENPOST_CONTENT_AI_REQUIRE_ZDR=true` restricts those requests to zero-retention endpoints. Use it only after checking that the selected model and provider support that policy. OpenRouter [documents its per-request zero-retention behavior](https://openrouter.ai/docs/guides/features/zdr). Image captions have separate `OPENPOST_IMAGE_CAPTION_PROVIDER` and `OPENPOST_IMAGE_CAPTION_REQUIRE_ZDR` settings when you need different routing.
+You can leave the model values unset to use SocialFlow.ai's defaults. `OPENPOST_CONTENT_AI_PROVIDER` optionally selects an exact OpenRouter provider for text and meme generation. `OPENPOST_CONTENT_AI_REQUIRE_ZDR=true` restricts those requests to zero-retention endpoints. Use it only after checking that the selected model and provider support that policy. OpenRouter [documents its per-request zero-retention behavior](https://openrouter.ai/docs/guides/features/zdr). Image captions have separate `OPENPOST_IMAGE_CAPTION_PROVIDER` and `OPENPOST_IMAGE_CAPTION_REQUIRE_ZDR` settings when you need different routing.
 
 Keep the key in your server secret store. Use `OPENROUTER_API_KEY_FILE` for a mounted secret file. Do not include it in posts, prompts, or logs.
 
@@ -49,6 +49,6 @@ You can also set the **fal API key** in instance Settings, or use `FAL_KEY_FILE`
 
 The Image Editor uses [GPT Image 2.5 Flare](https://fal.ai/models/openai/gpt-image-2.5/flare/text-to-image/api) by default. Users can select Sunburst in the panel. The [edit endpoint](https://fal.ai/models/openai/gpt-image-2.5/flare/edit/api) handles selected image edits and masked fills. These requests use fal independently of the OpenRouter key and routing settings above.
 
-Sign in, open an editable project saved to OpenPost and choose **AI images**. Follow [Generate and edit images with AI](/image-editor/ai-images) to submit and review a result. This check makes a paid provider request.
+Sign in, open an editable project saved to SocialFlow.ai and choose **AI images**. Follow [Generate and edit images with AI](/image-editor/ai-images) to submit and review a result. This check makes a paid provider request.
 
-The web and worker roles need the same key. Requests and provider receipts are saved in the database, so restarting a worker does not regenerate an accepted image. OpenPost records the request's cost in the existing AI usage ledger using [fal billing events](https://fal.ai/docs/platform-apis/v1/models/billing-events). Missing billing access leaves costs pending and eventually unavailable; it never records a missing charge as zero. No image-specific spending limits are enforced by OpenPost.
+The web and worker roles need the same key. Requests and provider receipts are saved in the database, so restarting a worker does not regenerate an accepted image. SocialFlow.ai records the request's cost in the existing AI usage ledger using [fal billing events](https://fal.ai/docs/platform-apis/v1/models/billing-events). Missing billing access leaves costs pending and eventually unavailable; it never records a missing charge as zero. No image-specific spending limits are enforced by SocialFlow.ai.

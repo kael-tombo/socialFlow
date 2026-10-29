@@ -6,7 +6,7 @@ icon: Plug
 
 Choose the network you want to connect. Each guide takes you through its setup, permissions, and a first test post.
 
-If you use [OpenPost Hosted](https://app.openpo.st), go straight to [connecting your accounts](/guides/accounts). These guides are for people running their own OpenPost server.
+If you use [SocialFlow.ai Hosted](https://app.openpo.st), go straight to [connecting your accounts](/guides/accounts). These guides are for people running their own SocialFlow.ai server.
 
 ## Choose a social network
 
@@ -29,7 +29,7 @@ If you use [OpenPost Hosted](https://app.openpo.st), go straight to [connecting 
 | [TikTok](/self-hosting/integrations/tiktok)       | Login Kit and Content Posting API access                                   |
 | [Pinterest](/self-hosting/integrations/pinterest) | Business account, API app approval, and readiness records                  |
 
-A developer app identifies your OpenPost instance. Connect each workspace's social accounts after configuring that app.
+A developer app identifies your SocialFlow.ai instance. Connect each workspace's social accounts after configuring that app.
 
 ## What you need
 
@@ -41,16 +41,16 @@ A developer app identifies your OpenPost instance. Connect each workspace's soci
 
 Save the credentials from your network's guide using one method below.
 
-### Use the OpenPost settings form
+### Use the SocialFlow.ai settings form
 
 For X, LinkedIn, Facebook, Instagram, Threads, YouTube, TikTok, and Mastodon:
 
 1. Sign in as the instance administrator.
 2. Open **Settings → Instance → Configuration → Provider apps**.
 3. Choose the provider and enter its client ID, client secret, and redirect URI. Mastodon also needs the instance URL.
-4. Save the app and restart OpenPost.
+4. Save the app and restart SocialFlow.ai.
 
-OpenPost encrypts saved secrets. Entries supplied by the environment appear as read-only. If an environment entry matches a saved app, the environment entry wins. Edit that entry in your deployment instead.
+SocialFlow.ai encrypts saved secrets. Entries supplied by the environment appear as read-only. If an environment entry matches a saved app, the environment entry wins. Edit that entry in your deployment instead.
 
 ### Use your deployment environment
 
@@ -80,15 +80,15 @@ For OAuth providers other than Mastodon's code flow, the callback has this form:
 https://post.example.com/api/v1/accounts/PROVIDER/callback
 ```
 
-Copy the exact path from the provider guide into both the developer portal and OpenPost. Replace the example domain with yours.
+Copy the exact path from the provider guide into both the developer portal and SocialFlow.ai. Replace the example domain with yours.
 
-Mastodon normally returns an authorization code that you paste back into OpenPost. Bluesky, Telegram, and Discord webhooks use their own connection steps and do not use this callback pattern.
+Mastodon normally returns an authorization code that you paste back into SocialFlow.ai. Bluesky, Telegram, and Discord webhooks use their own connection steps and do not use this callback pattern.
 
 ## Connect an account and check delivery
 
 1. Open **Settings → Workspace → Social accounts**.
 2. Choose the configured network and complete its connection flow.
-3. Confirm the account, Page, or channel shown in OpenPost is the one you intended.
+3. Confirm the account, Page, or channel shown in SocialFlow.ai is the one you intended.
 4. Create a small post in a format the network supports. Use the provider guide's suggested test.
 5. Open the post to check delivery, then check the post on the network itself.
 
@@ -105,6 +105,6 @@ Pinterest, Telegram, and Discord bot mode require administrator readiness record
 3. Run the first publishing test with `certification_test` intent. It allows testing before earlier evidence exists, but still checks the app, account authorization, provider policy, and enabled runtime controls.
 4. Record local and live test results for each required operation. Normal immediate and scheduled publishing need their own current evidence.
 
-While signed in as an instance administrator, use `/api/v1/docs` on your own server to submit the records. Choose **The OpenPost instance serving this contract** as the server and leave `openpost_session` blank. The browser sends your session cookie. API tokens cannot perform these administrator operations.
+While signed in as an instance administrator, use `/api/v1/docs` on your own server to submit the records. Choose **The SocialFlow.ai instance serving this contract** as the server and leave `openpost_session` blank. The browser sends your session cookie. API tokens cannot perform these administrator operations.
 
 There is no equivalent workspace settings form. Keep a provider unavailable until its required records and tests pass.

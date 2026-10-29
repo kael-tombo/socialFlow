@@ -1,11 +1,11 @@
-# Profiling OpenPost
+# Profiling SocialFlow.ai
 
 ## Record an editor operation
 
 1. Append `?profile=1` to the app URL, or `&profile=1` if it already has a query, and reload. The choice lasts for that page session, including client navigation.
 2. Open Chrome or Brave DevTools, select **Performance**, and start a recording.
 3. Perform one operation, such as exporting a timeline, scrubbing a clip, or exporting an image. Stop recording after it finishes.
-4. Expand the **OpenPost** custom tracks. Save the recording from DevTools to compare it with another revision.
+4. Expand the **SocialFlow.ai** custom tracks. Save the recording from DevTools to compare it with another revision.
 
 The tracks cover video decoding, frame composition, encoder submission and backpressure, export finalization, proxy generation, filmstrip loading, Quick Cut preflight/export, and the Image Editor's load, canvas, save, preview, background removal, and export metrics. Video export workers inherit the page's profiling choice. Worker entries appear on their own thread in the recording.
 

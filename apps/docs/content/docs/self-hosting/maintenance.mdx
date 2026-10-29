@@ -25,7 +25,7 @@ This feature needs the default SQLite database, local media storage, and a serve
 
 ## Back up the SQLite setup
 
-For the [Compose guide's](/self-hosting) `./data` bind mount, run these commands from the directory containing `docker-compose.yml`. Stop OpenPost so the SQLite copy is consistent. Record the image tag and create an archive:
+For the [Compose guide's](/self-hosting) `./data` bind mount, run these commands from the directory containing `docker-compose.yml`. Stop SocialFlow.ai so the SQLite copy is consistent. Record the image tag and create an archive:
 
 ```sh
 docker compose stop openpost
@@ -52,7 +52,7 @@ The self-hosted `all` container applies database migrations at startup. If you n
 
 ## Restore
 
-On a replacement server, install Docker Compose and restore the data using the same storage layout. Extract the bind-mount archive into an empty directory, or restore the named volume from its volume backup before starting OpenPost. Check the image tag and paths in `docker-compose.yml`, and restore the same `.env` secrets. Start with `docker compose up -d`, check `/api/v1/ready`, sign in, open a saved post with media, and inspect a scheduled post. Reconnect any provider whose external app or token was revoked since the backup.
+On a replacement server, install Docker Compose and restore the data using the same storage layout. Extract the bind-mount archive into an empty directory, or restore the named volume from its volume backup before starting SocialFlow.ai. Check the image tag and paths in `docker-compose.yml`, and restore the same `.env` secrets. Start with `docker compose up -d`, check `/api/v1/ready`, sign in, open a saved post with media, and inspect a scheduled post. Reconnect any provider whose external app or token was revoked since the backup.
 
 ## Check health
 

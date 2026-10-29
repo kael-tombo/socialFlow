@@ -64,7 +64,7 @@ Ranges use UTF-8 bytes. Choose identities separately for each network and preser
 
 ## Upload and attach media
 
-`media.upload()` handles the OpenPost upload-session flow. It reserves the media record, sends the bytes to the returned storage target, and completes the record.
+`media.upload()` handles the SocialFlow.ai upload-session flow. It reserves the media record, sends the bytes to the returned storage target, and completes the record.
 
 ```ts
 const bytes = new Uint8Array(await Bun.file("cover.png").arrayBuffer());
@@ -78,7 +78,7 @@ const asset = await openpost.media.upload({
 });
 ```
 
-External storage targets receive only the upload headers returned by OpenPost. The SDK never sends your OpenPost bearer token to another origin.
+External storage targets receive only the upload headers returned by SocialFlow.ai. The SDK never sends your SocialFlow.ai bearer token to another origin.
 
 Attach the returned ID when you create a Publication:
 
@@ -98,7 +98,7 @@ const draft = await openpost.publications.create({
 });
 ```
 
-Use `media.list(workspaceId)` to inspect the library and `media.remove(id)` to remove an unused item. OpenPost still applies workspace quotas, file validation, provider limits, and media processing after the bytes arrive.
+Use `media.list(workspaceId)` to inspect the library and `media.remove(id)` to remove an unused item. SocialFlow.ai still applies workspace quotas, file validation, provider limits, and media processing after the bytes arrive.
 
 To fit an image to one account and format, request a separate derivative:
 
@@ -132,7 +132,7 @@ const saved = await openpost.publications.upsertRenditions(draft.id, draft.revis
 ]);
 ```
 
-Resolve `accounts.destinationOptions(accountId)` before constructing provider-specific settings. It returns the current keys and choices for that account. OpenPost returns a conflict when an account has multiple subdestinations and the Rendition does not include a `target_key`.
+Resolve `accounts.destinationOptions(accountId)` before constructing provider-specific settings. It returns the current keys and choices for that account. SocialFlow.ai returns a conflict when an account has multiple subdestinations and the Rendition does not include a `target_key`.
 
 ## Validate and publish now
 

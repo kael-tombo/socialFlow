@@ -1,14 +1,14 @@
 ---
 title: Reverse proxy and public access
-description: Put OpenPost behind HTTPS so sign-in, callbacks, and media fetching work.
+description: Put SocialFlow.ai behind HTTPS so sign-in, callbacks, and media fetching work.
 icon: Globe
 ---
 
-Run OpenPost behind HTTPS on a stable public origin. Social sign-in, passkeys, MCP, webhooks, and provider media downloads depend on that origin.
+Run SocialFlow.ai behind HTTPS on a stable public origin. Social sign-in, passkeys, MCP, webhooks, and provider media downloads depend on that origin.
 
 ## Set the public origin
 
-Set the [three public URL settings](/self-hosting/configuration#public-addresses) before registering callbacks. Use a dedicated subdomain, such as `https://post.example.com`. OpenPost does not support subpath hosting such as `https://example.com/openpost/`.
+Set the [three public URL settings](/self-hosting/configuration#public-addresses) before registering callbacks. Use a dedicated subdomain, such as `https://post.example.com`. SocialFlow.ai does not support subpath hosting such as `https://example.com/openpost/`.
 
 If the origin changes, update each provider app and reconnect its accounts.
 
@@ -22,7 +22,7 @@ If the origin changes, update each provider app and reconnect its accounts.
 
 Use the [Caddy and Nginx examples](https://github.com/getopenpost/openpost/blob/main/docs/reference/installation/reverse-proxy.md). Forward the original host and scheme, the app, `/api/v1/`, and `/media/`. Allow the largest upload you plan to accept and disable request buffering for large video uploads.
 
-Set `OPENPOST_TRUSTED_PROXY_CIDRS` to the networks used by the proxy's connection to OpenPost. With Caddy or Nginx on the same host, use `127.0.0.1/32,::1/128`. For containers or tunnels, use their actual upstream addresses or dedicated subnet. The default ignores forwarded IP and scheme headers, so configure this before upgrading an existing HTTPS proxy deployment. Keep the backend private and have the proxy overwrite client-supplied forwarded headers.
+Set `OPENPOST_TRUSTED_PROXY_CIDRS` to the networks used by the proxy's connection to SocialFlow.ai. With Caddy or Nginx on the same host, use `127.0.0.1/32,::1/128`. For containers or tunnels, use their actual upstream addresses or dedicated subnet. The default ignores forwarded IP and scheme headers, so configure this before upgrading an existing HTTPS proxy deployment. Keep the backend private and have the proxy overwrite client-supplied forwarded headers.
 
 IPv4-mapped IPv6 CIDRs such as `::ffff:10.0.0.0/120` are normalized to their IPv4 equivalent, `10.0.0.0/24`. Mapped prefixes shorter than 96 bits are rejected because they include addresses outside the IPv4-mapped range.
 

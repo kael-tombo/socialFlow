@@ -6,9 +6,9 @@ description: Implement the authenticated Connector Protocol 1.0 contract for cus
 
 For connector authors implementing the authenticated Connector Protocol 1.0 text publishing contract.
 
-Connector Protocol 1.0 lets a self-hosted OpenPost instance publish text through an operator-run service. Use it for a destination that has a stable API and does not fit a built-in provider.
+Connector Protocol 1.0 lets a self-hosted SocialFlow.ai instance publish text through an operator-run service. Use it for a destination that has a stable API and does not fit a built-in provider.
 
-Do not use a connector to load code into OpenPost or to expose an arbitrary user-supplied URL. The connector runs as its own process and keeps all destination credentials.
+Do not use a connector to load code into SocialFlow.ai or to expose an arbitrary user-supplied URL. The connector runs as its own process and keeps all destination credentials.
 
 The reference types live in [`apps/server/internal/connectors`](https://github.com/getopenpost/openpost/tree/main/apps/server/internal/connectors). The [Directus connector](https://github.com/getopenpost/openpost/tree/main/docs/examples/connectors/directus) shows a complete server.
 
@@ -27,22 +27,22 @@ A Protocol 1.0 connector must:
 - return typed problem JSON for failures
 - keep destination secrets out of responses and logs
 
-OpenPost sends `Authorization: Bearer <token>` and `Accept: application/json, application/problem+json` on every request. JSON requests use `Content-Type: application/json`. Keep responses at or below 1 MiB.
+SocialFlow.ai sends `Authorization: Bearer <token>` and `Accept: application/json, application/problem+json` on every request. JSON requests use `Content-Type: application/json`. Keep responses at or below 1 MiB.
 
 ## Publish flow
 
-OpenPost follows this order:
+SocialFlow.ai follows this order:
 
 1. Read and validate the manifest at startup.
 2. Read connector and destination health.
 3. Create a Workspace-scoped connection and store the returned account binding.
 4. Resolve capabilities for the selected output profile and settings.
 5. Store the connector's capability revision with the Rendition.
-6. Enter OpenPost's durable provider-write fence.
+6. Enter SocialFlow.ai's durable provider-write fence.
 7. Send one deterministic `operation_id` with the publish request.
 8. Store a published result or poll a pending operation.
 
-If a transport error occurs after a possible write, OpenPost treats the result as unknown. It does not make an unsafe blind retry. Your connector must make the same operation safe to repeat or expose its result through `GET /v1/operations/{operation_id}`.
+If a transport error occurs after a possible write, SocialFlow.ai treats the result as unknown. It does not make an unsafe blind retry. Your connector must make the same operation safe to repeat or expose its result through `GET /v1/operations/{operation_id}`.
 
 ## Manifest
 
@@ -106,7 +106,7 @@ If a transport error occurs after a possible write, OpenPost treats the result a
 
 Keep `provider.id` stable across installations and releases. It identifies the connector type, not one installed instance. Do not use a built-in provider ID.
 
-Change `capability_revision` when a stored Rendition could become invalid or publish differently because you changed a limit, setting, output profile, or destination rule. OpenPost then requires old account bindings to reconnect before publishing.
+Change `capability_revision` when a stored Rendition could become invalid or publish differently because you changed a limit, setting, output profile, or destination rule. SocialFlow.ai then requires old account bindings to reconnect before publishing.
 
 Protocol 1.0 accepts only:
 
@@ -128,7 +128,7 @@ IDs may contain letters, numbers, `.`, `_`, `:`, `/`, and `-`. They must start w
 }
 ```
 
-Return a non-2xx problem response when the connector cannot publish. OpenPost quarantines an optional failed installation. A failed required installation blocks startup.
+Return a non-2xx problem response when the connector cannot publish. SocialFlow.ai quarantines an optional failed installation. A failed required installation blocks startup.
 
 ## Connection
 
@@ -219,7 +219,7 @@ For an immediate result:
 }
 ```
 
-`external_id` is required for `published`. `external_url`, when present, must be an absolute HTTPS URL. `idempotency_ttl_seconds` tells OpenPost how long the connector keeps the operation safe to repeat. The maximum is one year.
+`external_id` is required for `published`. `external_url`, when present, must be an absolute HTTPS URL. `idempotency_ttl_seconds` tells SocialFlow.ai how long the connector keeps the operation safe to repeat. The maximum is one year.
 
 For work that continues after the request:
 
@@ -257,7 +257,7 @@ Use a non-2xx status and typed problem JSON for all failures. `application/probl
 
 | Field           | Use                                                                        |
 | --------------- | -------------------------------------------------------------------------- |
-| `kind`          | Stable connector error class for OpenPost.                                 |
+| `kind`          | Stable connector error class for SocialFlow.ai.                                 |
 | `provider_code` | Stable destination-specific code when one exists.                          |
 | `action`        | Safe operator action. Do not include a token or response body.             |
 | `outcome`       | `rejected` when no write occurred, or `unknown` when it may have occurred. |
@@ -286,7 +286,7 @@ A destination with a unique idempotency field can use that field as the operatio
 - Limit request and response bodies.
 - Reject unknown JSON fields and extra JSON values.
 - Validate every ID, URL, field name, setting, and content limit before use.
-- Do not return arbitrary HTML, JavaScript, Svelte, or raw SVG. OpenPost renders only its own controls from validated manifest settings.
+- Do not return arbitrary HTML, JavaScript, Svelte, or raw SVG. SocialFlow.ai renders only its own controls from validated manifest settings.
 - Keep destination access narrow. A connector token should reach only the connector. A destination token should reach only the required destination data.
 
 ## Test checklist
@@ -294,7 +294,7 @@ A destination with a unique idempotency field can use that field as the operatio
 Before shipping a connector, prove that it:
 
 - rejects a missing or wrong bearer token on every route
-- returns a manifest that OpenPost accepts
+- returns a manifest that SocialFlow.ai accepts
 - fails health when its required destination is unavailable
 - never exposes an account outside the intended preconfigured connection
 - rejects an old capability revision before writing

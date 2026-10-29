@@ -1,10 +1,10 @@
 # Production Architecture and Checks
 
-OpenPost uses one product core for the Hosted service and self-hosted deployments. This page records the current architecture and the checks needed before a release or public campaign.
+SocialFlow.ai uses one product core for the Hosted service and self-hosted deployments. This page records the current architecture and the checks needed before a release or public campaign.
 
 ## Product and public sites
 
-- **OpenPost** is the product name.
+- **SocialFlow.ai** is the product name.
 - The official operated product is the **Hosted service**.
 - `openpo.st` is the marketing site.
 - `openpo.st/docs` is the docs site.
@@ -24,8 +24,8 @@ Keep production secrets, social app keys, monitoring, backups, and private opera
 
 ## Billing and limits
 
-- The Hosted service opens Paddle's one-page checkout inside OpenPost. Paddle acts as Merchant of Record for payment processing, tax, receipts, refunds, and subscription management.
-- OpenPost saves current Paddle customer and subscription mirrors plus plan limits in its own database. Normal API requests do not call Paddle.
+- The Hosted service opens Paddle's one-page checkout inside SocialFlow.ai. Paddle acts as Merchant of Record for payment processing, tax, receipts, refunds, and subscription management.
+- SocialFlow.ai saves current Paddle customer and subscription mirrors plus plan limits in its own database. Normal API requests do not call Paddle.
 - Limits cover workspaces, members, social accounts, posts, media, schedules, and provider writes.
 - Self-hosted mode has permissive defaults unless the operator changes them.
 - The Hosted service creates one workspace before checkout. See the [canonical pricing page](https://openpo.st/pricing) for current plan and trial terms; an active or trialing membership is required to connect social accounts, upload media, schedule, or publish.
@@ -52,7 +52,7 @@ Analytics, comments, and inbox reads use optional adapter interfaces. They do no
 - Schedules and current status stay on the grouped publication and its independently published renditions.
 - Media uses local storage or S3-compatible storage through `BlobStorage`.
 - Direct S3/R2 uploads use a signed browser upload when the file fits one request. Larger files stream through bounded multipart uploads.
-- OpenPost Image Editor saves still-image designs, pages, templates, brand items, history, and media links. Its saved document format does not depend on Fabric.js.
+- SocialFlow.ai Image Editor saves still-image designs, pages, templates, brand items, history, and media links. Its saved document format does not depend on Fabric.js.
 
 ## API, CLI, and MCP
 
@@ -75,11 +75,11 @@ Analytics, comments, and inbox reads use optional adapter interfaces. They do no
 
 The marketing production build generates a `.md` representation for every static product, pricing, platform-index, tool-index, browser-tool, FAQ, security, trust, self-hosting, developer, about, contact, changelog, and legal page. The documentation build generates one for every ordinary maintained page. Canonical HTML advertises each available representation, the discovery index, and the changelog Atom feed; sitemaps list only canonical HTML pages.
 
-The marketing route manifest owns stable page titles, descriptions, canonical URLs, representation groups, and discovery classes. The marketing `llms.txt` states when OpenPost is and is not a fit, prioritizes the product overview, features, pricing, platform index, FAQ, security, trust, self-hosting path, developer entry point, operator identity, contact route, and documentation, then links directly to the OpenAPI contract, CLI, MCP, and agent-assisted workflow. The browser-tool index is optional, and platform detail pages appear in their own optional section. Changelog and legal representations remain available at explicit `.md` URLs but are not listed in `llms.txt`.
+The marketing route manifest owns stable page titles, descriptions, canonical URLs, representation groups, and discovery classes. The marketing `llms.txt` states when SocialFlow.ai is and is not a fit, prioritizes the product overview, features, pricing, platform index, FAQ, security, trust, self-hosting path, developer entry point, operator identity, contact route, and documentation, then links directly to the OpenAPI contract, CLI, MCP, and agent-assisted workflow. The browser-tool index is optional, and platform detail pages appear in their own optional section. Changelog and legal representations remain available at explicit `.md` URLs but are not listed in `llms.txt`.
 
 The marketing and documentation origins use `robots.txt` and a `Content-Signal` response header to allow public-content search, AI input, and model training. The directives stay inside the wildcard user-agent group and use only fields supported by the current Content Signals policy. Cloudflare managed robots and verified-bot rules can replace or block that origin policy, so live acceptance must verify the final response and representative search, training, and user-action crawler identities after each policy change. This permission covers public marketing and documentation content only and does not expose authenticated application data.
 
-Every marketing page emits one JSON-LD graph that joins its canonical page to the OpenPost website, software application, and the real Hosted service operator. Do not add invented organizations, postal addresses, phone numbers, reviews, ratings, or offers. The public changelog also emits a dated Atom feed built from stable releases in the canonical repository changelog; `Unreleased` work never appears in the feed.
+Every marketing page emits one JSON-LD graph that joins its canonical page to the SocialFlow.ai website, software application, and the real Hosted service operator. Do not add invented organizations, postal addresses, phone numbers, reviews, ratings, or offers. The public changelog also emits a dated Atom feed built from stable releases in the canonical repository changelog; `Unreleased` work never appears in the feed.
 
 The generated documentation catalogue is the checked-in contract shared by both public builds. It derives each page's title and concise description from the maintained Markdown and records its canonical route, representation policy, discovery class, and full-corpus membership. `bun run check -- social-images` rejects drift through the root verification interface. An ordinary documentation prose change runs documentation checks only; a catalogue change runs both public surfaces.
 
@@ -93,7 +93,7 @@ catalog with self-host-aware URLs. All Link response headers use registered
 relation names, so sitemap discovery stays in `robots.txt` instead of an
 unregistered `sitemap` relation.
 
-OpenPost publishes the complete `openpost-cli` Agent Skill as a deterministic
+SocialFlow.ai publishes the complete `openpost-cli` Agent Skill as a deterministic
 archive. The Agent Skills index uses the current draft schema and includes the
 archive's SHA-256 digest. The build regenerates both files from
 `skills/openpost-cli`, so a skill change cannot leave a stale digest. The ARD
@@ -101,17 +101,17 @@ manifest points to that archive, the OpenAPI document, and the MCP Server Card.
 
 Authentication metadata stays on `app.openpo.st`, the origin that protects the
 MCP resource. Marketing does not mirror or redirect the RFC 9728 well-known
-path. OpenPost does not publish an A2A Agent Card because it does not implement
+path. SocialFlow.ai does not publish an A2A Agent Card because it does not implement
 an A2A protocol binding. It also does not register marketing-page WebMCP tools,
 publish DNS-AID records, or claim the separate auth.md agent-registration
-protocol. Add those only after OpenPost owns the matching runtime behavior and
+protocol. Add those only after SocialFlow.ai owns the matching runtime behavior and
 the relevant draft is stable enough to support.
 
 `scripts/generate-agent-surfaces.mjs` owns the shared generation and validation contract. `scripts/public-agent-discovery.mjs` owns generated marketing discovery artifacts. Marketing representations preserve semantic prose, links, tables, informative images, provider limits, and browser-tool explanations from prerendered `<main>` content while excluding navigation and interactive controls. Documentation representations start from maintained Markdown, expand controlled in-tree includes, retain headings, prose, lists, tables, code, and supported containers, normalize supported raw HTML, remove links to the private app, and resolve public links and assets against the canonical page. Browser-tool source marks the canonical explanation with `data-agent-include` and the unusable interactive region with `data-agent-exclude`; other pages may use the exclusion annotation for illustrative or duplicate responsive content. Unknown meaning-bearing markup, unresolved or unsafe includes, metadata drift, duplicate outputs, unknown public page targets, invalid rendered fragments, private routes, and representations over 256 KiB without a reviewed catalogue exception fail the build. External targets remain the source owner's responsibility.
 
 Both build outputs include a Cloudflare Pages `_headers` contract. Explicit `.md` files declare `text/markdown; charset=utf-8`; discovery and corpus text files declare `text/plain; charset=utf-8`. The build adds `Vary: Accept` to every catalogue-owned canonical HTML path and explicit Markdown artifact so an enabled Cache Rule can separate the two representations. These origin headers do not enable canonical-URL content selection. Optional edge selection remains a separate operator action.
 
-The documentation build also publishes `llms-full.txt`, an OpenPost convenience artifact rather than part of the llms.txt v2 proposal. Catalogue metadata selects each page, records exclusions with reasons, and assigns included pages to stable sections. The corpus preserves one source link per page while removing repeated representation metadata and generated warnings. It excludes OpenAPI bodies, legal notices, generated CLI reference repetition, and every explicit catalogue exclusion. The build warns when the corpus exceeds 1 MiB and fails when it exceeds 2 MiB. Each site invokes only its own projection, and generated files stay in ignored build output.
+The documentation build also publishes `llms-full.txt`, an SocialFlow.ai convenience artifact rather than part of the llms.txt v2 proposal. Catalogue metadata selects each page, records exclusions with reasons, and assigns included pages to stable sections. The corpus preserves one source link per page while removing repeated representation metadata and generated warnings. It excludes OpenAPI bodies, legal notices, generated CLI reference repetition, and every explicit catalogue exclusion. The build warns when the corpus exceeds 1 MiB and fails when it exceeds 2 MiB. Each site invokes only its own projection, and generated files stay in ignored build output.
 
 The production-artifact contract enumerates every manifest and catalogue route. It requires one canonical HTML file, one explicit Markdown file, useful prerendered content, identity and discovery metadata, absolute links, bounded output, no stale aliases, and no exposed framework state. It also proves canonical plan values, provider facts, legal text, browser-tool explanations, HTML-only sitemaps, curated indexes, corpus policy, and repeatable generation. Shared generator and catalogue changes plan both public builds. Ordinary documentation prose plans only documentation, and each public build cache includes the shared generator, catalogue dependency, and complete output directory.
 

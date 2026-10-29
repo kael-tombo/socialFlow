@@ -2,7 +2,7 @@
 
 This page is for MCP implementation and protocol details. For setup-oriented user docs, see [AI assistants](https://openpo.st/docs/mcp).
 
-OpenPost exposes an authenticated MCP foundation at:
+SocialFlow.ai exposes an authenticated MCP foundation at:
 
 ```txt
 POST /mcp       # full, directly advertised tool catalog (default)
@@ -15,7 +15,7 @@ The endpoint is JSON-RPC over HTTP and requires a bearer token:
 Authorization: Bearer <jwt-or-api-token>
 ```
 
-OpenPost accepts MCP `ping` requests and Streamable HTTP JSON-RPC
+SocialFlow.ai accepts MCP `ping` requests and Streamable HTTP JSON-RPC
 notifications. Successful tool calls retain their human summary and append the
 serialized `structuredContent` as a JSON text block for text-only clients, as
 recommended by the [MCP specification](https://modelcontextprotocol.io/specification/2025-06-18/server/tools#structured-content).
@@ -36,9 +36,9 @@ resources/read ui://widget/openpost-local-upload-v1.html
 The widget is a self-contained `text/html;profile=mcp-app` resource. The
 read-only `render_scheduler_widget` tool points at that resource through
 `_meta.ui.resourceUri` and `_meta["openai/outputTemplate"]`, then passes
-structured OpenPost data into the widget for rendering.
+structured SocialFlow.ai data into the widget for rendering.
 
-OpenPost emits the standard MCP Apps keys under `_meta.ui` and keeps legacy
+SocialFlow.ai emits the standard MCP Apps keys under `_meta.ui` and keeps legacy
 ChatGPT aliases mirrored under `_meta["openai/..."]`. For example, widget CSP
 uses camelCase `connectDomains` and `resourceDomains` under `_meta.ui.csp`,
 while `_meta["openai/widgetCSP"]` keeps the snake_case alias expected by older
@@ -46,7 +46,7 @@ ChatGPT clients. The scheduler render tool is model-visible. The local-upload
 widget calls an app-only ticket tool whose credential stays in result `_meta`
 and is never placed in model-visible structured content.
 
-For ChatGPT Apps and other OAuth-aware MCP clients, OpenPost also publishes
+For ChatGPT Apps and other OAuth-aware MCP clients, SocialFlow.ai also publishes
 protected-resource and authorization-server metadata:
 
 ```txt
@@ -64,7 +64,7 @@ endpoint shares that OAuth resource and audience. Authorization-server metadata
 advertises RFC 9207 issuer identification, and approval and denial redirects
 include the exact discovery issuer as `iss`.
 
-OpenPost also publishes its experimental MCP Server Card at
+SocialFlow.ai also publishes its experimental MCP Server Card at
 `/.well-known/mcp/server-card.json` and `/mcp/server-card`. The card describes
 the real Streamable HTTP endpoint and supported protocol versions. OAuth details
 remain in the RFC 9728 metadata instead of a card-specific auth object.
@@ -76,8 +76,8 @@ the token-light surface: `mcp:full` clients receive `search_operations`,
 `execute_operation`; search results and prompt discovery are filtered to
 read-only operations. `search_operations` returns
 the exact input/output schema, safety annotations, and required execution tool
-for relevant OpenPost operations on demand. It returns no match for ambiguous
-mutations or tasks outside OpenPost instead of guessing. `query_operation`
+for relevant SocialFlow.ai operations on demand. It returns no match for ambiguous
+mutations or tasks outside SocialFlow.ai instead of guessing. `query_operation`
 accepts only catalog operations guaranteed to be read-only;
 `execute_operation` accepts only state-changing or external-action operations.
 Both delegate through the existing authorization, workspace-scope, schema
@@ -115,7 +115,7 @@ openpost --profile local auth login https://your-openpost-host.example
 openpost-mcp --profile local
 ```
 
-The proxy loads the same OpenPost CLI profile and token, then forwards MCP
+The proxy loads the same SocialFlow.ai CLI profile and token, then forwards MCP
 JSON-RPC frames to the remote `/mcp` endpoint. Remote clients that prioritize a
 small initial context can use `/mcp/code`. The proxy uses the MCP standard's
 newline-delimited JSON framing on stdin/stdout, accepts legacy `Content-Length`
@@ -127,7 +127,7 @@ forwards the negotiated `MCP-Protocol-Version` on later requests.
 The Image and Video Editors register a short-lived session while an editable
 project is open in a signed-in browser. Codex CLI, Claude Code, and other MCP
 clients can connect to the existing `/mcp` endpoint with OAuth or a workspace
-scoped `mcp:full` token. No OpenPost desktop runtime is required. Start with
+scoped `mcp:full` token. No SocialFlow.ai desktop runtime is required. Start with
 `editor_sessions` and `editor_reference`, then read `editor_context` and the
 relevant `timeline_inspect` or `image_inspect` output. The stable project, item,
 page, layer, and session IDs in those results are the targets for edits.
@@ -200,7 +200,7 @@ Preferences. Agent outputs do not count as those choices.
 The built-in Assistant uses these same operations through the configured AI
 adapter. Hosted requires a signed-in editor with the existing paid-plan
 entitlement. Self-hosted instances use their configured provider key and model.
-External MCP has ordinary workspace authorization and no OpenPost inference
+External MCP has ordinary workspace authorization and no SocialFlow.ai inference
 charge. Built-in provider attempts are durably recorded before response parsing;
 unknown usage remains unknown. This delivery adds no account quota.
 
@@ -235,7 +235,7 @@ GET /api/v1/mcp/activity?workspace_id=<workspace-id>
   returned by `search_operations` plus its `arguments`. The server rejects every
   read-only operation before dispatch so clients can require approval for this
   tool as a whole.
-- `render_scheduler_widget`: renders structured OpenPost scheduler data in the
+- `render_scheduler_widget`: renders structured SocialFlow.ai scheduler data in the
   ChatGPT Apps widget and stays directly visible for UI resource discovery.
 - `render_local_media_upload`: opens a local file picker for a selected
   workspace. Its app-only ticket tool is hidden from the model.
@@ -269,7 +269,7 @@ than infer safety from an operation name.
 
 Cloudflare's full [Code Mode pattern](https://developers.cloudflare.com/agents/model-context-protocol/codemode/)
 runs model-written JavaScript in an isolated Worker, blocks direct outbound
-network access, and exposes only a host-controlled request function. OpenPost's
+network access, and exposes only a host-controlled request function. SocialFlow.ai's
 portable Go binary does not currently include an equivalent sandbox or
 pause/approval runtime. Evaluating model-written code in the application process
 would create an avoidable security and resource-exhaustion boundary.
@@ -320,7 +320,7 @@ boundary.
 
 - `render_local_media_upload`: opens the MCP Apps local file picker. The widget
   receives a one-use, ten-minute ticket bound to the workspace and authenticated
-  actor. OpenPost consumes the ticket before reading the body, sanitizes the
+  actor. SocialFlow.ai consumes the ticket before reading the body, sanitizes the
   filename, and streams the file through the normal validation, quota, storage,
   deduplication, analysis, and usage pipeline.
 
@@ -390,9 +390,9 @@ assistant-facing surface uses post/variant names.
 
 ## Registry listing version and compatibility
 
-The `version` in the repository's `config/mcp/server.json` belongs to the immutable **Official MCP Registry listing**. It is not the OpenPost application version and it is not the date-based MCP protocol version negotiated during `initialize`. The application reports its release through `/api/v1/version`; each MCP session reports and validates its negotiated protocol version separately.
+The `version` in the repository's `config/mcp/server.json` belongs to the immutable **Official MCP Registry listing**. It is not the SocialFlow.ai application version and it is not the date-based MCP protocol version negotiated during `initialize`. The application reports its release through `/api/v1/version`; each MCP session reports and validates its negotiated protocol version separately.
 
-OpenPost changes the registry version only when it publishes a new registry entry for the Hosted service `https://app.openpo.st/mcp` endpoint. Registry versions use stable semantic versioning:
+SocialFlow.ai changes the registry version only when it publishes a new registry entry for the Hosted service `https://app.openpo.st/mcp` endpoint. Registry versions use stable semantic versioning:
 
 - Major: an intentionally incompatible transport, authentication, tool-name, required-input, or result-contract change.
 - Minor: a backward-compatible tool, prompt, resource, optional input, or result addition.

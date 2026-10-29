@@ -1,10 +1,10 @@
 ---
-description: Register external applications, request delegated OpenPost access, exchange OAuth credentials, and receive signed publication events.
+description: Register external applications, request delegated SocialFlow.ai access, exchange OAuth credentials, and receive signed publication events.
 ---
 
 # External applications
 
-OpenPost can authorize third-party applications without sharing a user's password, social-provider tokens, or broad API token. External applications use OAuth authorization code with PKCE, receive short-lived REST access tokens and rotating refresh tokens, and can call only the operations mapped to their approved scopes.
+SocialFlow.ai can authorize third-party applications without sharing a user's password, social-provider tokens, or broad API token. External applications use OAuth authorization code with PKCE, receive short-lived REST access tokens and rotating refresh tokens, and can call only the operations mapped to their approved scopes.
 
 This authorization is separate from provider OAuth. An external application can inspect approved social accounts and publish through them. It cannot connect, reconnect, or remove a social account.
 
@@ -17,7 +17,7 @@ An instance administrator opens **Settings → Instance → External application
 - one or more exact HTTPS redirect URLs;
 - the largest set of scopes the application may request.
 
-OpenPost returns the client ID and, for a confidential client, its secret. The secret is shown once. Rotating it invalidates the previous client secret. Revoking the application revokes every installation and access credential issued to it.
+SocialFlow.ai returns the client ID and, for a confidential client, its secret. The secret is shown once. Rotating it invalidates the previous client secret. Revoking the application revokes every installation and access credential issued to it.
 
 Registration is operator-controlled by default. An operator can enable RFC 7591-style dynamic registration with `OPENPOST_OAUTH_DYNAMIC_REGISTRATION_ENABLED=true`. When enabled, the authorization-server metadata advertises `/oauth/register`. The endpoint accepts at most 10 registrations per source IP each hour, 10 redirect URLs per client, 120 characters in a client name, and 2,048 characters in each redirect URL. Do not enable it unless the instance is intended to accept unreviewed clients.
 
@@ -50,16 +50,16 @@ Unknown operations fail closed. Provider connection routes, account removal, bil
 
 ## Signed webhooks
 
-Create a subscription with `POST /api/v1/external-webhooks`. Choose one granted workspace, an HTTPS endpoint, and lifecycle event types. OpenPost returns the signing secret once.
+Create a subscription with `POST /api/v1/external-webhooks`. Choose one granted workspace, an HTTPS endpoint, and lifecycle event types. SocialFlow.ai returns the signing secret once.
 
 Deliveries are durable jobs. The event record, delivery record, and queued job are created in the same database transaction. Retries use the normal bounded job policy, and the `(subscription_id, event_id)` constraint prevents duplicate enqueues.
 
 Each request includes:
 
-- `X-OpenPost-Delivery`, the delivery ID;
-- `X-OpenPost-Event`, the lifecycle event type;
-- `X-OpenPost-Timestamp`, the timestamp used for signing;
-- `X-OpenPost-Signature`, `v1=` followed by the lowercase HMAC-SHA256 digest.
+- `X-SocialFlow.ai-Delivery`, the delivery ID;
+- `X-SocialFlow.ai-Event`, the lifecycle event type;
+- `X-SocialFlow.ai-Timestamp`, the timestamp used for signing;
+- `X-SocialFlow.ai-Signature`, `v1=` followed by the lowercase HMAC-SHA256 digest.
 
 Compute the HMAC over `<timestamp>.<raw request body>` with the signing secret, compare it in constant time, and reject stale timestamps before processing the event. Return any `2xx` status only after the event has been accepted durably.
 

@@ -1,6 +1,6 @@
 ---
 title: AI assistants
-description: Choose how an assistant connects to your OpenPost account.
+description: Choose how an assistant connects to your SocialFlow.ai account.
 icon: Bot
 ---
 
@@ -8,8 +8,8 @@ Choose a connection your assistant can use. Keep one connection per task so the 
 
 | Connection                    | Requirements                           | Use it for                                   |
 | ----------------------------- | -------------------------------------- | -------------------------------------------- |
-| [MCP](/mcp/mcp-guide)         | Remote HTTP MCP or a local MCP command | OpenPost tools inside a conversation         |
-| [OpenPost skill](/mcp/skills) | Agent Skills and terminal access       | OpenPost instructions for a coding assistant |
+| [MCP](/mcp/mcp-guide)         | Remote HTTP MCP or a local MCP command | SocialFlow.ai tools inside a conversation         |
+| [SocialFlow.ai skill](/mcp/skills) | Agent Skills and terminal access       | SocialFlow.ai instructions for a coding assistant |
 | [CLI](/automate/cli)          | Terminal access                        | Scripts, CI, and exact command sequences     |
 
 MCP supplies live tool schemas and uses OAuth or a token. The skill supplies operating instructions for the installed CLI, which uses a saved profile or `OPENPOST_TOKEN`. It does not install the CLI, authenticate MCP, or store credentials. You do not need the skill when the assistant already has a working MCP connection.

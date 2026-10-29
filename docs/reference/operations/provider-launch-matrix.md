@@ -2,7 +2,7 @@
 
 This page is for operators and release reviewers deciding whether a provider-format claim is current.
 
-OpenPost keeps provider implementation, setup, evidence, approval, and runtime
+SocialFlow.ai keeps provider implementation, setup, evidence, approval, and runtime
 control as separate facts. An adapter in the binary proves only that code
 exists. It does not make a provider or format ready, connectable, publishable,
 or safe to advertise.
@@ -53,9 +53,9 @@ is the only source for public provider-format certification claims.
 
 <!-- provider-certification:begin -->
 
-No posting option has passed our final live check on OpenPost Hosted yet.
+No posting option has passed our final live check on SocialFlow.ai Hosted yet.
 
-A social app can appear in OpenPost before it is ready for real accounts.
+A social app can appear in SocialFlow.ai before it is ready for real accounts.
 <!-- provider-certification:end -->
 
 Pinterest, Google Business, and Telegram bot mode currently have no public Hosted claim. Discord
@@ -66,7 +66,7 @@ The release manifest binds that file's exact SHA-256 digest, schema version,
 and claim count. A build, adapter, configured credential, mocked test, or manual
 checklist cannot add a claim.
 
-The provider pages document implemented OpenPost code paths and configuration
+The provider pages document implemented SocialFlow.ai code paths and configuration
 requirements. They are not evidence that a particular Hosted service deployment,
 provider app, account, format, or policy mode is currently live-certified.
 
@@ -85,7 +85,7 @@ Only an unscoped instance administrator using a signed-in browser session may ap
 - `POST /api/v1/admin/provider-readiness/certifications`
 
 To use the built-in API reference, sign in as an unscoped instance administrator
-and open `/api/v1/docs` on that same instance. Select **The OpenPost instance
+and open `/api/v1/docs` on that same instance. Select **The SocialFlow.ai instance
 serving this contract** in the Server menu. Choose one of these operations,
 leave the session-cookie value blank in the reference, and submit it from the
 browser. The browser sends the existing HttpOnly `openpost_session` cookie;

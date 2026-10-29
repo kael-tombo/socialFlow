@@ -1,6 +1,6 @@
 # Single Binary
 
-OpenPost can run as a single Go binary with the frontend embedded into the executable.
+SocialFlow.ai can run as a single Go binary with the frontend embedded into the executable.
 
 ## 1. Download a release
 
@@ -64,14 +64,14 @@ Recommended production locations:
 On Windows, keep the binary, `.env`, database, and media under stable service-owned paths. For example:
 
 ```powershell
-New-Item -ItemType Directory -Force C:\OpenPost, C:\OpenPost\data, C:\OpenPost\media
+New-Item -ItemType Directory -Force C:\SocialFlow.ai, C:\SocialFlow.ai\data, C:\SocialFlow.ai\media
 ```
 
 Use Windows paths in `.env`:
 
 ```dotenv
-OPENPOST_DATABASE_PATH=C:\OpenPost\data\openpost.db
-OPENPOST_MEDIA_PATH=C:\OpenPost\media
+OPENPOST_DATABASE_PATH=C:\SocialFlow.ai\data\openpost.db
+OPENPOST_MEDIA_PATH=C:\SocialFlow.ai\media
 OPENPOST_APP_URL=https://social.example.com
 OPENPOST_PUBLIC_URL=https://social.example.com
 OPENPOST_MEDIA_URL=https://social.example.com/media
@@ -97,11 +97,11 @@ Linux/macOS:
 Windows PowerShell:
 
 ```powershell
-cd C:\OpenPost
+cd C:\SocialFlow.ai
 .\openpost-server-windows-amd64.exe
 ```
 
-By default, OpenPost listens on `http://localhost:8080`.
+By default, SocialFlow.ai listens on `http://localhost:8080`.
 
 With no argument, the binary runs the `all` role. `./openpost all` is the
 explicit equivalent: it applies pending migrations, serves HTTP, and processes
@@ -121,7 +121,7 @@ long-lived roles only verify the schema and fail with an operator-facing error
 if a migration is missing. Concurrent migration commands serialize across the
 shared PostgreSQL database or SQLite volume.
 
-OpenPost loads `.env` from the process working directory. When running it as a Windows service, either set the service working directory to the folder containing `.env` or configure the environment variables directly in the service wrapper.
+SocialFlow.ai loads `.env` from the process working directory. When running it as a Windows service, either set the service working directory to the folder containing `.env` or configure the environment variables directly in the service wrapper.
 
 ## 6. Run it as a service
 
@@ -131,7 +131,7 @@ Example unit:
 
 ```ini
 [Unit]
-Description=OpenPost
+Description=SocialFlow.ai
 After=network.target
 
 [Service]
@@ -169,9 +169,9 @@ Use a standard Windows service wrapper such as NSSM or WinSW, or a Task Schedule
 
 For NSSM, configure:
 
-- Application: `C:\OpenPost\openpost-server-windows-amd64.exe`
-- Startup directory: `C:\OpenPost`
-- Service account: a dedicated local user with read access to `C:\OpenPost` and write access to `C:\OpenPost\data` and `C:\OpenPost\media`
+- Application: `C:\SocialFlow.ai\openpost-server-windows-amd64.exe`
+- Startup directory: `C:\SocialFlow.ai`
+- Service account: a dedicated local user with read access to `C:\SocialFlow.ai` and write access to `C:\SocialFlow.ai\data` and `C:\SocialFlow.ai\media`
 
 If your wrapper does not load `.env`, set the same `OPENPOST_*` values as service environment variables.
 

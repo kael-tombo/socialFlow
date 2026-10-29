@@ -19,7 +19,7 @@ export default function NotFound() {
     >
       <Link href="/" className="op-recovery-brand">
         <BrandMark />
-        OpenPost<span className="docs-brand-label">Docs</span>
+        SocialFlow.ai<span className="docs-brand-label">Docs</span>
       </Link>
       <div className="op-recovery-body">
         <div>

@@ -22,17 +22,17 @@ Threads requires publicly reachable media URLs. Set:
 OPENPOST_MEDIA_URL=https://your-domain.com/media
 ```
 
-OpenPost passes stored media MIME types to the Threads publisher and serves public media URLs with file extensions where possible. Threads still fetches media from your URL server-side, so the URL must be reachable by Meta and return the correct media bytes.
+SocialFlow.ai passes stored media MIME types to the Threads publisher and serves public media URLs with file extensions where possible. Threads still fetches media from your URL server-side, so the URL must be reachable by Meta and return the correct media bytes.
 
-For a carousel, OpenPost prepares each media item before it publishes the full carousel. An account version with one media item stays a normal image or video post.
+For a carousel, SocialFlow.ai prepares each media item before it publishes the full carousel. An account version with one media item stays a normal image or video post.
 
 ## Comments
 
-Comments and replies is an optional feature per connected Threads account. It starts off for a new account. Enable it after connection or in Account details. OpenPost can list replies, send replies, and hide replies when enabled. The Threads API path in OpenPost does not delete replies. Threads does not support Direct messages in OpenPost, and Grow is not available for Threads. Disabling Comments and replies stops future Threads comment collection and reply actions without deleting stored replies or revoking authorization. Availability depends on provider support, required scopes, and plan access as distinct facts.
+Comments and replies is an optional feature per connected Threads account. It starts off for a new account. Enable it after connection or in Account details. SocialFlow.ai can list replies, send replies, and hide replies when enabled. The Threads API path in SocialFlow.ai does not delete replies. Threads does not support Direct messages in SocialFlow.ai, and Grow is not available for Threads. Disabling Comments and replies stops future Threads comment collection and reply actions without deleting stored replies or revoking authorization. Availability depends on provider support, required scopes, and plan access as distinct facts.
 
 ## Analytics
 
-Analytics is an optional feature per connected Threads account. It starts off for a new account. Enable it after connection or in Account details. OpenPost collects follower counts and supported post views, likes, replies, reposts, quotes, and shares when enabled. Accounts connected before `threads_manage_insights` was added must be reconnected before collection can start. Disabling Analytics stops future Threads analytics collection without deleting stored metrics or revoking authorization.
+Analytics is an optional feature per connected Threads account. It starts off for a new account. Enable it after connection or in Account details. SocialFlow.ai collects follower counts and supported post views, likes, replies, reposts, quotes, and shares when enabled. Accounts connected before `threads_manage_insights` was added must be reconnected before collection can start. Disabling Analytics stops future Threads analytics collection without deleting stored metrics or revoking authorization.
 
 ## Location tags
 
@@ -40,7 +40,7 @@ Threads location search requires `threads_location_tagging`. Accounts connected 
 
 ## Local development
 
-For local testing, expose OpenPost through a tunnel such as ngrok so the callback URL and `/media/...` paths are publicly reachable.
+For local testing, expose SocialFlow.ai through a tunnel such as ngrok so the callback URL and `/media/...` paths are publicly reachable.
 
 ## Common issues
 

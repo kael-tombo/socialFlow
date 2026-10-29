@@ -1,10 +1,10 @@
 ---
 title: Media uploads
-description: Upload bytes through OpenPost's storage-safe HTTP flow.
+description: Upload bytes through SocialFlow.ai's storage-safe HTTP flow.
 icon: ImageUp
 ---
 
-Media uploads usually use three requests. Your integration creates an upload session, sends bytes to its storage target, then completes the session. If OpenPost finds identical ready media in the workspace, it returns `deduped: true` and the returned `media_id` is ready to use without the upload and completion requests. The examples use Bash, curl, and jq.
+Media uploads usually use three requests. Your integration creates an upload session, sends bytes to its storage target, then completes the session. If SocialFlow.ai finds identical ready media in the workspace, it returns `deduped: true` and the returned `media_id` is ready to use without the upload and completion requests. The examples use Bash, curl, and jq.
 
 ## 1. Create a session
 
@@ -32,7 +32,7 @@ The response includes `media_id`, `deduped`, `complete_url`, and an `upload` obj
 
 ## 2. Send the bytes
 
-Use the exact method and headers from `upload`. An absolute target is external storage, so do not send the OpenPost bearer token to it. A relative target is an authenticated OpenPost endpoint.
+Use the exact method and headers from `upload`. An absolute target is external storage, so do not send the SocialFlow.ai bearer token to it. A relative target is an authenticated SocialFlow.ai endpoint.
 
 ```bash
 if [ "$DEDUPED" = "false" ]; then
@@ -75,7 +75,7 @@ fi
 
 ## 3. Complete the session
 
-Complete the session with the returned `media_id`, your workspace ID, and your OpenPost bearer token. Completion starts the normal validation and media-processing flow.
+Complete the session with the returned `media_id`, your workspace ID, and your SocialFlow.ai bearer token. Completion starts the normal validation and media-processing flow.
 
 ```bash
 if [ "$DEDUPED" = "false" ]; then
@@ -105,6 +105,6 @@ After uploading an image, call `POST /api/v1/media/{id}/prepare-image` with a co
 }
 ```
 
-OpenPost resolves the connected account's limits, then pads and downscales the image without cropping. It may re-encode the copy to fit accepted formats and byte limits. JPEG padding is white; PNG and WebP preserve transparent padding. Animated images are rejected to avoid losing frames. Inputs and image allocations are bounded; an image that cannot fit returns an error.
+SocialFlow.ai resolves the connected account's limits, then pads and downscales the image without cropping. It may re-encode the copy to fit accepted formats and byte limits. JPEG padding is white; PNG and WebP preserve transparent padding. Animated images are rejected to avoid losing frames. Inputs and image allocations are bounded; an image that cannot fit returns an error.
 
 The response contains `status: "ready"` and a separate `media` object, including its ID, known `width` and `height`, and `parent_media_id`. Preparation finishes before the response. Attach the returned ID explicitly. Existing posts and the original asset are unchanged. Repeating the same preparation reuses a matching ready copy when available. This operation prepares an image; validate the complete post separately before publishing.

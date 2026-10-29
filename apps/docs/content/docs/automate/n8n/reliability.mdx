@@ -18,11 +18,11 @@ Revision conflicts are not transient. Read the Publication again and decide whet
 
 ## Multiple items
 
-The OpenPost node preserves n8n item linking. An output item stays connected to the input item that produced it. Enable continue-on-fail only when later nodes can distinguish error items and handle them safely.
+The SocialFlow.ai node preserves n8n item linking. An output item stays connected to the input item that produced it. Enable continue-on-fail only when later nodes can distinguish error items and handle them safely.
 
 ## Diagnose a failed item
 
-Errors include the OpenPost `X-Request-ID` when the server returns one. Store that ID with the n8n execution ID. Do not log the OpenPost token or full credential object.
+Errors include the SocialFlow.ai `X-Request-ID` when the server returns one. Store that ID with the n8n execution ID. Do not log the SocialFlow.ai token or full credential object.
 
 For a publishing failure:
 

@@ -1,14 +1,14 @@
 ---
 title: API reference
-description: Authenticate and call the OpenPost HTTP API.
+description: Authenticate and call the SocialFlow.ai HTTP API.
 icon: FileCode
 ---
 
-Use the HTTP API when your own app or script needs to read OpenPost data or manage publications. Start with a token, make one read request, then use the endpoint pages for the fields and responses of the operation you need. Requests and responses use JSON.
+Use the HTTP API when your own app or script needs to read SocialFlow.ai data or manage publications. Start with a token, make one read request, then use the endpoint pages for the fields and responses of the operation you need. Requests and responses use JSON.
 
 ## Base URL
 
-For Hosted, use `https://app.openpo.st/api/v1`. For a self-hosted instance, append `/api/v1` to your public OpenPost origin.
+For Hosted, use `https://app.openpo.st/api/v1`. For a self-hosted instance, append `/api/v1` to your public SocialFlow.ai origin.
 
 ## Authentication
 
@@ -20,7 +20,7 @@ Authorization: Bearer YOUR_TOKEN
 
 Create and revoke tokens in **Settings → Personal → Developer**. Choose both its permissions, such as `api:read` or `api:write`, and whether it can access the current workspace or all your workspaces. Use only the access your integration needs.
 
-Copy the token when it is created. OpenPost shows it once. Set an expiry and store it in your automation's secret store. Revoke it from the same settings page when it is no longer needed.
+Copy the token when it is created. SocialFlow.ai shows it once. Set an expiry and store it in your automation's secret store. Revoke it from the same settings page when it is no longer needed.
 
 ## Try a read request
 
@@ -32,7 +32,7 @@ curl https://app.openpo.st/api/v1/workspaces \
   -H "Accept: application/json"
 ```
 
-The response lists workspaces this token can access. Use one of their IDs when an endpoint asks for a workspace ID. OpenPost checks access again on every private operation.
+The response lists workspaces this token can access. Use one of their IDs when an endpoint asks for a workspace ID. SocialFlow.ai checks access again on every private operation.
 
 ## Understand an error
 
@@ -40,10 +40,10 @@ The response lists workspaces this token can access. Use one of their IDs when a
 | ------ | ----------------------------------------------------------------------------------------------------------------- |
 | `401`  | Send a valid bearer token. Create a new token if it expired or was revoked.                                       |
 | `403`  | Check both the token's permissions and its workspace access. Some operations also depend on your account or plan. |
-| `404`  | Check the endpoint path and resource ID. Use IDs returned by the same OpenPost instance.                          |
+| `404`  | Check the endpoint path and resource ID. Use IDs returned by the same SocialFlow.ai instance.                          |
 | `422`  | Compare the request with the endpoint schema, including required fields, formats, and allowed values.             |
 
-Read the error body before retrying. A successful request that queues a publication means OpenPost accepted the work; it does not mean the provider has published it. Check the publication's destination statuses for the final result.
+Read the error body before retrying. A successful request that queues a publication means SocialFlow.ai accepted the work; it does not mean the provider has published it. Check the publication's destination statuses for the final result.
 
 ## Find an endpoint
 

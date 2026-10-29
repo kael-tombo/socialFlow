@@ -2,11 +2,11 @@
 
 This page is for operators choosing local or S3-compatible media storage.
 
-OpenPost stores media on the local file system by default. It can also use S3 or R2 storage.
+SocialFlow.ai stores media on the local file system by default. It can also use S3 or R2 storage.
 
 ## Video processing dependency
 
-OpenPost requires `ffmpeg` and `ffprobe` from the same FFmpeg installation on `PATH` to verify uploaded videos and create posters. The official Docker image includes both tools. Project development and standalone release checks use the `pkgs.ffmpeg` input pinned by `devenv.lock`. Standalone binaries do not bundle FFmpeg, so install a maintained FFmpeg package for the host before starting OpenPost and keep both commands together when upgrading it. A video stays unavailable for publishing if the server cannot complete this verification; Media shows the processing error and offers a retry after the dependency or file problem is fixed.
+SocialFlow.ai requires `ffmpeg` and `ffprobe` from the same FFmpeg installation on `PATH` to verify uploaded videos and create posters. The official Docker image includes both tools. Project development and standalone release checks use the `pkgs.ffmpeg` input pinned by `devenv.lock`. Standalone binaries do not bundle FFmpeg, so install a maintained FFmpeg package for the host before starting SocialFlow.ai and keep both commands together when upgrading it. A video stays unavailable for publishing if the server cannot complete this verification; Media shows the processing error and offers a retry after the dependency or file problem is fixed.
 
 ## Key settings
 
@@ -38,7 +38,7 @@ Back up the media directory together with the SQLite database when using local s
 
 ## Lifecycle cleanup
 
-OpenPost applies a fixed application-level lifecycle to local and S3-compatible storage:
+SocialFlow.ai applies a fixed application-level lifecycle to local and S3-compatible storage:
 
 - Post-specific temporary media moves to Trash after its final successful publication or 14 days without use.
 - Trash remains recoverable for seven days, then becomes eligible for permanent removal.
@@ -46,7 +46,7 @@ OpenPost applies a fixed application-level lifecycle to local and S3-compatible 
 
 These periods are not workspace or environment settings. The deprecated `media_cleanup_days` API field remains only for old clients: reads return `14` and writes are ignored. Old queued cleanup jobs that contain a `days` value also use the fixed 14-day policy.
 
-Each cleanup run computes protection once for a bounded database batch. OpenPost commits database changes before it asks local or remote object storage to delete bytes, so a slow storage service does not keep a SQLite or PostgreSQL transaction open.
+Each cleanup run computes protection once for a bounded database batch. SocialFlow.ai commits database changes before it asks local or remote object storage to delete bytes, so a slow storage service does not keep a SQLite or PostgreSQL transaction open.
 
 ## S3-compatible storage
 
@@ -65,7 +65,7 @@ OPENPOST_S3_FORCE_PATH_STYLE=false
 
 ## Cloud mode
 
-When `OPENPOST_EDITION=cloud`, OpenPost refuses to start unless:
+When `OPENPOST_EDITION=cloud`, SocialFlow.ai refuses to start unless:
 
 - `OPENPOST_STORAGE_DRIVER=s3`
 - `OPENPOST_S3_REGION` is set
@@ -76,7 +76,7 @@ When `OPENPOST_EDITION=cloud`, OpenPost refuses to start unless:
 
 `OPENPOST_S3_PUBLIC_BASE_URL` is required in cloud mode because social networks need stable public media links.
 
-At startup, OpenPost writes, reads, verifies, and deletes a small object under
+At startup, SocialFlow.ai writes, reads, verifies, and deletes a small object under
 `.openpost-readiness/`. The bucket credential must allow `PutObject`,
 `GetObject`, and `DeleteObject`, not only bucket discovery. The readiness
 endpoint repeats this bounded capability check after a short cache interval and
@@ -84,9 +84,9 @@ returns `503` if required object storage is unavailable. Normal S3 reads,
 writes, multipart uploads, and deletes inherit caller cancellation and
 deadlines without imposing a shorter limit on large media streams.
 
-The browser can upload straight to S3 or R2. OpenPost sends larger files in parts without loading the whole file into memory.
+The browser can upload straight to S3 or R2. SocialFlow.ai sends larger files in parts without loading the whole file into memory.
 
-For direct browser uploads, the bucket must allow CORS requests from the OpenPost app origin. For Cloudflare R2, apply a bucket CORS rule like this, replacing the origin with your `OPENPOST_APP_URL`:
+For direct browser uploads, the bucket must allow CORS requests from the SocialFlow.ai app origin. For Cloudflare R2, apply a bucket CORS rule like this, replacing the origin with your `OPENPOST_APP_URL`:
 
 ```json
 {
@@ -109,15 +109,15 @@ Save the rule as `cors.json`, apply it with `wrangler r2 bucket cors set <bucket
 Streaming upload flow:
 
 1. Call `POST /api/v1/media/upload-session` with `workspace_id`, `filename`, `mime_type`, and `size`.
-2. Upload the file to the returned `PUT` target with the returned headers. For a relative OpenPost target, use the same OpenPost bearer credential or browser session. For an absolute presigned bucket target, send only the returned upload headers; never send the OpenPost bearer token or session cookie to the storage host.
+2. Upload the file to the returned `PUT` target with the returned headers. For a relative SocialFlow.ai target, use the same SocialFlow.ai bearer credential or browser session. For an absolute presigned bucket target, send only the returned upload headers; never send the SocialFlow.ai bearer token or session cookie to the storage host.
 3. Call `POST /api/v1/media/upload-session/{media_id}/complete` with the same `workspace_id`.
 
-S3-compatible storage returns a presigned browser-to-bucket target for files within the provider's single-request limit. Larger files use an authenticated OpenPost target and are written to the bucket as 8 MiB multipart parts. Local storage uses the same authenticated streaming target and writes directly to disk. Configure the reverse proxy in front of OpenPost to accept the largest video size you intend to support; X subscribed accounts can upload videos as large as 16 GiB.
+S3-compatible storage returns a presigned browser-to-bucket target for files within the provider's single-request limit. Larger files use an authenticated SocialFlow.ai target and are written to the bucket as 8 MiB multipart parts. Local storage uses the same authenticated streaming target and writes directly to disk. Configure the reverse proxy in front of SocialFlow.ai to accept the largest video size you intend to support; X subscribed accounts can upload videos as large as 16 GiB.
 
-OpenPost makes a pending Media item first. After upload, it checks the saved file, finds matching files with SHA-256, makes a thumbnail when possible, records usage, and marks the file ready. It does not keep a large file in app memory.
+SocialFlow.ai makes a pending Media item first. After upload, it checks the saved file, finds matching files with SHA-256, makes a thumbnail when possible, records usage, and marks the file ready. It does not keep a large file in app memory.
 
 The web app uses upload sessions automatically for current local and S3-compatible deployments. It falls back to the legacy multipart endpoint only when the server does not advertise upload-session support.
 
-OpenPost can reuse a file it already sent to a social network when one account
+SocialFlow.ai can reuse a file it already sent to a social network when one account
 needs a retry. Networks that fetch a public media link, such as Threads,
 Instagram, Facebook, and TikTok, get a fresh link instead.

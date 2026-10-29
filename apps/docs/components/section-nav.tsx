@@ -59,7 +59,7 @@ export function SectionNav() {
       <div className="docs-topbar">
         <Link href="/" className="docs-brand">
           <BrandMark />
-          OpenPost<span className="docs-brand-label">Docs</span>
+          SocialFlow.ai<span className="docs-brand-label">Docs</span>
         </Link>
         <button type="button" className="docs-search" onClick={() => setOpenSearch(true)}>
           <Search size={17} />
@@ -77,7 +77,7 @@ export function SectionNav() {
             href="https://app.openpo.st"
             className="docs-open-app"
           >
-            Open OpenPost
+            Open SocialFlow.ai
             <ArrowUpRight size={16} />
           </a>
         </div>

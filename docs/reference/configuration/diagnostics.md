@@ -1,19 +1,19 @@
 # Maintainer diagnostics
 
-Self-hosted instances send privacy-limited diagnostic reports to OpenPost so crashes and failed operations can be fixed for every deployment, not just Hosted. This channel is separate from product analytics: an operator's own PostHog project stays theirs, and diagnostic reports never carry user identities, sessions, or product events.
+Self-hosted instances send privacy-limited diagnostic reports to SocialFlow.ai so crashes and failed operations can be fixed for every deployment, not just Hosted. This channel is separate from product analytics: an operator's own PostHog project stays theirs, and diagnostic reports never carry user identities, sessions, or product events.
 
 ## Defaults and opt-out
 
 Reporting is **on by default**. Instances report to the official receiver at `https://app.openpo.st/api/v1/diagnostics/ingest` unless the operator overrides it. To opt out completely:
 
 ```dotenv
-# Prevent diagnostic reports from being sent to OpenPost.
+# Prevent diagnostic reports from being sent to SocialFlow.ai.
 OPENPOST_DIAGNOSTICS_ENABLED=false
 ```
 
 Application browser test servers explicitly disable diagnostics and product telemetry. Maintainer diagnostics tests deliver to local HTTP receivers.
 
-The environment disable always wins, stops sending, and clears pending reports. Upgrading OpenPost activates this channel where previous versions sent nothing; the change is called out in the release notes. Browser reports additionally stop when Do Not Track or Global Privacy Control is set, regardless of the instance switch.
+The environment disable always wins, stops sending, and clears pending reports. Upgrading SocialFlow.ai activates this channel where previous versions sent nothing; the change is called out in the release notes. Browser reports additionally stop when Do Not Track or Global Privacy Control is set, regardless of the instance switch.
 
 ## What is reported
 
@@ -51,9 +51,9 @@ Delivery never blocks application work: bounded in-memory queue, short timeouts,
 ## Configuration
 
 ```dotenv
-# Send diagnostic reports to OpenPost. On by default.
+# Send diagnostic reports to SocialFlow.ai. On by default.
 OPENPOST_DIAGNOSTICS_ENABLED=true
-# Receiver endpoint. Defaults to the official OpenPost receiver.
+# Receiver endpoint. Defaults to the official SocialFlow.ai receiver.
 OPENPOST_DIAGNOSTICS_RECEIVER_URL=https://app.openpo.st/api/v1/diagnostics/ingest
 # Installation identity file. The release container defaults this to the
 # persistent /data volume; standalone installs may override the path.
@@ -70,7 +70,7 @@ Use the `_FILE` companions (`OPENPOST_DIAGNOSTICS_DISCORD_WEBHOOK_URL_FILE`) for
 
 ## The official receiver
 
-`POST /api/v1/diagnostics/ingest` accepts reports from any OpenPost instance when `OPENPOST_DIAGNOSTICS_INGEST_ENABLED=true`. It is unauthenticated by design (reporting instances hold no account here); protection comes from strict schema validation, a 16 KB body cap, per-installation hourly quotas, a global per-minute cap, and bounded Discord delivery. Accepted reports are forwarded to the maintainer Discord channel as embeds with the code, operation, build, occurrence count, and sanitized frames.
+`POST /api/v1/diagnostics/ingest` accepts reports from any SocialFlow.ai instance when `OPENPOST_DIAGNOSTICS_INGEST_ENABLED=true`. It is unauthenticated by design (reporting instances hold no account here); protection comes from strict schema validation, a 16 KB body cap, per-installation hourly quotas, a global per-minute cap, and bounded Discord delivery. Accepted reports are forwarded to the maintainer Discord channel as embeds with the code, operation, build, occurrence count, and sanitized frames.
 
 ## User feedback
 

@@ -1,10 +1,10 @@
 ---
 title: Install on CasaOS
-description: Import OpenPost as a CasaOS customized app from a ready-to-use Compose file.
+description: Import SocialFlow.ai as a CasaOS customized app from a ready-to-use Compose file.
 icon: casaos
 ---
 
-Import OpenPost as a CasaOS customized app with the supplied [Compose file](https://github.com/getopenpost/openpost/blob/main/deploy/casaos/docker-compose.yml). The image supports x86_64 and ARM64 devices.
+Import SocialFlow.ai as a CasaOS customized app with the supplied [Compose file](https://github.com/getopenpost/openpost/blob/main/deploy/casaos/docker-compose.yml). The image supports x86_64 and ARM64 devices.
 
 ## What you need
 
@@ -35,6 +35,6 @@ curl https://post.example.com/api/v1/ready
 
 ## Upgrade and back up
 
-Pin the image to a release tag. Before importing an updated definition, stop OpenPost and back up `openpost_data` with the edited Compose file. It contains your secrets, so keep the backup private and off the device. Follow the [maintenance guide](/self-hosting/maintenance) to check readiness and restore a matching database backup if a rollback needs it.
+Pin the image to a release tag. Before importing an updated definition, stop SocialFlow.ai and back up `openpost_data` with the edited Compose file. It contains your secrets, so keep the backup private and off the device. Follow the [maintenance guide](/self-hosting/maintenance) to check readiness and restore a matching database backup if a rollback needs it.
 
 After installation, [configure social integrations](/self-hosting/integrations).

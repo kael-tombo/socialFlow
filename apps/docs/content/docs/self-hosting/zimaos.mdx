@@ -1,10 +1,10 @@
 ---
-title: Install OpenPost on ZimaOS with Docker Compose
-description: Import OpenPost as a ZimaOS custom app, set your device IP and secrets, then check readiness before connecting social accounts.
+title: Install SocialFlow.ai on ZimaOS with Docker Compose
+description: Import SocialFlow.ai as a ZimaOS custom app, set your device IP and secrets, then check readiness before connecting social accounts.
 icon: zimaos
 ---
 
-Import OpenPost as a ZimaOS custom app with the supplied [Compose file](https://github.com/getopenpost/openpost/blob/main/deploy/zimaos/docker-compose.yml). The image supports x86_64 and ARM64 devices.
+Import SocialFlow.ai as a ZimaOS custom app with the supplied [Compose file](https://github.com/getopenpost/openpost/blob/main/deploy/zimaos/docker-compose.yml). The image supports x86_64 and ARM64 devices.
 
 ## What you need
 
@@ -33,6 +33,6 @@ curl https://post.example.com/api/v1/ready
 
 ## Upgrade and back up
 
-Pin the image to a release tag. Before importing an updated definition, stop OpenPost and back up `openpost_data` with the edited Compose file. It contains your secrets, so keep the backup private and off the device. Follow the [maintenance guide](/self-hosting/maintenance) to check readiness and restore a matching database backup if a rollback needs it.
+Pin the image to a release tag. Before importing an updated definition, stop SocialFlow.ai and back up `openpost_data` with the edited Compose file. It contains your secrets, so keep the backup private and off the device. Follow the [maintenance guide](/self-hosting/maintenance) to check readiness and restore a matching database backup if a rollback needs it.
 
 After installation, [configure social integrations](/self-hosting/integrations).

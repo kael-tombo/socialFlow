@@ -4,11 +4,11 @@ description: Choose an endpoint, sign in, and verify assistant access.
 icon: Plug
 ---
 
-Connect your assistant to OpenPost, choose its permissions, and verify read access before making changes. MCP can inspect posts, variants, schedules, accounts, media, and delivery results. Full access also permits drafts, publishing, and supported comment actions.
+Connect your assistant to SocialFlow.ai, choose its permissions, and verify read access before making changes. MCP can inspect posts, variants, schedules, accounts, media, and delivery results. Full access also permits drafts, publishing, and supported comment actions.
 
 Use [Chat assistants](/mcp/chat-assistants) or [Coding assistants](/mcp/coding-assistants) for your client's exact configuration.
 
-OpenPost offers two MCP endpoints. They use the same authentication, scopes, workspace checks, validation, and operation behavior.
+SocialFlow.ai offers two MCP endpoints. They use the same authentication, scopes, workspace checks, validation, and operation behavior.
 
 ## Choose an endpoint
 
@@ -34,15 +34,15 @@ https://app.openpo.st/mcp/code
 
 It exposes a small routing set:
 
-- `search_operations` finds matching OpenPost operations and returns their schemas and safety information.
+- `search_operations` finds matching SocialFlow.ai operations and returns their schemas and safety information.
 - `query_operation` runs only read-only operations.
 - `execute_operation` runs only operations that change state or interact with an external service. Requires `mcp:full`.
-- `render_scheduler_widget` renders structured OpenPost data in the ChatGPT Apps widget. Read-only; available with `mcp:read`.
+- `render_scheduler_widget` renders structured SocialFlow.ai data in the ChatGPT Apps widget. Read-only; available with `mcp:read`.
 - `render_local_media_upload` opens the device file picker for a workspace. Read-only; available with `mcp:read`. Its one-use upload ticket tool is app-only and requires `mcp:full`.
 
 A read-only connection does not receive `execute_operation` or the upload ticket tool. Search results also exclude write operations. The server rejects an operation passed through the wrong execution tool.
 
-The compact endpoint does not run model-written code. It reduces the initial tool list and still sends each request through OpenPost's typed operation handlers.
+The compact endpoint does not run model-written code. It reduces the initial tool list and still sends each request through SocialFlow.ai's typed operation handlers.
 
 ### Self-hosted tool mode
 
@@ -62,16 +62,16 @@ Some clients cache tool definitions. Refresh the MCP server metadata or start a 
 
 Use browser OAuth when your client supports it. Otherwise create a developer token in **Settings > Personal > Developer** and store it in the client's secure authentication settings or environment. Never paste a token into a conversation or commit it to a config file.
 
-OpenPost checks the token scope and workspace access for every MCP operation. The client may add its own approval prompt, but client approval does not replace OpenPost permissions.
+SocialFlow.ai checks the token scope and workspace access for every MCP operation. The client may add its own approval prompt, but client approval does not replace SocialFlow.ai permissions.
 
 ## Choose a scope
 
 | Scope      | Access                                                                                                                            |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `mcp:read` | Inspect workspaces, accounts, media, posts, schedules, readiness, comments, and lifecycle events. It cannot change OpenPost data. |
+| `mcp:read` | Inspect workspaces, accounts, media, posts, schedules, readiness, comments, and lifecycle events. It cannot change SocialFlow.ai data. |
 | `mcp:full` | Includes read access and permits operations that create, edit, schedule, publish, upload, reply, or moderate.                     |
 
-OpenPost defaults an OAuth request with no scope to `mcp:full`. Select `mcp:read` explicitly for reviews and audits.
+SocialFlow.ai defaults an OAuth request with no scope to `mcp:full`. Select `mcp:read` explicitly for reviews and audits.
 
 Bind the connection or developer token to one workspace when the assistant does not need access to every workspace. A workspace-bound token cannot list or target another workspace.
 
@@ -87,7 +87,7 @@ Before publishing, check the workspace, destination accounts, text, media, and t
 
 Recent MCP calls appear under **Settings > Personal > Developer access**. Use that activity to identify the client, tool, workspace, result, and failure reason.
 
-Use remote HTTP when the client can reach your OpenPost instance. Use the local bridge when a desktop client can reach the instance from your computer but the client's cloud service cannot.
+Use remote HTTP when the client can reach your SocialFlow.ai instance. Use the local bridge when a desktop client can reach the instance from your computer but the client's cloud service cannot.
 
 ## Connect a self-hosted instance
 
@@ -99,7 +99,7 @@ Replace the Hosted origin with your own origin and keep the MCP path:
 https://openpost.example.com/mcp
 ```
 
-Use `/mcp/code` instead when you need the compact tool list. Your reverse proxy must serve the instance over HTTPS, preserve authorization headers, and forward POST requests to OpenPost. OAuth-aware clients also use the discovery paths under `/.well-known/`.
+Use `/mcp/code` instead when you need the compact tool list. Your reverse proxy must serve the instance over HTTPS, preserve authorization headers, and forward POST requests to SocialFlow.ai. OAuth-aware clients also use the discovery paths under `/.well-known/`.
 
 ### Private instance and local bridge
 
@@ -138,7 +138,7 @@ command -v openpost-mcp
 
 ### Cloud clients
 
-A cloud client cannot use `localhost` or a private LAN address on your computer. Give it a public HTTPS instance if the product supports remote custom MCP servers. A local bridge works only when the MCP process runs on a machine that can reach OpenPost.
+A cloud client cannot use `localhost` or a private LAN address on your computer. Give it a public HTTPS instance if the product supports remote custom MCP servers. A local bridge works only when the MCP process runs on a machine that can reach SocialFlow.ai.
 
 Use the setup page for your client to confirm its transport and configuration format. Do not configure the remote endpoint and the local bridge under the same server name.
 
@@ -147,7 +147,7 @@ Use the setup page for your client to confirm its transport and configuration fo
 Ask the assistant:
 
 ```text
-List my OpenPost workspaces.
+List my SocialFlow.ai workspaces.
 ```
 
 Name a returned workspace and request its schedule without changes. This checks the account, workspace, and read permissions. Then use [Upload media](/mcp/mcp-guide/media) or [Tasks and troubleshooting](/mcp/mcp-guide/use-cases).

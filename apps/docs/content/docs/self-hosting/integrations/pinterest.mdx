@@ -4,7 +4,7 @@ description: Configure a Pinterest app and understand the approval needed to con
 icon: pinterest
 ---
 
-Normal Pinterest connections require an OpenPost record of your app's Standard approval. Publishing, discovery, and analytics each need current test evidence, including on self-hosted instances.
+Normal Pinterest connections require an SocialFlow.ai record of your app's Standard approval. Publishing, discovery, and analytics each need current test evidence, including on self-hosted instances.
 
 Follow [administrator readiness setup](/self-hosting/integrations#readiness-records-for-bot-apps-and-pinterest) alongside this guide.
 
@@ -12,7 +12,7 @@ Follow [administrator readiness setup](/self-hosting/integrations#readiness-reco
 
 - Set `OPENPOST_APP_URL` to the public HTTPS origin of your instance.
 - Have a Pinterest business account to administer a [Pinterest developer app](https://developers.pinterest.com/apps/) and a separate account and board for testing.
-- Request Pinterest **Trial** access for development, then **Standard** access before serving other users. Pinterest explains the [access tiers](https://developers.pinterest.com/docs/key-concepts/access-tiers/). OpenPost's runtime and certification controls must also permit the exact operation before production use.
+- Request Pinterest **Trial** access for development, then **Standard** access before serving other users. Pinterest explains the [access tiers](https://developers.pinterest.com/docs/key-concepts/access-tiers/). SocialFlow.ai's runtime and certification controls must also permit the exact operation before production use.
 
 ## Configure the Pinterest app
 
@@ -23,12 +23,12 @@ Follow [administrator readiness setup](/self-hosting/integrations#readiness-reco
    https://post.example.com/api/v1/accounts/pinterest/callback
    ```
 
-3. Copy the app **ID** and **Secret key**. OpenPost requests `boards:read`, `boards:write`, `pins:read`, `pins:write`, and `user_accounts:read`. Confirm the app can obtain those scopes for your test account.
+3. Copy the app **ID** and **Secret key**. SocialFlow.ai requests `boards:read`, `boards:write`, `pins:read`, `pins:write`, and `user_accounts:read`. Confirm the app can obtain those scopes for your test account.
 4. Before serving other users, apply for Standard access and complete Pinterest's review requirements, including a demonstration of the OAuth flow. Keep normal production access disabled until the intended OAuth, board, Pin, discovery, and analytics operations have current live certification.
 
 Pinterest documents [OAuth redirect matching and scopes](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/).
 
-## Save the app in OpenPost
+## Save the app in SocialFlow.ai
 
 [Save these credentials](/self-hosting/integrations#save-your-provider-credentials) with your own domain and app values:
 
@@ -46,7 +46,7 @@ Pinterest documents [OAuth redirect matching and scopes](https://developers.pint
 ## Complete approval and test publishing
 
 1. Once your app has Standard access and the instance records that approval, open **Settings → Workspace → Social accounts** and connect the Pinterest account.
-2. After recording current local and live evidence for image-Pin publishing, choose a board owned by that account and publish one small image Pin. Check the OpenPost result and the Pin on Pinterest. Board section targeting, video Pins, discovery, and analytics need their own tests and access evidence.
+2. After recording current local and live evidence for image-Pin publishing, choose a board owned by that account and publish one small image Pin. Check the SocialFlow.ai result and the Pin on Pinterest. Board section targeting, video Pins, discovery, and analytics need their own tests and access evidence.
 3. Record which app, account, scopes, and operation passed. Do not infer that a successful image Pin makes every Pinterest feature ready for public use.
 
 Trial testing uses the administrator-only `certification_test` flow, which allows a first test without previous test evidence. It still checks app configuration, trial permission, account authorization, and provider policy. Trial Pins and boards are visible only to their creator.

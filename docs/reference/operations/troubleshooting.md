@@ -1,10 +1,10 @@
 ---
-description: Diagnose startup, database, media, provider, publishing, and delivery problems on a self-hosted OpenPost instance.
+description: Diagnose startup, database, media, provider, publishing, and delivery problems on a self-hosted SocialFlow.ai instance.
 ---
 
 # Troubleshooting
 
-Diagnose startup, database, media, provider, publishing, and delivery problems on a self-hosted OpenPost instance.
+Diagnose startup, database, media, provider, publishing, and delivery problems on a self-hosted SocialFlow.ai instance.
 
 ## App does not start
 
@@ -36,7 +36,7 @@ Likely cause: your public URL or callback path does not match exactly.
 
 How to check: verify `OPENPOST_APP_URL`, social network callback settings, and any callback environment variables.
 
-How to fix: set the exact public callback URL and restart OpenPost.
+How to fix: set the exact public callback URL and restart SocialFlow.ai.
 
 ## CORS errors
 
@@ -44,7 +44,7 @@ Symptoms: browser console shows blocked API requests.
 
 Likely cause: incorrect `OPENPOST_APP_URL` or missing `OPENPOST_EXTRA_CORS_ORIGINS`.
 
-How to check: inspect browser dev tools and confirm the origin OpenPost is serving.
+How to check: inspect browser dev tools and confirm the origin SocialFlow.ai is serving.
 
 How to fix: update the origin settings and restart the backend.
 
@@ -66,7 +66,7 @@ Likely cause: `OPENPOST_MEDIA_URL` is not public.
 
 How to check: try opening a media URL from outside your local network.
 
-How to fix: expose OpenPost through HTTPS and set a public media URL.
+How to fix: expose SocialFlow.ai through HTTPS and set a public media URL.
 
 ## Scheduled post did not publish
 
@@ -94,7 +94,7 @@ Symptoms: intermittent write failures or queue delays.
 
 Likely cause: filesystem issues or too many competing processes touching the same SQLite file.
 
-How to check: confirm there is only one primary OpenPost process using the database.
+How to check: confirm there is only one primary SocialFlow.ai process using the database.
 
 How to fix: keep SQLite on local durable storage and avoid multiple writers.
 
@@ -102,11 +102,11 @@ How to fix: keep SQLite on local durable storage and avoid multiple writers.
 
 Symptoms: auth callbacks or login flows bounce to the wrong host.
 
-Likely cause: the proxy host name and OpenPost URL do not match.
+Likely cause: the proxy host name and SocialFlow.ai URL do not match.
 
 How to check: compare browser URL, proxy config, and `OPENPOST_APP_URL`.
 
-How to fix: use the same public host name and restart OpenPost.
+How to fix: use the same public host name and restart SocialFlow.ai.
 
 ## Wrong public URL
 
@@ -122,11 +122,11 @@ How to fix: replace internal URLs with the real public HTTPS domain.
 
 Symptoms: nobody can open instance settings, configure provider applications, or manage users. Settings > Instance is hidden for every account.
 
-Likely cause: the first account was created before OpenPost promoted the first registrant to instance administrator automatically, or the database was restored from a volume where a non-admin account came first.
+Likely cause: the first account was created before SocialFlow.ai promoted the first registrant to instance administrator automatically, or the database was restored from a volume where a non-admin account came first.
 
 How to check: sign in and confirm that no account shows the instance administration views under Settings.
 
-How to fix: promote an existing account from the host that runs OpenPost:
+How to fix: promote an existing account from the host that runs SocialFlow.ai:
 
 ```sh
 docker compose exec openpost ./openpost grant-admin --email you@example.test

@@ -23,7 +23,7 @@ The public base URL for uploaded media. Threads, Facebook, Instagram, and some T
 
 ## Provider callback URLs
 
-These are configured in the provider developer portals and should point back to your public OpenPost domain. They are separate from browser CORS settings.
+These are configured in the provider developer portals and should point back to your public SocialFlow.ai domain. They are separate from browser CORS settings.
 
 ## Common mistakes
 

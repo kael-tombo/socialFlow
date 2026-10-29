@@ -16,7 +16,7 @@ The report checks server health, setup, tokens, and the current workspace. It al
 ## First Checks
 
 1. Inspect the provider's exact state in **Accounts**, with `openpost provider readiness`, or through `GET /api/v1/provider-readiness`.
-2. Compare the callback URL in the provider console with the OpenPost callback URL exactly.
+2. Compare the callback URL in the provider console with the SocialFlow.ai callback URL exactly.
 3. Confirm `OPENPOST_APP_URL` is the public HTTPS app origin.
 4. For media providers that fetch files server-side, confirm `OPENPOST_MEDIA_URL` or `OPENPOST_S3_PUBLIC_BASE_URL` is public HTTPS.
 5. Open the failed post and read the error for each account.
@@ -37,7 +37,7 @@ The report checks server health, setup, tokens, and the current workspace. It al
 
 Activity shows each account on its own. A post can work on one account and fail on another.
 
-| Failure                                                  | What OpenPost does                                                            | Next action                                                               |
+| Failure                                                  | What SocialFlow.ai does                                                            | Next action                                                               |
 | -------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Invalid content, unsupported media, or duplicate content | Stops automatic retries for that account                                      | Edit the draft, then publish again                                        |
 | Expired or revoked authentication                        | Stops automatic retries                                                       | Reconnect the account                                                     |
@@ -45,7 +45,7 @@ Activity shows each account on its own. A post can work on one account and fail 
 | Rate limit, network failure, or social network outage    | Waits longer between retries and uses the network's retry time when available | Wait, use **Retry account**, or retry all failed accounts from the notice |
 | Unknown rejection                                        | Keeps a safe generic message and does not guess that retrying is safe         | Review the draft and provider status                                      |
 
-OpenPost saves the error type, status, safe error code, next retry time, and the action you can take. It does not show full social network responses or account keys. A manual retry uses the same post job. It can retry one failed account or all failed accounts without posting again to accounts that already worked.
+SocialFlow.ai saves the error type, status, safe error code, next retry time, and the action you can take. It does not show full social network responses or account keys. A manual retry uses the same post job. It can retry one failed account or all failed accounts without posting again to accounts that already worked.
 
 ## X
 
@@ -57,7 +57,7 @@ OpenPost saves the error type, status, safe error code, next retry time, and the
 ## Mastodon
 
 - Custom instances must be public HTTPS and must allow app registration.
-- OpenPost rejects private, loopback, link-local, multicast, and local-address instance hosts.
+- SocialFlow.ai rejects private, loopback, link-local, multicast, and local-address instance hosts.
 - Preconfigured instances must preserve the exact `instance_url`; the persisted provider key is `mastodon:<instance_url>`.
 - Video support is instance-dependent. MP4, MOV, and WebM are the safest formats.
 
@@ -88,7 +88,7 @@ OpenPost saves the error type, status, safe error code, next retry time, and the
 - Facebook connects Pages, not personal profile timelines.
 - `facebook account has no manageable pages` usually means the user has no eligible Pages, lacks full control of the Page, or the app lacks `business_management` or `pages_show_list`. Business Portfolio Pages require `business_management` for discovery.
 - Page publishing requires `pages_show_list`, `pages_read_engagement`, and `pages_manage_posts`, often with Meta app review.
-- `Invalid Scopes: pages_read_user_content` (or `pages_manage_metadata`) during Facebook connect means the Meta app has not enabled that permission. OpenPost requests both: `pages_read_user_content` supports comment access, and Meta's Conversations API requires `pages_manage_metadata` to read Messenger conversations. Add both permissions to the app's use case, keep them in `Ready for testing` while in development mode, then reconnect the Facebook account.
+- `Invalid Scopes: pages_read_user_content` (or `pages_manage_metadata`) during Facebook connect means the Meta app has not enabled that permission. SocialFlow.ai requests both: `pages_read_user_content` supports comment access, and Meta's Conversations API requires `pages_manage_metadata` to read Messenger conversations. Add both permissions to the app's use case, keep them in `Ready for testing` while in development mode, then reconnect the Facebook account.
 - Single-media posts and Stories support one JPEG, PNG, WebP, MP4, or MOV file. Multi-photo posts support 2–10 JPEG, PNG, or WebP images. Every media URL must use public HTTPS.
 
 ## Instagram

@@ -27,10 +27,10 @@ For manual recovery after fixing the webhook configuration, select failed `waitl
 - `usage_counters`: monthly durable counters keyed by workspace, metric, and UTC month.
 - `billing_customers`: Paddle customer mirrors keyed by organization, with no payment-card data.
 - `billing_subscriptions`: current Paddle subscription snapshots keyed by organization, fenced by Paddle's `updated_at` value so an older fetch cannot replace a newer recovery state.
-- `billing_checkout_attempts`: opaque OpenPost checkout attempt mapping, including the selected Paddle price, product plan, billing period, and a unique confirmation key for first-Workspace retries.
-- `billing_webhook_events`: webhook event ledger for idempotent Paddle processing, including Paddle's event occurrence time and OpenPost's processing time.
+- `billing_checkout_attempts`: opaque SocialFlow.ai checkout attempt mapping, including the selected Paddle price, product plan, billing period, and a unique confirmation key for first-Workspace retries.
+- `billing_webhook_events`: webhook event ledger for idempotent Paddle processing, including Paddle's event occurrence time and SocialFlow.ai's processing time.
 - `GET /api/v1/organizations/{id}/billing/status`: returns the local subscription snapshot and current-month usage counters for an organization.
-- `POST /api/v1/organizations/{id}/billing/checkout`: records an opaque checkout attempt and returns the Paddle.js environment, browser-safe client token, selected price, period price map, authenticated email, and OpenPost return URL.
+- `POST /api/v1/organizations/{id}/billing/checkout`: records an opaque checkout attempt and returns the Paddle.js environment, browser-safe client token, selected price, period price map, authenticated email, and SocialFlow.ai return URL.
 - `POST /api/v1/organizations/{id}/billing/portal`: creates a fresh, short-lived Paddle customer portal session after organization-admin authorization.
 - Workspace billing endpoints resolve the same organization-scoped contract for web and CLI clients. `POST /api/v1/billing/portal` accepts `purpose: "update_payment_method"` to return only the exact subscription's payment-method form.
 - `POST /api/v1/billing/paddle/webhook`: verifies the raw request body and `Paddle-Signature`, stores each event once, and queues canonical reconciliation.
@@ -64,7 +64,7 @@ The default per-workspace budget is $5.00 per UTC month. A request that would ma
 
 Analytics estimates use $0.005 per requested post and $0.010 per requested user, reviewed against the [X pricing catalogue](https://docs.x.com/x-api/getting-started/pricing) on October 10, 2026. The estimate does not assume the app-owner discount or best-effort UTC-day deduplication. Account and post reads use a daily cadence, including manual refresh. Posts stop routine collection after seven days. Partial responses and transport failures retain the full reservation as unresolved exposure. Permission, readiness and feature gates run before reservation and provider I/O.
 
-Review these prices when X changes its pay-per-use catalog. OpenPost exposes confirmed cost estimates and unresolved reserved exposure under **Settings → Organization → Plan & usage**. Reserved exposure protects the safety limit after an ambiguous result, but it is not presented as billed cost. X pricing and the X Developer Console remain authoritative.
+Review these prices when X changes its pay-per-use catalog. SocialFlow.ai exposes confirmed cost estimates and unresolved reserved exposure under **Settings → Organization → Plan & usage**. Reserved exposure protects the safety limit after an ambiguous result, but it is not presented as billed cost. X pricing and the X Developer Console remain authoritative.
 
 ## Monthly metrics
 
@@ -87,7 +87,7 @@ Initial metrics match the production-readiness plan:
 
 Hosted/cloud deployments need the complete set below. Set it in the backend process environment or through **Settings → Instance → Configuration → Billing** - this is the single runtime location. In local devenv, use `apps/server/.env`; in Docker/production, use the backend container environment. Bare `PADDLE_*` without the `OPENPOST_` prefix is never consumed and triggers a startup warning that lists the ignored names without printing values. An instance administrator can intentionally override an existing environment value; the screen names the environment source and labels the override before and after saving. Database-backed secrets are encrypted and write-only, and every saved change requires a server restart. In cloud mode the backend validates all required Paddle variables at startup and fails with the exact missing `OPENPOST_PADDLE_*` names without printing secret values.
 
-This integration replaces Whop billing. Before upgrading an existing cloud deployment, create the Paddle products and prices, configure the notification destination at `/api/v1/billing/paddle/webhook`, and migrate each active customer to a Paddle subscription. OpenPost keeps old Whop subscription rows as historical data, but only Paddle subscriptions grant cloud entitlements after this release.
+This integration replaces Whop billing. Before upgrading an existing cloud deployment, create the Paddle products and prices, configure the notification destination at `/api/v1/billing/paddle/webhook`, and migrate each active customer to a Paddle subscription. SocialFlow.ai keeps old Whop subscription rows as historical data, but only Paddle subscriptions grant cloud entitlements after this release.
 
 - `OPENPOST_PADDLE_API_KEY`
 - `OPENPOST_PADDLE_ENVIRONMENT`
@@ -103,27 +103,27 @@ This integration replaces Whop billing. Before upgrading an existing cloud deplo
 
 `OPENPOST_PADDLE_ENVIRONMENT` must be exactly `sandbox` or `production`. The API-key and client-token prefixes must match the selected environment, which prevents a sandbox browser from sending a checkout to the live catalog or the reverse.
 
-`OPENPOST_PADDLE_CHECKOUT_RETURN_URL` is the OpenPost checkout completion URL. It normally points to `/checkout?status=success`; OpenPost then waits for the signed webhook and local subscription reconciliation before granting access.
+`OPENPOST_PADDLE_CHECKOUT_RETURN_URL` is the SocialFlow.ai checkout completion URL. It normally points to `/checkout?status=success`; SocialFlow.ai then waits for the signed webhook and local subscription reconciliation before granting access.
 
-Checkout endpoints return `503` when Paddle is missing required configuration such as `OPENPOST_PADDLE_CLIENT_TOKEN`, an explicit environment, or a monthly/annual price ID. User input errors, such as an unknown OpenPost plan ID, remain `400`.
+Checkout endpoints return `503` when Paddle is missing required configuration such as `OPENPOST_PADDLE_CLIENT_TOKEN`, an explicit environment, or a monthly/annual price ID. User input errors, such as an unknown SocialFlow.ai plan ID, remain `400`.
 
 ## Billing data and portal boundary
 
-The billing status API reads the local Paddle subscription and customer mirrors plus OpenPost usage counters. It returns the billing contact only when a Paddle customer snapshot contains an email. It does not synthesize missing plan, status, date, limit, contact, or amount facts. OpenPost has no dedicated payment-method, card, invoice, or receipt records. Raw provider payloads remain available for reconciliation and audit, but the product does not parse them into locally managed payment methods or invoice documents.
+The billing status API reads the local Paddle subscription and customer mirrors plus SocialFlow.ai usage counters. It returns the billing contact only when a Paddle customer snapshot contains an email. It does not synthesize missing plan, status, date, limit, contact, or amount facts. SocialFlow.ai has no dedicated payment-method, card, invoice, or receipt records. Raw provider payloads remain available for reconciliation and audit, but the product does not parse them into locally managed payment methods or invoice documents.
 
 Portal requests accept `manage`, `update_payment_method`, `cancel_subscription`, `invoices`, or `billing_details`. Paddle currently returns purpose-specific subscription URLs for payment-method updates and cancellation. The service verifies that such a URL belongs to the local subscription. Invoices and billing details use Paddle's general portal because Paddle does not expose purpose-specific URLs for them. A missing exact link also falls back to the general URL. The response reports `used_generic_fallback`, and every request creates a new temporary session whose URL is not persisted.
 
-The browser sends only the opaque checkout attempt ID in Paddle custom data. It initializes Paddle.js with the server-selected environment, asks Paddle `PricePreview` for localized totals, and mounts Paddle's one-page inline checkout directly in the standalone OpenPost checkout page. OpenPost owns the surrounding plan summary, responsive layout, loading and error states, and a contrast-safe light payment canvas; Paddle continues to own the sensitive payment fields and final localized totals.
+The browser sends only the opaque checkout attempt ID in Paddle custom data. It initializes Paddle.js with the server-selected environment, asks Paddle `PricePreview` for localized totals, and mounts Paddle's one-page inline checkout directly in the standalone SocialFlow.ai checkout page. SocialFlow.ai owns the surrounding plan summary, responsive layout, loading and error states, and a contrast-safe light payment canvas; Paddle continues to own the sensitive payment fields and final localized totals.
 
-Set both the minimum and maximum quantity to `1` on every Paddle plan price. OpenPost subscriptions are workspace plans rather than per-seat line items, so allowing Paddle's default maximum of `100` exposes an invalid quantity stepper at checkout.
+Set both the minimum and maximum quantity to `1` on every Paddle plan price. SocialFlow.ai subscriptions are workspace plans rather than per-seat line items, so allowing Paddle's default maximum of `100` exposes an invalid quantity stepper at checkout.
 
 Webhooks may be duplicated or arrive out of order. The worker therefore retrieves the current Paddle customer, subscription, or completed transaction before writing local mirrors. Event `occurred_at` is retained for delivery audit, but it never overrides a newer canonical subscription snapshot. The subscription mirror applies only a strictly newer Paddle `updated_at` value; an identical snapshot is an idempotent no-op, and conflicting payloads with the same provider version fail closed.
 
 ## Failed-payment recovery
 
-Paddle changes an automatically collected subscription to `past_due` after a failed payment and runs the recovery schedule configured for the Paddle account. OpenPost does not invent a payment deadline because retry timing and the final action can differ by account. It records when the current canonical `past_due` state began, restricts paid-plan actions immediately, and shows the issue to every affected organization member.
+Paddle changes an automatically collected subscription to `past_due` after a failed payment and runs the recovery schedule configured for the Paddle account. SocialFlow.ai does not invent a payment deadline because retry timing and the final action can differ by account. It records when the current canonical `past_due` state began, restricts paid-plan actions immediately, and shows the issue to every affected organization member.
 
-Organization owners and admins can start recovery in one action. OpenPost creates a new Paddle portal session for each click, requests links for the exact local subscription, and verifies that Paddle returned the same customer. It returns the exact temporary `update_subscription_payment_method` URL when Paddle provides one, or the new general portal URL as a safe fallback. The URL is never stored. Members without billing permission see the same account-wide state and are told to contact an organization owner or admin.
+Organization owners and admins can start recovery in one action. SocialFlow.ai creates a new Paddle portal session for each click, requests links for the exact local subscription, and verifies that Paddle returned the same customer. It returns the exact temporary `update_subscription_payment_method` URL when Paddle provides one, or the new general portal URL as a safe fallback. The URL is never stored. Members without billing permission see the same account-wide state and are told to contact an organization owner or admin.
 
 Paddle remains the source of truth after the payment method changes. The notice stays visible until a signed webhook job fetches a strictly newer canonical subscription with `active` status. That recovery clears `past_due_since` and restores paid-plan access. A stale or repeated `past_due` event cannot reinstate the failure after the newer active snapshot has been saved.
 

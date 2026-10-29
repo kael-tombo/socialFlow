@@ -1,12 +1,12 @@
 # Environment Variables
 
-This reference is for operators configuring an OpenPost instance.
+This reference is for operators configuring an SocialFlow.ai instance.
 
 This page summarizes the env vars used by the backend. Some values in `.env.example` are recommended deployment examples; code defaults may differ.
 
 ## File-backed values
 
-Most variables loaded through the main backend config loader can also be loaded from `<VARIABLE>_FILE`. OpenPost checks the direct variable first, then its file variant, then any legacy aliases and their file variants. File contents are trimmed before use.
+Most variables loaded through the main backend config loader can also be loaded from `<VARIABLE>_FILE`. SocialFlow.ai checks the direct variable first, then its file variant, then any legacy aliases and their file variants. File contents are trimmed before use.
 
 Adapter-only variables read directly by provider code, such as `META_GRAPH_API_VERSION`, do not currently support `_FILE` variants.
 
@@ -22,7 +22,7 @@ Leave the direct variable unset when you want the file value to win.
 
 ## Admin-managed optional settings
 
-Instance administrators can manage account policy, Paddle billing, authentication, email, OpenPost Image Editor, stock media, feedback, provider behavior, and provider-app settings in **Settings → Instance → Configuration**. OpenPost encrypts every database-backed value with `OPENPOST_ENCRYPTION_KEY`; secret values are write-only and the API only reports whether one exists.
+Instance administrators can manage account policy, Paddle billing, authentication, email, SocialFlow.ai Image Editor, stock media, feedback, provider behavior, and provider-app settings in **Settings → Instance → Configuration**. SocialFlow.ai encrypts every database-backed value with `OPENPOST_ENCRYPTION_KEY`; secret values are write-only and the API only reports whether one exists.
 
 For these administrator-managed values, except provider apps, configuration precedence is:
 
@@ -32,7 +32,7 @@ For these administrator-managed values, except provider apps, configuration prec
 
 When an environment value already exists, the screen names its variable and clearly labels both a pending override and an active override. The environment value stays configured as the fallback but is not returned separately by the API. Database changes are validated and saved together, then take effect after the next server restart. Removing an administrator override returns the setting to its environment value or default after restart.
 
-Bootstrap and data-plane settings stay deployment-only because OpenPost needs them before it can read the database: edition, port, database driver and DSN, public application origins and CORS, `OPENPOST_JWT_SECRET`, `OPENPOST_ENCRYPTION_KEY`, and storage. Paddle billing values can come from either the deployment environment or the encrypted instance-admin registry; configure the complete required set before restarting a cloud instance. Provider apps keep their separate environment-first precedence, as described below. Adapter-only variables such as `META_GRAPH_API_VERSION` also remain deployment-only.
+Bootstrap and data-plane settings stay deployment-only because SocialFlow.ai needs them before it can read the database: edition, port, database driver and DSN, public application origins and CORS, `OPENPOST_JWT_SECRET`, `OPENPOST_ENCRYPTION_KEY`, and storage. Paddle billing values can come from either the deployment environment or the encrypted instance-admin registry; configure the complete required set before restarting a cloud instance. Provider apps keep their separate environment-first precedence, as described below. Adapter-only variables such as `META_GRAPH_API_VERSION` also remain deployment-only.
 
 ## Core settings
 
@@ -56,7 +56,7 @@ Bootstrap and data-plane settings stay deployment-only because OpenPost needs th
 | `OPENPOST_TERMS_VERSION`                      |                         Required in cloud mode | `2026-08-05` in cloud, empty otherwise          | Version stored on the user record when the terms are accepted.                                                                                                                                                                     |
 | `OPENPOST_PRIVACY_VERSION`                    |                         Required in cloud mode | `2026-09-01` in cloud, empty otherwise          | Version stored on the user record when the privacy policy is acknowledged.                                                                                                                                                         |
 | `OPENPOST_SUPPORT_EMAIL`                      |                         Required in cloud mode | `openpost@rgo.pt` in cloud, empty otherwise     | Support contact shown when password recovery is unavailable.                                                                                                                                                                       |
-| `OPENPOST_EMAIL_VERIFICATION_REQUIRED`        |                         Required in cloud mode | `false` for self-host, `true` for cloud         | Requires a new email-and-password account to confirm a six-digit code before OpenPost creates a session. Existing users are marked verified during migration.                                                                      |
+| `OPENPOST_EMAIL_VERIFICATION_REQUIRED`        |                         Required in cloud mode | `false` for self-host, `true` for cloud         | Requires a new email-and-password account to confirm a six-digit code before SocialFlow.ai creates a session. Existing users are marked verified during migration.                                                                      |
 | `OPENPOST_EMAIL_PROVIDER`                     |                                             No | inferred when possible                          | Optional mail transport for authentication and user notifications: `smtp`, `resend`, or `cloudflare`. When verification is required but no transport is ready, password registration is unavailable until an admin configures one. |
 | `OPENPOST_EMAIL_FROM`                         |           Required when a mail provider is set | falls back to `OPENPOST_SMTP_FROM`              | Verified sender used for signup codes, password resets, Transactional Workspace invitations, and user notifications.                                                                                                               |
 | `OPENPOST_TELEMETRY_ENABLED`                  |                         Required in cloud mode | `false` for self-host, `true` for cloud         | Makes privacy-limited PostHog browser choices available and enables separate service and error telemetry after restart. Self-hosted operators must opt in explicitly.                                                              |
@@ -85,11 +85,11 @@ Bootstrap and data-plane settings stay deployment-only because OpenPost needs th
 | `OPENPOST_OIDC_CLIENT_ID` | Required when OIDC issuer is set | empty | Client ID for the instance-wide OIDC provider. |
 | `OPENPOST_OIDC_CLIENT_SECRET` | No | empty | OIDC client secret. Prefer `OPENPOST_OIDC_CLIENT_SECRET_FILE` in production. |
 | `OPENPOST_OIDC_NAME` | No | `Single sign-on` | Provider label shown on the login page. |
-| `OPENPOST_OIDC_SCOPES` | No | `openid profile email` | Space- or comma-separated OIDC scopes. OpenPost always includes `openid`. |
+| `OPENPOST_OIDC_SCOPES` | No | `openid profile email` | Space- or comma-separated OIDC scopes. SocialFlow.ai always includes `openid`. |
 | `OPENPOST_OIDC_JIT_ENABLED` | No | `false` | Creates a passwordless local user after a verified first login. Existing accounts with the same email are never linked automatically. |
 | `OPENPOST_OIDC_BOOTSTRAP_ALLOWLIST` | No | empty | Comma-separated exact issuer-and-subject pairs or emails that may become instance admin during environment-provider JIT. |
 | `OPENPOST_SSO_BREAK_GLASS_EMAILS` | No | empty | Existing instance admins that may bypass required workspace SSO. Each account must already have a local password and TOTP or passkey. |
-| `OPENPOST_OIDC_NATIVE_CALLBACK_URL` | No | `openpost://oidc/callback` | Universal or app link that receives an opaque, one-time native handoff code. It never receives an OpenPost JWT. |
+| `OPENPOST_OIDC_NATIVE_CALLBACK_URL` | No | `openpost://oidc/callback` | Universal or app link that receives an opaque, one-time native handoff code. It never receives an SocialFlow.ai JWT. |
 | `OPENPOST_STORAGE_DRIVER` | Required as `s3` in cloud mode | `local` | Media storage driver. Valid values: `local`, `s3`. |
 | `OPENPOST_MEDIA_PATH` | No | `./media` | Local directory for uploaded media. |
 | `OPENPOST_MEDIA_URL` | No | `/media`, resolved against the public app URL | Public base URL for media files. Set an absolute URL only for a separate media origin or path. |
@@ -100,8 +100,8 @@ Bootstrap and data-plane settings stay deployment-only because OpenPost needs th
 | `OPENPOST_S3_SECRET_ACCESS_KEY` | Required for S3-compatible storage and cloud mode | empty | S3 secret access key. |
 | `OPENPOST_S3_PUBLIC_BASE_URL` | Required in cloud mode | empty | Public media base URL for provider fetches and preview links. |
 | `OPENPOST_S3_FORCE_PATH_STYLE` | No | `false` | Force path-style S3 addressing for compatible providers that require it. |
-| `OPENPOST_IMAGE_EDITOR_ENABLED` | No | `true` | Enables OpenPost Image Editor routes and APIs. Set `false` for an operational rollback; Media upload and library features remain available and OpenPost Image Editor migrations still run. |
-| `OPENPOST_IMAGE_EDITOR_MODEL_BASE_URL` | No | `/image-editor-models` | Base URL for the background-removal model, WASM, and runtime assets. Leave unset to use the files embedded with OpenPost. |
+| `OPENPOST_IMAGE_EDITOR_ENABLED` | No | `true` | Enables SocialFlow.ai Image Editor routes and APIs. Set `false` for an operational rollback; Media upload and library features remain available and SocialFlow.ai Image Editor migrations still run. |
+| `OPENPOST_IMAGE_EDITOR_MODEL_BASE_URL` | No | `/image-editor-models` | Base URL for the background-removal model, WASM, and runtime assets. Leave unset to use the files embedded with SocialFlow.ai. |
 | `OPENPOST_STOCK_MEDIA_ENABLED` | No | `false` | Enables rate-limited stock search for providers that also have a configured server-side key. |
 | `OPENPOST_PEXELS_API_KEY` | No | empty | Server-only Pexels API key for photo and video search. |
 | `OPENPOST_UNSPLASH_ACCESS_KEY` | No | empty | Server-only Unsplash access key for photo search and required selection tracking. |
@@ -116,15 +116,15 @@ Bootstrap and data-plane settings stay deployment-only because OpenPost needs th
 | `OPENPOST_WORKFLOWS_AI_MONTHLY_CALL_LIMIT` | No | `1000` | Calls per Workspace UTC month, including failures. Zero explicitly permits unlimited calls; negative values are invalid. |
 | `OPENPOST_IMAGE_CAPTION_PROVIDER` | No | empty | Exact OpenRouter provider slug allowed for automatic image alt text. An empty value uses normal eligible-provider routing. |
 | `OPENPOST_IMAGE_CAPTION_REQUIRE_ZDR` | No | `false` | Require OpenRouter to use a zero-data-retention endpoint for automatic image alt text. Verify the configured model/provider pair supports ZDR before enabling. |
-| `OPENPOST_MEME_GENERATOR_ENABLED` | No | `true` | Enables the built-in template catalog, local previews and rendering, and durable OpenPost recipes. |
+| `OPENPOST_MEME_GENERATOR_ENABLED` | No | `true` | Enables the built-in template catalog, local previews and rendering, and durable SocialFlow.ai recipes. |
 | `OPENPOST_MEME_GENERATION_MODEL` | No | `openai/gpt-6-luna` | OpenRouter model used for optional meme template and caption suggestions. |
 | `OPENPOST_FEEDBACK_ENABLED` | No | `false` | Shows the authenticated feedback form only when a valid destination and recipient are also configured. |
 | `OPENPOST_FEEDBACK_DESTINATION_URL` | Required when feedback is enabled | empty | Server-only HTTPS Discord-compatible webhook. Use `OPENPOST_FEEDBACK_DESTINATION_URL_FILE` for a managed secret. |
-| `OPENPOST_FEEDBACK_RECIPIENT` | Required when feedback is enabled | empty | Plain recipient name shown to users before they send a report, such as `OpenPost team` or `Example operator`. |
-| `OPENPOST_FEEDBACK_SUPPORT_URL` | No | OpenPost GitHub new-issue URL | HTTPS support link shown when the report form is disabled. Query strings and fragments are removed. |
+| `OPENPOST_FEEDBACK_RECIPIENT` | Required when feedback is enabled | empty | Plain recipient name shown to users before they send a report, such as `SocialFlow.ai team` or `Example operator`. |
+| `OPENPOST_FEEDBACK_SUPPORT_URL` | No | SocialFlow.ai GitHub new-issue URL | HTTPS support link shown when the report form is disabled. Query strings and fragments are removed. |
 | `OPENPOST_DISCORD_PRESENCE_STREAM_URL` | No | empty | Optional HTTPS Twitch or YouTube URL for the instance Discord bot's rotating `Streaming` presence. Leave empty to use `Watching`. |
-| `OPENPOST_DIAGNOSTICS_ENABLED` | No | `true` | Sends privacy-limited diagnostic reports to OpenPost. Set `false` to opt out; the environment disable always wins. See `docs/reference/configuration/diagnostics.md`. |
-| `OPENPOST_DIAGNOSTICS_RECEIVER_URL` | No | official OpenPost receiver | Diagnostics receiver endpoint. |
+| `OPENPOST_DIAGNOSTICS_ENABLED` | No | `true` | Sends privacy-limited diagnostic reports to SocialFlow.ai. Set `false` to opt out; the environment disable always wins. See `docs/reference/configuration/diagnostics.md`. |
+| `OPENPOST_DIAGNOSTICS_RECEIVER_URL` | No | official SocialFlow.ai receiver | Diagnostics receiver endpoint. |
 | `OPENPOST_DIAGNOSTICS_INGEST_ENABLED` | No | `false` | Serves the public cross-instance ingest endpoint. Enable only on the official receiver. |
 | `OPENPOST_DIAGNOSTICS_DISCORD_WEBHOOK_URL` | Required when ingest is enabled | empty | Server-only maintainer Discord webhook for accepted reports. Use `OPENPOST_DIAGNOSTICS_DISCORD_WEBHOOK_URL_FILE` for a managed secret. Never commit this value. |
 | `OPENPOST_UPDATE_CHECK_ENABLED` | No | `true` | Enables the read-only stable release check for self-hosted instance admins. Cloud mode never checks. |
@@ -132,7 +132,7 @@ Bootstrap and data-plane settings stay deployment-only because OpenPost needs th
 | `OPENPOST_PADDLE_ENVIRONMENT` | Required in cloud mode | empty | Explicit Paddle environment: `sandbox` or `production`. API-key and client-token prefixes must match. Backend-only; bare `PADDLE_*` is ignored. |
 | `OPENPOST_PADDLE_CLIENT_TOKEN` | Required in cloud mode | empty | Browser-safe Paddle.js client token used for localized price previews and checkout. Backend-only. |
 | `OPENPOST_PADDLE_WEBHOOK_SECRET` | Required in cloud mode | empty | Paddle notification destination secret used to verify raw webhook requests. Backend-only. |
-| `OPENPOST_PADDLE_CHECKOUT_RETURN_URL` | No | `<OPENPOST_APP_URL>/checkout?status=success` | OpenPost success URL supplied to Paddle checkout. Backend-only. |
+| `OPENPOST_PADDLE_CHECKOUT_RETURN_URL` | No | `<OPENPOST_APP_URL>/checkout?status=success` | SocialFlow.ai success URL supplied to Paddle checkout. Backend-only. |
 | `OPENPOST_PADDLE_FOUNDER_MONTHLY_PRICE_ID` | Required in cloud mode | empty | Paddle Solo monthly price ID. |
 | `OPENPOST_PADDLE_FOUNDER_ANNUAL_PRICE_ID` | Required in cloud mode | empty | Paddle Solo annual price ID. |
 | `OPENPOST_PADDLE_TEAM_MONTHLY_PRICE_ID` | Required in cloud mode | empty | Paddle Team monthly price ID. |
@@ -151,23 +151,23 @@ When an instance-owned Discord bot is configured, the worker keeps one Gateway c
 
 ## Automatic image alt text
 
-Automatic alt text is off when `OPENROUTER_API_KEY` is empty. When it is configured, adding an image with no saved alt text to the text-and-thread composer sends a 400px JPEG thumbnail from the server to OpenRouter. When present, OpenPost also sends up to 1,000 characters of the current relevant post or thread segment as untrusted context to help the model distinguish what the image means in that post. The model is instructed to treat this text as context, not as instructions. OpenPost restricts routing to eligible providers that declare they do not collect request data. Operators can also pin one exact provider and require OpenRouter's zero-data-retention classification. The result is saved as the media item's shared base alt text only if that field is still blank. The original image is not sent for this task. The Hosted service pins `azure/eu`, disables provider fallback, and requires ZDR; cloud startup fails closed if that boundary drifts.
+Automatic alt text is off when `OPENROUTER_API_KEY` is empty. When it is configured, adding an image with no saved alt text to the text-and-thread composer sends a 400px JPEG thumbnail from the server to OpenRouter. When present, SocialFlow.ai also sends up to 1,000 characters of the current relevant post or thread segment as untrusted context to help the model distinguish what the image means in that post. The model is instructed to treat this text as context, not as instructions. SocialFlow.ai restricts routing to eligible providers that declare they do not collect request data. Operators can also pin one exact provider and require OpenRouter's zero-data-retention classification. The result is saved as the media item's shared base alt text only if that field is still blank. The original image is not sent for this task. The Hosted service pins `azure/eu`, disables provider fallback, and requires ZDR; cloud startup fails closed if that boundary drifts.
 
-This is external processing: the thumbnail and any relevant segment text leave the OpenPost instance and are handled by OpenRouter and the selected model provider. Review their current privacy and retention terms before enabling the feature. Existing or newly entered manual alt text always wins. With no key, OpenPost makes no caption request. A captioning failure does not stop users from attaching or publishing media.
+This is external processing: the thumbnail and any relevant segment text leave the SocialFlow.ai instance and are handled by OpenRouter and the selected model provider. Review their current privacy and retention terms before enabling the feature. Existing or newly entered manual alt text always wins. With no key, SocialFlow.ai makes no caption request. A captioning failure does not stop users from attaching or publishing media.
 
 ## Meme maker
 
-The meme maker is on by default. OpenPost embeds a pinned template catalog, validates template IDs and caption counts, renders each result in the backend, and saves the chosen image in the workspace Media library. Captions and replaceable workspace images do not leave the OpenPost instance. OpenPost saves an immutable recipe with captions, overlay media IDs, output format, catalog revision, and a safe template source link when one is available.
+The meme maker is on by default. SocialFlow.ai embeds a pinned template catalog, validates template IDs and caption counts, renders each result in the backend, and saves the chosen image in the workspace Media library. Captions and replaceable workspace images do not leave the SocialFlow.ai instance. SocialFlow.ai saves an immutable recipe with captions, overlay media IDs, output format, catalog revision, and a safe template source link when one is available.
 
-Manual browsing, caption editing, preview, and rendering need no outside service. AI suggestions also need `OPENROUTER_API_KEY`: OpenPost sends the idea plus a bounded shortlist of template names and written semantic notes to the configured model, validates its structured response, and leaves every caption editable before rendering. It does not send template images, workspace media, the full catalog, or the original idea in the saved recipe.
+Manual browsing, caption editing, preview, and rendering need no outside service. AI suggestions also need `OPENROUTER_API_KEY`: SocialFlow.ai sends the idea plus a bounded shortlist of template names and written semantic notes to the configured model, validates its structured response, and leaves every caption editable before rendering. It does not send template images, workspace media, the full catalog, or the original idea in the saved recipe.
 
 The catalog comes from a pinned [Memegen source snapshot](https://github.com/jacebrowning/memegen). Its source links record provenance, not a license for every depicted work or character. Confirm that you can publish the template you choose. AI suggestions use the same OpenRouter privacy boundary as other configured AI features; keep the key empty if drafts must stay fully inside the instance.
 
 ## Update status
 
-When enabled in `selfhost` mode, the Instance settings page lets an instance admin compare the running version and build revision with the latest stable OpenPost release. The server checks the fixed public GitHub release endpoint only when an admin requests this page. It sends no hostname, account data, content, or credentials.
+When enabled in `selfhost` mode, the Instance settings page lets an instance admin compare the running version and build revision with the latest stable SocialFlow.ai release. The server checks the fixed public GitHub release endpoint only when an admin requests this page. It sends no hostname, account data, content, or credentials.
 
-Successful responses are cached for 24 hours. Failed checks retry after 15 minutes, use a three-second timeout, and keep the last successful result as stale. Responses are limited to 64 KiB and release links must point back to the official OpenPost GitHub repository. The feature never downloads or installs an update. See [Update Status](update-status.md) for the full boundary.
+Successful responses are cached for 24 hours. Failed checks retry after 15 minutes, use a three-second timeout, and keep the last successful result as stale. Responses are limited to 64 KiB and release links must point back to the official SocialFlow.ai GitHub repository. The feature never downloads or installs an update. See [Update Status](update-status.md) for the full boundary.
 
 ## Custom connectors
 
@@ -175,7 +175,7 @@ Self-hosted operators can load the custom connector registry from an absolute pa
 
 ## Provider app registry
 
-OpenPost builds provider adapters at startup from active encrypted `provider_apps` database rows, legacy provider env vars, and optional `OPENPOST_PROVIDER_APPS` JSON. Environment-defined apps are authoritative over matching database rows.
+SocialFlow.ai builds provider adapters at startup from active encrypted `provider_apps` database rows, legacy provider env vars, and optional `OPENPOST_PROVIDER_APPS` JSON. Environment-defined apps are authoritative over matching database rows.
 
 `OPENPOST_DISABLED_PROVIDERS` is an emergency comma-, space-, or newline-separated deny-list of provider keys. It has priority over database runtime-control events and fails closed across connection, capability and schedule decisions, and queued worker writes after restart. Use append-only runtime-control events for normal operator changes and the environment list when the database control plane must not be trusted.
 
@@ -185,7 +185,7 @@ Database rows are intended for administrator-managed installs. They store `clien
 
 Instance admins can manage encrypted database rows through `GET /api/v1/admin/provider-apps`, `POST /api/v1/admin/provider-apps`, and `DELETE /api/v1/admin/provider-apps/{id}`. API responses never return client secrets; send `client_secret` only when creating a row or rotating the existing secret.
 
-The backend exposes this registry through the instance-admin API and **Settings → Instance → Configuration → Provider apps**. Environment-defined apps appear as read-only. A matching database fallback stays visible and can be deleted while the environment app remains active. Admin-added client secrets are encrypted and never returned. Saves and deletes take effect after the next OpenPost server restart.
+The backend exposes this registry through the instance-admin API and **Settings → Instance → Configuration → Provider apps**. Environment-defined apps appear as read-only. A matching database fallback stays visible and can be deleted while the environment app remains active. Admin-added client secrets are encrypted and never returned. Saves and deletes take effect after the next SocialFlow.ai server restart.
 
 ## X
 
@@ -240,7 +240,7 @@ Example:
 ]
 ```
 
-If `redirect_uri` is omitted, OpenPost derives `https://your-domain.com/api/v1/accounts/facebook/callback` from `OPENPOST_APP_URL`. Facebook media publishing requires `OPENPOST_MEDIA_URL` or `OPENPOST_S3_PUBLIC_BASE_URL` to point at public HTTPS media URLs.
+If `redirect_uri` is omitted, SocialFlow.ai derives `https://your-domain.com/api/v1/accounts/facebook/callback` from `OPENPOST_APP_URL`. Facebook media publishing requires `OPENPOST_MEDIA_URL` or `OPENPOST_S3_PUBLIC_BASE_URL` to point at public HTTPS media URLs.
 
 ## Instagram
 
@@ -258,7 +258,7 @@ Example:
 ]
 ```
 
-If `redirect_uri` is omitted, OpenPost derives `https://your-domain.com/api/v1/accounts/instagram/callback` from `OPENPOST_APP_URL`. Instagram media publishing requires `OPENPOST_MEDIA_URL` or `OPENPOST_S3_PUBLIC_BASE_URL` to point at public HTTPS media URLs.
+If `redirect_uri` is omitted, SocialFlow.ai derives `https://your-domain.com/api/v1/accounts/instagram/callback` from `OPENPOST_APP_URL`. Instagram media publishing requires `OPENPOST_MEDIA_URL` or `OPENPOST_S3_PUBLIC_BASE_URL` to point at public HTTPS media URLs.
 
 ## TikTok
 
@@ -299,7 +299,7 @@ Example:
 ]
 ```
 
-If `redirect_uri` is omitted, OpenPost derives `https://your-domain.com/api/v1/accounts/youtube/callback` from `OPENPOST_APP_URL`. OpenPost uploads one video per YouTube rendition, uses private visibility by default, accepts explicit YouTube privacy and metadata settings, and derives fallback title and description text from the post or platform variant.
+If `redirect_uri` is omitted, SocialFlow.ai derives `https://your-domain.com/api/v1/accounts/youtube/callback` from `OPENPOST_APP_URL`. SocialFlow.ai uploads one video per YouTube rendition, uses private visibility by default, accepts explicit YouTube privacy and metadata settings, and derives fallback title and description text from the post or platform variant.
 
 ## Notes
 

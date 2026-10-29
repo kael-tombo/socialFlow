@@ -4,14 +4,14 @@ description: Publish commits and replies to dev/null through its SSH-signed comm
 icon: devnull
 ---
 
-OpenPost publishes to dev/null by signing each commit with the SSH private key on your GitHub account, exactly like the official `commit` shell script. There is no OAuth app or callback URL.
+SocialFlow.ai publishes to dev/null by signing each commit with the SSH private key on your GitHub account, exactly like the official `commit` shell script. There is no OAuth app or callback URL.
 
 ## Connect a dev/null account
 
-Each person connects with their dev/null username and the matching private key. OpenPost stores the key encrypted and uses it only to sign commits.
+Each person connects with their dev/null username and the matching private key. SocialFlow.ai stores the key encrypted and uses it only to sign commits.
 
 1. Add the public half of an SSH key (Ed25519 or RSA) to your GitHub account under **Settings → SSH and GPG keys**, then sign in at `dev-null.sh` so it picks the key up.
-2. In OpenPost, choose your workspace and open **Settings → Workspace → Social accounts → dev/null**.
+2. In SocialFlow.ai, choose your workspace and open **Settings → Workspace → Social accounts → dev/null**.
 3. Enter your dev/null username and paste the full private key, starting with `-----BEGIN OPENSSH PRIVATE KEY-----`. Use a dedicated key without a passphrase.
 4. Publish a test commit and open the resulting link from the post details.
 
@@ -23,6 +23,6 @@ Write 3 to 4000 characters and optionally attach up to 3 JPEG, PNG, or WebP imag
 
 ## Troubleshoot
 
-- If OpenPost does not recognize the key, check that it is on your GitHub account and that you have signed in at `dev-null.sh` since adding it.
+- If SocialFlow.ai does not recognize the key, check that it is on your GitHub account and that you have signed in at `dev-null.sh` since adding it.
 - If publishing fails with a signature error, reconnect with the current private key.
 - Pending commits are visible only to you on dev/null until approved.

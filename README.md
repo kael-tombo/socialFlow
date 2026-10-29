@@ -2,7 +2,7 @@
   <a href="https://openpo.st">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./assets/brand/lockup-dark.svg">
-      <img src="./assets/brand/lockup.svg" alt="OpenPost" width="240" height="60">
+      <img src="./assets/brand/lockup.svg" alt="SocialFlow.ai" width="240" height="60">
     </picture>
   </a>
 </p>
@@ -11,7 +11,7 @@
 
 <p align="center">
   Write posts, design images and carousels, edit videos, and schedule your content in one app.<br>
-  Self-host OpenPost or use OpenPost Hosted.
+  Self-host SocialFlow.ai or use SocialFlow.ai Hosted.
 </p>
 
 <p align="center">
@@ -73,7 +73,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./assets/screenshots/mobile-gallery-dark.png">
-    <img src="./assets/screenshots/mobile-gallery-light.png" alt="OpenPost on iOS: Drafts, Inbox, Ideate, Calendar, and Analytics, each shown in a labelled phone mockup" width="100%">
+    <img src="./assets/screenshots/mobile-gallery-light.png" alt="SocialFlow.ai on iOS: Drafts, Inbox, Ideate, Calendar, and Analytics, each shown in a labelled phone mockup" width="100%">
   </picture>
 </p>
 
@@ -123,7 +123,7 @@ screen, camera, and microphone for the same timeline.
 
 ## Get started
 
-### OpenPost Hosted
+### SocialFlow.ai Hosted
 
 Hosted signups are temporarily on a waitlist while we finish the remaining social platform approvals. Existing accounts can still sign in.
 
@@ -138,7 +138,7 @@ Hosted signups are temporarily on a waitlist while we finish the remaining socia
 
 ### Self-host
 
-Run OpenPost with Docker Compose. The default setup uses one container with SQLite and local media storage.
+Run SocialFlow.ai with Docker Compose. The default setup uses one container with SQLite and local media storage.
 
 <a href="https://openpo.st/docs/self-hosting/">
   <picture>
@@ -170,7 +170,7 @@ Run OpenPost with Docker Compose. The default setup uses one container with SQLi
   <img src="./assets/postiz-socials/Telegram.svg" alt="Telegram" width="32" height="32">
 </p>
 
-OpenPost has integrations for Instagram, Facebook, LinkedIn, X, TikTok, YouTube, Threads, Bluesky, Mastodon, Pixelfed, PeerTube, Lemmy, PieFed, Discord, Pinterest, and Telegram. Mastodon and Pixelfed connect per instance over OAuth; PeerTube, Lemmy, and PieFed connect with instance credentials. Discord supports incoming webhooks and a bot integration; Telegram uses a bot.
+SocialFlow.ai has integrations for Instagram, Facebook, LinkedIn, X, TikTok, YouTube, Threads, Bluesky, Mastodon, Pixelfed, PeerTube, Lemmy, PieFed, Discord, Pinterest, and Telegram. Mastodon and Pixelfed connect per instance over OAuth; PeerTube, Lemmy, and PieFed connect with instance credentials. Discord supports incoming webhooks and a bot integration; Telegram uses a bot.
 
 Posting formats, inbox features, and analytics vary by platform. Some integrations require provider app approval or publicly reachable media URLs.
 
@@ -180,7 +180,7 @@ Posting formats, inbox features, and analytics vary by platform. Some integratio
 
 Report bugs, improve the docs, or send a pull request. For larger changes, open an issue first so we can agree on the approach.
 
-OpenPost uses Go, SvelteKit, and Expo, with a Devenv development environment. Start with the [contributing guide](./.github/CONTRIBUTING.md) and [development setup](https://openpo.st/docs/development/setup).
+SocialFlow.ai uses Go, SvelteKit, and Expo, with a Devenv development environment. Start with the [contributing guide](./.github/CONTRIBUTING.md) and [development setup](https://openpo.st/docs/development/setup).
 
 <a href="https://github.com/getopenpost/openpost/issues">
   <picture>
@@ -197,7 +197,7 @@ OpenPost uses Go, SvelteKit, and Expo, with a Devenv development environment. St
 
 ## Star history
 
-Support OpenPost with a [GitHub star](https://github.com/getopenpost/openpost/stargazers).
+Support SocialFlow.ai with a [GitHub star](https://github.com/getopenpost/openpost/stargazers).
 
 <!-- star-history:start -->
 <picture>
@@ -208,6 +208,6 @@ Support OpenPost with a [GitHub star](https://github.com/getopenpost/openpost/st
 
 ## License and security
 
-OpenPost uses the [AGPL-3.0-only license](./LICENSE). See the [third-party notices](./licenses/README.md) for dependency licenses and attribution.
+SocialFlow.ai uses the [AGPL-3.0-only license](./LICENSE). See the [third-party notices](./licenses/README.md) for dependency licenses and attribution.
 
 Report vulnerabilities privately through the [security policy](./.github/SECURITY.md).

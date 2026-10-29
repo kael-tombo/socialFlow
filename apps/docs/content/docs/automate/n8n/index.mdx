@@ -1,10 +1,10 @@
 ---
 title: n8n workflows
-description: Install the OpenPost node and test its credentials.
+description: Install the SocialFlow.ai node and test its credentials.
 icon: Boxes
 ---
 
-Use `@getopenpost/n8n-nodes-openpost` when a timer, webhook, form, database, or another n8n node should create OpenPost content. The node calls the normal OpenPost API and follows the same workspace and Publication lifecycle rules as the web app.
+Use `@getopenpost/n8n-nodes-openpost` when a timer, webhook, form, database, or another n8n node should create SocialFlow.ai content. The node calls the normal SocialFlow.ai API and follows the same workspace and Publication lifecycle rules as the web app.
 
 ## Install the node
 
@@ -16,24 +16,24 @@ In n8n, open **Settings > Community nodes**, select **Install**, and enter:
 
 Your n8n runtime must use Node.js 22.22 or newer.
 
-## Create an OpenPost credential
+## Create an SocialFlow.ai credential
 
-Create a developer token in OpenPost under **Settings > Personal > Developer**. Use a workspace-bound `api:write` token for a workflow that creates or changes content. Name the token after the n8n workflow or instance so it is easy to revoke later.
+Create a developer token in SocialFlow.ai under **Settings > Personal > Developer**. Use a workspace-bound `api:write` token for a workflow that creates or changes content. Name the token after the n8n workflow or instance so it is easy to revoke later.
 
-Add an **OpenPost API** credential in n8n:
+Add an **SocialFlow.ai API** credential in n8n:
 
 - **Base URL:** `https://app.openpo.st`, or the public origin of your self-hosted instance. Do not append `/api` or `/api/v1`.
-- **API Token:** the OpenPost developer token.
+- **API Token:** the SocialFlow.ai developer token.
 
-If n8n runs in Docker, `localhost` means the n8n container. Use the OpenPost Compose service name when both services share a network, or `host.docker.internal` when OpenPost runs on the host.
+If n8n runs in Docker, `localhost` means the n8n container. Use the SocialFlow.ai Compose service name when both services share a network, or `host.docker.internal` when SocialFlow.ai runs on the host.
 
 ## Test access
 
-Import the package's `list-workspaces` example, select the OpenPost credential, and run it. The returned items show which workspaces the token can access.
+Import the package's `list-workspaces` example, select the SocialFlow.ai credential, and run it. The returned items show which workspaces the token can access.
 
 Do this read-only check before adding write actions. A workspace-bound token cannot write to another workspace even when a node receives its ID from earlier input.
 
-The node can inspect accounts and readiness, resolve Social Sets and posting slots, upload media, manage posts, and read events and jobs. It does not include an OpenPost trigger. Start with n8n's Schedule Trigger, Webhook, or another trigger. The package version is independent of the OpenPost app version.
+The node can inspect accounts and readiness, resolve Social Sets and posting slots, upload media, manage posts, and read events and jobs. It does not include an SocialFlow.ai trigger. Start with n8n's Schedule Trigger, Webhook, or another trigger. The package version is independent of the SocialFlow.ai app version.
 
 ## Continue
 

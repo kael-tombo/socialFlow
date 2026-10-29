@@ -1,6 +1,6 @@
 ---
 title: Install on Dockge
-description: Manage OpenPost as a Dockge stack from the canonical Compose file.
+description: Manage SocialFlow.ai as a Dockge stack from the canonical Compose file.
 icon: dockge
 ---
 
@@ -16,7 +16,7 @@ Create a Dockge stack with the supplied [`deploy/dockge/compose.yaml`](https://g
 1. In Dockge, choose **Create Stack** and name it `openpost`. Stack names accept lowercase letters, numbers, underscores, and hyphens.
 2. Paste [`deploy/dockge/compose.yaml`](https://github.com/getopenpost/openpost/blob/main/deploy/dockge/compose.yaml) into the stack editor.
 3. Add the [public URLs](/self-hosting/configuration#public-addresses) and [secrets](/self-hosting/configuration#deployment-secrets) to the stack's `.env`, with one line per `${...}` variable.
-4. Deploy the stack. Dockge stores its files under `/opt/stacks/openpost/` by default. Keep OpenPost secrets in the stack `.env`, not a shared `global.env`.
+4. Deploy the stack. Dockge stores its files under `/opt/stacks/openpost/` by default. Keep SocialFlow.ai secrets in the stack `.env`, not a shared `global.env`.
 5. Verify readiness:
 
 ```sh

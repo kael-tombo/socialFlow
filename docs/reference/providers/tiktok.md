@@ -47,7 +47,7 @@ Example `OPENPOST_PROVIDER_APPS` entry:
 
 ## Analytics
 
-Analytics is an optional feature per connected TikTok account. It starts off for a new account. Enable it after connection or in Account details. OpenPost uses `user.info.stats` for follower, following, likes, and video totals and `video.list` for published-video likes, comments, shares, and views when enabled. Reconnect accounts created before these scopes were added. Disabling Analytics stops future TikTok analytics collection without deleting stored metrics or revoking authorization.
+Analytics is an optional feature per connected TikTok account. It starts off for a new account. Enable it after connection or in Account details. SocialFlow.ai uses `user.info.stats` for follower, following, likes, and video totals and `video.list` for published-video likes, comments, shares, and views when enabled. Reconnect accounts created before these scopes were added. Disabling Analytics stops future TikTok analytics collection without deleting stored metrics or revoking authorization.
 
 Direct messages, Comments and replies, and Grow are not available for TikTok. Analytics availability depends on provider support, required scopes, and plan access as distinct facts.
 
@@ -55,8 +55,8 @@ Direct messages, Comments and replies, and Grow are not available for TikTok. An
 
 - `OPENPOST_MEDIA_URL` points at localhost or a private host.
 - TikTok app lacks Content Posting API access or required scopes.
-- The TikTok app's redirect URI does not exactly match OpenPost's callback URL.
+- The TikTok app's redirect URI does not exactly match SocialFlow.ai's callback URL.
 
 ## Without Display API approval
 
-TikTok no longer offers the Display API to new apps. Those apps can still connect and publish: OpenPost needs only `user.info.basic`, `video.publish`, and `video.upload`. The connected account shows no username, analytics report the missing Display API scopes instead of failing the connection, and completed Direct Post videos keep the provider publish ID when the public video ID cannot be reconciled. Set `OPENPOST_DISABLE_TIKTOK_DISPLAY_API=true` so the authorization request asks only for the scopes TikTok can grant.
+TikTok no longer offers the Display API to new apps. Those apps can still connect and publish: SocialFlow.ai needs only `user.info.basic`, `video.publish`, and `video.upload`. The connected account shows no username, analytics report the missing Display API scopes instead of failing the connection, and completed Direct Post videos keep the provider publish ID when the public video ID cannot be reconciled. Set `OPENPOST_DISABLE_TIKTOK_DISPLAY_API=true` so the authorization request asks only for the scopes TikTok can grant.

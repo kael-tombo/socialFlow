@@ -4,22 +4,22 @@ description: Publish videos to a PeerTube channel with upload and transcoding st
 icon: peertube
 ---
 
-Connect one PeerTube channel per OpenPost account. Each video publishes to that channel.
+Connect one PeerTube channel per SocialFlow.ai account. Each video publishes to that channel.
 
 ## Connect an instance account
 
-PeerTube needs no developer app or callback URL. Each person connects with their instance username and password. OpenPost exchanges the password once for OAuth tokens and never stores it.
+PeerTube needs no developer app or callback URL. Each person connects with their instance username and password. SocialFlow.ai exchanges the password once for OAuth tokens and never stores it.
 
-1. In OpenPost, choose your workspace and open **Settings → Workspace → Social accounts → PeerTube**.
+1. In SocialFlow.ai, choose your workspace and open **Settings → Workspace → Social accounts → PeerTube**.
 2. Enter the instance address (such as `https://tube.example`), your username, and your password.
-3. If the account owns one channel, OpenPost connects it directly. If it owns several, pick the channel to connect. Each channel is a separate destination with its own videos and subscribers.
+3. If the account owns one channel, SocialFlow.ai connects it directly. If it owns several, pick the channel to connect. Each channel is a separate destination with its own videos and subscribers.
 4. Upload a short test video and follow its processing state before relying on scheduled delivery.
 
 ## Publish a video
 
 Add a title and description. Choose privacy, language, category, licence, tags, sensitivity, comments, and captions supported by your instance. Privacy options are `public`, `unlisted`, `private`, and `internal`.
 
-OpenPost resumes interrupted uploads and applies thumbnails and caption files afterward. It checks processing until PeerTube confirms publication. If the video disappears, OpenPost reports failure and does not upload it again.
+SocialFlow.ai resumes interrupted uploads and applies thumbnails and caption files afterward. It checks processing until PeerTube confirms publication. If the video disappears, SocialFlow.ai reports failure and does not upload it again.
 
 ## Read comments and check views
 
@@ -29,5 +29,5 @@ Open the video's Inbox to read, reply, and moderate comments on your channel. An
 
 - Check the instance address, username, and password. PeerTube logins use the username, not the email address or channel name.
 - If the instance enforces upload quota, large or frequent uploads can be rejected. The provider error names the limit.
-- If a video stays in processing, leave it alone. OpenPost keeps reconciling; starting a second upload of the same file creates a duplicate.
-- If comments fail to load, check that the channel is allowed to view them. Password-protected videos need their password in OpenPost before the inbox can read them.
+- If a video stays in processing, leave it alone. SocialFlow.ai keeps reconciling; starting a second upload of the same file creates a duplicate.
+- If comments fail to load, check that the channel is allowed to view them. Password-protected videos need their password in SocialFlow.ai before the inbox can read them.

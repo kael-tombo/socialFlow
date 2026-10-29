@@ -2,11 +2,11 @@
 
 This page is for operators configuring feedback delivery, diagnostics, and privacy limits.
 
-OpenPost can show authenticated users a report form for bugs, ideas, and questions. It is disabled by default and has no hardcoded destination.
+SocialFlow.ai can show authenticated users a report form for bugs, ideas, and questions. It is disabled by default and has no hardcoded destination.
 
 ## Configure a destination
 
-Set all three values and restart OpenPost:
+Set all three values and restart SocialFlow.ai:
 
 ```sh
 OPENPOST_FEEDBACK_ENABLED=true
@@ -16,7 +16,7 @@ OPENPOST_FEEDBACK_RECIPIENT="Example operator"
 
 `OPENPOST_FEEDBACK_DESTINATION_URL` must be an HTTPS Discord-compatible webhook. The first implementation supports that destination format only. The URL stays on the server. `OPENPOST_FEEDBACK_RECIPIENT` is the exact name users see before sending.
 
-Hosted OpenPost uses the same configuration. A self-hosted instance does not send reports to the OpenPost maintainers unless its operator explicitly configures such a destination and names that recipient.
+Hosted SocialFlow.ai uses the same configuration. A self-hosted instance does not send reports to the SocialFlow.ai maintainers unless its operator explicitly configures such a destination and names that recipient.
 
 Set `OPENPOST_FEEDBACK_SUPPORT_URL` to an HTTPS issue or support page. When delivery is disabled, the app shows this link instead of a dead form. Its query string and fragment are removed before display.
 
@@ -28,17 +28,17 @@ The message is required. Screenshot and diagnostics are off by default and indep
 - Diagnostics show their categories and exact JSON before send.
 - Closing the form sends nothing.
 
-A saved response means OpenPost saved the report and will send it in the background. It does not mean the receiving service has it yet. OpenPost retries a failed webhook up to the job limit.
+A saved response means SocialFlow.ai saved the report and will send it in the background. It does not mean the receiving service has it yet. SocialFlow.ai retries a failed webhook up to the job limit.
 
 ## Privacy limits
 
 Diagnostics may contain:
 
-- OpenPost version and current route path;
+- SocialFlow.ai version and current route path;
 - the Svelte route template when known;
 - viewport and browser family/version;
 - up to 10 recent route paths;
-- up to 15 failed OpenPost API requests with method, path, status, duration, and time;
+- up to 15 failed SocialFlow.ai API requests with method, path, status, duration, and time;
 - up to 10 client errors reduced to coarse messages.
 
 Diagnostics never include cookies, headers, tokens, OAuth codes, request or response bodies, post text, uploaded files, arbitrary page state, full browser user-agent strings, local paths, private hosts, or query values. The browser sanitizes the report first and the server repeats validation before queueing and again before delivery.

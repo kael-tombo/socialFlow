@@ -4,9 +4,9 @@ This page is for Hosted service and self-hosted operators planning backup and re
 
 ## Hosted service boundary
 
-The Hosted service makes daily Postgres dumps and a daily synchronized copy of Cloudflare R2 media in a root-owned directory on the application host. The directory is not public or application-served. The deployment configuration restricts its directory and newly created file modes, validates database compression before an atomic rename, disables SSH password and direct root login, and grants the named operator access through authorized SSH keys and `sudo`. Application users, support requests, and the OpenPost container do not receive backup-directory access.
+The Hosted service makes daily Postgres dumps and a daily synchronized copy of Cloudflare R2 media in a root-owned directory on the application host. The directory is not public or application-served. The deployment configuration restricts its directory and newly created file modes, validates database compression before an atomic rename, disables SSH password and direct root login, and grants the named operator access through authorized SSH keys and `sudo`. Application users, support requests, and the SocialFlow.ai container do not receive backup-directory access.
 
-OpenPost does not add a separate application-level encryption layer to each Hosted service backup artifact. Do not describe those artifacts as encrypted. There is no artifact-encryption key to rotate or recover. The application encryption key is still required to use encrypted provider credentials after a restore and is stored separately through the host's secret-management configuration. Transport to R2 uses its HTTPS endpoint; local Postgres dumps and the local media copy remain inside the host boundary. Provider-managed infrastructure controls do not change this application-level statement.
+SocialFlow.ai does not add a separate application-level encryption layer to each Hosted service backup artifact. Do not describe those artifacts as encrypted. There is no artifact-encryption key to rotate or recover. The application encryption key is still required to use encrypted provider credentials after a restore and is stored separately through the host's secret-management configuration. Transport to R2 uses its HTTPS endpoint; local Postgres dumps and the local media copy remain inside the host boundary. Provider-managed infrastructure controls do not change this application-level statement.
 
 Routine database dumps and changed or deleted media versions are pruned by daily jobs after they become more than 14 days old, so removal occurs on the first daily run after that threshold. The current media mirror follows the live bucket; an object removed from the live bucket moves into a dated version directory before that version expires. Operator-created repair, migration, or incident snapshots are not routine backups. They require a stated recovery, security, or legal purpose and a separate review and deletion decision when that purpose ends; the routine filename-based job does not silently delete them.
 
@@ -29,7 +29,7 @@ or a hosted Postgres/S3-compatible deployment.
 
 This is the default self-hosting path.
 
-Stop OpenPost first if you want the simplest backup path:
+Stop SocialFlow.ai first if you want the simplest backup path:
 
 ```bash
 sudo systemctl stop openpost
@@ -83,7 +83,7 @@ pg_restore \
   "openpost-postgres-20260518.dump"
 ```
 
-Confirm that the same or newer OpenPost migrations have been applied to the restore target before
+Confirm that the same or newer SocialFlow.ai migrations have been applied to the restore target before
 you point traffic at it.
 
 ## S3-compatible media
@@ -109,12 +109,12 @@ custom domains, lifecycle rules, or CORS outside the object data itself.
 
 ## Restore process
 
-1. Stop OpenPost.
+1. Stop SocialFlow.ai.
 2. Restore the database files or Postgres dump.
 3. Restore the media directory or bucket objects.
 4. Restore `.env` or the equivalent secrets source.
 5. Fix ownership and permissions.
-6. Start OpenPost.
+6. Start SocialFlow.ai.
 7. Confirm login, media access, and scheduled-post visibility.
 
 ## Automated database restore drill
@@ -164,11 +164,11 @@ sudo systemctl start openpost
 
 ## Migrate to another server
 
-1. Install the new OpenPost binary or container deployment first.
-2. Stop OpenPost on both the old and new server.
+1. Install the new SocialFlow.ai binary or container deployment first.
+2. Stop SocialFlow.ai on both the old and new server.
 3. Copy the database, any `-wal` and `-shm` files or Postgres dump, the media directory or bucket data, and `.env`.
 4. Restore ownership and permissions on the new server.
-5. Start OpenPost on the new server.
+5. Start SocialFlow.ai on the new server.
 6. Verify provider callbacks, media URLs, and scheduled posts before switching traffic.
 
 If the hostname changes, update your reverse proxy, provider callback URLs, and `OPENPOST_MEDIA_URL` before making the new server live.

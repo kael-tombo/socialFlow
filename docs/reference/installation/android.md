@@ -1,6 +1,6 @@
 # Android App
 
-This page is for Android users installing OpenPost and connecting it to OpenPost Hosted or a self-hosted instance. OpenPost ships a standalone native Android app built with Expo. It uses the same API as the web app and does not load the web app in a wrapper.
+This page is for Android users installing SocialFlow.ai and connecting it to SocialFlow.ai Hosted or a self-hosted instance. SocialFlow.ai ships a standalone native Android app built with Expo. It uses the same API as the web app and does not load the web app in a wrapper.
 
 ## Install from a release
 
@@ -10,12 +10,12 @@ Official GitHub releases publish this APK:
 openpost-app-android.apk
 ```
 
-Download it from [GitHub Releases](https://github.com/getopenpost/openpost/releases/latest), then open the file on your Android device. Because this is a release APK distributed outside the Play Store, Android may ask you to allow installs from your browser or file manager. Only install APKs from the official OpenPost release page.
+Download it from [GitHub Releases](https://github.com/getopenpost/openpost/releases/latest), then open the file on your Android device. Because this is a release APK distributed outside the Play Store, Android may ask you to allow installs from your browser or file manager. Only install APKs from the official SocialFlow.ai release page.
 
-## Connect to OpenPost
+## Connect to SocialFlow.ai
 
 1. Open the Android app.
-2. Choose OpenPost Hosted, or enter the public HTTPS URL of your server.
+2. Choose SocialFlow.ai Hosted, or enter the public HTTPS URL of your server.
 3. Sign in with email and password, or pair the device from a signed-in browser.
 4. Choose a workspace.
 

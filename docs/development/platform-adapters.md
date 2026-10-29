@@ -79,7 +79,7 @@ Credential refresh is grant-scoped. `TokenManager` acquires an expiring refresh 
 The removal APIs have intentionally different effects:
 
 - `DELETE /api/v1/accounts/{account_id}` disconnects one destination only. It returns a conflict for the final active destination so it cannot leave an unused live grant and refresh job.
-- `DELETE /api/v1/accounts/{account_id}/grant` removes OpenPost's saved credential and disconnects all destinations using it. It does not call the provider's revocation API; clients must describe provider-side revocation separately.
+- `DELETE /api/v1/accounts/{account_id}/grant` removes SocialFlow.ai's saved credential and disconnects all destinations using it. It does not call the provider's revocation API; clients must describe provider-side revocation separately.
 
 SQLite runs with serialized write access, while PostgreSQL uses the same grant-row update as the refresh/disconnect serialization point. Keep the SQLite concurrency tests and the conditional `OPENPOST_TEST_POSTGRES_URL` integration tests green when changing lease, rotation, disconnect, or migration behavior.
 

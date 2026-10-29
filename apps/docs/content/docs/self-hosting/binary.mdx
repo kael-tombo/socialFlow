@@ -1,22 +1,22 @@
 ---
 title: Install from a binary
-description: Run OpenPost as a single Go binary with systemd, without Docker.
+description: Run SocialFlow.ai as a single Go binary with systemd, without Docker.
 icon: SquareTerminal
 ---
 
-OpenPost release binaries include the web app, API, and worker. Use one when you want to run OpenPost without a container runtime. Releases support Linux x86_64, macOS Apple Silicon, and Windows x86_64.
+SocialFlow.ai release binaries include the web app, API, and worker. Use one when you want to run SocialFlow.ai without a container runtime. Releases support Linux x86_64, macOS Apple Silicon, and Windows x86_64.
 
 ## What you need
 
 - Choose stable, private paths for the database, media, and `.env` file.
-- Put OpenPost behind HTTPS before connecting social accounts.
+- Put SocialFlow.ai behind HTTPS before connecting social accounts.
 - Run the binary as a service so it starts again after a reboot.
 
-## Install OpenPost
+## Install SocialFlow.ai
 
 1. Download the asset for your platform from [GitHub Releases](https://github.com/getopenpost/openpost/releases).
 2. Create a private `.env` with the [binary environment template](https://github.com/getopenpost/openpost/blob/main/docs/reference/installation/binary.md#2-create-env). Set stable database and media paths, the three public URLs, and two independent secrets.
-3. Make the binary executable on Linux or macOS, then start it from the directory that contains `.env`. With no role argument, OpenPost runs migrations, serves HTTP, and processes background jobs.
+3. Make the binary executable on Linux or macOS, then start it from the directory that contains `.env`. With no role argument, SocialFlow.ai runs migrations, serves HTTP, and processes background jobs.
 4. Install the [systemd unit](https://github.com/getopenpost/openpost/blob/main/docs/reference/installation/binary.md#6-run-it-as-a-service) on Linux, or configure a Windows service wrapper. Keep its working directory beside `.env`.
 5. Put a [reverse proxy](/self-hosting/reverse-proxy) in front of port `8080`, open the app, and create the first account. It becomes the instance administrator.
 

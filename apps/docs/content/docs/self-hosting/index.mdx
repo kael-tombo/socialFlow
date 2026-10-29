@@ -1,14 +1,14 @@
 ---
-title: Self-host OpenPost
-description: Run OpenPost on your own server with Docker Compose.
+title: Self-host SocialFlow.ai
+description: Run SocialFlow.ai on your own server with Docker Compose.
 icon: docker
 ---
 
-Run OpenPost with Docker Compose, SQLite, and local media storage. One container serves the app and runs background jobs.
+Run SocialFlow.ai with Docker Compose, SQLite, and local media storage. One container serves the app and runs background jobs.
 
 ## What you need
 
-- Install Docker with the Compose plugin. Run the commands below on the server that will host OpenPost.
+- Install Docker with the Compose plugin. Run the commands below on the server that will host SocialFlow.ai.
 - The published image supports `linux/amd64` and `linux/arm64`. Docker selects the native image for the host.
 - For a public instance, point a domain at the server and put an HTTPS reverse proxy in front of port `8080`. Forward all app requests, including `/api/v1/` and `/media/`. Provider callbacks and media URLs must be reachable from outside your network.
 
@@ -70,13 +70,13 @@ docker compose up -d
 1. Run `curl -fsS http://localhost:8080/api/v1/ready`. Expect `"status":"ready"` and `"database":"ok"`. S3 deployments also report storage readiness. If it fails, check `docker compose logs --tail=100 openpost`.
 2. For a public instance, check the same path through your [HTTPS proxy](/self-hosting/reverse-proxy).
 3. Open the app and create the first account. It becomes the instance administrator. Create a workspace and [configure your social integrations](/self-hosting/integrations).
-4. Connect an account and [publish a test post](/guides/quickstart). Check the result in OpenPost and on the social network.
+4. Connect an account and [publish a test post](/guides/quickstart). Check the result in SocialFlow.ai and on the social network.
 
 To close public signup afterward, set `OPENPOST_DISABLE_REGISTRATIONS=true` and recreate the container with `docker compose up -d --force-recreate openpost`. Existing accounts can still sign in.
 
 ## Try it with Docker run
 
-Try OpenPost locally with `docker run` before committing to a permanent installation. Use [Docker Compose](#install-with-docker-compose) for a permanent installation.
+Try SocialFlow.ai locally with `docker run` before committing to a permanent installation. Use [Docker Compose](#install-with-docker-compose) for a permanent installation.
 
 Create `.env` with the URLs and secrets from the [Compose setup](#install-with-docker-compose), then run the published image. Docker selects `linux/amd64` or `linux/arm64` for the host:
 

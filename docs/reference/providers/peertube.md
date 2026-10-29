@@ -1,10 +1,10 @@
 # PeerTube
 
-PeerTube connections use instance credentials and select one owned video channel as the OpenPost destination.
+PeerTube connections use instance credentials and select one owned video channel as the SocialFlow.ai destination.
 
 ## Configuration
 
-Configure an instance-scoped PeerTube provider app through `OPENPOST_PROVIDER_APPS` or the instance-admin provider app API. OpenPost exchanges the supplied instance credentials for a token and does not retain the password.
+Configure an instance-scoped PeerTube provider app through `OPENPOST_PROVIDER_APPS` or the instance-admin provider app API. SocialFlow.ai exchanges the supplied instance credentials for a token and does not retain the password.
 
 ## Publishing behavior
 

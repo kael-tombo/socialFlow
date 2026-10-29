@@ -8,26 +8,26 @@ Connect to the Pixelfed instance that hosts your account. No operator-created de
 
 ## Connect a public instance
 
-1. In OpenPost, choose your workspace and open **Settings → Workspace → Social accounts → Pixelfed**.
+1. In SocialFlow.ai, choose your workspace and open **Settings → Workspace → Social accounts → Pixelfed**.
 2. Select **Continue to Pixelfed**, then enter the address of the instance that hosts your account, such as `https://pixelfed.social`. Do not enter your profile URL.
-3. Continue to the instance's authorization page and approve OpenPost.
-4. By default, Pixelfed shows an authorization code. Copy it and return to OpenPost. In the Pixelfed connection dialog, select **Code**, paste it into **Authorization code**, and select **Connect account**.
+3. Continue to the instance's authorization page and approve SocialFlow.ai.
+4. By default, Pixelfed shows an authorization code. Copy it and return to SocialFlow.ai. In the Pixelfed connection dialog, select **Code**, paste it into **Authorization code**, and select **Connect account**.
 5. Publish a single-photo test post and open the resulting link from the post details.
 
-OpenPost registers the app on that instance through `POST /api/v1/apps` with `read write` scopes and keeps the client secret encrypted. The default redirect is `urn:ietf:wg:oauth:2.0:oob`, which makes Pixelfed display a code instead of redirecting to a callback.
+SocialFlow.ai registers the app on that instance through `POST /api/v1/apps` with `read write` scopes and keeps the client secret encrypted. The default redirect is `urn:ietf:wg:oauth:2.0:oob`, which makes Pixelfed display a code instead of redirecting to a callback.
 
 ## Configure a fixed instance app
 
-Use this path if you want to preconfigure a known instance or its app registration endpoint is unavailable to OpenPost.
+Use this path if you want to preconfigure a known instance or its app registration endpoint is unavailable to SocialFlow.ai.
 
-1. On that Pixelfed instance, open your settings and register an application named `OpenPost` with `read` and `write` scopes and the redirect URI `urn:ietf:wg:oauth:2.0:oob`. Save the app and copy its client ID and secret. Instance menus can differ.
+1. On that Pixelfed instance, open your settings and register an application named `SocialFlow.ai` with `read` and `write` scopes and the redirect URI `urn:ietf:wg:oauth:2.0:oob`. Save the app and copy its client ID and secret. Instance menus can differ.
 2. Add the instance and credentials to `PIXELFED_SERVERS` in your server environment. Keep the JSON on one line in `.env`:
 
    ```dotenv
    PIXELFED_SERVERS=[{"name":"Team instance","client_id":"your-client-id","client_secret":"your-client-secret","instance_url":"https://pixelfed.example"}]
    ```
 
-3. Recreate OpenPost with `docker compose up -d --force-recreate openpost` to load the changed environment. The instance should appear as a choice when connecting Pixelfed.
+3. Recreate SocialFlow.ai with `docker compose up -d --force-recreate openpost` to load the changed environment. The instance should appear as a choice when connecting Pixelfed.
 
 The Instance settings form does not offer Pixelfed app credentials. Use `PIXELFED_SERVERS` for a fixed instance.
 
@@ -35,11 +35,11 @@ The Instance settings form does not offer Pixelfed app credentials. Use `PIXELFE
 
 Attach up to four photos. Review their order, caption, alt text, content warning, and sensitive-media flag before publishing or scheduling.
 
-Video support depends on the instance and version. OpenPost warns when you attach video. Pixelfed accounts do not offer Mastodon polls, quotes, or interaction policies.
+Video support depends on the instance and version. SocialFlow.ai warns when you attach video. Pixelfed accounts do not offer Mastodon polls, quotes, or interaction policies.
 
 ## Troubleshoot
 
-- Enter the instance origin, for example `https://pixelfed.example`, without a username or path. OpenPost accepts public HTTPS instances.
+- Enter the instance origin, for example `https://pixelfed.example`, without a username or path. SocialFlow.ai accepts public HTTPS instances.
 - If app registration fails, ask the instance administrator whether it accepts new OAuth apps, or configure a fixed app for that instance.
 - If Pixelfed rejects the authorization code, start the connection again and copy the new code. Check that the app's registered redirect URI matches.
 - If a fixed instance is missing, check the `PIXELFED_SERVERS` JSON and the container logs after restart.

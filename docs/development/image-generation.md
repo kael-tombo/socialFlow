@@ -18,7 +18,7 @@ Terminal queue failures update the visible run in the queue transaction and pres
 
 The browser owns application to its open document. It hashes the original page or image layer, including page dimensions, and checks that fingerprint before changing anything. Edits preserve the original layer ID and authored placement, crop and effects. Fill adds a transparent overlay. Each action enters the editor's existing atomic undo history. The user can explicitly add a stale image edit as a new layer.
 
-Query keys include actor, Workspace and project. The panel resumes saved history after navigation and keeps refreshing while inference or billing is pending. Anonymous editing remains local; signed-in local projects use the existing Save to OpenPost transfer before accessing generation.
+Query keys include actor, Workspace and project. The panel resumes saved history after navigation and keeps refreshing while inference or billing is pending. Anonymous editing remains local; signed-in local projects use the existing Save to SocialFlow.ai transfer before accessing generation.
 
 ## Configuration and migration
 

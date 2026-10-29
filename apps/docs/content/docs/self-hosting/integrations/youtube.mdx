@@ -4,7 +4,7 @@ description: Create a Google OAuth client and connect a YouTube channel for vide
 icon: youtube
 ---
 
-OpenPost connects a YouTube channel with Google OAuth and uploads one video per YouTube variant. Google controls who can authorize your app and whether API uploads can be public.
+SocialFlow.ai connects a YouTube channel with Google OAuth and uploads one video per YouTube variant. Google controls who can authorize your app and whether API uploads can be public.
 
 ## What you need
 
@@ -24,7 +24,7 @@ OpenPost connects a YouTube channel with Google OAuth and uploads one video per 
 
 4. Save the client and copy its **Client ID** and **Client Secret**. Keep the secret in your instance's secret store.
 
-OpenPost requests these scopes. Enter the full URLs in Google Auth Platform when configuring data access:
+SocialFlow.ai requests these scopes. Enter the full URLs in Google Auth Platform when configuring data access:
 
 ```text
 https://www.googleapis.com/auth/userinfo.profile
@@ -36,13 +36,13 @@ https://www.googleapis.com/auth/youtube
 https://www.googleapis.com/auth/youtube.force-ssl
 ```
 
-The [YouTube Analytics API](https://developers.google.com/youtube/analytics/reference/reports/query) must be enabled before OpenPost can read channel reports.
+The [YouTube Analytics API](https://developers.google.com/youtube/analytics/reference/reports/query) must be enabled before SocialFlow.ai can read channel reports.
 
 Comments, replies, and moderation use `youtube.force-ssl`, including Google's [comment moderation endpoint](https://developers.google.com/youtube/v3/docs/comments/setModerationStatus). After upgrading from v7.13.0 or earlier, add this scope in Google Auth Platform and reconnect existing YouTube accounts to grant it. Adding a scope in Google Cloud alone does not update an existing connection.
 
 Google documents [YouTube OAuth](https://developers.google.com/youtube/v3/guides/authentication) and the [web-server OAuth client flow](https://developers.google.com/identity/protocols/oauth2/web-server).
 
-## Save the app in OpenPost
+## Save the app in SocialFlow.ai
 
 [Save these credentials](/self-hosting/integrations#save-your-provider-credentials) with your own domain and app values:
 
@@ -60,12 +60,12 @@ Google documents [YouTube OAuth](https://developers.google.com/youtube/v3/guides
 ## Connect and test
 
 1. In **Settings → Workspace → Social accounts**, select **YouTube**. Sign in with the Google account that owns the target channel, grant consent, and choose the channel returned by Google.
-2. Create a post with one video and select the connected channel. Start with a **private** upload and confirm that OpenPost reports the result and the video appears in YouTube Studio.
+2. Create a post with one video and select the connected channel. Start with a **private** upload and confirm that SocialFlow.ai reports the result and the video appears in YouTube Studio.
 3. Set title, description, privacy, and other YouTube options on the variant as needed. Choose **No** for **Made for kids** to send an explicit negative audience declaration. **Not specified** leaves that choice to YouTube's channel settings. **Contains synthetic media** also accepts an explicit **Yes** or **No**; **Not specified** omits the disclosure.
 
-To let YouTube publish a video at a set time, choose **Private** and fill **YouTube publish time** (`publish_at`) with an RFC 3339 timestamp including a timezone, such as `2030-10-12T12:00:00Z`. This is a setting for an individual post, not a reusable Social Set default. OpenPost uploads when you publish the post or when its OpenPost schedule runs. YouTube then makes the video public at its publish time. A time in the past makes it public immediately, as described in the [YouTube API reference](https://developers.google.com/youtube/v3/docs/videos#status.publishAt).
+To let YouTube publish a video at a set time, choose **Private** and fill **YouTube publish time** (`publish_at`) with an RFC 3339 timestamp including a timezone, such as `2030-10-12T12:00:00Z`. This is a setting for an individual post, not a reusable Social Set default. SocialFlow.ai uploads when you publish the post or when its SocialFlow.ai schedule runs. YouTube then makes the video public at its publish time. A time in the past makes it public immediately, as described in the [YouTube API reference](https://developers.google.com/youtube/v3/docs/videos#status.publishAt).
 
-OpenPost reports the post as published once the upload completes, even if YouTube's public release is later. First comments and repost automation follow that upload completion, not YouTube's publish time. Test public visibility separately: Google can keep API uploads private even when OpenPost requests another privacy level.
+SocialFlow.ai reports the post as published once the upload completes, even if YouTube's public release is later. First comments and repost automation follow that upload completion, not YouTube's publish time. Test public visibility separately: Google can keep API uploads private even when SocialFlow.ai requests another privacy level.
 
 Optional Comments and replies and Analytics start disabled per channel. Enable them only with the required permissions.
 

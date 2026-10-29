@@ -8,28 +8,28 @@ Choose a Lemmy community for each post variant. Each variant has its own title, 
 
 ## Connect an instance account
 
-Lemmy needs no developer app or callback URL. Each person connects with their instance username and password. OpenPost exchanges the password once for a token and never stores it.
+Lemmy needs no developer app or callback URL. Each person connects with their instance username and password. SocialFlow.ai exchanges the password once for a token and never stores it.
 
-1. In OpenPost, choose your workspace and open **Settings → Workspace → Social accounts → Lemmy**.
+1. In SocialFlow.ai, choose your workspace and open **Settings → Workspace → Social accounts → Lemmy**.
 2. Enter the home instance address (such as `https://lemmy.world`), your username, and your password. Your home server resolves every community you post to, including communities hosted elsewhere.
 3. Publish a test discussion and open the resulting link from the post details.
 
-OpenPost publishes through the Lemmy v3 API used by the 0.19 series. Instances on Lemmy 1.x, which moved to a v4 API, are refused with an explicit error until a v4 adapter is certified.
+SocialFlow.ai publishes through the Lemmy v3 API used by the 0.19 series. Instances on Lemmy 1.x, which moved to a v4 API, are refused with an explicit error until a v4 adapter is certified.
 
 ## Post to a community
 
 Choose a community and enter a title. Add a Markdown body, a link, or an uploaded image. A link and body can appear together.
 
-Search for a community, paste `!name@instance`, or choose a saved destination. Read its rules beside the editor. OpenPost checks restrictions before submission and rejects moderator-only communities when you lack permission.
+Search for a community, paste `!name@instance`, or choose a saved destination. Read its rules beside the editor. SocialFlow.ai checks restrictions before submission and rejects moderator-only communities when you lack permission.
 
 Create a separate variant for each community. Resolve the community before scheduling.
 
 ## Follow the conversation
 
-Use Inbox to read, reply, and like comments. OpenPost distinguishes acceptance by your home server from confirmed visibility at a remote community. It reports later removal or instance blocks and does not repost automatically.
+Use Inbox to read, reply, and like comments. SocialFlow.ai distinguishes acceptance by your home server from confirmed visibility at a remote community. It reports later removal or instance blocks and does not repost automatically.
 
 ## Troubleshoot
 
 - Check the home instance address, username, and password. Posting to a remote community never needs an account on that community's server.
 - If a community cannot be resolved, check its exact address. The same community viewed through different servers is one destination; two communities with the same name on different origins are different destinations.
-- If publishing fails after a successful connection, open the failed variant in OpenPost. Community restrictions and instance blocks are reported there.
+- If publishing fails after a successful connection, open the failed variant in SocialFlow.ai. Community restrictions and instance blocks are reported there.

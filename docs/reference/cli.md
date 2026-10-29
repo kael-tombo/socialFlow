@@ -10,9 +10,9 @@ cd apps/cli && go run ./cmd/openpost-docs ../docs/reference/cli.md
 
 ## `openpost`
 
-OpenPost CLI — control an OpenPost workspace from the terminal
+SocialFlow.ai CLI — control an SocialFlow.ai workspace from the terminal
 
-openpost is a command-line client for the OpenPost social media scheduler. It talks to a running OpenPost instance over HTTPS, authenticates with a revocable API token, and exposes the most common posting, scheduling, account, and media workflows for use from scripts, CI, and power-user shells.
+openpost is a command-line client for the SocialFlow.ai social media scheduler. It talks to a running SocialFlow.ai instance over HTTPS, authenticates with a revocable API token, and exposes the most common posting, scheduling, account, and media workflows for use from scripts, CI, and power-user shells.
 
 **Usage**
 
@@ -25,7 +25,7 @@ openpost [flags]
 | Flag            | Default | Description                                                        |
 | --------------- | ------- | ------------------------------------------------------------------ |
 | `-h, --help`    | `false` | help for openpost                                                  |
-| `--instance`    | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`    | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`        | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`    | `false` | disable ANSI colors                                                |
 | `--profile`     | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -40,12 +40,12 @@ openpost [flags]
 | Command                | Description                                                      |
 | ---------------------- | ---------------------------------------------------------------- |
 | `openpost account`     | Manage connected social accounts                                 |
-| `openpost auth`        | Authenticate with an OpenPost instance                           |
+| `openpost auth`        | Authenticate with an SocialFlow.ai instance                           |
 | `openpost billing`     | Manage Hosted service billing                                    |
 | `openpost completion`  | Generate shell completion script                                 |
 | `openpost doctor`      | Check local CLI configuration without contacting an instance     |
 | `openpost inbox`       | Read and act on comments, incoming mentions and business reviews |
-| `openpost instance`    | Manage OpenPost instance profiles                                |
+| `openpost instance`    | Manage SocialFlow.ai instance profiles                                |
 | `openpost jobs`        | List background jobs                                             |
 | `openpost media`       | Upload and list media attachments                                |
 | `openpost post`        | Create, list, view, update, and delete posts                     |
@@ -54,13 +54,13 @@ openpost [flags]
 | `openpost schedule`    | Manage reusable posting schedule slots                           |
 | `openpost thread`      | Create multi-post threads                                        |
 | `openpost version`     | Print the openpost CLI version                                   |
-| `openpost workspace`   | Manage the active OpenPost workspace                             |
+| `openpost workspace`   | Manage the active SocialFlow.ai workspace                             |
 
 ### `openpost account`
 
 Manage connected social accounts
 
-List, rename, and disconnect social accounts. Account slugs are the preferred selector for --accounts. New accounts are connected in the OpenPost web UI at &lt;instance&gt;/settings?tab=accounts.
+List, rename, and disconnect social accounts. Account slugs are the preferred selector for --accounts. New accounts are connected in the SocialFlow.ai web UI at &lt;instance&gt;/settings?tab=accounts.
 
 **Usage**
 
@@ -72,7 +72,7 @@ openpost account
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -104,7 +104,7 @@ openpost account disconnect &lt;account-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -135,7 +135,7 @@ openpost account list [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -164,7 +164,7 @@ openpost account mentions &lt;account&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -195,7 +195,7 @@ openpost account rename &lt;selector&gt; --slug &lt;new-slug&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -206,7 +206,7 @@ openpost account rename &lt;selector&gt; --slug &lt;new-slug&gt; [flags]
 
 ### `openpost auth`
 
-Authenticate with an OpenPost instance
+Authenticate with an SocialFlow.ai instance
 
 **Usage**
 
@@ -218,7 +218,7 @@ openpost auth
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -231,14 +231,14 @@ openpost auth
 
 | Command                | Description                                       |
 | ---------------------- | ------------------------------------------------- |
-| `openpost auth login`  | Log in to an OpenPost instance                    |
+| `openpost auth login`  | Log in to an SocialFlow.ai instance                    |
 | `openpost auth logout` | Delete the stored token for the active profile    |
 | `openpost auth status` | Show authentication status for the active profile |
 | `openpost auth token`  | Manage API tokens                                 |
 
 ### `openpost auth login`
 
-Log in to an OpenPost instance
+Log in to an SocialFlow.ai instance
 
 **Usage**
 
@@ -259,7 +259,7 @@ openpost auth login &lt;instance&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -282,7 +282,7 @@ openpost auth logout
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -305,7 +305,7 @@ openpost auth status
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -328,7 +328,7 @@ openpost auth token
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -358,7 +358,7 @@ openpost auth token list
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -381,7 +381,7 @@ openpost auth token revoke &lt;id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -406,7 +406,7 @@ openpost billing
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -419,15 +419,15 @@ openpost billing
 
 | Command                     | Description                                              |
 | --------------------------- | -------------------------------------------------------- |
-| `openpost billing checkout` | Create an OpenPost checkout URL for the active workspace |
+| `openpost billing checkout` | Create an SocialFlow.ai checkout URL for the active workspace |
 | `openpost billing portal`   | Open Paddle billing management for the active workspace  |
 | `openpost billing status`   | Show billing plan and usage for the active workspace     |
 
 ### `openpost billing checkout`
 
-Create an OpenPost checkout URL for the active workspace
+Create an SocialFlow.ai checkout URL for the active workspace
 
-Create an OpenPost checkout URL that opens Paddle's embedded payment form. Plan IDs are founder (Solo), team, or agency.
+Create an SocialFlow.ai checkout URL that opens Paddle's embedded payment form. Plan IDs are founder (Solo), team, or agency.
 
 **Usage**
 
@@ -445,7 +445,7 @@ openpost billing checkout &lt;plan&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -468,7 +468,7 @@ openpost billing portal
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -491,7 +491,7 @@ openpost billing status
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -516,7 +516,7 @@ openpost completion &lt;bash\|zsh\|fish\|powershell&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -539,7 +539,7 @@ openpost doctor
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -562,7 +562,7 @@ openpost inbox
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -606,7 +606,7 @@ openpost inbox act &lt;item-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -629,7 +629,7 @@ openpost inbox get &lt;item-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -658,14 +658,14 @@ openpost inbox list [flags]
 | `--kind`           | `-`     | comment, mention or review; omit for all                        |
 | `--limit`          | `50`    | page size, from 1 to 100                                        |
 | `--platform`       | `-`     | filter by provider                                              |
-| `--publication-id` | `-`     | filter by an OpenPost post, excluding unrelated native activity |
+| `--publication-id` | `-`     | filter by an SocialFlow.ai post, excluding unrelated native activity |
 | `--unread`         | `false` | only unread items                                               |
 
 **Inherited Flags**
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -692,13 +692,13 @@ openpost inbox mark-read [flags]
 | `--archived`       | `false` | read archived items instead of active items                     |
 | `--kind`           | `-`     | comment, mention or review; omit for all                        |
 | `--platform`       | `-`     | filter by provider                                              |
-| `--publication-id` | `-`     | filter by an OpenPost post, excluding unrelated native activity |
+| `--publication-id` | `-`     | filter by an SocialFlow.ai post, excluding unrelated native activity |
 
 **Inherited Flags**
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -721,7 +721,7 @@ openpost inbox refresh
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -751,7 +751,7 @@ openpost inbox state &lt;item-id&gt;... [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -762,7 +762,7 @@ openpost inbox state &lt;item-id&gt;... [flags]
 
 ### `openpost instance`
 
-Manage OpenPost instance profiles
+Manage SocialFlow.ai instance profiles
 
 **Usage**
 
@@ -774,7 +774,7 @@ openpost instance
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -788,7 +788,7 @@ openpost instance
 | Command                         | Description                                              |
 | ------------------------------- | -------------------------------------------------------- |
 | `openpost instance add`         | Add or update an instance profile                        |
-| `openpost instance diagnostics` | Collect a safe support snapshot for an OpenPost instance |
+| `openpost instance diagnostics` | Collect a safe support snapshot for an SocialFlow.ai instance |
 | `openpost instance health`      | Check the active instance liveness and readiness         |
 | `openpost instance list`        | List configured instances                                |
 | `openpost instance remove`      | Remove an instance profile                               |
@@ -808,7 +808,7 @@ openpost instance add &lt;name&gt; &lt;url&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -819,7 +819,7 @@ openpost instance add &lt;name&gt; &lt;url&gt;
 
 ### `openpost instance diagnostics`
 
-Collect a safe support snapshot for an OpenPost instance
+Collect a safe support snapshot for an SocialFlow.ai instance
 
 **Usage**
 
@@ -832,14 +832,14 @@ openpost instance diagnostics [flags]
 | Flag           | Default | Description                                                           |
 | -------------- | ------- | --------------------------------------------------------------------- |
 | `--deployment` | `-`     | deployment method being checked (docker, binary, nixos, cloud, other) |
-| `--logs-file`  | `-`     | local OpenPost log file to include as a redacted last-100-line tail   |
+| `--logs-file`  | `-`     | local SocialFlow.ai log file to include as a redacted last-100-line tail   |
 | `--provider`   | `-`     | social provider being tested, such as x, mastodon, youtube, or tiktok |
 
 **Inherited Flags**
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -862,7 +862,7 @@ openpost instance health
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -885,7 +885,7 @@ openpost instance list
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -908,7 +908,7 @@ openpost instance remove &lt;name&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -931,7 +931,7 @@ openpost instance use &lt;name&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -954,7 +954,7 @@ openpost jobs
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -991,7 +991,7 @@ openpost jobs list [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1014,7 +1014,7 @@ openpost media
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1049,7 +1049,7 @@ openpost media delete &lt;media-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1078,7 +1078,7 @@ openpost media list [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1110,7 +1110,7 @@ openpost media prepare-image &lt;media-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1133,7 +1133,7 @@ openpost media storage
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1162,7 +1162,7 @@ openpost media update &lt;media-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1191,7 +1191,7 @@ openpost media upload &lt;file&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1214,7 +1214,7 @@ openpost media usage &lt;media-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1239,7 +1239,7 @@ openpost post
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1287,7 +1287,7 @@ openpost post create [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1310,7 +1310,7 @@ openpost post delete &lt;post-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1341,7 +1341,7 @@ openpost post list [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1370,7 +1370,7 @@ openpost post schedule &lt;publication-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1405,7 +1405,7 @@ openpost post update &lt;post-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1428,7 +1428,7 @@ openpost post view &lt;post-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1451,7 +1451,7 @@ openpost provider
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1489,7 +1489,7 @@ openpost provider capabilities [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1512,7 +1512,7 @@ openpost provider list
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1535,7 +1535,7 @@ openpost provider readiness
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1558,7 +1558,7 @@ openpost publication
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1604,7 +1604,7 @@ openpost publication cancel &lt;publication-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1627,7 +1627,7 @@ openpost publication comments &lt;rendition-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1672,7 +1672,7 @@ openpost publication create [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1701,7 +1701,7 @@ openpost publication delete &lt;publication-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1730,7 +1730,7 @@ openpost publication delete-comment &lt;comment-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1759,7 +1759,7 @@ openpost publication delete-rendition &lt;publication-id&gt; &lt;account-id&gt; 
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1788,7 +1788,7 @@ openpost publication events &lt;publication-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1811,7 +1811,7 @@ openpost publication hide-comment &lt;comment-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1843,7 +1843,7 @@ openpost publication list [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1866,7 +1866,7 @@ openpost publication publish-now &lt;publication-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1895,7 +1895,7 @@ openpost publication renditions &lt;publication-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1927,7 +1927,7 @@ openpost publication reply &lt;rendition-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1957,7 +1957,7 @@ openpost publication reply-comment &lt;comment-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -1980,7 +1980,7 @@ openpost publication retry &lt;publication-id&gt; &lt;account-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2009,7 +2009,7 @@ openpost publication schedule &lt;publication-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2045,7 +2045,7 @@ openpost publication update &lt;publication-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2068,7 +2068,7 @@ openpost publication validate &lt;publication-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2091,7 +2091,7 @@ openpost publication view &lt;publication-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2116,7 +2116,7 @@ openpost schedule
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2159,7 +2159,7 @@ openpost schedule create [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2182,7 +2182,7 @@ openpost schedule delete &lt;schedule-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2205,7 +2205,7 @@ openpost schedule list
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2228,7 +2228,7 @@ openpost schedule next
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2259,7 +2259,7 @@ openpost schedule suggest [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2293,7 +2293,7 @@ openpost schedule update &lt;schedule-id&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2316,7 +2316,7 @@ openpost thread
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2353,7 +2353,7 @@ openpost thread create &lt;file&gt; [flags]
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2376,7 +2376,7 @@ openpost version
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2387,7 +2387,7 @@ openpost version
 
 ### `openpost workspace`
 
-Manage the active OpenPost workspace
+Manage the active SocialFlow.ai workspace
 
 **Usage**
 
@@ -2399,7 +2399,7 @@ openpost workspace
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2430,7 +2430,7 @@ openpost workspace create &lt;name&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2453,7 +2453,7 @@ openpost workspace list
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |
@@ -2476,7 +2476,7 @@ openpost workspace use &lt;name-or-id&gt;
 
 | Flag          | Default | Description                                                        |
 | ------------- | ------- | ------------------------------------------------------------------ |
-| `--instance`  | `-`     | OpenPost instance URL (default: profile or $OPENPOST_INSTANCE)     |
+| `--instance`  | `-`     | SocialFlow.ai instance URL (default: profile or $OPENPOST_INSTANCE)     |
 | `--json`      | `false` | emit machine-readable JSON instead of tables/prose                 |
 | `--no-color`  | `false` | disable ANSI colors                                                |
 | `--profile`   | `-`     | profile name from config (default: $OPENPOST_PROFILE or 'default') |

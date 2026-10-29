@@ -1,10 +1,10 @@
 ---
 title: Threads
-description: Create a Threads API app and connect a Threads account to OpenPost.
+description: Create a Threads API app and connect a Threads account to SocialFlow.ai.
 icon: threads
 ---
 
-OpenPost uses the Threads API and its own OAuth callback. A Threads app is configured separately from Facebook Login, even if you use the same Meta developer account.
+SocialFlow.ai uses the Threads API and its own OAuth callback. A Threads app is configured separately from Facebook Login, even if you use the same Meta developer account.
 
 ## What you need
 
@@ -21,13 +21,13 @@ OpenPost uses the Threads API and its own OAuth callback. A Threads app is confi
    https://post.example.com/api/v1/accounts/threads/callback
    ```
 
-3. Configure access for `threads_basic`, `threads_content_publish`, `threads_manage_replies`, `threads_manage_insights`, and `threads_location_tagging`. OpenPost requests these during authorization. Complete Meta's review for features and users beyond the app's test roles.
+3. Configure access for `threads_basic`, `threads_content_publish`, `threads_manage_replies`, `threads_manage_insights`, and `threads_location_tagging`. SocialFlow.ai requests these during authorization. Complete Meta's review for features and users beyond the app's test roles.
 4. For a development app, open **App roles → Roles**, add the Threads account as a **Threads Tester**, and send the invitation. Sign in to that Threads account, open **Settings → Account → Website permissions → Invites**, and accept it. The account must accept the invitation before it can authorize the app.
 5. Copy the Threads app's **App ID** and **App Secret** from its settings.
 
 Meta's [Threads API documentation](https://developers.facebook.com/docs/threads/) and [official Threads API collection](https://www.postman.com/meta/threads/documentation/dht3nzz/threads-api) describe setup, consent, and publishing.
 
-## Save the app in OpenPost
+## Save the app in SocialFlow.ai
 
 [Save these credentials](/self-hosting/integrations#save-your-provider-credentials) with your own domain and app values:
 
@@ -45,7 +45,7 @@ Meta's [Threads API documentation](https://developers.facebook.com/docs/threads/
 ## Connect and test
 
 1. In **Settings → Workspace → Social accounts**, select **Threads** and complete the Threads consent flow.
-2. Publish a short text post. Confirm its status in OpenPost and open it on Threads.
+2. Publish a short text post. Confirm its status in SocialFlow.ai and open it on Threads.
 3. If you need media, publish one image next. Meta fetches media from your public HTTPS address. Test carousels and other features separately. Optional Comments and replies and Analytics start disabled per account; location tagging requires its own granted permission.
 
 ## Troubleshoot

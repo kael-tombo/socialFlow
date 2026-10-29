@@ -22,7 +22,7 @@ journalctl -u openpost -f
 
 Each HTTP request log includes both the requested path and the normalized matched route, such as `/api/v1/publications/:id`. The normalized route lets operators aggregate endpoint use without treating every resource ID as a separate path.
 
-The `consumer` field is a low-cardinality hint: `web`, `cli`, `mcp`, `mcp-media`, `n8n`, or `api`. OpenPost derives it from known client User-Agent prefixes, a browser marker, and the MCP route, then discards the full User-Agent from this request log. Callers can set that header themselves, so the field is useful for deprecation and reachability review but is not an authentication, authorization, billing, or audit identity.
+The `consumer` field is a low-cardinality hint: `web`, `cli`, `mcp`, `mcp-media`, `n8n`, or `api`. SocialFlow.ai derives it from known client User-Agent prefixes, a browser marker, and the MCP route, then discards the full User-Agent from this request log. Callers can set that header themselves, so the field is useful for deprecation and reachability review but is not an authentication, authorization, billing, or audit identity.
 
 ## Instance audit evidence
 

@@ -1,8 +1,8 @@
 # Product Surface Parity
 
-This reference is for contributors and automation authors choosing an OpenPost client surface.
+This reference is for contributors and automation authors choosing an SocialFlow.ai client surface.
 
-OpenPost exposes one backend through several purpose-built clients. “Supported” means the surface has a first-class workflow; all clients still use the same workspace authorization, validation, quota, and audit rules.
+SocialFlow.ai exposes one backend through several purpose-built clients. “Supported” means the surface has a first-class workflow; all clients still use the same workspace authorization, validation, quota, and audit rules.
 
 | Workflow                                          | Web app                     | CLI                                          | MCP                            | HTTP API                 |
 | ------------------------------------------------- | --------------------------- | -------------------------------------------- | ------------------------------ | ------------------------ |

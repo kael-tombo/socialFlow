@@ -2,13 +2,13 @@
 
 This page is for operators configuring Discord and users connecting a channel webhook.
 
-Discord uses an incoming webhook link instead of OAuth. In **Accounts**, choose **Discord**, paste the link, and connect it. OpenPost checks the webhook and encrypts the full link before saving it.
+Discord uses an incoming webhook link instead of OAuth. In **Accounts**, choose **Discord**, paste the link, and connect it. SocialFlow.ai checks the webhook and encrypts the full link before saving it.
 
 Create a webhook in the target Discord channel under **Integrations → Webhooks**. Treat its URL like a password. Anyone who has it can post to that channel.
 
 ## Publishing
 
-OpenPost supports:
+SocialFlow.ai supports:
 
 - text messages;
 - up to 10 file attachments;
@@ -16,25 +16,25 @@ OpenPost supports:
 - reply references for text-and-thread segments;
 - scheduled publishing and deletion of messages created by the webhook.
 
-OpenPost sends the text and files together and saves the Discord message ID. User and role mentions are off by default, so a scheduled post does not send an unexpected alert.
+SocialFlow.ai sends the text and files together and saves the Discord message ID. User and role mentions are off by default, so a scheduled post does not send an unexpected alert.
 
-OpenPost only accepts HTTPS webhook links on Discord domains. It rejects unsafe or fake links.
+SocialFlow.ai only accepts HTTPS webhook links on Discord domains. It rejects unsafe or fake links.
 
 ## Optional features
 
-Discord webhooks do not support Direct messages, Comments and replies, Analytics, or Grow. OpenPost only publishes through the webhook. These per-account optional features remain unavailable for Discord even when enabled elsewhere.
+Discord webhooks do not support Direct messages, Comments and replies, Analytics, or Grow. SocialFlow.ai only publishes through the webhook. These per-account optional features remain unavailable for Discord even when enabled elsewhere.
 
 ## Limits
 
-Discord sets the upload limit for the server or account that owns the webhook. OpenPost checks the file count and uses a safe 10 MiB limit, but Discord can enforce a different limit.
+Discord sets the upload limit for the server or account that owns the webhook. SocialFlow.ai checks the file count and uses a safe 10 MiB limit, but Discord can enforce a different limit.
 
-Discord webhooks can only send. They do not let OpenPost read a channel inbox, personal alerts, or direct messages.
+Discord webhooks can only send. They do not let SocialFlow.ai read a channel inbox, personal alerts, or direct messages.
 
 ## Discord bot mode
 
 Discord bot mode is a separate OAuth connection. Configure the instance-owned
 Discord bot application, then connect a guild and choose from channels the bot
-can use. OpenPost checks the exact application, grant, channel permissions,
+can use. SocialFlow.ai checks the exact application, grant, channel permissions,
 runtime controls, and destination settings before publishing. Incoming
 webhooks remain supported independently and do not inherit bot account state.
 
@@ -43,4 +43,4 @@ sets it online with a rotating presence: `your next post`, `content on
 autopilot`, `across your socials`, and `sooo many posts`. It uses the
 `Watching` activity by default. Set `OPENPOST_DISCORD_PRESENCE_STREAM_URL` to
 an HTTPS Twitch or YouTube URL to use Discord's `Streaming` activity. Discord
-does not accept an OpenPost URL for that activity.
+does not accept an SocialFlow.ai URL for that activity.

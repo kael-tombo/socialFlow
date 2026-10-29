@@ -16,13 +16,13 @@ Turning a feature off stops its future activity. Saved history stays available a
 
 On mobile, open **Inbox → Activity**. On web, choose **Inbox → Engagement**. Choose **Comments**, then filter by account, unread state, or archived activity and select a comment. Its detail shows the original post and the known parent replies. Check both the selected person and the receiving account above the public reply field before sending. A public reply is visible on the social network.
 
-OpenPost queues the action and keeps a receipt so retrying an interrupted request does not create another reply. If the provider rejects it, the app keeps the failed reply and receipt after a restart. Check the original thread before choosing **Start a new reply**. That explicit action preserves the failed receipt and prepares an editable draft; sending it creates a separate intentional reply. Unconfirmed delivery keeps the original request identity. Marking a comment read does not mean you have replied or resolved it.
+SocialFlow.ai queues the action and keeps a receipt so retrying an interrupted request does not create another reply. If the provider rejects it, the app keeps the failed reply and receipt after a restart. Check the original thread before choosing **Start a new reply**. That explicit action preserves the failed receipt and prepares an editable draft; sending it creates a separate intentional reply. Unconfirmed delivery keeps the original request identity. Marking a comment read does not mean you have replied or resolved it.
 
 **Archive comment** has an Undo action. Reopen it from **Archived** to reply again. Moderation actions depend on the provider. Use the actions shown for that comment to hide, delete, or respond. Use **Load older** to reach saved history beyond the first page.
 
 ## Read incoming mentions
 
-Open **Inbox → Activity** on mobile or **Inbox → Engagement** on web, then choose **Mentions**. These are posts that mention a connected account, including posts created outside OpenPost. They do not need a matching OpenPost post. The receiving account and the author are shown separately.
+Open **Inbox → Activity** on mobile or **Inbox → Engagement** on web, then choose **Mentions**. These are posts that mention a connected account, including posts created outside SocialFlow.ai. They do not need a matching SocialFlow.ai post. The receiving account and the author are shown separately.
 
 Incoming mentions are available through Bluesky notifications, Mastodon mention notifications, and the Threads mentions endpoint. Mastodon needs `read:notifications`; Threads needs `threads_manage_mentions`. Older authorizations may need reconnection. Mastodon direct posts stay in Chats. Reply actions depend on the account's write permissions and the network; Mastodon replies retain the original visibility.
 
@@ -32,19 +32,19 @@ Selecting people or pages while writing a post is a separate action. Use the [po
 
 Choose **Reviews** to read feedback for a connected Google Business location. The location must be verified and the Google grant must include `business.manage`. A location may support reviews even when local-post publishing is unavailable. Provider approval and account permissions still apply.
 
-Reviews may contain only a rating, or come from an anonymous reviewer. OpenPost keeps those reviews visible. The review shows your current owner reply and its Google moderation state:
+Reviews may contain only a rating, or come from an anonymous reviewer. SocialFlow.ai keeps those reviews visible. The review shows your current owner reply and its Google moderation state:
 
 - **Pending review** means Google has accepted the reply for moderation.
 - **Approved** means Google reports approval.
 - **Rejected** means Google reports rejection. Any supplied policy code stays visible.
 
-Google allows one owner reply per review, with a limit of **4096 UTF-8 bytes**. Editing the reply replaces that value. **Remove your reply** removes only the owner reply; the customer's review stays visible. OpenPost cannot delete customer reviews.
+Google allows one owner reply per review, with a limit of **4096 UTF-8 bytes**. Editing the reply replaces that value. **Remove your reply** removes only the owner reply; the customer's review stays visible. SocialFlow.ai cannot delete customer reviews.
 
-Inspect the reply receipt before replacing a reply whose outcome is still being checked. OpenPost reconciles an uncertain send before sending again. Provider acceptance and a completed delivery job do not establish public visibility; check the separate moderation state. Pending moderation is checked independently of the review's own update time. See [Google's review contract](https://developers.google.com/my-business/reference/rest/v4/accounts.locations.reviews) for the provider's current rules.
+Inspect the reply receipt before replacing a reply whose outcome is still being checked. SocialFlow.ai reconciles an uncertain send before sending again. Provider acceptance and a completed delivery job do not establish public visibility; check the separate moderation state. Pending moderation is checked independently of the review's own update time. See [Google's review contract](https://developers.google.com/my-business/reference/rest/v4/accounts.locations.reviews) for the provider's current rules.
 
 ## Keep shared read state
 
-Read and archive state is shared by everyone in the Workspace. **Mark all matching read** applies the selected activity, account, platform, post and archive filters across every page, including items that are not loaded on the device. A post filter limits results to activity associated with that OpenPost post.
+Read and archive state is shared by everyone in the Workspace. **Mark all matching read** applies the selected activity, account, platform, post and archive filters across every page, including items that are not loaded on the device. A post filter limits results to activity associated with that SocialFlow.ai post.
 
 Use Refresh or pull to refresh to request collection. Feed health distinguishes comments, mentions and reviews. Saved pages remain visible when a later provider page fails, and collection resumes its unfinished cursor. Missing provider results do not mark an item deleted. Read-only Workspace roles can inspect and refresh activity; editing read state or sending replies requires editor access.
 
@@ -69,25 +69,25 @@ The [CLI](/automate/cli/inspect-and-recover), [TypeScript SDK](/automate/sdk), a
 
 On mobile, open **Inbox → Chats**. On web, choose **Inbox → Messages**. Browse existing conversations, ordered by recent activity. Search people and saved messages, filter by receiving account, or choose **Unread**. Each conversation identifies the network and the account you will reply from. Starting a new conversation is not available.
 
-Select a conversation for its full-screen chat. OpenPost keeps your draft for that conversation on the device. New messages do not pull you away while you read older history. Use **Load older messages** for earlier saved messages. Where supported, **Load older history from network** queues another history page.
+Select a conversation for its full-screen chat. SocialFlow.ai keeps your draft for that conversation on the device. New messages do not pull you away while you read older history. Use **Load older messages** for earlier saved messages. Where supported, **Load older history from network** queues another history page.
 
 **Archive** removes a chat from the main list. Use **Undo** immediately or find it under **Archived**. A new incoming message returns the chat to the main list.
 
-While Inbox is open, OpenPost collects and displays updates according to the provider's supported transport and limits. Leaving the app stops its foreground connection. Reopening Inbox refreshes stored history. Pull to refresh to request upstream collection, then check the stored last successful collection time. The app waits for the collection jobs and reports when completion remains unconfirmed. Read-only roles can refresh stored items. Mobile push alerts are not part of this release.
+While Inbox is open, SocialFlow.ai collects and displays updates according to the provider's supported transport and limits. Leaving the app stops its foreground connection. Reopening Inbox refreshes stored history. Pull to refresh to request upstream collection, then check the stored last successful collection time. The app waits for the collection jobs and reports when completion remains unconfirmed. Read-only roles can refresh stored items. Mobile push alerts are not part of this release.
 
 Check the conversation's provider restrictions before replying:
 
-- Facebook and Instagram enforce a customer-service reply window. OpenPost blocks sends after the stored deadline.
+- Facebook and Instagram enforce a customer-service reply window. SocialFlow.ai blocks sends after the stored deadline.
 - X requires direct-message permission for the app and connected account. **Manage X messaging** opens account settings for separate messaging authorization when needed. Publishing authorization stays connected. Event subscriptions require administrator configuration and an explicit budget; ordinary authorization does not activate them. Encrypted XChat conversations are unsupported.
 - Bluesky chat requires an app-password session.
 - Mastodon direct posts are visible to the mentioned accounts and involved servers. They are not end-to-end encrypted.
 
-The send state describes what OpenPost knows:
+The send state describes what SocialFlow.ai knows:
 
 - **Sending…** means the app is submitting your request.
-- **Queued** means OpenPost saved it for delivery.
+- **Queued** means SocialFlow.ai saved it for delivery.
 - **Sent** means the provider accepted the message. It does not establish delivery or a read receipt.
-- **Delivery unconfirmed** means the request may have reached the server or provider. Keep the message and use its safe recovery action. OpenPost reuses the original request identity and blocks a resend when the provider outcome remains ambiguous.
+- **Delivery unconfirmed** means the request may have reached the server or provider. Keep the message and use its safe recovery action. SocialFlow.ai reuses the original request identity and blocks a resend when the provider outcome remains ambiguous.
 - **Failed** retains the message and its error. Reconnect an expired account or fix the reported issue before retrying.
 
 Sending a direct message does not create a post. Read indicators appear only when the provider supplies that state.

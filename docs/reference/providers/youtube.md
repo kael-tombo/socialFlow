@@ -19,7 +19,7 @@ https://your-domain.com/api/v1/accounts/youtube/callback
   - `https://www.googleapis.com/auth/youtube.upload`
   - `https://www.googleapis.com/auth/youtube`
   - `https://www.googleapis.com/auth/youtube.force-ssl`
-- One video attachment on the OpenPost post or YouTube-specific variant
+- One video attachment on the SocialFlow.ai post or YouTube-specific variant
 
 ## Configuration
 
@@ -35,7 +35,7 @@ Configure YouTube through the provider app registry. For bootstrap/self-hosting,
 ]
 ```
 
-If `redirect_uri` is omitted, OpenPost derives it from `OPENPOST_APP_URL`.
+If `redirect_uri` is omitted, SocialFlow.ai derives it from `OPENPOST_APP_URL`.
 
 ## Current Scope
 
@@ -44,9 +44,9 @@ If `redirect_uri` is omitted, OpenPost derives it from `OPENPOST_APP_URL`.
 - Uploads videos as private by default, with YouTube-specific privacy settings available through publication/variant settings.
 - Supports title, description, tags, category, made-for-kids, thumbnail, and playlist settings when provided. A thumbnail can be uploaded or captured from the attached video in destination settings.
 - Uses the post or account version for a fallback title and description when those fields are empty.
-- Supports scheduling and platform variants through the normal OpenPost post flow.
+- Supports scheduling and platform variants through the normal SocialFlow.ai post flow.
 - Lists comments, sends replies, moderates comments, and deletes comments from the connected channel when Comments and replies is enabled for that channel and Google grants access. Comments and replies is an optional per-account feature that starts off.
-- YouTube does not support Direct messages in OpenPost, and Grow is not available for YouTube.
+- YouTube does not support Direct messages in SocialFlow.ai, and Grow is not available for YouTube.
 
 ## Current Limits
 
@@ -56,7 +56,7 @@ If `redirect_uri` is omitted, OpenPost derives it from `OPENPOST_APP_URL`.
 
 ## Analytics
 
-Analytics is an optional feature per connected YouTube channel. It starts off for a new account. Enable it after connection or in Account details. OpenPost keeps Data API channel and video counters labeled as lifetime values. Separate, date-bounded YouTube Analytics reports collect views, watch time, average view duration, average viewed percentage, subscriber gains and losses, likes, comments, and shares when Google returns those columns. Accounts connected before the `yt-analytics.readonly` scope was added must reconnect. Disabling Analytics stops future YouTube analytics collection without deleting stored metrics or revoking authorization.
+Analytics is an optional feature per connected YouTube channel. It starts off for a new account. Enable it after connection or in Account details. SocialFlow.ai keeps Data API channel and video counters labeled as lifetime values. Separate, date-bounded YouTube Analytics reports collect views, watch time, average view duration, average viewed percentage, subscriber gains and losses, likes, comments, and shares when Google returns those columns. Accounts connected before the `yt-analytics.readonly` scope was added must reconnect. Disabling Analytics stops future YouTube analytics collection without deleting stored metrics or revoking authorization.
 
 Direct messages, Comments and replies, and Analytics are optional and per connected account. Disabling a feature stops future provider reads and writes without deleting history or revoking provider authorization. Availability depends on provider support, required scopes, and plan access as distinct facts.
 
@@ -64,5 +64,5 @@ Direct messages, Comments and replies, and Analytics are optional and per connec
 
 - `google account has no YouTube channels` usually means the authenticated Google user has no YouTube channel available to the OAuth app.
 - `invalidTitle` usually means the first line of the post or variant is empty or invalid after trimming.
-- `mediaBodyRequired` usually means the video file could not be read from OpenPost media storage.
+- `mediaBodyRequired` usually means the video file could not be read from SocialFlow.ai media storage.
 - Upload permission errors usually mean the Google Cloud project lacks YouTube Data API v3 access or the OAuth app has not been verified for the requested scopes.

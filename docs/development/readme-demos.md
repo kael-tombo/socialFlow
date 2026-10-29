@@ -1,6 +1,6 @@
 # Refresh the README demos
 
-The README has three scripted captures of the real OpenPost interface: publishing,
+The README has three scripted captures of the real SocialFlow.ai interface: publishing,
 thumbnail design, and video editing. Run them against the local browser-test app:
 
 ```sh
@@ -59,7 +59,7 @@ at 390px and 320px widths in both schemes.
 ## Tool choice
 
 [Playwright's Screencast API](https://playwright.dev/docs/api/class-screencast) records
-chosen sections of a flow and renders an animated pointer. OpenPost already uses
+chosen sections of a flow and renders an animated pointer. SocialFlow.ai already uses
 Playwright 1.61, so no recorder dependency or separate application is needed.
 [FFmpeg](https://ffmpeg.org/ffmpeg-filters.html#palettegen) supplies palette generation
 and GIF encoding. [Gifsicle](https://www.lcdf.org/gifsicle/) optimizes the result.

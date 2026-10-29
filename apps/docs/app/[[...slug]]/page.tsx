@@ -132,8 +132,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical,
       types: {
         "text/plain": [
-          { url: "/llms.txt", title: "OpenPost documentation index" },
-          { url: "/llms-full.txt", title: "OpenPost documentation" },
+          { url: "/llms.txt", title: "SocialFlow.ai documentation index" },
+          { url: "/llms-full.txt", title: "SocialFlow.ai documentation" },
         ],
         ...(!page.data._openapi
           ? {
@@ -149,7 +149,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: canonical,
-      siteName: "OpenPost Docs",
+      siteName: "SocialFlow.ai Docs",
       type: "website",
       images: [{ url: image, width: 1200, height: 630, type: "image/png", alt: title }],
     },

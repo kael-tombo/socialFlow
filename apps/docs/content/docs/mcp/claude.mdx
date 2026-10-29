@@ -1,6 +1,6 @@
 ---
 title: Connect Claude web
-description: Connect OpenPost to Claude through a custom connector.
+description: Connect SocialFlow.ai to Claude through a custom connector.
 icon: claude
 ---
 
@@ -11,22 +11,22 @@ Use Claude's custom connector to review your schedule and prepare posts from a c
 ## Add the connector
 
 1. Open Claude's **Customize > Connectors**, or **Settings > Connectors** in interfaces that use that label.
-2. Choose **Add custom connector**, name it `OpenPost`, and enter:
+2. Choose **Add custom connector**, name it `SocialFlow.ai`, and enter:
 
 ```text
 https://app.openpo.st/mcp
 ```
 
-3. Add the connector and complete OpenPost's browser sign-in. Leave optional client credentials empty; OpenPost supports dynamic registration.
-4. Choose read-only access for reviews, or full access to create and publish. Enable OpenPost in the conversation's connector controls.
+3. Add the connector and complete SocialFlow.ai's browser sign-in. Leave optional client credentials empty; SocialFlow.ai supports dynamic registration.
+4. Choose read-only access for reviews, or full access to create and publish. Enable SocialFlow.ai in the conversation's connector controls.
 
 ## Check the connection
 
-Ask, "List my OpenPost workspaces," then name one and ask for its scheduled posts. For a first write, request an unpublished draft and inspect it in OpenPost.
+Ask, "List my SocialFlow.ai workspaces," then name one and ask for its scheduled posts. For a first write, request an unpublished draft and inspect it in SocialFlow.ai.
 
 ## If it does not connect
 
-An organization owner may need to add or allow the connector first. Claude reaches remote servers from its cloud, so self-hosted OpenPost needs a public HTTPS URL. Reconnect from the connector settings if authorization expires.
+An organization owner may need to add or allow the connector first. Claude reaches remote servers from its cloud, so self-hosted SocialFlow.ai needs a public HTTPS URL. Reconnect from the connector settings if authorization expires.
 
 Using another Claude client? See [Claude Desktop](/mcp/claude-desktop) or [Claude Code](/mcp/claude-code).
 

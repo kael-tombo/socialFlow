@@ -2,22 +2,22 @@
 
 This page is for operators configuring provider OAuth applications.
 
-A provider application identifies the OpenPost installation to a social network during OAuth. It is instance configuration, not a user's connected social-account token and not an OpenPost API or CLI token.
+A provider application identifies the SocialFlow.ai installation to a social network during OAuth. It is instance configuration, not a user's connected social-account token and not an SocialFlow.ai API or CLI token.
 
-OpenPost manages encrypted provider-application rows for `x`, `mastodon`, `linkedin`, `threads`, `facebook`, `instagram`, `tiktok`, `youtube`, `pinterest`, `telegram`, `googlebusiness`, and Discord bot mode. Bluesky app passwords and Discord incoming webhooks remain user-owned connection modes, so the administrator API rejects those credential shapes.
+SocialFlow.ai manages encrypted provider-application rows for `x`, `mastodon`, `linkedin`, `threads`, `facebook`, `instagram`, `tiktok`, `youtube`, `pinterest`, `telegram`, `googlebusiness`, and Discord bot mode. Bluesky app passwords and Discord incoming webhooks remain user-owned connection modes, so the administrator API rejects those credential shapes.
 
 A configured provider application is not a public availability claim. Pinterest, Google Business, and Telegram bot mode remain hidden or blocked for public Hosted use until their exact approval, scope, policy, runtime-control, and current live-certification evidence passes. Discord bot accounts use the normal configured-account readiness path. Existing Discord incoming-webhook connections use a separate mode and remain supported.
 
 ## Ownership
 
-Provider console access, app review, callback registration, and the client credentials belong to the operator of the OpenPost instance.
+Provider console access, app review, callback registration, and the client credentials belong to the operator of the SocialFlow.ai instance.
 
 | Deployment              | Responsible party                                                                                                                                                                                      | Recommended credential source                                                                         |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| OpenPost Hosted service | The service operator owns the production provider projects, approvals, callbacks, and deployment secrets. Workspace users and workspace administrators do not provide the shared provider application. | Deployment secret storage exposed through legacy provider variables or `OPENPOST_PROVIDER_APPS_FILE`. |
+| SocialFlow.ai Hosted service | The service operator owns the production provider projects, approvals, callbacks, and deployment secrets. Workspace users and workspace administrators do not provide the shared provider application. | Deployment secret storage exposed through legacy provider variables or `OPENPOST_PROVIDER_APPS_FILE`. |
 | Self-hosted instance    | The self-hosted operator owns each provider project and grants instance-admin access only to people trusted to manage instance secrets.                                                                | Either deployment secret storage or encrypted database rows managed in the app or API.                |
 
-OpenPost does not use the edition setting to remove the encrypted database API. An instance administrator on either edition can manage database fallback rows. On the Hosted service, an operator-owned environment entry remains authoritative, so an instance administrator cannot replace it through the database API.
+SocialFlow.ai does not use the edition setting to remove the encrypted database API. An instance administrator on either edition can manage database fallback rows. On the Hosted service, an operator-owned environment entry remains authoritative, so an instance administrator cannot replace it through the database API.
 
 ## Where to configure an app
 
@@ -35,13 +35,13 @@ The database identity is the provider key for every listed provider except Masto
 
 ## Source precedence
 
-OpenPost builds the effective adapter registry during server startup. For the same provider identity, the order from highest to lowest precedence is:
+SocialFlow.ai builds the effective adapter registry during server startup. For the same provider identity, the order from highest to lowest precedence is:
 
 1. Operator-owned provider configuration from legacy variables or `OPENPOST_PROVIDER_APPS` and its `_FILE` form.
 2. An active encrypted `provider_apps` database row.
 3. A dynamically registered Mastodon application for the same server.
 
-Environment-defined apps appear in Settings with non-secret metadata, but they are read-only and cannot be deleted through the API. If a database fallback exists for the same identity, it remains visible as a stored fallback. It cannot be edited while shadowed, but it can be deleted. To change or disable an environment-defined app, update the deployment configuration and restart OpenPost.
+Environment-defined apps appear in Settings with non-secret metadata, but they are read-only and cannot be deleted through the API. If a database fallback exists for the same identity, it remains visible as a stored fallback. It cannot be edited while shadowed, but it can be deleted. To change or disable an environment-defined app, update the deployment configuration and restart SocialFlow.ai.
 
 Bluesky and Discord webhook adapters are built in and do not use this precedence chain. A Discord bot application is a separate instance-owned configuration. Mastodon applications created automatically from the Accounts flow are stored separately from administrator-managed `provider_apps` rows.
 
@@ -49,9 +49,9 @@ Bluesky and Discord webhook adapters are built in and do not use this precedence
 
 - Database-backed client secrets, bot tokens, and webhook verification secrets are encrypted with AES-256-GCM using the key derived from `OPENPOST_ENCRYPTION_KEY`. The table stores only encrypted secret columns.
 - List and save responses return presence booleans such as `secret_configured`, `bot_token_configured`, and `webhook_secret_configured`, never stored secret values. They return only non-secret metadata such as client/application ID, callback URL, bot username, provider name, and Mastodon instance URL.
-- API clients must omit a secret field to preserve its existing ciphertext. Supplying a new value replaces OpenPost's stored copy; rotate the provider-side credential as part of the same procedure.
-- Environment and file-backed secrets remain in deployment configuration. OpenPost does not copy them into `provider_apps`.
-- Back up `OPENPOST_ENCRYPTION_KEY` separately from the database and protect both. OpenPost cannot decrypt database-backed provider apps after the key is lost or replaced.
+- API clients must omit a secret field to preserve its existing ciphertext. Supplying a new value replaces SocialFlow.ai's stored copy; rotate the provider-side credential as part of the same procedure.
+- Environment and file-backed secrets remain in deployment configuration. SocialFlow.ai does not copy them into `provider_apps`.
+- Back up `OPENPOST_ENCRYPTION_KEY` separately from the database and protect both. SocialFlow.ai cannot decrypt database-backed provider apps after the key is lost or replaced.
 
 Do not put `OPENPOST_PROVIDER_APPS` JSON with client secrets in a Compose file, shell history, image, or repository. Prefer `OPENPOST_PROVIDER_APPS_FILE` or the secret-file mechanism of the deployment platform. A client ID is public application metadata; a client secret is sensitive.
 

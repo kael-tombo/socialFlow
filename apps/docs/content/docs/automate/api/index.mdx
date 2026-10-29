@@ -1,6 +1,6 @@
 ---
 title: HTTP API
-description: Authenticate and make your first OpenPost API request.
+description: Authenticate and make your first SocialFlow.ai API request.
 icon: FileCode
 ---
 
@@ -12,7 +12,7 @@ Hosted uses this base URL:
 https://app.openpo.st/api/v1
 ```
 
-For self-hosting, append `/api/v1` to the public OpenPost origin.
+For self-hosting, append `/api/v1` to the public SocialFlow.ai origin.
 
 Create a developer token in **Settings > Personal > Developer**. Use `api:read` for reads or `api:write` for changes. For unattended work, create one token per integration, give it only the scopes it needs, bind it to one workspace when possible, and set an expiry.
 
@@ -24,7 +24,7 @@ curl https://app.openpo.st/api/v1/workspaces \
   -H "Accept: application/json"
 ```
 
-Use an ID from the response whenever an operation asks for `workspace_id`. OpenPost checks scope and workspace access on every private request. Passing a different workspace ID does not expand a workspace-bound token.
+Use an ID from the response whenever an operation asks for `workspace_id`. SocialFlow.ai checks scope and workspace access on every private request. Passing a different workspace ID does not expand a workspace-bound token.
 
 ## Store credentials
 

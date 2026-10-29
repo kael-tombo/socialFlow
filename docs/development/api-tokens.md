@@ -1,6 +1,6 @@
 # API Tokens
 
-OpenPost API tokens are account credentials for the REST API, MCP clients, the CLI, and automation. Create one token per client in **Settings → Personal → Developer access**, give it the narrowest scope and workspace boundary that works, and revoke it when that client no longer needs access.
+SocialFlow.ai API tokens are account credentials for the REST API, MCP clients, the CLI, and automation. Create one token per client in **Settings → Personal → Developer access**, give it the narrowest scope and workspace boundary that works, and revoke it when that client no longer needs access.
 
 ## Create and store a token
 
@@ -9,7 +9,7 @@ OpenPost API tokens are account credentials for the REST API, MCP clients, the C
 3. Choose 30 days, 90 days, one year, or a custom expiration date. The server rejects dates in the past or more than one year away.
 4. Create the token and copy the full secret from the one-time result.
 
-The full secret is never stored in plaintext and cannot be shown again. OpenPost lists only a short prefix, scope, workspace boundary, creation time, last use, expiration, and active, expired, or revoked status. If the secret is lost, revoke it and create a replacement.
+The full secret is never stored in plaintext and cannot be shown again. SocialFlow.ai lists only a short prefix, scope, workspace boundary, creation time, last use, expiration, and active, expired, or revoked status. If the secret is lost, revoke it and create a replacement.
 
 An omitted or JSON `null` `expires_at` uses the finite 90-day default. Existing tokens created under older versions may have no expiration; the settings list labels those explicitly. New tokens cannot request an unlimited lifetime.
 
@@ -26,7 +26,7 @@ The generated [API Reference](api-reference.md) is the source for paths and requ
 ## MCP and CLI scopes
 
 - `mcp:read` exposes only query operations through MCP.
-- `mcp:full` adds MCP operations that change OpenPost or call a social provider. The MCP client still controls its approval prompt.
+- `mcp:full` adds MCP operations that change SocialFlow.ai or call a social provider. The MCP client still controls its approval prompt.
 - `cli:full` preserves the CLI and existing automation contract. It has broad REST access, including account- and organization-level commands. A workspace binding limits workspace-owned resources, blocks organization-level resources, and retains account-level abilities. An unbound token owned by an instance administrator may set `intent=certification_test` when starting provider authorization and `execution_intent=certification_test` when queuing publication work. These test intents are separate from the provider-readiness ledger routes under `/api/v1/admin/provider-readiness`, which require a signed-in browser session, as does the rest of the instance control plane.
 
 REST scopes cannot call MCP, and MCP scopes cannot be used as generic REST credentials. This separation keeps each credential tied to its real client contract.

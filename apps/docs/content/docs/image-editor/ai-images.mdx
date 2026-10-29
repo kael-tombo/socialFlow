@@ -4,7 +4,7 @@ description: Generate an image, edit an image layer, or fill a selected area thr
 icon: ImagePlus
 ---
 
-Sign in and open a project saved to OpenPost. Choose **AI images** in the editor header. For a local project, the panel offers **Save to OpenPost** first; your original local project remains in the browser.
+Sign in and open a project saved to SocialFlow.ai. Choose **AI images** in the editor header. For a local project, the panel offers **Save to SocialFlow.ai** first; your original local project remains in the browser.
 
 Your instance must have [fal configured](/self-hosting/ai#image-generation-with-fal). You need permission to edit the Workspace.
 
@@ -20,16 +20,16 @@ The prompt and source image are sent to fal. Generation continues when you close
 
 The panel shows the saved request's progress and result. For edits and fills, **Show original** lets you compare it with the source. Apply the result only when you are satisfied. Every application can be undone.
 
-An edit applies to the layer selected when you submitted it, even if you select another layer while waiting. If that layer changes, OpenPost prevents replacement. You can restore the original layer or choose **Add as new layer**. Fill also requires the original page to remain unchanged.
+An edit applies to the layer selected when you submitted it, even if you select another layer while waiting. If that layer changes, SocialFlow.ai prevents replacement. You can restore the original layer or choose **Add as new layer**. Fill also requires the original page to remain unchanged.
 
 Reopen **AI images** to see your recent requests for this project. Generated images are also stored in the Workspace's Media library.
 
 ## Check cost and recover a request
 
-OpenPost records each paid request in your existing per-user AI usage history. Image generation has no separate credit balance or spending limit. Ordinary Media storage and upload limits still apply.
+SocialFlow.ai records each paid request in your existing per-user AI usage history. Image generation has no separate credit balance or spending limit. Ordinary Media storage and upload limits still apply.
 
-Costs are matched to fal's request ID. **Cost pending** means fal has not yet reported a charge; it does not mean the request was free. OpenPost continues checking for up to 72 hours.
+Costs are matched to fal's request ID. **Cost pending** means fal has not yet reported a charge; it does not mean the request was free. SocialFlow.ai continues checking for up to 72 hours.
 
-If the browser loses the response, choose **Recover this request**. It reuses the same request identity. If fal accepted a request but its receipt was lost, OpenPost shows **Submission uncertain** and does not automatically submit it again. Ask your instance administrator to check fal before starting another generation.
+If the browser loses the response, choose **Recover this request**. It reuses the same request identity. If fal accepted a request but its receipt was lost, SocialFlow.ai shows **Submission uncertain** and does not automatically submit it again. Ask your instance administrator to check fal before starting another generation.
 
-A download or Media save failure is retried without generating another image. OpenPost keeps the provider receipt and any reported cost if it cannot recover the result within 24 hours.
+A download or Media save failure is retried without generating another image. SocialFlow.ai keeps the provider receipt and any reported cost if it cannot recover the result within 24 hours.

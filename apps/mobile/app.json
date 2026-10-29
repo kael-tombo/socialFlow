@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "OpenPost",
+    "name": "SocialFlow.ai",
     "slug": "openpost",
     "version": "0.2.67",
     "orientation": "portrait",
@@ -37,8 +37,8 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow OpenPost to attach photos to your posts.",
-          "cameraPermission": "Allow OpenPost to take a photo for your post."
+          "photosPermission": "Allow SocialFlow.ai to attach photos to your posts.",
+          "cameraPermission": "Allow SocialFlow.ai to take a photo for your post."
         }
       ],
       [

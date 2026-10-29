@@ -4,13 +4,13 @@ description: Reuse workspace media or upload a public URL or local file.
 icon: Images
 ---
 
-An MCP assistant can reuse media that is already in the selected OpenPost workspace. Ask it to list recent media, choose the correct item, and attach the returned media ID to a Post.
+An MCP assistant can reuse media that is already in the selected SocialFlow.ai workspace. Ask it to list recent media, choose the correct item, and attach the returned media ID to a Post.
 
 ## Upload from a public URL
 
-With `mcp:full`, an assistant can use `upload_media_from_url` for a public HTTP or HTTPS URL. OpenPost rejects URLs that resolve to private, loopback, link-local, multicast, or other local network addresses.
+With `mcp:full`, an assistant can use `upload_media_from_url` for a public HTTP or HTTPS URL. SocialFlow.ai rejects URLs that resolve to private, loopback, link-local, multicast, or other local network addresses.
 
-OpenPost downloads the file and applies the normal media limits, workspace permissions, quota, storage, deduplication, and analysis checks. A URL upload creates a workspace media item that the assistant can attach to a Post.
+SocialFlow.ai downloads the file and applies the normal media limits, workspace permissions, quota, storage, deduplication, and analysis checks. A URL upload creates a workspace media item that the assistant can attach to a Post.
 
 Use this path only when the media is already available at a public URL. Do not create a temporary public link for a private file when your client supports local uploads.
 
@@ -18,9 +18,9 @@ Use this path only when the media is already available at a public URL. Do not c
 
 A compatible MCP Apps client can open the file picker through `render_local_media_upload` with read access. Creating the app-only upload ticket and uploading the file require `mcp:full`.
 
-The file travels from the app to OpenPost. Its bytes and upload credential do not enter the model's conversation context. The one-use upload ticket expires after ten minutes and is bound to the authenticated actor and selected workspace.
+The file travels from the app to SocialFlow.ai. Its bytes and upload credential do not enter the model's conversation context. The one-use upload ticket expires after ten minutes and is bound to the authenticated actor and selected workspace.
 
-The local picker works only in clients that support MCP Apps UI and app-only tool calls. If your client can read local files but cannot show the picker, it can use `upload_media_base64` with `mcp:full` and workspace editor access. Pass `workspace_id`, `filename`, and `content_base64`; `mime_type` and `alt_text` are optional. Use standard base64 or a `data:<mime-type>;base64,` URL. The file must be 8 MiB or smaller, and the complete MCP request must fit within 12 MiB. This path sends the encoded file through the assistant's tool arguments. OpenPost applies the same validation, quota, storage, deduplication, and analysis checks. For larger files, upload in OpenPost first and ask the assistant to reuse the media item.
+The local picker works only in clients that support MCP Apps UI and app-only tool calls. If your client can read local files but cannot show the picker, it can use `upload_media_base64` with `mcp:full` and workspace editor access. Pass `workspace_id`, `filename`, and `content_base64`; `mime_type` and `alt_text` are optional. Use standard base64 or a `data:<mime-type>;base64,` URL. The file must be 8 MiB or smaller, and the complete MCP request must fit within 12 MiB. This path sends the encoded file through the assistant's tool arguments. SocialFlow.ai applies the same validation, quota, storage, deduplication, and analysis checks. For larger files, upload in SocialFlow.ai first and ask the assistant to reuse the media item.
 
 ## Check the result
 
@@ -34,7 +34,7 @@ The operation returns a separate, fully processed image with `status: "ready"`. 
 
 ## Edit an open project
 
-Sign in to the workspace and open an Image Editor or Video Editor project. Connect [Codex or Claude Code](/mcp/coding-assistants) with editing access, then ask the assistant to find that open project. No OpenPost desktop installation is needed.
+Sign in to the workspace and open an Image Editor or Video Editor project. Connect [Codex or Claude Code](/mcp/coding-assistants) with editing access, then ask the assistant to find that open project. No SocialFlow.ai desktop installation is needed.
 
 For example: "In my open video, make the title larger, use a favorite text style that fits, and show me the result." The assistant can inspect the actual timeline or layers, reuse available templates, apply supported edits and render a preview. Changes appear live in the editor and use its normal history.
 

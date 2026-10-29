@@ -4,7 +4,7 @@ description: Review schedules, create drafts, and diagnose connection or deliver
 icon: ListChecks
 ---
 
-Name the OpenPost workspace in every task after the first connection check. Tell the assistant whether it may change data and where it must stop for review.
+Name the SocialFlow.ai workspace in every task after the first connection check. Tell the assistant whether it may change data and where it must stop for review.
 
 ## Review a schedule
 
@@ -34,7 +34,7 @@ Use `mcp:full`, but stop before scheduling:
 Create an unpublished launch draft for the Company workspace and its connected LinkedIn account. Reuse the newest matching image in the media library. Stop after creating the draft.
 ```
 
-Inspect the saved Post in OpenPost. Check each destination Variant before asking the assistant to schedule it. To adapt one message for several channels, use the `adapt_post_variants` prompt with the saved `post_id` and the `variants[]` arguments.
+Inspect the saved Post in SocialFlow.ai. Check each destination Variant before asking the assistant to schedule it. To adapt one message for several channels, use the `adapt_post_variants` prompt with the saved `post_id` and the `variants[]` arguments.
 
 ## Select mentions
 
@@ -70,10 +70,10 @@ Grant `mcp:full` only if you then want the assistant to make a correction or ret
 
 | Problem                    | What to check                                                                                                    |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| No OpenPost tools          | Refresh the client's MCP metadata or start a new session. Enable the server's tools in the chat.                 |
+| No SocialFlow.ai tools          | Refresh the client's MCP metadata or start a new session. Enable the server's tools in the chat.                 |
 | Login expired              | Reconnect through OAuth or replace the expired developer token.                                                  |
 | Wrong workspace            | Check the signed-in account and token binding. A workspace-bound token cannot access another workspace.          |
-| Private server unreachable | Run the local bridge on a machine that can reach OpenPost, or provide a public HTTPS origin for cloud clients.   |
+| Private server unreachable | Run the local bridge on a machine that can reach SocialFlow.ai, or provide a public HTTPS origin for cloud clients.   |
 | Bridge command missing     | Configure the absolute path returned by `command -v openpost-mcp`. Run it as the user who saved the CLI profile. |
 
 Inspect recent calls under **Settings > Personal > Developer access** for the client, tool, workspace, result, and failure reason.

@@ -1,6 +1,6 @@
-# OpenPost agent guide
+# SocialFlow.ai agent guide
 
-OpenPost is the all-in-one content team for solo founders. It turns their work into channel-ready content, publishes it, and brings outcomes back into one workspace. Hosted is the primary product; self-hosting is a deployment option.
+SocialFlow.ai is the all-in-one content team for solo founders. It turns their work into channel-ready content, publishes it, and brings outcomes back into one workspace. Hosted is the primary product; self-hosting is a deployment option.
 
 - A **Publication** is the user-visible post. It owns the source idea, schedule, status, and destination outputs.
 - A **Rendition** is one destination-specific version with its own account, text, media, format, timing, and provider settings.
@@ -21,7 +21,7 @@ Load only the branch the task needs:
 
 | Task                                                                    | Read or use                                                                                         |
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Substantial, ambiguous, or multi-ticket work                            | `agent-workflow`; the OpenPost Vikunja project for the current spec, priority, and execution state  |
+| Substantial, ambiguous, or multi-ticket work                            | `agent-workflow`; the SocialFlow.ai Vikunja project for the current spec, priority, and execution state  |
 | Product scope, public copy, provider support, or capability claims      | `README.md` for current public claims and readiness; `PRODUCT.md` for purpose, terms, and scope     |
 | UI, visual, or user-facing copy changes                                 | `ux-consistency` and `DESIGN.md`; add `impeccable` for design critique                              |
 | Public documentation structure, prose, examples, or images              | `documentation` and `unslop`; preserve complete tasks, useful images, and old routes                |
@@ -34,7 +34,7 @@ Load only the branch the task needs:
 | n8n or SDK package release or package-only recovery                     | `docs/agents/n8n-package-release.md`, `docs/agents/sdk-package-release.md`                          |
 | Video Editor, Quick Cut, or Recorder                                    | `docs/specs/video-editors-rebuild.md` and the relevant rows in `docs/specs/freecut-parity-audit.md` |
 
-For reference implementations, read `docs/references/README.md` before inspecting a checkout. Use `postiz` or `shoutrrr` for publishing and durable automation, `miniPaint` for the Image Editor, and the named video references for recording or editing. Keep reference checkouts shallow and Git-ignored. Audit source and license before porting code; OpenPost's architecture, security, accessibility, provider rules, and product language remain authoritative.
+For reference implementations, read `docs/references/README.md` before inspecting a checkout. Use `postiz` or `shoutrrr` for publishing and durable automation, `miniPaint` for the Image Editor, and the named video references for recording or editing. Keep reference checkouts shallow and Git-ignored. Audit source and license before porting code; SocialFlow.ai's architecture, security, accessibility, provider rules, and product language remain authoritative.
 
 ## Authorities
 
@@ -52,7 +52,7 @@ Keep third-party deployment packaging under `deploy/<platform>/`. If a platform 
 
 Public marketing speaks to Cloud customers creating content and running a business. Features navigation points to `/#features`; automation and self-hosting setup belong in the documentation, not duplicate marketing pages. Keep removed public routes out of the route manifest and maintain their deliberate redirects in `apps/marketing/static/_redirects`.
 
-Public buying comparisons belong to the shared guide catalogue in `packages/social-images/src/`. Reuse the guide renderer and discovery manifest. Derive OpenPost prices and limits from `@openpost/plan-catalog`; keep competitor facts with official source links and an explicit review date. Change that date only after checking those sources, and state where the competitor fits better.
+Public buying comparisons belong to the shared guide catalogue in `packages/social-images/src/`. Reuse the guide renderer and discovery manifest. Derive SocialFlow.ai prices and limits from `@openpost/plan-catalog`; keep competitor facts with official source links and an explicit review date. Change that date only after checking those sources, and state where the competitor fits better.
 
 Comparison metadata owns the product name, local official mark, category, and optional free-tool link. The Resources comparison directory and guide hub share one directory component; retain existing guide URLs. Creative-tool comparisons describe free local editing separately from Hosted storage and publishing. Keep third-party mark sources in `assets/logos/comparisons/SOURCES.md` and preserve original colors.
 
@@ -77,7 +77,7 @@ Generate the media-limits guide with `scripts/sync-docs-openapi.mjs`; edit the c
 
 Verify docs reader interactions against the static export with `bunx playwright test --config tests/docs/playwright.config.ts` after `bun run build -- docs`. Use shared Fumadocs controls and SVG icons for page actions, search, and navigation. Documentation copy controls belong to `apps/docs/components/documentation-copy.tsx`; retain the exact source text for recovery and show success only after the clipboard write completes.
 
-Each social network has one self-hosting integration guide. Keep shared credential setup in the integration index and link provider-specific steps to it. Use `SetupScreenshot` for expandable setup screenshots, preserve source attribution and licenses for reused portal images, and label edited example values. Capture OpenPost connection dialogs through `tests/app/product-screenshots.spec.ts` in both schemes. Generated screenshots illustrate setup, never provider approval.
+Each social network has one self-hosting integration guide. Keep shared credential setup in the integration index and link provider-specific steps to it. Use `SetupScreenshot` for expandable setup screenshots, preserve source attribution and licenses for reused portal images, and label edited example values. Capture SocialFlow.ai connection dialogs through `tests/app/product-screenshots.spec.ts` in both schemes. Generated screenshots illustrate setup, never provider approval.
 
 Free-tool draft transfer uses `@openpost/draft-transfer`. Keep content and files out of URLs and telemetry. The browser receiver verifies origin, opener and token; uploads resume through the media adapter with an actor and Workspace receipt. Import into a fresh composer, retain the transfer until the draft saves, and keep publishing explicit.
 
@@ -142,7 +142,7 @@ Free-tool draft transfer uses `@openpost/draft-transfer`. Keep content and files
 - Keep the built-in theme catalog out of startup imports. Settings loads only the selected panel, through its existing cold loading boundary; failed module downloads must leave navigation usable and offer a page refresh.
 - Keep authenticated navigation and dialogs in `workspace-shell.svelte`, loaded once after sign-in. Public entry routes must not download that shell; retain its mounted instance across workspace navigation.
 - Unconfigured organizations start with the orange-brown Dither palette; saved organization and Workspace choices take precedence. Public profiles use the signed-in viewer's Workspace theme, including direct entry and reload, and use Dither for anonymous visitors. Anonymous app entry pages also use Dither. Workshop remains the complete recovery theme. Theme management reads unpublished drafts from the organization catalog; workspace assignments use published themes. Apply server-confirmed settings immediately and keep background refreshes outside the mutation busy state.
-- App branding belongs to `services/appbranding`, independently of theme manifests and content brand kits. Organization defaults and explicit workspace overrides share the query catalogue across web and native. Keep public entry screens and installed app identity OpenPost, scope runtime branding to the current actor and Workspace, and preserve uploaded artwork colors and proportions. See `docs/development/app-branding.md`.
+- App branding belongs to `services/appbranding`, independently of theme manifests and content brand kits. Organization defaults and explicit workspace overrides share the query catalogue across web and native. Keep public entry screens and installed app identity SocialFlow.ai, scope runtime branding to the current actor and Workspace, and preserve uploaded artwork colors and proportions. See `docs/development/app-branding.md`.
 - Theme tests use the request-scoped application preview context and the existing theme runtime. Restore saved appearance on preview exit; persist the scheme only after assignment succeeds.
 - Theme chart tokens are categorical data colors. Keep `chart1` through `chart5` chromatic and pairwise distinct in every built-in scheme; reserve neutral gray for aggregated data outside the top series.
 - Dithered buttons share the binary Bayer mask and default 16% ink tint from `@openpost/dither`, including generated README SVGs. Native theme controls resolve a fixed ink and opacity around that default to satisfy contrast across authored palettes. Keep texture contrast between 1.18:1 and 1.8:1 and text at least 4.5:1 on both colors; hover and press change density only.

@@ -13,7 +13,7 @@ LinkedIn uses OAuth 2.0 and has more approval friction than most other providers
 
 ## Personal profiles and Organization Pages
 
-OpenPost always offers the member profile returned by LinkedIn OpenID Connect. Organization Pages are an explicit operator opt-in because LinkedIn gates their permissions behind approved products:
+SocialFlow.ai always offers the member profile returned by LinkedIn OpenID Connect. Organization Pages are an explicit operator opt-in because LinkedIn gates their permissions behind approved products:
 
 ```sh
 OPENPOST_DISABLE_LINKEDIN_THREAD_REPLIES=false
@@ -22,21 +22,21 @@ OPENPOST_LINKEDIN_ORGANIZATIONS_ENABLED=true
 
 If your LinkedIn app cannot obtain the permissions required for comment-style replies, set `OPENPOST_DISABLE_LINKEDIN_THREAD_REPLIES=true`. The legacy `LINKEDIN_DISABLE_THREAD_REPLIES` alias remains supported.
 
-With organizations enabled, the app must be approved for `rw_organization_admin`, `w_organization_social`, and `r_organization_social`. OpenPost lists only Pages for which the member has an approved `ADMINISTRATOR` role. The callback lets the user select their personal profile and several Pages. Each selection becomes a separate OpenPost account, while the shared OAuth token remains encrypted at rest.
+With organizations enabled, the app must be approved for `rw_organization_admin`, `w_organization_social`, and `r_organization_social`. SocialFlow.ai lists only Pages for which the member has an approved `ADMINISTRATOR` role. The callback lets the user select their personal profile and several Pages. Each selection becomes a separate SocialFlow.ai account, while the shared OAuth token remains encrypted at rest.
 
-Leave `OPENPOST_LINKEDIN_ORGANIZATIONS_ENABLED=false` when the app lacks those products. Personal publishing remains available. If organization discovery fails, OpenPost keeps the personal choice instead of failing the whole connection.
+Leave `OPENPOST_LINKEDIN_ORGANIZATIONS_ENABLED=false` when the app lacks those products. Personal publishing remains available. If organization discovery fails, SocialFlow.ai keeps the personal choice instead of failing the whole connection.
 
-OpenPost defaults `LINKEDIN_API_VERSION` to the previous calendar month to avoid requesting a version LinkedIn has not activated yet. Set it only when your LinkedIn application requires an explicit supported version.
+SocialFlow.ai defaults `LINKEDIN_API_VERSION` to the previous calendar month to avoid requesting a version LinkedIn has not activated yet. Set it only when your LinkedIn application requires an explicit supported version.
 
 ## Threading caveat
 
 LinkedIn thread child posts are implemented as comments on the first post rather than native threaded posts.
 
-Comments and replies is an optional feature per connected LinkedIn account. It starts off for a new account. Enable it after connection or in Account details. OpenPost can list comments, send replies, and delete comments where LinkedIn grants access when enabled. LinkedIn does not support Direct messages in OpenPost, and Grow is not available for LinkedIn. Disabling Comments and replies stops future LinkedIn comment collection and reply actions without deleting stored replies or revoking authorization. Availability depends on provider support, required scopes, and plan access as distinct facts.
+Comments and replies is an optional feature per connected LinkedIn account. It starts off for a new account. Enable it after connection or in Account details. SocialFlow.ai can list comments, send replies, and delete comments where LinkedIn grants access when enabled. LinkedIn does not support Direct messages in SocialFlow.ai, and Grow is not available for LinkedIn. Disabling Comments and replies stops future LinkedIn comment collection and reply actions without deleting stored replies or revoking authorization. Availability depends on provider support, required scopes, and plan access as distinct facts.
 
 ## Media caveat
 
-OpenPost uses LinkedIn's Images API for images and Videos API for videos. Video upload initializes with `fileSizeBytes`, uploads all returned byte ranges, and finalizes the upload before creating the post.
+SocialFlow.ai uses LinkedIn's Images API for images and Videos API for videos. Video upload initializes with `fileSizeBytes`, uploads all returned byte ranges, and finalizes the upload before creating the post.
 
 ## Analytics
 
@@ -45,7 +45,7 @@ Analytics is an optional feature per connected LinkedIn account. It starts off f
 - For personal profiles, set `OPENPOST_LINKEDIN_MEMBER_ANALYTICS_ENABLED=true`. It defaults to false and works independently of Organization support.
 - For Organization Pages, set `OPENPOST_LINKEDIN_ORGANIZATIONS_ENABLED=true`. Member analytics can remain disabled.
 
-Restart OpenPost after changing these settings. Reconnect an account if its authorization lacks the required scopes. With approved access and Analytics enabled:
+Restart SocialFlow.ai after changing these settings. Reconnect an account if its authorization lacks the required scopes. With approved access and Analytics enabled:
 
 - personal profiles can return followers plus post impressions, reach, reactions, comments, reposts, saves, and link clicks;
 - Organization Pages can return followers plus the post numbers that LinkedIn provides.

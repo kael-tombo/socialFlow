@@ -1,6 +1,6 @@
 # Database
 
-OpenPost uses SQLite by default when you run it yourself. Hosted installs can use Postgres by changing the database driver.
+SocialFlow.ai uses SQLite by default when you run it yourself. Hosted installs can use Postgres by changing the database driver.
 
 ## Default path
 
@@ -40,13 +40,13 @@ OPENPOST_DATABASE_URL=postgres://openpost:secret@db.internal:5432/openpost?sslmo
 Postgres connection pools use explicit per-process limits. The combined
 single-process role allows 20 open connections, web allows 16, worker allows 8,
 and migration allows 2. Count these limits across every replica when sizing the
-Postgres service. OpenPost logs the effective budget at startup. Every Postgres
+Postgres service. SocialFlow.ai logs the effective budget at startup. Every Postgres
 process also reports new connection waits or a transition into pool saturation
 through standard output.
 
 ## Cloud mode
 
-When `OPENPOST_EDITION=cloud`, OpenPost refuses to start unless:
+When `OPENPOST_EDITION=cloud`, SocialFlow.ai refuses to start unless:
 
 - `OPENPOST_DATABASE_DRIVER=postgres`
 - `OPENPOST_DATABASE_URL` is set

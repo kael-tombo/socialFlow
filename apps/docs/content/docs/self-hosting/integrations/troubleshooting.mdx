@@ -10,19 +10,19 @@ Find the failed step below. If the account connects but a post fails, inspect it
 
 1. Check **Settings → Instance → Configuration → Provider apps** as the instance administrator. Bot apps and Pinterest use `OPENPOST_PROVIDER_APPS` in the deployment instead.
 2. Confirm the provider and client ID match your developer app. Keep all environment entries in one valid JSON array. Environment values take precedence over database entries, including older provider variables.
-3. After editing `.env`, run `docker compose up -d --force-recreate openpost`. A plain restart keeps the old environment. After saving app credentials in Settings, restart OpenPost.
+3. After editing `.env`, run `docker compose up -d --force-recreate openpost`. A plain restart keeps the old environment. After saving app credentials in Settings, restart SocialFlow.ai.
 
 See [saving provider credentials](/self-hosting/integrations#save-your-provider-credentials).
 
 ## The callback URL is rejected
 
-Compare the portal's redirect URI, OpenPost's `redirect_uri`, and `OPENPOST_APP_URL` with the exact path in the [provider guide](/self-hosting/integrations). Check scheme, host, port, path, and trailing slash. Use the callback path, not the app homepage.
+Compare the portal's redirect URI, SocialFlow.ai's `redirect_uri`, and `OPENPOST_APP_URL` with the exact path in the [provider guide](/self-hosting/integrations). Check scheme, host, port, path, and trailing slash. Use the callback path, not the app homepage.
 
-After a domain change, update both configurations, restart OpenPost, and start a new connection. Do not reuse an old sign-in tab or authorization code.
+After a domain change, update both configurations, restart SocialFlow.ai, and start a new connection. Do not reuse an old sign-in tab or authorization code.
 
 ## The connection expired or the window closed
 
-Start again from **Social accounts**. Keep the same OpenPost session and workspace open while finishing the provider's sign-in. Allow its popup if the browser blocks it.
+Start again from **Social accounts**. Keep the same SocialFlow.ai session and workspace open while finishing the provider's sign-in. Allow its popup if the browser blocks it.
 
 ## A Page or account is missing
 
@@ -41,11 +41,11 @@ Reconnect after correcting access. Include the intended destinations in the cons
 
 Check the developer app's mode, tester list, and approved permissions. Complete the provider's review before inviting other users. Reconnect accounts after approval of new scopes.
 
-Pinterest, Telegram, and Discord bot mode also need [OpenPost readiness records](/self-hosting/integrations#readiness-records-for-bot-apps-and-pinterest).
+Pinterest, Telegram, and Discord bot mode also need [SocialFlow.ai readiness records](/self-hosting/integrations#readiness-records-for-bot-apps-and-pinterest).
 
 ## Media cannot be downloaded
 
-1. Open a harmless uploaded image's exact URL from outside your network, without an OpenPost session.
+1. Open a harmless uploaded image's exact URL from outside your network, without an SocialFlow.ai session.
 2. Confirm it returns the file over HTTPS with the correct content type. A sign-in page, private hostname, expired link, or VPN-only address will fail.
 3. Compare its type and size with [media requirements](/guides/media-limits). For [TikTok](/self-hosting/integrations/tiktok), check verified domain or URL-prefix settings too.
 
@@ -53,10 +53,10 @@ Pinterest, Telegram, and Discord bot mode also need [OpenPost readiness records]
 
 Reconnect from **Social accounts** after changes to passwords, roles, app permissions, or tokens. Confirm the same destination appears.
 
-After rotating an app secret, update OpenPost, restart it, and check affected accounts. Replace a rotated Discord webhook connection. Follow Telegram's setup again after rotating a bot token.
+After rotating an app secret, update SocialFlow.ai, restart it, and check affected accounts. Replace a rotated Discord webhook connection. Follow Telegram's setup again after rotating a bot token.
 
 Before retrying a failed post, check whether the provider already published it.
 
 ## Report a setup problem
 
-[Open a GitHub issue](https://github.com/getopenpost/openpost/issues) with the provider, OpenPost version, failed step, visible error, and whether text and media behave differently. Replace your domain with `post.example.com` when sharing callback examples. Remove secrets, tokens, webhook URLs, cookies, and authorization codes from screenshots and logs.
+[Open a GitHub issue](https://github.com/getopenpost/openpost/issues) with the provider, SocialFlow.ai version, failed step, visible error, and whether text and media behave differently. Replace your domain with `post.example.com` when sharing callback examples. Remove secrets, tokens, webhook URLs, cookies, and authorization codes from screenshots and logs.

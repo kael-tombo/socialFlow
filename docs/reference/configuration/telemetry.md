@@ -1,10 +1,10 @@
 # Product telemetry and error tracking
 
-OpenPost can send privacy-limited product, service, website, documentation, and error events to PostHog. The Hosted service enables this integration. Self-hosted installations leave it disabled unless their operator explicitly configures an operator-owned PostHog project.
+SocialFlow.ai can send privacy-limited product, service, website, documentation, and error events to PostHog. The Hosted service enables this integration. Self-hosted installations leave it disabled unless their operator explicitly configures an operator-owned PostHog project.
 
-Separately, self-hosted instances send privacy-limited maintainer diagnostic reports to OpenPost so crashes get fixed everywhere. See [Maintainer diagnostics](diagnostics.md).
+Separately, self-hosted instances send privacy-limited maintainer diagnostic reports to SocialFlow.ai so crashes get fixed everywhere. See [Maintainer diagnostics](diagnostics.md).
 
-OpenPost uses three PostHog SDKs because they observe different facts:
+SocialFlow.ai uses three PostHog SDKs because they observe different facts:
 
 - `posthog-js` records browser page views, explicit product interactions, and sanitized browser failures.
 - `posthog-go` records authoritative server outcomes, background-job failures, and sanitized backend exceptions.
@@ -30,13 +30,13 @@ The browser must not duplicate authoritative server outcomes. Funnel events acce
 The shared browser client has four states:
 
 - **Undecided:** no optional browser telemetry is sent.
-- **Persistent:** after the visitor allows analytics cookies, PostHog keeps first-party identity and sessions across OpenPost sibling subdomains. The signed-in app identifies the browser only with the opaque OpenPost user ID. PostHog derives country and bot signals before discarding raw client IP.
+- **Persistent:** after the visitor allows analytics cookies, PostHog keeps first-party identity and sessions across SocialFlow.ai sibling subdomains. The signed-in app identifies the browser only with the opaque SocialFlow.ai user ID. PostHog derives country and bot signals before discarding raw client IP.
 - **Cookieless:** after the visitor continues without analytics cookies, PostHog receives limited personless events with daily server-hashed identity, memory-only state, no geography, and no reliable multi-day retention.
 - **Off:** no optional browser telemetry or browser correlation headers are sent. Do Not Track and Global Privacy Control force this state.
 
 The preference is separate from mandatory policy acknowledgement and can be changed from **Analytics choices** in each browser surface. The Hosted service shares that choice through a first-party `openpost_analytics` cookie scoped to `.openpo.st`. Self-hosted deployments use a host-only cookie. Changing from an initialized mode clears the current origin's PostHog state and reloads; another sibling origin clears its own local state when it next loads.
 
-Browser autocapture, session replay, surveys, console capture, network timing and bodies, heatmaps, dead-click capture, and automatic browser exception capture are disabled. OpenPost records manual page views and matching page leaves. It records CLS, FCP, INP, and LCP without element attribution. Persistent marketing and documentation events remain anonymous until a user signs into the app. Cookieless events always remain personless.
+Browser autocapture, session replay, surveys, console capture, network timing and bodies, heatmaps, dead-click capture, and automatic browser exception capture are disabled. SocialFlow.ai records manual page views and matching page leaves. It records CLS, FCP, INP, and LCP without element attribution. Persistent marketing and documentation events remain anonymous until a user signs into the app. Cookieless events always remain personless.
 
 Backend product and service telemetry is a separate observation boundary. It records authoritative outcomes with opaque identifiers and keeps Go SDK GeoIP disabled. Browser analytics choices do not suppress these backend events, and cookieless browser requests do not send correlation headers that could join them to service outcomes.
 
@@ -79,9 +79,9 @@ OPENPOST_POSTHOG_UI_HOST=https://eu.posthog.com
 OPENPOST_TELEMETRY_ENVIRONMENT=production
 ```
 
-`OPENPOST_POSTHOG_API_HOST` is the direct server-side ingestion endpoint. `OPENPOST_POSTHOG_BROWSER_HOST` may be a first-party reverse proxy. Cloud mode defaults to the Hosted service `https://cool.openpo.st` proxy; self-hosted deployments fall back to the direct API host unless the operator sets a proxy. A browser proxy must forward PostHog ingestion and static asset paths, support `GET` and `POST`, preserve the client connection metadata needed for the approved PostHog country and bot transformations, and avoid forwarding OpenPost `Cookie`, `Authorization`, and unnecessary `Referer` headers. Keep `OPENPOST_POSTHOG_UI_HOST` set to the real PostHog UI host.
+`OPENPOST_POSTHOG_API_HOST` is the direct server-side ingestion endpoint. `OPENPOST_POSTHOG_BROWSER_HOST` may be a first-party reverse proxy. Cloud mode defaults to the Hosted service `https://cool.openpo.st` proxy; self-hosted deployments fall back to the direct API host unless the operator sets a proxy. A browser proxy must forward PostHog ingestion and static asset paths, support `GET` and `POST`, preserve the client connection metadata needed for the approved PostHog country and bot transformations, and avoid forwarding SocialFlow.ai `Cookie`, `Authorization`, and unnecessary `Referer` headers. Keep `OPENPOST_POSTHOG_UI_HOST` set to the real PostHog UI host.
 
-The browser reads its safe runtime configuration from `GET /api/v1/telemetry/config`. This lets one static OpenPost bundle work in the Hosted service and in self-hosted installations without compiling the Hosted service token into every binary.
+The browser reads its safe runtime configuration from `GET /api/v1/telemetry/config`. This lets one static SocialFlow.ai bundle work in the Hosted service and in self-hosted installations without compiling the Hosted service token into every binary.
 
 ## Marketing and documentation
 
@@ -98,7 +98,7 @@ VITE_OPENPOST_REVISION=<git-revision>
 
 Use one PostHog production project across the app, backend, marketing site, and documentation so acquisition and product adoption can be analyzed together. Use separate projects for development and staging. Every event includes a stable `surface` and environment so queries can still separate them. Production public-site builds stop with an error when the project token, exact Hosted service proxy host, or EU UI host is missing.
 
-The browser rewrites PostHog-owned page lifecycle and Web Vitals URL properties to the route template already captured by OpenPost. It removes query strings, fragments, raw dynamic route values, referrer paths, page titles, resource entries, and element attribution before delivery. Every browser event carries `analytics_mode` so reports can separate persistent identities from daily cookieless hashes.
+The browser rewrites PostHog-owned page lifecycle and Web Vitals URL properties to the route template already captured by SocialFlow.ai. It removes query strings, fragments, raw dynamic route values, referrer paths, page titles, resource entries, and element attribution before delivery. Every browser event carries `analytics_mode` so reports can separate persistent identities from daily cookieless hashes.
 
 ## Source maps
 
@@ -110,7 +110,7 @@ For the Hosted application, keep the same private key in the GitHub repository's
 
 ## Shutdown and delivery
 
-OpenPost creates one backend PostHog client at startup and closes it during graceful shutdown so queued events can drain. Event delivery is best-effort and must never decide authorization, billing access, publication state, or job success. Keep business records in the OpenPost database; telemetry is an observation layer, not a source of truth.
+SocialFlow.ai creates one backend PostHog client at startup and closes it during graceful shutdown so queued events can drain. Event delivery is best-effort and must never decide authorization, billing access, publication state, or job success. Keep business records in the SocialFlow.ai database; telemetry is an observation layer, not a source of truth.
 
 ## Production reports and verification
 

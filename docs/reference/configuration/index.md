@@ -8,7 +8,7 @@ Use this page when configuring a self-hosted deployment or the Hosted service.
 
 Use the linked references for complete environment-variable and provider-application details.
 
-OpenPost settings fall into these groups:
+SocialFlow.ai settings fall into these groups:
 
 - Server: port, public frontend URL, extra CORS origins
 - Database: SQLite path by default, or Postgres URL for cloud deployments

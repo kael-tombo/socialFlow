@@ -4,7 +4,7 @@ description: Connect Instagram directly or through a linked Facebook Page.
 icon: instagram
 ---
 
-OpenPost connects Instagram **Business** and **Creator** accounts in two ways. **Continue with Instagram** signs in directly and does not need a Facebook Page. **Continue with Facebook** connects through a Facebook Page you manage. Neither method supports personal Instagram accounts.
+SocialFlow.ai connects Instagram **Business** and **Creator** accounts in two ways. **Continue with Instagram** signs in directly and does not need a Facebook Page. **Continue with Facebook** connects through a Facebook Page you manage. Neither method supports personal Instagram accounts.
 
 ## What you need
 
@@ -23,7 +23,7 @@ Use this method when you do not have a linked Facebook Page, or want to sign in 
    https://post.example.com/api/v1/accounts/instagram/callback
    ```
 
-3. Request the permissions OpenPost includes in consent:
+3. Request the permissions SocialFlow.ai includes in consent:
 
    ```text
    instagram_business_basic
@@ -36,7 +36,7 @@ Use this method when you do not have a linked Facebook Page, or want to sign in 
    Complete Meta's app review and business verification for your intended users. Development testing requires the Instagram account to accept its tester invitation. Optional features need their corresponding approved permissions.
 
 4. Copy the **Instagram App ID** and **Instagram App Secret** from the Instagram API setup screen. These are the Instagram credentials, not the Facebook Login credentials under the app's basic settings.
-5. In **Settings → Instance → Configuration → Provider apps**, choose **Instagram (direct login)**, enter those credentials and the redirect URI, then save and restart OpenPost.
+5. In **Settings → Instance → Configuration → Provider apps**, choose **Instagram (direct login)**, enter those credentials and the redirect URI, then save and restart SocialFlow.ai.
 
 Alternatively, append this entry to your existing `OPENPOST_PROVIDER_APPS` array:
 
@@ -50,7 +50,7 @@ Alternatively, append this entry to your existing `OPENPOST_PROVIDER_APPS` array
 }
 ```
 
-OpenPost refreshes direct-login access tokens before they expire. An expired or revoked token needs reconnection. Direct login does not offer Shopping tags or Facebook Page location search. See Meta's [Instagram Login documentation](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/), [Content Publishing guide](https://developers.facebook.com/documentation/instagram-platform/content-publishing), and [official API collection](https://www.postman.com/meta/instagram/folder/6raa77c/instagram-api-with-instagram-login).
+SocialFlow.ai refreshes direct-login access tokens before they expire. An expired or revoked token needs reconnection. Direct login does not offer Shopping tags or Facebook Page location search. See Meta's [Instagram Login documentation](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/), [Content Publishing guide](https://developers.facebook.com/documentation/instagram-platform/content-publishing), and [official API collection](https://www.postman.com/meta/instagram/folder/6raa77c/instagram-api-with-instagram-login).
 
 ## Set up Facebook Login
 
@@ -61,7 +61,7 @@ OpenPost refreshes direct-login access tokens before they expire. An expired or 
    https://post.example.com/api/v1/accounts/instagram/callback
    ```
 
-3. Request the permissions OpenPost includes in consent:
+3. Request the permissions SocialFlow.ai includes in consent:
 
    ```text
    business_management
@@ -82,7 +82,7 @@ OpenPost refreshes direct-login access tokens before they expire. An expired or 
 
 Meta's [Instagram API documentation](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/) describes the Page-linked account model and permissions. Its [Content Publishing guide](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-facebook-login/content-publishing/) describes media requirements.
 
-### Save the Facebook Login app in OpenPost
+### Save the Facebook Login app in SocialFlow.ai
 
 [Save these credentials](/self-hosting/integrations#save-your-provider-credentials) with your own domain and app values:
 
@@ -101,13 +101,13 @@ Meta's [Instagram API documentation](https://developers.facebook.com/docs/instag
 
 1. In **Settings → Workspace → Social accounts**, select **Instagram** and choose **Continue with Instagram** or **Continue with Facebook**. A method that the administrator has not configured is disabled. Both methods can be configured on the same server.
 2. For direct login, authorize the Instagram professional account. For Facebook Login, sign in with the person who manages the linked Page, grant Page access, and select the Instagram account returned by Meta.
-3. Publish one image with a short caption. Confirm the result in OpenPost and on Instagram. Test Reels, carousels, and Stories separately if you need them. Instagram requires media; OpenPost can turn text-only drafts into image cards before publishing. Optional Comments and replies, Direct messages, and Analytics start disabled per account.
+3. Publish one image with a short caption. Confirm the result in SocialFlow.ai and on Instagram. Test Reels, carousels, and Stories separately if you need them. Instagram requires media; SocialFlow.ai can turn text-only drafts into image cards before publishing. Optional Comments and replies, Direct messages, and Analytics start disabled per account.
 
 ## Troubleshoot
 
 | Problem                                       | Check                                                                                                                                                                                                            |
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Connection method is disabled                 | Configure that method's provider app and restart OpenPost. Direct login uses `connection_mode: "instagram_login"`; Facebook Login omits it or uses `"oauth"`. Keep both entries to offer both methods.           |
+| Connection method is disabled                 | Configure that method's provider app and restart SocialFlow.ai. Direct login uses `connection_mode: "instagram_login"`; Facebook Login omits it or uses `"oauth"`. Keep both entries to offer both methods.           |
 | No Instagram account appears through Facebook | Verify it is Business or Creator, linked to a Page the signed-in person can manage, and that the Page and Instagram permissions were granted. Without a linked Page, choose **Continue with Instagram** instead. |
 | Media creation fails                          | Fetch a specific uploaded file URL under `OPENPOST_MEDIA_URL` from outside your network. It must be public HTTPS and return the correct file and media type.                                                     |
 | Permission or redirect error                  | Check app review, the scopes granted in consent, and the exact redirect URI. Reconnect after changing permissions.                                                                                               |

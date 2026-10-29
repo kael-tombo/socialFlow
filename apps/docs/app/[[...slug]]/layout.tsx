@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           title: (
             <span className="docs-brand">
               <BrandMark size={24} />
-              OpenPost<span className="docs-brand-label">Docs</span>
+              SocialFlow.ai<span className="docs-brand-label">Docs</span>
             </span>
           ),
         }}

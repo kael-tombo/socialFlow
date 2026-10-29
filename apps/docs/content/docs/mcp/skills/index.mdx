@@ -1,10 +1,10 @@
 ---
-title: Install and use the OpenPost skill
-description: Give a coding assistant instructions for the OpenPost CLI.
+title: Install and use the SocialFlow.ai skill
+description: Give a coding assistant instructions for the SocialFlow.ai CLI.
 icon: PackageCheck
 ---
 
-The `openpost-cli` skill gives a terminal-capable assistant instructions for operating OpenPost. It does not install the CLI, provide a connection, or store credentials. Use it when your assistant supports Agent Skills. A working [MCP connection](/mcp/mcp-guide) does not need this skill.
+The `openpost-cli` skill gives a terminal-capable assistant instructions for operating SocialFlow.ai. It does not install the CLI, provide a connection, or store credentials. Use it when your assistant supports Agent Skills. A working [MCP connection](/mcp/mcp-guide) does not need this skill.
 
 ## Install the CLI
 
@@ -38,7 +38,7 @@ Installation controls differ by assistant. Follow the assistant's Agent Skills d
 
 ## Check the setup
 
-Start a new assistant session so it can discover the skill. Ask it to use `openpost-cli` to inspect the current OpenPost context without making changes.
+Start a new assistant session so it can discover the skill. Ask it to use `openpost-cli` to inspect the current SocialFlow.ai context without making changes.
 
 The assistant should run commands such as:
 
@@ -78,7 +78,7 @@ It should default to an unpublished draft when you did not ask to schedule or pu
 
 After a change, the assistant should read the saved object and current server state. For Post work, that includes the Post, lifecycle events, related job, and each destination Variant.
 
-The skill does not make the assistant infallible. Read the proposed command before a destructive or public action, and inspect the result in OpenPost.
+The skill does not make the assistant infallible. Read the proposed command before a destructive or public action, and inspect the result in SocialFlow.ai.
 
 ## Try a task
 

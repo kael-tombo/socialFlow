@@ -1,6 +1,6 @@
 # Docker Compose
 
-Docker Compose is the recommended installation path for long-running OpenPost deployments.
+Docker Compose is the recommended installation path for long-running SocialFlow.ai deployments.
 
 ## Prerequisites
 
@@ -94,7 +94,7 @@ Optional hardening after setup:
 
 - `OPENPOST_DISABLE_REGISTRATIONS=true` to block new self-service signups after the first admin account has been created
 
-## Start OpenPost
+## Start SocialFlow.ai
 
 ```bash
 docker compose up -d
@@ -148,7 +148,7 @@ docker compose logs -f openpost
 
 ## Production warnings
 
-- Put OpenPost behind HTTPS before enabling OAuth in production.
+- Put SocialFlow.ai behind HTTPS before enabling OAuth in production.
 - Set `OPENPOST_APP_URL`, `OPENPOST_PUBLIC_URL`, and `OPENPOST_MEDIA_URL` to public URLs.
 - Back up both the SQLite database and media directory.
 

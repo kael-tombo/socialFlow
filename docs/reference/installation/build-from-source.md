@@ -1,6 +1,6 @@
 # Build From Source
 
-Use this path when you want to build OpenPost yourself.
+Use this path when you want to build SocialFlow.ai yourself.
 
 This path requires the repository's pinned Devenv toolchain and enough local resources to build the web and Go projects.
 
@@ -13,7 +13,7 @@ direnv allow
 devenv shell -- setup
 ```
 
-## Build OpenPost
+## Build SocialFlow.ai
 
 ```bash
 bun run build

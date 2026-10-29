@@ -1,10 +1,10 @@
 ---
 title: Install on umbrelOS
-description: Run OpenPost on umbrelOS through Portainer, check the local installation, and set up public access before connecting social accounts.
+description: Run SocialFlow.ai on umbrelOS through Portainer, check the local installation, and set up public access before connecting social accounts.
 icon: umbrelos
 ---
 
-Run OpenPost as a Portainer stack on umbrelOS. Umbrel recommends [Portainer for custom Docker containers](https://umbrel.com/support/apps/running-custom-docker-containers), and OpenPost supplies a [Compose file](https://github.com/getopenpost/openpost/blob/main/deploy/portainer/docker-compose.yml) with SQLite and local media storage. The image supports x86_64 and ARM64 devices.
+Run SocialFlow.ai as a Portainer stack on umbrelOS. Umbrel recommends [Portainer for custom Docker containers](https://umbrel.com/support/apps/running-custom-docker-containers), and SocialFlow.ai supplies a [Compose file](https://github.com/getopenpost/openpost/blob/main/deploy/portainer/docker-compose.yml) with SQLite and local media storage. The image supports x86_64 and ARM64 devices.
 
 This installation is managed in Portainer and does not appear on the Umbrel home screen.
 
@@ -21,7 +21,7 @@ This installation is managed in Portainer and does not appear on the Umbrel home
 2. Open Portainer and sign in with the credentials shown after installation. Change the password when prompted.
 3. Open its Docker environment, then select **Stacks → Add stack** and name the stack `openpost`.
 
-## Deploy OpenPost
+## Deploy SocialFlow.ai
 
 1. Download [`deploy/portainer/docker-compose.yml`](https://github.com/getopenpost/openpost/blob/main/deploy/portainer/docker-compose.yml) and paste its contents into Portainer's **Web editor**.
 2. Keep the `openpost_data:/data` named volume and `restart: unless-stopped`. Umbrel requires named volumes for persistent custom-container data; bind-mounted data can be lost when Portainer restarts or updates.
@@ -51,11 +51,11 @@ Check readiness from your computer:
 curl -fsS http://umbrel.local:8080/api/v1/ready
 ```
 
-Expect `"status":"ready"` and `"database":"ok"`. If the check fails, inspect the OpenPost container's logs in Portainer and confirm that the port is available. SQLite and media are stored in the stack's `openpost_data` named volume.
+Expect `"status":"ready"` and `"database":"ok"`. If the check fails, inspect the SocialFlow.ai container's logs in Portainer and confirm that the port is available. SQLite and media are stored in the stack's `openpost_data` named volume.
 
 ## Before connecting social accounts
 
-Set up a [public HTTPS reverse proxy or tunnel](/self-hosting/reverse-proxy) that forwards requests to OpenPost's published port on your Umbrel. Forward the whole app, including `/api/v1/` and `/media/`. Provider callbacks and media URLs must be reachable from outside your network.
+Set up a [public HTTPS reverse proxy or tunnel](/self-hosting/reverse-proxy) that forwards requests to SocialFlow.ai's published port on your Umbrel. Forward the whole app, including `/api/v1/` and `/media/`. Provider callbacks and media URLs must be reachable from outside your network.
 
 In the existing Portainer stack, replace the three local URL values with your public address:
 
@@ -75,7 +75,7 @@ After it reports ready, [configure social integrations](/self-hosting/integratio
 
 ## Upgrade and back up
 
-Stop OpenPost before backing up its named volume so the SQLite copy is consistent. Back up the volume, Compose definition, environment values, and image tag together, then start it again. Keep the backup private and off the device. Follow the [maintenance guide](/self-hosting/maintenance) for restore checks.
+Stop SocialFlow.ai before backing up its named volume so the SQLite copy is consistent. Back up the volume, Compose definition, environment values, and image tag together, then start it again. Keep the backup private and off the device. Follow the [maintenance guide](/self-hosting/maintenance) for restore checks.
 
 Before upgrading, make a backup, change the image tag in the existing stack, and redeploy without removing its volume. Check readiness, sign in, and open a saved post with media. Database migrations can require restoring a matching backup when rolling back.
 

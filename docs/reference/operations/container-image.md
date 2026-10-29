@@ -1,6 +1,6 @@
 # Container image
 
-OpenPost publishes one multi-architecture container for **`linux/amd64`** and **`linux/arm64`**. Docker selects the native image for the host architecture.
+SocialFlow.ai publishes one multi-architecture container for **`linux/amd64`** and **`linux/arm64`**. Docker selects the native image for the host architecture.
 
 ## Build and security checks
 
@@ -8,7 +8,7 @@ The [Dockerfile](https://github.com/getopenpost/openpost/blob/main/deploy/docker
 
 Before publishing an image, CI runs these checks on native AMD64 and ARM64 Linux runners:
 
-- starts OpenPost with a fresh persistent database and checks health and readiness before and after a restart;
+- starts SocialFlow.ai with a fresh persistent database and checks health and readiness before and after a restart;
 - exercises SQLite, FFmpeg, and FFprobe inside the image;
 - checks the OCI version and revision labels against the running server;
 - generates an SPDX software bill of materials and a full vulnerability report for each architecture;

@@ -1,14 +1,14 @@
 ---
-description: Add operator-run text publishing destinations to a self-hosted OpenPost instance.
+description: Add operator-run text publishing destinations to a self-hosted SocialFlow.ai instance.
 ---
 
 # Custom connectors
 
-For self-hosted operators installing publishing destinations that OpenPost does not ship with.
+For self-hosted operators installing publishing destinations that SocialFlow.ai does not ship with.
 
-Custom connectors add publishing destinations that OpenPost does not ship with. They work only on self-hosted instances.
+Custom connectors add publishing destinations that SocialFlow.ai does not ship with. They work only on self-hosted instances.
 
-A connector is a service that you install and operate beside OpenPost. OpenPost calls it through Connector Protocol 1.0 over authenticated HTTP/JSON or a Unix socket. OpenPost never loads connector code into its process.
+A connector is a service that you install and operate beside SocialFlow.ai. SocialFlow.ai calls it through Connector Protocol 1.0 over authenticated HTTP/JSON or a Unix socket. SocialFlow.ai never loads connector code into its process.
 
 Protocol 1.0 supports:
 
@@ -23,7 +23,7 @@ The [Directus walkthrough](#publish-to-directus) below uses the connector includ
 
 ## How the parts divide the work
 
-OpenPost owns the Publication, Rendition, schedule, validation, job, access check, write fence, retry policy, and visible history. The connector owns its destination credentials, destination API calls, and duplicate-write checks.
+SocialFlow.ai owns the Publication, Rendition, schedule, validation, job, access check, write fence, retry policy, and visible history. The connector owns its destination credentials, destination API calls, and duplicate-write checks.
 
 The browser never receives the connector URL, bearer token, or destination credentials. Workspace members can connect only the installations that the instance operator has registered for their Workspace.
 
@@ -31,13 +31,13 @@ The browser never receives the connector URL, bearer token, or destination crede
 
 1. Run a service that implements Connector Protocol 1.0.
 2. Create a bearer token and store it in a secret file that both services can read.
-3. Create the connector registry on the OpenPost host.
+3. Create the connector registry on the SocialFlow.ai host.
 4. Set `OPENPOST_CONNECTORS_FILE` to the registry's absolute path.
-5. Restart OpenPost.
+5. Restart SocialFlow.ai.
 6. Check the startup log. Fix or remove any quarantined connector.
 7. Open **Social accounts** in a Workspace and connect the custom destination.
 
-OpenPost reads the registry only at startup. Restart it after changing an installation, endpoint, allowlist, or token.
+SocialFlow.ai reads the registry only at startup. Restart it after changing an installation, endpoint, allowlist, or token.
 
 ## Connector registry
 
@@ -70,7 +70,7 @@ The registry uses strict JSON. Unknown fields, duplicate installation IDs, relat
 | --------------------- | ------------------------------------------------------------------------------------------ |
 | `version`             | Registry format. The current value is `1`.                                                 |
 | `id`                  | One configured connector installation. Use a stable, unique value.                         |
-| `required`            | If `true`, an invalid or unavailable connector blocks OpenPost startup.                    |
+| `required`            | If `true`, an invalid or unavailable connector blocks SocialFlow.ai startup.                    |
 | `workspace_allowlist` | Exact Workspace IDs allowed to use the installation. An empty list allows every Workspace. |
 | `endpoint`            | One operator-controlled network policy. Workspace and post data cannot change it.          |
 | `bearer_token_file`   | Absolute path to one token. The registry cannot contain an inline token.                   |
@@ -85,13 +85,13 @@ Use the narrowest mode that fits the deployment.
 - `private_allowlist`: for a private host or container network. Set `base_url`, exact `allowed_hosts`, `allowed_cidrs`, and `allowed_ports`.
 - `unix_socket`: for two services on one host. Set an absolute `socket_path`.
 
-For `public_https`, OpenPost rejects private, loopback, link-local, and reserved addresses. It checks DNS again when it connects. For `private_allowlist`, every resolved address and port must match the registry. OpenPost also blocks redirects, ignores proxy environment variables, limits responses to 1 MiB, and applies request timeouts.
+For `public_https`, SocialFlow.ai rejects private, loopback, link-local, and reserved addresses. It checks DNS again when it connects. For `private_allowlist`, every resolved address and port must match the registry. SocialFlow.ai also blocks redirects, ignores proxy environment variables, limits responses to 1 MiB, and applies request timeouts.
 
 Do not expose a private connector port to the public internet. Use HTTPS for any connector traffic that leaves a trusted host or private network.
 
 ## Connect it to a Workspace
 
-After OpenPost accepts the connector at startup:
+After SocialFlow.ai accepts the connector at startup:
 
 1. Open the target Workspace.
 2. Go to **Social accounts**.
@@ -102,15 +102,15 @@ Protocol 1.0 connections complete at once. The connector may return one or more 
 
 ## Change or remove an installation
 
-Keep the installation ID and provider ID stable across updates. Change `capability_revision` when a connector changes its output rules, settings, or publish behavior. OpenPost then blocks old account bindings until someone reconnects them.
+Keep the installation ID and provider ID stable across updates. Change `capability_revision` when a connector changes its output rules, settings, or publish behavior. SocialFlow.ai then blocks old account bindings until someone reconnects them.
 
 Removing or disabling an installation does not delete its connected accounts, Publications, Renditions, or delivery history. It stops new connections and publishes. Add the same installation back to restore access.
 
-Set `required` to `true` only when the instance must not start without that connector. A failed optional connector enters quarantine while the rest of OpenPost starts.
+Set `required` to `true` only when the instance must not start without that connector. A failed optional connector enters quarantine while the rest of SocialFlow.ai starts.
 
 ## Publish to Directus
 
-The Directus reference connector creates one collection item for each text Rendition. OpenPost talks to the connector, and the connector talks to Directus. OpenPost never receives the Directus token.
+The Directus reference connector creates one collection item for each text Rendition. SocialFlow.ai talks to the connector, and the connector talks to Directus. SocialFlow.ai never receives the Directus token.
 
 The source lives in [`docs/examples/connectors/directus`](https://github.com/getopenpost/openpost/tree/main/docs/examples/connectors/directus).
 
@@ -124,7 +124,7 @@ Create a Directus collection, such as `posts`, with these fields:
 - `status`: a string that allows `draft` and `published`
 - `openpost_operation_id`: a required, unique string that users cannot edit
 
-The unique operation field prevents duplicate items. Before each create request, the connector looks for an item with the same OpenPost operation ID. If Directus reports a conflict, the connector checks again and returns the existing item.
+The unique operation field prevents duplicate items. Before each create request, the connector looks for an item with the same SocialFlow.ai operation ID. If Directus reports a conflict, the connector checks again and returns the existing item.
 
 Create a Directus access token that can read items by `openpost_operation_id` and create items in this collection. Do not give it access to unrelated collections or administrator settings.
 
@@ -132,7 +132,7 @@ Create a Directus access token that can read items by `openpost_operation_id` an
 
 Create two different tokens:
 
-- a connector bearer token used between OpenPost and the connector
+- a connector bearer token used between SocialFlow.ai and the connector
 - the Directus access token used between the connector and Directus
 
 Store each token as one line in a secret file. Both services must read the same connector bearer token. Only the connector should read the Directus token.
@@ -152,7 +152,7 @@ export DIRECTUS_COLLECTION=posts
 go run .
 ```
 
-The service listens on `127.0.0.1:8787` by default. In a container, set `CONNECTOR_LISTEN_ADDRESS=:8787` and keep the port on a private network shared with OpenPost.
+The service listens on `127.0.0.1:8787` by default. In a container, set `CONNECTOR_LISTEN_ADDRESS=:8787` and keep the port on a private network shared with SocialFlow.ai.
 
 Build the included image with:
 
@@ -166,7 +166,7 @@ Use HTTPS for Directus in production. `DIRECTUS_ALLOW_HTTP=true` permits HTTP on
 
 Use the registry example above or copy [`openpost-connectors.example.json`](https://github.com/getopenpost/openpost/blob/main/docs/examples/connectors/directus/openpost-connectors.example.json). The sample expects a container named `directus-connector` at `http://directus-connector:8787`.
 
-Inspect the container network used by OpenPost and the connector. Add only that range to `allowed_cidrs`; do not copy the sample range without checking it. Set `OPENPOST_CONNECTORS_FILE`, restart OpenPost, then connect the **Directus** card in **Social accounts**.
+Inspect the container network used by SocialFlow.ai and the connector. Add only that range to `allowed_cidrs`; do not copy the sample range without checking it. Set `OPENPOST_CONNECTORS_FILE`, restart SocialFlow.ai, then connect the **Directus** card in **Social accounts**.
 
 Publish a text post and confirm that Directus contains one item with a non-empty `openpost_operation_id`. In a test instance, repeat a publish request with that operation ID and confirm that Directus still contains one item.
 
@@ -180,7 +180,7 @@ Use these variables if your collection uses other field names:
 - `DIRECTUS_STATUS_FIELD`, default `status`
 - `DIRECTUS_OPERATION_FIELD`, default `openpost_operation_id`
 
-Set `DIRECTUS_ITEM_URL_TEMPLATE`, such as `https://cms.example.com/admin/content/posts/{id}`, to add a link to the Directus item in OpenPost.
+Set `DIRECTUS_ITEM_URL_TEMPLATE`, such as `https://cms.example.com/admin/content/posts/{id}`, to add a link to the Directus item in SocialFlow.ai.
 
 If the connector enters quarantine, check DNS, the private network allowlist, the connector token, Directus health, and the Directus token. If a retry creates a second item, stop publishing and confirm that `DIRECTUS_OPERATION_FIELD` points to a unique field.
 

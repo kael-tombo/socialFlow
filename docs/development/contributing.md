@@ -1,6 +1,6 @@
 # Contributing
 
-This page is for contributors preparing a change to OpenPost.
+This page is for contributors preparing a change to SocialFlow.ai.
 
 Start with the [development setup](setup.md), then run the smallest relevant root gates while working and `bun run verify` before a pull request.
 

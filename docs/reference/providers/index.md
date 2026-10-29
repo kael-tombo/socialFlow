@@ -33,22 +33,22 @@ Working code and app keys do not prove that a real account can publish each post
 
 <!-- provider-certification:begin -->
 
-No posting option has passed our final live check on OpenPost Hosted yet.
+No posting option has passed our final live check on SocialFlow.ai Hosted yet.
 
-A social app can appear in OpenPost before it is ready for real accounts.
+A social app can appear in SocialFlow.ai before it is ready for real accounts.
 <!-- provider-certification:end -->
 
 Social app keys can come from older environment variables, `OPENPOST_PROVIDER_APPS` JSON, or encrypted rows managed in **Settings → Instance → Configuration → Provider apps**. Environment-defined apps are read-only in the interface and win over matching database rows. Matching database fallbacks remain visible and can be deleted while the environment app stays active.
 
 Mastodon often needs this setup because each server can need its own app. People can still connect a public Mastodon server from Accounts when that server allows automatic app setup. For other OAuth networks, use these settings when you want to supply your own app keys.
 
-OpenPost loads the effective registry at startup. Restart OpenPost after you change a provider app.
+SocialFlow.ai loads the effective registry at startup. Restart SocialFlow.ai after you change a provider app.
 
 If connection or publishing fails, use [Provider Troubleshooting](troubleshooting.md) to collect diagnostics and map common OAuth, permission, media URL, and publishing errors to the right fix.
 
 ## Support matrix
 
-This matrix reflects implemented OpenPost code paths, not the full theoretical capability of each provider API and not current Hosted service certification.
+This matrix reflects implemented SocialFlow.ai code paths, not the full theoretical capability of each provider API and not current Hosted service certification.
 
 | Platform        | Text posts | Image posts | Threads / replies           | Scheduled posts | Video posts                                                     | Account versions | Analytics                                            |
 | --------------- | ---------- | ----------- | --------------------------- | --------------- | --------------------------------------------------------------- | ---------------- | ---------------------------------------------------- |
@@ -73,7 +73,7 @@ Grow discovery and follow are available only for Bluesky and Mastodon. Inbox Dir
 
 ## Implementation limits
 
-Use this table when checking implemented formats and safe provider limits. An implementation is not a Hosted service certification claim. App review, the right account type, public media links, runtime controls, and current local and live tests remain separate gates. Limits were reviewed against official provider documentation on 2026-08-03. Connected-account or instance limits override these safe defaults where OpenPost can resolve them.
+Use this table when checking implemented formats and safe provider limits. An implementation is not a Hosted service certification claim. App review, the right account type, public media links, runtime controls, and current local and live tests remain separate gates. Limits were reviewed against official provider documentation on 2026-08-03. Connected-account or instance limits override these safe defaults where SocialFlow.ai can resolve them.
 
 | Provider         | Text implementation                                   | Image implementation                              | Video implementation                                                                                                 | Threading implementation                                 | Scheduling  | Variants    |
 | ---------------- | ----------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ----------- | ----------- |
@@ -89,39 +89,39 @@ Use this table when checking implemented formats and safe provider limits. An im
 | Pinterest        | Certification-only code path                          | One to five images                                | One resumable MP4 video; Standard access and current live certification are required                                 | No threading path                                        | Gated       | Gated       |
 | Google Business  | Certification-only code path; 1500 characters         | One JPEG/PNG photo by public URL                  | No video path; photo only                                                                                            | No threading path                                        | Gated       | Gated       |
 | Telegram bot     | Certification-only code path                          | Photos, documents, and media groups               | Video and media groups through the instance bot; every operation remains publicly gated                              | Visible ordered caption-overflow follow-up               | Gated       | Gated       |
-| Discord Webhooks | Implemented                                           | Up to 10 file attachments                         | MP4, MOV, or WebM; OpenPost uses Discord's safe 10 MiB default because the actual limit can vary                     | Reply references between segments                        | Implemented | Implemented |
+| Discord Webhooks | Implemented                                           | Up to 10 file attachments                         | MP4, MOV, or WebM; SocialFlow.ai uses Discord's safe 10 MiB default because the actual limit can vary                     | Reply references between segments                        | Implemented | Implemented |
 | dev/null         | 3-4,000 characters                                    | Up to 3 JPEG/PNG/WebP images, 10 MB each          | No video path                                                                                                        | Replies                                                  | Implemented | Implemented |
 
 ## Known limitations
 
 - **Video support is uneven:** implementation exists across multiple providers, but support is still provider-dependent and some paths need end-to-end verification with real accounts.
 - **TikTok and YouTube have provider gates:** TikTok Direct Post requires app audit approval, while unaudited Google projects can force YouTube uploads to private. Verify each production account and format before relying on either integration.
-- **OpenPost hides actions an account cannot use:** the app explains when an account, permission, review, partner, or platform search requirement blocks a control.
+- **SocialFlow.ai hides actions an account cannot use:** the app explains when an account, permission, review, partner, or platform search requirement blocks a control.
 - **X limits are resolved per account:** Basic, Premium, and Premium+ accounts use subscribed text and video limits when X verifies the tier. Unknown or stale tiers use standard limits.
 - **Social APIs can change:** platforms may change their APIs, limits, or app review rules at any time.
 - **OAuth tokens require HTTPS:** callbacks need a valid domain with TLS for OAuth to work.
 
-A platform can offer a feature while OpenPost still marks its implementation missing or untested. "Implemented" means the code path exists in OpenPost. "Verified" means the implementation has been confirmed against a live provider account recently. Deployment details still matter. Threads, Facebook, Instagram, and TikTok direct-post flows depend on public media URLs, and LinkedIn depends heavily on granted app permissions.
+A platform can offer a feature while SocialFlow.ai still marks its implementation missing or untested. "Implemented" means the code path exists in SocialFlow.ai. "Verified" means the implementation has been confirmed against a live provider account recently. Deployment details still matter. Threads, Facebook, Instagram, and TikTok direct-post flows depend on public media URLs, and LinkedIn depends heavily on granted app permissions.
 
 ## Notes for each network
 
 - **X:** Requires an X developer app with OAuth 1.0a user auth enabled and matching callback URLs.
 - **Mastodon:** Setup is per instance. Custom public instances can be entered from Accounts; operator-pinned instances can use `MASTODON_SERVERS`, `OPENPOST_PROVIDER_APPS`, or the instance-admin provider app API.
 - **Bluesky:** Uses handle plus app password. No server-side OAuth app is required.
-- **LinkedIn:** Permissions and app review can block some posts or replies even when OpenPost supports them.
+- **LinkedIn:** Permissions and app review can block some posts or replies even when SocialFlow.ai supports them.
 - **Threads:** Media must be reachable at a public `OPENPOST_MEDIA_URL`, and Meta fetches those files server-side.
-- **Facebook:** Use provider key `facebook`. OpenPost connects a selected Page and supports text, one image or video, photo posts with 2–10 images, Stories, and Page comment replies. Media must use public HTTPS links.
-- **Instagram:** Use provider key `instagram`. OpenPost connects a selected Business or Creator account linked to a Facebook Page. It supports one image, carousels, Stories, Reels, and comment replies. Account access and live tests still apply.
-- **TikTok:** Use provider key `tiktok`. OpenPost supports direct and inbox video uploads plus photo posts through public HTTPS media links. App review and live tests still apply.
-- **YouTube:** Use provider key `youtube`. OpenPost connects a selected channel, uploads one video with privacy, title, description, thumbnail, and playlist settings, and supports comment replies and moderation. Test a live channel before you rely on it.
+- **Facebook:** Use provider key `facebook`. SocialFlow.ai connects a selected Page and supports text, one image or video, photo posts with 2–10 images, Stories, and Page comment replies. Media must use public HTTPS links.
+- **Instagram:** Use provider key `instagram`. SocialFlow.ai connects a selected Business or Creator account linked to a Facebook Page. It supports one image, carousels, Stories, Reels, and comment replies. Account access and live tests still apply.
+- **TikTok:** Use provider key `tiktok`. SocialFlow.ai supports direct and inbox video uploads plus photo posts through public HTTPS media links. App review and live tests still apply.
+- **YouTube:** Use provider key `youtube`. SocialFlow.ai connects a selected channel, uploads one video with privacy, title, description, thumbnail, and playlist settings, and supports comment replies and moderation. Test a live channel before you rely on it.
 - **Pinterest:** The adapter remains publicly unavailable until Standard access and current live certification exist. See the [Pinterest boundary](pinterest.md).
-- **Google Business:** Use provider key `googlebusiness`. OpenPost connects a selected location and supports STANDARD, EVENT, and OFFER local posts with durable reconciliation. The adapter remains publicly unavailable until Google API access and current live certification exist. See the [Google Business boundary](googlebusiness.md).
+- **Google Business:** Use provider key `googlebusiness`. SocialFlow.ai connects a selected location and supports STANDARD, EVENT, and OFFER local posts with durable reconciliation. The adapter remains publicly unavailable until Google API access and current live certification exist. See the [Google Business boundary](googlebusiness.md).
 - **Telegram:** Bot mode remains publicly unavailable until current live certification exists for each operation. See the [Telegram bot boundary](telegram.md).
-- **Discord:** Connect an incoming webhook URL or an instance-configured OAuth bot. OpenPost streams attachments and uses a safe 10 MiB file limit because Discord's actual limit can vary by server and account.
+- **Discord:** Connect an incoming webhook URL or an instance-configured OAuth bot. SocialFlow.ai streams attachments and uses a safe 10 MiB file limit because Discord's actual limit can vary by server and account.
 - **dev/null:** Connect with a username and a dedicated SSH private key whose public half is on your GitHub account. New accounts need approval before commits are public, and dev/null allows 10 commits a minute. See the [dev/null boundary](devnull.md).
 
 Social network API rules, access, request limits, and app review can change. Check that network's docs if a feature stops working.
 
 See [Analytics](https://openpo.st/docs/guides/quickstart) for collection timing, metric definitions, reconnect requirements, and provider-specific coverage. See [Accounts](https://openpo.st/docs/guides/quickstart), [Engagement, Inbox, and Notifications](https://openpo.st/docs/guides/quickstart), and [Grow](https://openpo.st/docs/guides/quickstart) for the per-account optional feature model.
 
-Native auto reposts are currently available for X, Mastodon, Bluesky, and LinkedIn. OpenPost reposts only within the source network; it never turns a repost into a copied post on another network. See [Auto Reposts](https://openpo.st/docs/guides/quickstart) for rule and account-access details.
+Native auto reposts are currently available for X, Mastodon, Bluesky, and LinkedIn. SocialFlow.ai reposts only within the source network; it never turns a repost into a copied post on another network. See [Auto Reposts](https://openpo.st/docs/guides/quickstart) for rule and account-access details.

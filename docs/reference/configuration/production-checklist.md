@@ -1,6 +1,6 @@
 # Production Checklist
 
-Use this page before putting a real OpenPost instance behind a public domain.
+Use this page before putting a real SocialFlow.ai instance behind a public domain.
 It is operator-facing: product usage lives in [User Docs](https://openpo.st/docs/guides/quickstart), while code
 changes live in [Developer Docs](../../development/index.md).
 
@@ -20,7 +20,7 @@ changes live in [Developer Docs](../../development/index.md).
 - [ ] Configure a reverse proxy with HTTPS before connecting OAuth providers.
 - [ ] Align reverse-proxy and CDN request-body limits with the largest video you accept, and disable request buffering for streamed uploads.
 - [ ] Decide whether to enable automatic image alt text. If enabled, store `OPENROUTER_API_KEY` through `OPENROUTER_API_KEY_FILE` and review OpenRouter and model provider privacy and retention terms.
-- [ ] Review the built-in meme catalog's source links and template-rights boundary. If AI meme suggestions are enabled, review the configured OpenRouter model and privacy terms; manual rendering stays inside OpenPost.
+- [ ] Review the built-in meme catalog's source links and template-rights boundary. If AI meme suggestions are enabled, review the configured OpenRouter model and privacy terms; manual rendering stays inside SocialFlow.ai.
 - [ ] Confirm `GET /api/v1/health` returns `{"status":"ok"}`.
 - [ ] Confirm `GET /api/v1/ready` returns `{"status":"ready","database":"ok"}`.
 - [ ] Use `/api/v1/health` for process liveness and `/api/v1/ready` for traffic admission, rollouts, and dependency-aware monitoring.
@@ -54,7 +54,7 @@ changes live in [Developer Docs](../../development/index.md).
 - [ ] Configure Paddle to send customer, subscription, and transaction lifecycle events to `/api/v1/billing/paddle/webhook`; send a signed test event and confirm it is stored once, reconciled through the billing job, and produces one Discord embed when billing notifications are enabled.
 - [ ] Set the minimum and maximum quantity to `1` for every Paddle plan price so buyers cannot add duplicate copies of a workspace subscription.
 - [ ] Before upgrading from Whop billing, migrate every active customer to Paddle and confirm the Paddle subscription is reconciled locally. Historical Whop rows do not grant entitlements after the upgrade.
-- [ ] Complete an embedded checkout smoke: plan and period selection, $0 trial start, return to OpenPost, local `trialing` status, and billing management URL.
+- [ ] Complete an embedded checkout smoke: plan and period selection, $0 trial start, return to SocialFlow.ai, local `trialing` status, and billing management URL.
 - [ ] Confirm a new hosted user can create the bootstrap workspace and is blocked from extra workspaces before checkout.
 - [ ] Confirm team invitations are blocked once active members plus pending invites reach the plan limit.
 - [ ] Configure one EU PostHog production project for the app, backend, marketing site, and documentation; use separate staging and development projects.
@@ -89,7 +89,7 @@ changes live in [Developer Docs](../../development/index.md).
 - [ ] Invite a second user, accept the link, and confirm both members appear in **Settings → Workspace → Members**.
 - [ ] Connect at least one social account.
 - [ ] Upload a small image and confirm it appears in the media library.
-- [ ] If automatic alt text is enabled, add an image without alt text to the text-and-thread composer, confirm OpenPost fills its shared alt text, and confirm a manual edit is not replaced.
+- [ ] If automatic alt text is enabled, add an image without alt text to the text-and-thread composer, confirm SocialFlow.ai fills its shared alt text, and confirm a manual edit is not replaced.
 - [ ] Create a draft and scheduled post from the web app.
 - [ ] Create a draft or scheduled post through the CLI.
 - [ ] Create a draft or scheduled post through MCP if assistant access is enabled.

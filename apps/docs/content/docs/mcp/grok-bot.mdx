@@ -1,25 +1,25 @@
 ---
-title: Create a Grok Bot for OpenPost
-description: Save an OpenPost Bot profile, API skill, and read-only review routine in Grok Bot.
+title: Create a Grok Bot for SocialFlow.ai
+description: Save an SocialFlow.ai Bot profile, API skill, and read-only review routine in Grok Bot.
 icon: grok
 ---
 
-Create a Grok Bot that reviews your publishing schedule and prepares drafts through OpenPost. The skill uses the HTTP API. Each person installing your shared template must configure their own credentials.
+Create a Grok Bot that reviews your publishing schedule and prepares drafts through SocialFlow.ai. The skill uses the HTTP API. Each person installing your shared template must configure their own credentials.
 
 ## Before you start
 
-Use an existing OpenPost account or a self-hosted instance. Hosted registration currently uses a waitlist. You also need the Grok Bot app and an [eligible account](https://docs.x.ai/grok-bot/get-started).
+Use an existing SocialFlow.ai account or a self-hosted instance. Hosted registration currently uses a waitlist. You also need the Grok Bot app and an [eligible account](https://docs.x.ai/grok-bot/get-started).
 
 Grok Bot is separate from [Grok web and Grok Build](/mcp/grok). This tutorial creates a reusable Bot rather than a web connector.
 
 ## Create the Bot and profile
 
-Choose **New > Create new Bot**, then open **Edit Profile**. Use the OpenPost mark as the avatar and copy these fields.
+Choose **New > Create new Bot**, then open **Edit Profile**. Use the SocialFlow.ai mark as the avatar and copy these fields.
 
 Name:
 
 ```text
-OpenPost
+SocialFlow.ai
 ```
 
 Label:
@@ -31,7 +31,7 @@ Prepare and review social posts
 Description:
 
 ```text
-Turn launches, updates, and ideas into draft posts through OpenPost. Review the schedule, destination readiness, and recorded results in one workspace. Draft, review, and track; schedule or publish only with explicit approval.
+Turn launches, updates, and ideas into draft posts through SocialFlow.ai. Review the schedule, destination readiness, and recorded results in one workspace. Draft, review, and track; schedule or publish only with explicit approval.
 ```
 
 ## Save the API skill
@@ -40,7 +40,7 @@ Paste this block into the Bot conversation and ask it to save the instructions a
 
 ```text
 Purpose
-Prepare and review social posts in OpenPost. Start with a read-only review; create drafts only when asked. Scheduling and publishing require explicit approval of the final text, destinations, media, and time.
+Prepare and review social posts in SocialFlow.ai. Start with a read-only review; create drafts only when asked. Scheduling and publishing require explicit approval of the final text, destinations, media, and time.
 
 Authentication
 Hosted API base: https://app.openpo.st/api/v1
@@ -74,17 +74,17 @@ Enter the token through a supported secure secret request or credential field. I
 Send this read-only check:
 
 ```text
-List my OpenPost workspaces using the configured secure credential. Do not create or change anything.
+List my SocialFlow.ai workspaces using the configured secure credential. Do not create or change anything.
 ```
 
 Choose a workspace from the returned list. Ask the Bot to review its schedule without changing anything, and check that it cites stored posts and their actual variant outcomes.
 
 ## Add an optional weekly review
 
-Choose a workspace and IANA timezone before enabling the routine. Name it **Weekly OpenPost review** and save these instructions:
+Choose a workspace and IANA timezone before enabling the routine. Name it **Weekly SocialFlow.ai review** and save these instructions:
 
 ```text
-Every Monday at 09:00 in the owner's chosen IANA timezone, review the chosen OpenPost workspace. Ask the owner for the workspace and timezone before enabling this routine. Read stored posts, jobs, provider readiness, and the last seven days of available analytics through the documented API. Summarize upcoming posts, failed deliveries, blocked accounts, and available results with links. Never create, change, schedule, publish, retry, or send external messages. If there is nothing to report, say that no relevant changes were found. Request approval for any suggested action and re-read current state before acting.
+Every Monday at 09:00 in the owner's chosen IANA timezone, review the chosen SocialFlow.ai workspace. Ask the owner for the workspace and timezone before enabling this routine. Read stored posts, jobs, provider readiness, and the last seven days of available analytics through the documented API. Summarize upcoming posts, failed deliveries, blocked accounts, and available results with links. Never create, change, schedule, publish, retry, or send external messages. If there is nothing to report, say that no relevant changes were found. Request approval for any suggested action and re-read current state before acting.
 ```
 
 The routine reads stored state. It does not publish, change posts, refresh providers, or retry deliveries. Approve any suggested action separately after reviewing the current post, destinations, media, and time.

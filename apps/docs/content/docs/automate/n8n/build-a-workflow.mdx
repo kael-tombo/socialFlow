@@ -12,7 +12,7 @@ Use a Schedule Trigger for a recurring workflow, a Webhook for event-driven inpu
 
 ## 2. Create a draft
 
-Add an OpenPost node and choose **Publication > Create**. Map the workspace, internal title, content profile, source text, and destination accounts from the incoming item.
+Add an SocialFlow.ai node and choose **Publication > Create**. Map the workspace, internal title, content profile, source text, and destination accounts from the incoming item.
 
 For the first run, leave the draft unpublished. Open it in **Publications** and check the accounts, text, media, and provider settings.
 
@@ -22,17 +22,17 @@ The package includes a `create-draft` example. Replace its placeholder workspace
 
 Use **Media > Upload Binary** when an earlier n8n node returns an image or video as binary data.
 
-1. Select the OpenPost workspace.
+1. Select the SocialFlow.ai workspace.
 2. Set the binary property name, such as `data`.
 3. Add alt text for visual media when the upstream source does not supply it.
 4. Run the node and keep the returned media ID.
 5. Map that ID into the Publication or Rendition media field.
 
-The node runs the full OpenPost upload-session flow. It creates the media record, uploads bytes to the returned storage target, and completes the session through authenticated OpenPost REST.
+The node runs the full SocialFlow.ai upload-session flow. It creates the media record, uploads bytes to the returned storage target, and completes the session through authenticated SocialFlow.ai REST.
 
-The OpenPost bearer token is never sent to an external storage upload URL. The node sends only the headers returned for that upload target.
+The SocialFlow.ai bearer token is never sent to an external storage upload URL. The node sends only the headers returned for that upload target.
 
-OpenPost still checks workspace quotas, MIME type, file size, media processing, and provider limits. A successful byte upload can still require processing before the item is ready to publish.
+SocialFlow.ai still checks workspace quotas, MIME type, file size, media processing, and provider limits. A successful byte upload can still require processing before the item is ready to publish.
 
 Use **Media > Get Many** when the workflow should select an existing library item instead of uploading another copy.
 

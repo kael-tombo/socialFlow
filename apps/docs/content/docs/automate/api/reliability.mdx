@@ -6,13 +6,13 @@ icon: ShieldCheck
 
 ## Protect writes with revisions
 
-Publication responses include a `revision`. Send that value as `expected_revision` when the operation asks for it. If someone edits the Publication first, OpenPost returns `409` instead of overwriting their change.
+Publication responses include a `revision`. Send that value as `expected_revision` when the operation asks for it. If someone edits the Publication first, SocialFlow.ai returns `409` instead of overwriting their change.
 
 Read the current Publication after a conflict. Compare it with your intended change, then submit a new request with the current revision.
 
 ## Protect replays with idempotency keys
 
-Send a stable `Idempotency-Key` for operations that declare the header in the [API reference](/api-reference). Reuse the same key only when retrying the same logical request with the same input. OpenPost returns `409` when the key was already used with different input.
+Send a stable `Idempotency-Key` for operations that declare the header in the [API reference](/api-reference). Reuse the same key only when retrying the same logical request with the same input. SocialFlow.ai returns `409` when the key was already used with different input.
 
 Do not retry an uncertain mutation unless the operation supports idempotency or you first read the saved state.
 
@@ -26,7 +26,7 @@ curl https://app.openpo.st/api/v1/jobs/job_... \
   -H "Accept: application/json"
 ```
 
-A successful queue response means OpenPost accepted the work. It does not mean every provider published the content.
+A successful queue response means SocialFlow.ai accepted the work. It does not mean every provider published the content.
 
 ## Handle errors by status
 

@@ -4,7 +4,7 @@ description: Configure TikTok Login Kit and Content Posting API for video and ph
 icon: tiktok
 ---
 
-OpenPost connects a TikTok account through Login Kit. Direct Post publishes through TikTok's Content Posting API; Upload sends a video to the creator's TikTok inbox for completion there.
+SocialFlow.ai connects a TikTok account through Login Kit. Direct Post publishes through TikTok's Content Posting API; Upload sends a video to the creator's TikTok inbox for completion there.
 
 ## Check Direct Post eligibility first
 
@@ -27,13 +27,13 @@ Unaudited Direct Post apps can publish only with `SELF_ONLY` visibility, and the
    https://post.example.com/api/v1/accounts/tiktok/callback
    ```
 
-3. Enable the posting modes you need. OpenPost requests `user.info.basic`, `video.publish` for Direct Post, and `video.upload` for inbox upload. Verify ownership of the media domain or URL prefix in the portal.
+3. Enable the posting modes you need. SocialFlow.ai requests `user.info.basic`, `video.publish` for Direct Post, and `video.upload` for inbox upload. Verify ownership of the media domain or URL prefix in the portal.
 4. For Display API features, obtain `user.info.profile`, `user.info.stats`, and `video.list`. Without approval, set `OPENPOST_DISABLE_TIKTOK_DISPLAY_API=true`. Publishing still works, but usernames, analytics, and public video ID reconciliation are unavailable.
 5. Submit the app and its scopes for review where TikTok requires it. Copy the **Client Key** and **Client Secret** from the app settings.
 
 TikTok documents [app registration](https://developers.tiktok.com/docs/en/getting-started-create-an-app), [Direct Post setup](https://developers.tiktok.com/docs/en/content-posting-api-get-started), and [media URL verification](https://developers.tiktok.com/docs/en/content-posting-api-media-transfer-guide).
 
-## Save the app in OpenPost
+## Save the app in SocialFlow.ai
 
 [Save these credentials](/self-hosting/integrations#save-your-provider-credentials) with your own domain and app values:
 
@@ -51,7 +51,7 @@ TikTok documents [app registration](https://developers.tiktok.com/docs/en/gettin
 ## Connect and test
 
 1. In **Settings → Workspace → Social accounts**, select **TikTok** and grant the requested permissions.
-2. Create a post with one video. Choose **Direct Post** for publishing or **Upload** to finish the video in TikTok. Confirm the result in OpenPost and in the TikTok account.
+2. Create a post with one video. Choose **Direct Post** for publishing or **Upload** to finish the video in TikTok. Confirm the result in SocialFlow.ai and in the TikTok account.
 3. Test photo posts separately if your app has photo-post access. Photo posts use public HTTPS media URLs. An unaudited TikTok client restricts Direct Post visibility to private even after a successful connection.
 
 ## Troubleshoot

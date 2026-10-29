@@ -1,10 +1,10 @@
 ---
-description: Find the architecture, setup, API, frontend, backend, testing, contribution, and release documentation for OpenPost.
+description: Find the architecture, setup, API, frontend, backend, testing, contribution, and release documentation for SocialFlow.ai.
 ---
 
 # Developer Docs
 
-Use these docs when you are changing OpenPost itself: backend routes, platform adapters, frontend components, generated clients, MCP tools, billing infrastructure, database migrations, tests, or release behavior.
+Use these docs when you are changing SocialFlow.ai itself: backend routes, platform adapters, frontend components, generated clients, MCP tools, billing infrastructure, database migrations, tests, or release behavior.
 
 Developer docs are separate from user-facing docs and self-hosting docs. They can assume repository access, local toolchains, and willingness to run checks.
 
@@ -35,5 +35,5 @@ Developer docs are separate from user-facing docs and self-hosting docs. They ca
 
 ## Adjacent docs
 
-- If you are using OpenPost through the web app, CLI, or MCP client, start with [User Docs](https://openpo.st/docs/guides/quickstart).
+- If you are using SocialFlow.ai through the web app, CLI, or MCP client, start with [User Docs](https://openpo.st/docs/guides/quickstart).
 - If you are deploying or operating an instance, start with [Self-Hosting Docs](https://openpo.st/docs/self-hosting/).

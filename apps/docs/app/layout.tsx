@@ -8,12 +8,12 @@ const docsSocialImagePath = docsSocialImageUrlForRoute("/");
 
 export const metadata: Metadata = {
   metadataBase: new URL(docsSiteUrl),
-  title: { template: "%s | OpenPost Docs", default: "OpenPost Docs" },
+  title: { template: "%s | SocialFlow.ai Docs", default: "SocialFlow.ai Docs" },
   description:
-    "Connect your accounts, publish your first post, and keep your content moving with OpenPost.",
+    "Connect your accounts, publish your first post, and keep your content moving with SocialFlow.ai.",
   icons: { icon: docsPath("/assets/brand/icon.svg") },
   openGraph: {
-    siteName: "OpenPost Docs",
+    siteName: "SocialFlow.ai Docs",
     type: "website",
     images: [
       {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "OpenPost documentation social preview.",
+        alt: "SocialFlow.ai documentation social preview.",
       },
     ],
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: docsSocialImagePath,
         width: 1200,
         height: 630,
-        alt: "OpenPost documentation social preview.",
+        alt: "SocialFlow.ai documentation social preview.",
       },
     ],
   },
