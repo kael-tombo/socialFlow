@@ -173,3 +173,32 @@ Then point `SOCIALFLOW_IMAGE` in `deploy/socialflow/.env` at the pushed tag and
 run `deploy/socialflow/deploy.sh --skip-build` on the server. The multi-arch
 build requires a configured `docker buildx` builder with QEMU binfmt support
 (`docker run --privileged --rm tonistiigi/binfmt --install all`).
+
+---
+
+## 8. Split deployment: SPA on Vercel + backend elsewhere
+
+The web SPA (`apps/web`) is a static build and can be hosted on Vercel while
+the backend (`apps/server`: API + MCP + jobs + SQLite) runs on any host with a
+persistent disk and a resident process (Oracle VM, HF Space, home server).
+
+1. Import the repo into Vercel with **Root Directory** set to `apps/web`. The
+   bundled `apps/web/vercel.json` builds with Bun and serves the SPA with an
+   `index.html` fallback.
+2. Point the API at your backend. Three layers are configured, in priority
+   order:
+   - `apps/web/middleware.ts` (Vercel Edge Middleware) proxies `/api/v1/*` to
+     the origin in the **`API_ORIGIN`** environment variable
+     (Project → Settings → Environment Variables, then redeploy);
+   - `apps/web/api/v1/[...path].ts` (Edge Function) applies the same
+     `API_ORIGIN` variable if middleware is unavailable;
+   - the `vercel.json` rewrite is a static fallback for `/api/v1/*`.
+3. The backend must be reachable over public HTTPS. For the sandbox test
+   instance the origin is `https://preview-955b742f.space-z.ai`; for a VPS use
+   its domain (see section 3 for HTTPS setup).
+4. Registrations: set `OPENPOST_DISABLE_REGISTRATIONS=false` on the backend
+   until the first admin account is created, then flip it to `true`.
+
+Note: serverless platforms cannot host `apps/server` itself — SQLite needs a
+persistent disk and `openpost all` runs resident background workers (queue,
+automation, connectors). The SPA-on-Vercel split keeps those intact.
