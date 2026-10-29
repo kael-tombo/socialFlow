@@ -291,6 +291,7 @@ boundary.
 - `create_post`: creates a format-first post with variants and destination-specific settings.
 - `list_posts`: lists format-first posts for a workspace. Results are newest-first, default 20 per response up to 100, with an opaque `cursor` input and `has_more`, `next_cursor`, and `total_count` outputs for stable paging. Prefer narrow calendar windows and follow `next_cursor` instead of widening the window. Each item includes a safe failure summary (`failed_variant_count` plus the curated `error_kind`, `error_action`, and `error_message` of the first failed destination); raw provider response bodies are never exposed. `status` and `content_profile` accept only their documented enum values so typos fail with `-32602`. Failed destinations name `get_post` for delivery detail and `retry_failed_variants` for safe retries.
 - `get_post`: returns a post with its destination variants and delivery state.
+- `preview_text_card`: renders the text-card preview for a post variant without touching providers.
 - `update_post`: updates editable source fields, schedule time, and an optional random-delay range while preserving omitted values.
 - `set_post_variants`: replaces a post's destination-specific outputs and media roles.
 - `reply_to_variant`: queues an explicit provider reply immediately or at a requested time.
@@ -312,6 +313,12 @@ boundary.
 - `reply_to_comment`: replies to an opaque comment ID returned by `list_variant_comments`.
 - `hide_comment`: hides a supported provider comment.
 - `delete_comment`: permanently deletes a supported provider comment. Repeat the call with `confirm=true` to proceed.
+- `list_inbox`: reads stored comments, incoming mentions, and Google Business reviews for a workspace. Served from stored state with no provider calls; results page through `next_cursor` and include per-source sync health.
+- `get_inbox_item`: reads one stored inbox item with available parent context. Incoming activity can exist without a SocialFlow.ai post; review owner replies include moderation state.
+- `refresh_inbox`: queues durable comment, mention, and review collection for enabled accounts and returns the queued jobs. It never sends replies; inspect stored sync health after the jobs complete.
+- `set_inbox_state`: sets shared workspace read or archive state for selected inbox items.
+- `mark_inbox_read`: marks all matching unread inbound items read across every page, using the same filters as `list_inbox`.
+- `act_on_inbox_item`: queues a supported action (reply, hide, delete, like) on a stored item, gated by the item's `can_*` capabilities. Destructive actions require `confirm=true`.
 - `suggest_next_slot`: returns the next free configured posting slot for a workspace.
 - `upload_media_from_url`: fetches a public HTTP(S) media URL and stores it through the configured media pipeline.
 - `upload_media_base64`: uploads local file bytes for clients without a file picker. Requires workspace editor access and `mcp:full`. Pass `workspace_id`, `filename`, and `content_base64`; optional fields are `mime_type` and `alt_text`. Standard base64 and `data:<mime-type>;base64,` URLs are accepted. Files are limited to 8 MiB decoded; the MCP JSON request limit is 12 MiB. Larger files use the local file picker or `upload_media_from_url`. Repeated bytes deduplicate within the workspace; this operation does not accept an idempotency key. Validation, quota, deduplication, processing, and usage accounting belong to the shared MediaHandler.

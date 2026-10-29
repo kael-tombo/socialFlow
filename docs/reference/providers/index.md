@@ -15,6 +15,10 @@ The table below is an implementation and setup inventory. It is not a Hosted ser
 | Bluesky         | App password                  | None                                            | Built-in     | Users connect with handle + app password.                                              |
 | X               | OAuth 1.0a                    | Client ID + secret                              | Configurable | Requires an X developer app with OAuth 1.0a user auth enabled.                         |
 | Mastodon        | OAuth 2.0 per instance        | Dynamic registration or `MASTODON_SERVERS` JSON | Configurable | One app per instance, unless dynamic registration is enabled.                          |
+| Pixelfed        | OAuth 2.0 per instance        | Dynamic registration or `PIXELFED_SERVERS` JSON | Configurable | Mastodon-compatible client API; photo-first; video support varies by instance.         |
+| PeerTube        | Instance credentials          | Instance-scoped provider app                    | Configurable | Video publishing with resumable upload; users pick an owned channel on connect.        |
+| Lemmy           | Instance credentials          | Instance-scoped provider app                    | Configurable | Publishes through the instance v3 API; Lemmy 1.x (v4 API) is rejected.                 |
+| PieFed          | Instance credentials          | Instance-scoped provider app                    | Configurable | Publishes through the instance native alpha API to communities.                        |
 | LinkedIn        | OAuth 2.0                     | Client ID + secret                              | Configurable | Replies may need extra approval.                                                       |
 | Threads         | Meta OAuth                    | Client ID + secret + redirect URI               | Configurable | Public media URL required.                                                             |
 | Facebook        | Meta OAuth                    | Provider app registry                           | Configurable | Pages only; public HTTPS media required.                                               |

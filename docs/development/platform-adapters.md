@@ -16,6 +16,18 @@ Provider integrations live under `apps/server/internal/platform/`.
 - `tiktok.go`
 - `youtube.go`
 - `discord.go`
+- `pinterest.go`
+- `googlebusiness.go`
+- `pixelfed.go`
+- `peertube.go` (uploads in `peertube_upload.go`)
+- `lemmy.go`
+- `piefed.go`
+- `devnull.go`
+
+Instance-scoped credential providers (PeerTube, Lemmy, PieFed) share the
+instance adapter pattern in `registry.go`; Telegram ships as a
+service-backed integration (`internal/services/telegram`) without a
+`platform.Adapter` entry.
 
 Publishing uses the base `platform.Adapter`. Other features use optional interfaces:
 
