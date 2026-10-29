@@ -10,7 +10,9 @@ This guide covers the standard Linux server path. For platform-specific
 packaging (Coolify, Dokploy, Portainer, Dockge, CasaOS, ZimaOS) see the
 templates in `deploy/`, and for the managed edge configuration see
 `deploy/cloudflare/`. For a free hosting path on Oracle Cloud's Always Free
-tier, see `docs/reference/installation/oracle-cloud-free.md`.
+tier, see `docs/reference/installation/oracle-cloud-free.md`; for a free
+ephemeral **test** deployment on Hugging Face Spaces, see
+`deploy/hf-space/README.md`.
 
 ---
 

@@ -1,0 +1,70 @@
+# Sync SocialFlow.ai to a Hugging Face Spaces (Docker) test deployment.
+#
+# Pushes a single-commit snapshot of this repository to the Space, replacing
+# the Space README/Dockerfile with the HF-specific bundle in deploy/hf-space/.
+# The Space then builds the image automatically (10–20 minutes on free
+# hardware). See deploy/hf-space/README.md for full setup instructions.
+#
+# Required GitHub repository configuration:
+#   Secret   HF_TOKEN   — Hugging Face token with **write** scope
+#   Variable HF_SPACE   — target Space as <owner>/<name>, e.g.
+#                         kael-tombo/socialflow-test
+#
+# Run manually: Actions → "Sync SocialFlow.ai to Hugging Face Space" → Run.
+
+name: Sync SocialFlow.ai to Hugging Face Space
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: sync-hf-space
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Prepare Space tree (LFS + bundle override)
+        env:
+          HF_SPACE: ${{ vars.HF_SPACE }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HF_SPACE}" ]; then
+            echo "error: set the HF_SPACE repository variable (<owner>/<space-name>)" >&2
+            exit 1
+          fi
+          git config user.name "socialflow-sync-bot"
+          git config user.email "socialflow-sync-bot@users.noreply.github.com"
+
+          # Hugging Face rejects non-LFS files over 10 MB; exactly one bundled
+          # file qualifies (the TTS onnxruntime WASM).
+          git lfs install
+          git lfs track "apps/web/static/moss-tts/vendor/ort/*.wasm"
+          git add .gitattributes
+          git add --renormalize .
+
+          # Overlay the Spaces-specific build files onto the snapshot root.
+          cp deploy/hf-space/Dockerfile Dockerfile
+          cp deploy/hf-space/README.md README.md
+
+      - name: Commit orphan snapshot
+        run: |
+          set -euo pipefail
+          git checkout --orphan space-sync
+          git add -A
+          git commit -m "SocialFlow.ai Spaces snapshot (github/${GITHUB_SHA::7})"
+
+      - name: Push snapshot to the Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
+        run: |
+          set -euo pipefail
+          OWNER="${HF_SPACE%%/*}"
+          git remote add space "https://${OWNER}:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE}"
+          # --force: the Space holds only snapshots; history lives on GitHub.
+          git push space space-sync:main --force
