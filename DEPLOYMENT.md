@@ -9,7 +9,8 @@ health-gated stack.
 This guide covers the standard Linux server path. For platform-specific
 packaging (Coolify, Dokploy, Portainer, Dockge, CasaOS, ZimaOS) see the
 templates in `deploy/`, and for the managed edge configuration see
-`deploy/cloudflare/`.
+`deploy/cloudflare/`. For a free hosting path on Oracle Cloud's Always Free
+tier, see `docs/reference/installation/oracle-cloud-free.md`.
 
 ---
 
