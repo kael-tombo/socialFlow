@@ -1,0 +1,15 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"buildCommand": "bun run build",
+	"outputDirectory": "build",
+	"rewrites": [
+		{
+			"source": "/api/v1/:path*",
+			"destination": "https://REPLACE-WITH-API-ORIGIN/api/v1/:path*"
+		},
+		{
+			"source": "/:path*",
+			"destination": "/index.html"
+		}
+	]
+}
