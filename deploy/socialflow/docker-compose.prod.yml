@@ -1,0 +1,70 @@
+# SocialFlow.ai — production deployment stack.
+#
+# The application image is built from source by deploy/socialflow/deploy.sh
+# (frontend bundle -> Go embed -> single static image). If you prefer to run a
+# pre-built image from a registry, set SOCIALFLOW_IMAGE (see .env.prod.example).
+#
+# Usage:
+#   cp deploy/socialflow/.env.prod.example deploy/socialflow/.env   # then edit
+#   deploy/socialflow/deploy.sh                                     # build + up
+#   docker compose -f deploy/socialflow/docker-compose.prod.yml logs -f app
+#
+# Optional automatic-HTTPS reverse proxy:
+#   docker compose -f deploy/socialflow/docker-compose.prod.yml --profile proxy up -d
+
+services:
+  app:
+    image: ${SOCIALFLOW_IMAGE:-socialflow:latest}
+    container_name: socialflow
+    restart: unless-stopped
+    stop_grace_period: 15s
+
+    env_file:
+      - .env
+
+    ports:
+      - "${SOCIALFLOW_BIND:-127.0.0.1}:${SOCIALFLOW_PORT:-8080}:8080"
+
+    volumes:
+      - socialflow_data:/data
+
+    # Process liveness only. Gate traffic and rollouts on /api/v1/ready.
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8080/api/v1/health",
+        ]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  # Optional: automatic HTTPS reverse proxy (Let's Encrypt / ZeroSSL).
+  # Enable with --profile proxy after setting SOCIALFLOW_DOMAIN in .env.
+  caddy:
+    image: docker.io/library/caddy:2.10.2
+    container_name: socialflow-caddy
+    profiles: ["proxy"]
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_started
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SOCIALFLOW_DOMAIN: ${SOCIALFLOW_DOMAIN:-localhost}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  socialflow_data:
+  caddy_data:
+  caddy_config:

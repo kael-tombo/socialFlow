@@ -1,0 +1,27 @@
+# SocialFlow.ai reverse proxy — automatic HTTPS via Let's Encrypt.
+#
+# SOCIALFLOW_DOMAIN is injected from .env by docker-compose.prod.yml.
+# For local-only testing leave SOCIALFLOW_DOMAIN=localhost; Caddy then serves
+# an internal certificate instead of requesting a public one.
+
+{
+	# Staging endpoint while testing DNS/ports; switch to production once
+	# HTTP-01 challenges succeed. Uncomment the next line to avoid rate limits:
+	# acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+	email {$SOCIALFLOW_ACME_EMAIL}
+}
+
+{$SOCIALFLOW_DOMAIN} {
+	encode zstd gzip
+
+	# Trust only the app container; the app port is not published when the
+	# proxy profile is enabled and SOCIALFLOW_BIND stays on loopback.
+	reverse_proxy app:8080
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+}
