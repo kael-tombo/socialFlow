@@ -271,7 +271,7 @@ func (h *EmailChangeHandler) cancel(ctx context.Context, input *EmailChangeChall
 func (h *EmailChangeHandler) sendCode(ctx context.Context, pending *emailchange.Pending) error {
 	return h.sender.SendIdentityEmail(ctx, passwordmail.IdentityMessage{
 		Recipient: pending.Challenge.NewEmail,
-		Title:     "Confirm your OpenPost sign-in email",
+		Title:     "Confirm your SocialFlow.ai sign-in email",
 		Body: fmt.Sprintf(
 			"Your confirmation code is %s. It expires in 15 minutes. Your current sign-in email remains active until you confirm this code.",
 			pending.Code,
@@ -285,11 +285,11 @@ func (h *EmailChangeHandler) notifyOldAddress(ctx context.Context, oldEmail, new
 	if h.sender == nil || strings.TrimSpace(oldEmail) == "" {
 		return
 	}
-	title := "OpenPost sign-in email change requested"
-	body := "A request was made to change your OpenPost sign-in email to " + newEmail + ". Your current address remains active until the new address is confirmed."
+	title := "SocialFlow.ai sign-in email change requested"
+	body := "A request was made to change your SocialFlow.ai sign-in email to " + newEmail + ". Your current address remains active until the new address is confirmed."
 	if state == "completed" {
-		title = "Your OpenPost sign-in email changed"
-		body = "Your OpenPost sign-in email was changed to " + newEmail + ". If you did not make this change, contact your server administrator now."
+		title = "Your SocialFlow.ai sign-in email changed"
+		body = "Your SocialFlow.ai sign-in email was changed to " + newEmail + ". If you did not make this change, contact your server administrator now."
 	}
 	if err := h.sender.SendIdentityEmail(ctx, passwordmail.IdentityMessage{
 		Recipient:      oldEmail,
@@ -308,8 +308,8 @@ func (h *EmailChangeHandler) notifyCompletion(ctx context.Context, newEmail, cha
 	}
 	if err := h.sender.SendIdentityEmail(ctx, passwordmail.IdentityMessage{
 		Recipient:      newEmail,
-		Title:          "Your OpenPost sign-in email changed",
-		Body:           "This address is now your OpenPost sign-in email. Any other active browser sessions were signed out, and unused password-reset links were invalidated.",
+		Title:          "Your SocialFlow.ai sign-in email changed",
+		Body:           "This address is now your SocialFlow.ai sign-in email. Any other active browser sessions were signed out, and unused password-reset links were invalidated.",
 		ActionURL:      h.settingsURL(),
 		IdempotencyKey: "email-change-completed-new:" + challengeID,
 	}); err != nil {

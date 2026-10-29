@@ -1,6 +1,6 @@
 # SDK package release
 
-The npm package is `@getopenpost/sdk`. Its SemVer is independent from the OpenPost app version.
+The npm package is `@getopenpost/sdk`. Its SemVer is independent from the SocialFlow.ai app version.
 
 ## Routine releases
 

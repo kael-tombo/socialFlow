@@ -47,8 +47,8 @@ Self-hosted platforms can let their authenticated user enter SocialFlow.ai witho
 second sign-in. Set `OPENPOST_PROXY_AUTH_SECRET` to a random value of at least 32
 characters, then have the trusted proxy add these headers:
 
-- `X-SocialFlow.ai-Proxy-User`: a stable user ID or email address
-- `X-SocialFlow.ai-Proxy-Secret`: the exact shared secret
+- `X-OpenPost-Proxy-User`: a stable user ID or email address
+- `X-OpenPost-Proxy-Secret`: the exact shared secret
 
 SocialFlow.ai creates the user's personal workspace on first access and uses its
 normal authorization rules after that. This mode is limited to
@@ -63,8 +63,8 @@ inspection output.
 ```nginx
 location / {
   proxy_pass http://127.0.0.1:8081;
-  proxy_set_header X-SocialFlow.ai-Proxy-User $trusted_user;
-  proxy_set_header X-SocialFlow.ai-Proxy-Secret $openpost_proxy_secret;
+  proxy_set_header X-OpenPost-Proxy-User $trusted_user;
+  proxy_set_header X-OpenPost-Proxy-Secret $openpost_proxy_secret;
 }
 ```
 

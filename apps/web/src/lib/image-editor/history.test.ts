@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { ImageEditorHistory } from './history';
 
-describe('OpenPost Image Editor command history', () => {
+describe('SocialFlow.ai Image Editor command history', () => {
 	afterEach(() => vi.useRealTimers());
 
 	it('applies, undoes, and redoes commands', () => {

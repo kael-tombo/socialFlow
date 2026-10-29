@@ -181,7 +181,7 @@ func (s *Service) deliveryFailure(ctx context.Context, stored *record) error {
 	if time.Since(stored.CreatedAt) > 24*time.Hour {
 		return s.fail(ctx, stored, "The generated image could not be saved. The provider receipt and any reported cost are retained.")
 	}
-	stored.ErrorMessage = "The image is ready at fal. OpenPost is retrying the download or Media save without generating again."
+	stored.ErrorMessage = "The image is ready at fal. SocialFlow.ai is retrying the download or Media save without generating again."
 	if err := s.save(ctx, stored); err != nil {
 		return err
 	}

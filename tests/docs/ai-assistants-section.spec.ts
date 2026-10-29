@@ -6,10 +6,10 @@ const pages = [
   ["/mcp/chat-assistants", "Chat assistants"],
   ["/mcp/coding-assistants", "Coding assistants"],
   ["/mcp/mcp-guide", "Connect with MCP"],
-  ["/mcp/grok-bot", "Create a Grok Bot for OpenPost"],
+  ["/mcp/grok-bot", "Create a Grok Bot for SocialFlow.ai"],
   ["/mcp/mcp-guide/media", "Upload media"],
   ["/mcp/mcp-guide/use-cases", "Tasks and troubleshooting"],
-  ["/mcp/skills", "Install and use the OpenPost skill"],
+  ["/mcp/skills", "Install and use the SocialFlow.ai skill"],
 ] as const;
 
 test("Grok Bot instructions stay readable on phones and copy without visual wrapping", async ({

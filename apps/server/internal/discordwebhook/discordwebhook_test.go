@@ -65,10 +65,10 @@ func TestSendPostsJSONPayload(t *testing.T) {
 	var received map[string]any
 	server := testServer(t, http.StatusNoContent, "", &contentType, &received)
 	require.NoError(t, Send(t.Context(), server.Client(), server.URL, map[string]any{
-		"username": "OpenPost waitlist",
+		"username": "SocialFlow.ai waitlist",
 	}))
 	require.Equal(t, "application/json", contentType)
-	require.Equal(t, "OpenPost waitlist", received["username"])
+	require.Equal(t, "SocialFlow.ai waitlist", received["username"])
 }
 
 func TestSendDrainsResponseToBoundedSize(t *testing.T) {

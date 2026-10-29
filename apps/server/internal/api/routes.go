@@ -532,7 +532,7 @@ func RegisterDiagnosticsConfig(api huma.API, reporter *diagnostics.Reporter) {
 		Method:      http.MethodGet,
 		Path:        "/diagnostics/public-config",
 		Summary:     "Get maintainer diagnostics reporting switch",
-		Description: "Whether this instance sends privacy-limited diagnostic reports to OpenPost. Browser reports always go through their own instance.",
+		Description: "Whether this instance sends privacy-limited diagnostic reports to SocialFlow.ai. Browser reports always go through their own instance.",
 		Tags:        []string{"Diagnostics"},
 	}, func(_ context.Context, _ *struct{}) (*handlers.DiagnosticsConfigOutput, error) {
 		config := diagnostics.Status{}
@@ -580,14 +580,14 @@ func RegisterVersion(api huma.API, info BuildInfo) {
 		Body struct {
 			Version  string `json:"version" doc:"Release version embedded in the server"`
 			Revision string `json:"revision" doc:"Full source revision embedded in the server"`
-			Edition  string `json:"edition" doc:"Configured OpenPost edition"`
+			Edition  string `json:"edition" doc:"Configured SocialFlow.ai edition"`
 		}
 	}, error) {
 		resp := &struct {
 			Body struct {
 				Version  string `json:"version" doc:"Release version embedded in the server"`
 				Revision string `json:"revision" doc:"Full source revision embedded in the server"`
-				Edition  string `json:"edition" doc:"Configured OpenPost edition"`
+				Edition  string `json:"edition" doc:"Configured SocialFlow.ai edition"`
 			}
 		}{}
 		resp.Body.Version = info.Version

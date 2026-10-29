@@ -21,7 +21,7 @@ export function formatOpenPostError(error: unknown): string {
   const response = errorResponse(error);
   const body = response?.body;
   const requestId = requestIdFromHeaders(response?.headers);
-  const status = response?.statusCode ? `HTTP ${response.statusCode}` : "OpenPost request failed";
+  const status = response?.statusCode ? `HTTP ${response.statusCode}` : "SocialFlow.ai request failed";
   const detail =
     body && typeof body === "object" && "detail" in body
       ? String((body as { detail?: unknown }).detail ?? "")

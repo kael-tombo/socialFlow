@@ -107,14 +107,14 @@ test("a reviewed thread survives sign-in and becomes an editable draft with its 
     `${first}\n\n1/2`,
     `${second}\n\n2/2`,
   ]);
-  await editors.nth(1).fill("The second lesson, reviewed in OpenPost.");
+  await editors.nth(1).fill("The second lesson, reviewed in SocialFlow.ai.");
   await expect
     .poll(
       async () =>
         (await (await request.get(`/api/v1/publications/${id}`, { headers })).json()).segments[1]
           .body,
     )
-    .toBe("The second lesson, reviewed in OpenPost.");
+    .toBe("The second lesson, reviewed in SocialFlow.ai.");
   await popup.screenshot({
     path: testInfo.outputPath("imported-thread.png"),
     animations: "disabled",

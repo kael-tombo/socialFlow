@@ -10,7 +10,7 @@ test("documentation shares the dither interaction without changing reader layout
     await page.emulateMedia({ colorScheme: scheme, reducedMotion: "reduce" });
     await page.setViewportSize({ width: 1440, height: 960 });
     await page.goto("/docs/");
-    const button = page.getByRole("link", { name: "Open OpenPost", exact: true });
+    const button = page.getByRole("link", { name: "Open SocialFlow.ai", exact: true });
     const mask = () => button.evaluate((el) => getComputedStyle(el, "::before").maskImage);
     await page.mouse.move(0, 0);
     await expect.poll(mask).toContain("data:image/svg+xml");

@@ -15,7 +15,7 @@ function previewModel(platform: PreviewPlatformKey, format: PreviewFormat = "pos
   return createPreviewModel({
     platform,
     format,
-    identity: { displayName: "OpenPost", handle: "openpost" },
+    identity: { displayName: "SocialFlow.ai", handle: "openpost" },
     segments: [
       {
         id: "primary",
@@ -51,11 +51,11 @@ describe("SocialPreview destination presentations", () => {
   ] as const)(
     "resolves mixed-script post direction in %s without reversing the card",
     async (platform) => {
-      const text = "مرحبا OpenPost!";
+      const text = "مرحبا SocialFlow.ai!";
       const model = createPreviewModel({
         platform,
         identity: { displayName: "Alice", handle: "alice" },
-        title: "عنوان OpenPost!",
+        title: "عنوان SocialFlow.ai!",
         segments: [{ id: "primary", text }],
       });
       const screen = await render(SocialPreview, { model });
@@ -83,7 +83,7 @@ describe("SocialPreview destination presentations", () => {
   it("renders Telegram channel text with image and video attachments", async () => {
     const model = createPreviewModel({
       platform: "telegram",
-      identity: { displayName: "OpenPost updates", handle: "openpost" },
+      identity: { displayName: "SocialFlow.ai updates", handle: "openpost" },
       segments: [
         {
           id: "primary",
@@ -191,15 +191,15 @@ describe("SocialPreviewPage destination shells", () => {
     await expect
       .element(screen.getByLabelText("Telegram channel message").getByText("Launch update"))
       .toBeVisible();
-    await expect.element(screen.getByRole("heading", { name: "OpenPost" })).toBeVisible();
+    await expect.element(screen.getByRole("heading", { name: "SocialFlow.ai" })).toBeVisible();
   });
 
-  it("renders a complete thread without OpenPost application chrome", async () => {
+  it("renders a complete thread without SocialFlow.ai application chrome", async () => {
     const screen = await render(SocialPreviewPage, {
       model: createPreviewModel({
         platform: "x",
         format: "thread",
-        identity: { displayName: "OpenPost", handle: "openpost" },
+        identity: { displayName: "SocialFlow.ai", handle: "openpost" },
         segments: [
           { id: "one", text: "First destination post." },
           { id: "two", text: "Second destination post." },

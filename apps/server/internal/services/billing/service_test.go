@@ -95,7 +95,7 @@ func newBillingTestDB(t *testing.T) *bun.DB {
 	require.NoError(t, err)
 	_, err = db.ExecContext(context.Background(), `CREATE UNIQUE INDEX voice_profiles_default_idx ON voice_profiles (workspace_id) WHERE is_default = true`)
 	require.NoError(t, err)
-	_, err = db.NewInsert().Model(&models.Organization{ID: "org-1", Name: "OpenPost", CreatedByID: "owner", CreatedAt: time.Now().UTC(), UpdatedAt: time.Now().UTC()}).Exec(context.Background())
+	_, err = db.NewInsert().Model(&models.Organization{ID: "org-1", Name: "SocialFlow.ai", CreatedByID: "owner", CreatedAt: time.Now().UTC(), UpdatedAt: time.Now().UTC()}).Exec(context.Background())
 	require.NoError(t, err)
 	_, err = db.NewInsert().Model(&models.Workspace{ID: "ws-1", Name: "Launch"}).Exec(context.Background())
 	require.NoError(t, err)

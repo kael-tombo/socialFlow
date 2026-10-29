@@ -62,7 +62,7 @@ func configureAutomationContract(config *huma.Config) {
 	config.Components.SecuritySchemes[bearerSecurityScheme] = &huma.SecurityScheme{
 		Type:         "http",
 		Scheme:       "bearer",
-		BearerFormat: "OpenPost API token or session JWT",
+		BearerFormat: "SocialFlow.ai API token or session JWT",
 	}
 	config.Components.SecuritySchemes[sessionCookieSecurityScheme] = &huma.SecurityScheme{
 		Type: "apiKey",

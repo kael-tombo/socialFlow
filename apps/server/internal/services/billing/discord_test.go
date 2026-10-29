@@ -47,7 +47,7 @@ func TestHandleJobSendsBillingEmbedOnceWithUserDetails(t *testing.T) {
 	require.Equal(t, int32(1), requestCount.Load())
 	require.Len(t, received.Embeds, 1)
 	require.Empty(t, received.AllowedMentions.Parse)
-	require.Equal(t, "OpenPost billing", received.Username)
+	require.Equal(t, "SocialFlow.ai billing", received.Username)
 	require.Equal(t, "Paddle Transaction Completed", received.Embeds[0].Title)
 	require.Equal(t, "https://app.openpo.st/avatars/owner.png", received.Embeds[0].Thumbnail.URL)
 

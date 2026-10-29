@@ -1,12 +1,12 @@
 # Competitor and reference audit, October 17 to 24, 2026
 
-OpenPost baseline: `04bdf9ad36d4e652224a0dd706771c9a584ac492`. Window: `2026-10-17T00:00:00Z` through `2026-10-24T23:59:59Z`, using committer timestamps on fetched default branches.
+SocialFlow.ai baseline: `04bdf9ad36d4e652224a0dd706771c9a584ac492`. Window: `2026-10-17T00:00:00Z` through `2026-10-24T23:59:59Z`, using committer timestamps on fetched default branches.
 
 ## Scope and refresh
 
 All 39 existing reference repositories were contacted. Fetch succeeded for 38. PhotoSuite returned HTTP 403 with GitHub's DMCA takedown notice, so its current source was unavailable and was not used. Clean checkouts were fast-forwarded after restoring enough shallow history. LosslessCut could not fast-forward even after deepening; its clean checkout now selects the fetched revision detached, preserving its old local branch. Dirty checkouts were only fetched. The explicitly pinned SEO toolkit remains at v2.4.0, with newer source available through remote refs.
 
-The fetched references contain 3,656 reachable commits in the window, including merges. This is an activity inventory with focused source investigation, not a line-by-line review of every commit. The six publishing competitors contain 107 commits; adding the 315 OpenPost baseline commits gives 422. These counts exclude open PR heads and therefore do not reproduce the supplied report's inventory methodology.
+The fetched references contain 3,656 reachable commits in the window, including merges. This is an activity inventory with focused source investigation, not a line-by-line review of every commit. The six publishing competitors contain 107 commits; adding the 315 SocialFlow.ai baseline commits gives 422. These counts exclude open PR heads and therefore do not reproduce the supplied report's inventory methodology.
 
 | Reference | Fetched revision | Commits | Checkout |
 | --- | --- | ---: | --- |
@@ -56,15 +56,15 @@ The fetched references contain 3,656 reachable commits in the window, including 
 
 [Postiz #2294](https://github.com/gitroomhq/postiz-app/pull/2294), commit `30e1f83cefca`, distinguishes the daily video-insert quota from ordinary rate limits. [Google documents](https://developers.google.com/youtube/data/getting-started) a separate daily video-insert allocation.
 
-OpenPost previously retained only HTTP 429 and the top-level numeric code. The YouTube response owner now recognizes only typed `google.rpc.ErrorInfo` details for `youtube.googleapis.com` and the exact `defaultVideoInsertPerDayPerProject` limit. It bounds parsing and discards raw messages, consumer/project IDs, and other metadata. Unknown limits and malformed bodies retain generic behavior.
+SocialFlow.ai previously retained only HTTP 429 and the top-level numeric code. The YouTube response owner now recognizes only typed `google.rpc.ErrorInfo` details for `youtube.googleapis.com` and the exact `defaultVideoInsertPerDayPerProject` limit. It bounds parsing and discards raw messages, consumer/project IDs, and other metadata. Unknown limits and malformed bodies retain generic behavior.
 
 The publisher reports the application's daily upload quota and asks the user to reschedule. It does not enter short automatic retries or pretend to know the reset instant. Existing failure kinds remain compatible; the error is `rate_limited` with automatic retry disabled. Regression coverage exercises the real resumable-upload entry point and separately protects publisher retry policy. The persisted media-delivery record remains recoverable after a quota rejection, so an explicit later attempt can reuse the same attachment instead of requiring replacement.
 
 ### LinkedIn native hashtags
 
-[TryPost #446](https://github.com/trypostit/trypost/pull/446), squash `b97cf33489ba`, fixes reserved-character truncation. OpenPost already escaped those characters, but lost native hashtags. [LinkedIn's little-text grammar](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/little-text-format) supports explicit hashtag templates.
+[TryPost #446](https://github.com/trypostit/trypost/pull/446), squash `b97cf33489ba`, fixes reserved-character truncation. SocialFlow.ai already escaped those characters, but lost native hashtags. [LinkedIn's little-text grammar](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/little-text-format) supports explicit hashtag templates.
 
-OpenPost now emits those templates for recognized tags, including Unicode letters and combining marks. URLs, isolated/numeric hashes, hashes inside words, and user-authored mention/template syntax stay escaped. Underscores terminate tags instead of becoming unescaped markup. Tests inspect the outgoing post request, including punctuation, Unicode, emoji boundaries, URLs, and malformed markup.
+SocialFlow.ai now emits those templates for recognized tags, including Unicode letters and combining marks. URLs, isolated/numeric hashes, hashes inside words, and user-authored mention/template syntax stay escaped. Underscores terminate tags instead of becoming unescaped markup. Tests inspect the outgoing post request, including punctuation, Unicode, emoji boundaries, URLs, and malformed markup.
 
 ### TikTok app eligibility
 
@@ -74,15 +74,15 @@ The public integration guide, operator reference, and admin provider-app form no
 
 ## Independent findings and decisions
 
-| Evidence | Current OpenPost comparison and decision |
+| Evidence | Current SocialFlow.ai comparison and decision |
 | --- | --- |
-| Social SDK `986ac2294f75`, YouTube upload `processingDetails` rejection | OpenPost already requests insertion fields separately from read-only processing status. No patch. |
-| n8n `95d1b0f71e77`, retrying cancelled executions | OpenPost checks durable run state and lease identity before native effects in `services/workflows/runtime.go`. Preserve that boundary. No n8n source copied. |
-| Postiz `51b47f2111c6`, Deepgram training opt-out | No Deepgram adapter found in current OpenPost. Do not add a provider-specific flag to unrelated local transcription. |
-| FreeCut `74d31c2524a8`, media-library drag overlay contrast | Visual behavior reference. No equivalent defect established in OpenPost during this audit; no blanket color change. |
+| Social SDK `986ac2294f75`, YouTube upload `processingDetails` rejection | SocialFlow.ai already requests insertion fields separately from read-only processing status. No patch. |
+| n8n `95d1b0f71e77`, retrying cancelled executions | SocialFlow.ai checks durable run state and lease identity before native effects in `services/workflows/runtime.go`. Preserve that boundary. No n8n source copied. |
+| Postiz `51b47f2111c6`, Deepgram training opt-out | No Deepgram adapter found in current SocialFlow.ai. Do not add a provider-specific flag to unrelated local transcription. |
+| FreeCut `74d31c2524a8`, media-library drag overlay contrast | Visual behavior reference. No equivalent defect established in SocialFlow.ai during this audit; no blanket color change. |
 | Compositor `8e4b63b74aed`, non-Latin shortcuts; GIF layers and lens effects | Useful candidates, but keyboard conventions and animation scope need a separate editor acceptance case. Do not transplant Swift/native behavior. |
-| Auto-editor `f4b8684db725`, non-finite action parameters | OpenPost already uses finite-value validation in its portable video contract. No identical numeric conversion bug established; not a claim that every editor action was audited. |
-| OpenScreen `0b8b4065ce9c`, voiceover pieces overlapping across speed regions | Different native scene/export model. No matching OpenPost failure reproduced. Keep as a targeted future playback/export audit case. |
+| Auto-editor `f4b8684db725`, non-finite action parameters | SocialFlow.ai already uses finite-value validation in its portable video contract. No identical numeric conversion bug established; not a claim that every editor action was audited. |
+| OpenScreen `0b8b4065ce9c`, voiceover pieces overlapping across speed regions | Different native scene/export model. No matching SocialFlow.ai failure reproduced. Keep as a targeted future playback/export audit case. |
 | Cap `104ddce7b26e`, storage endpoint restrictions | Deployment-specific SSRF policy for customer buckets. Do not blanket-block self-hosted/private storage endpoints without checking Hosted versus operator-owned semantics. |
 | Beeper Meta/LinkedIn/X bridge error mapping and history cutovers | Matrix bridge/session protocols differ from the official provider contracts. No protocol or connector architecture copied. |
 | Kdenlive/Shotcut render queues, selection and cross-track move repairs | Qt/MLT owners differ from browser timeline actions and durable Cloud Video Projects. No matching defect established. |
@@ -95,7 +95,7 @@ The public integration guide, operator reference, and admin provider-app form no
 - Bluesky refresh already uses a bodyless POST in `platform/bluesky.go`, matching TryPost's new fix.
 - Social account IDs are strings; the numeric Meta ID serialization bug does not transfer directly.
 - MCP operations use registered operations and explicit dispatch; Postiz's arbitrary provider-method invocation fix does not require copying its decorator architecture.
-- MCP attachment metadata and separate authored/derived media already have OpenPost owners. PHP/Laravel fixes are outside the runtime.
+- MCP attachment metadata and separate authored/derived media already have SocialFlow.ai owners. PHP/Laravel fixes are outside the runtime.
 
 ## Decisions left to the owner
 

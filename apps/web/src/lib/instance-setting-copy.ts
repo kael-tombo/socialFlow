@@ -47,7 +47,7 @@ const portugueseCopyDefinitions = {
 	},
 	OPENPOST_UPDATE_CHECK_ENABLED: {
 		label: 'Verificação de versões',
-		description: 'Procura novas versões estáveis do OpenPost nas definições da instância.'
+		description: 'Procura novas versões estáveis do SocialFlow.ai nas definições da instância.'
 	},
 	OPENPOST_PADDLE_API_KEY: {
 		label: 'Chave API da Paddle',
@@ -68,7 +68,7 @@ const portugueseCopyDefinitions = {
 	},
 	OPENPOST_PADDLE_CHECKOUT_RETURN_URL: {
 		label: 'URL de retorno do checkout',
-		description: 'URL do OpenPost mostrada quando o checkout da Paddle termina.'
+		description: 'URL do SocialFlow.ai mostrada quando o checkout da Paddle termina.'
 	},
 	OPENPOST_PADDLE_FOUNDER_MONTHLY_PRICE_ID: {
 		label: 'ID do preço mensal Solo',
@@ -182,16 +182,16 @@ const portugueseCopyDefinitions = {
 	},
 	OPENPOST_OIDC_NATIVE_CALLBACK_URL: {
 		label: 'Retorno OIDC nativo',
-		description: 'URI de retorno usada pelos clientes nativos do OpenPost.'
+		description: 'URI de retorno usada pelos clientes nativos do SocialFlow.ai.'
 	},
 	OPENPOST_IMAGE_EDITOR_ENABLED: {
-		label: 'Editor de Imagens OpenPost',
+		label: 'Editor de Imagens SocialFlow.ai',
 		description: 'Ativa o espaço de design e os respetivos modelos.'
 	},
 	OPENPOST_IMAGE_EDITOR_MODEL_BASE_URL: {
 		label: 'Caminho dos modelos de design',
 		description:
-			'URL ou caminho da aplicação usado para carregar os modelos do Editor de Imagens OpenPost.'
+			'URL ou caminho da aplicação usado para carregar os modelos do Editor de Imagens SocialFlow.ai.'
 	},
 	OPENPOST_STOCK_MEDIA_ENABLED: {
 		label: 'Pesquisa de multimédia de stock',

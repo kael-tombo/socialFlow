@@ -95,7 +95,7 @@ func TestBuiltinProviderRendersLocallyWithoutWatermark(t *testing.T) {
 	require.NoError(t, err)
 	rendered, err := provider.Render(context.Background(), RenderRequest{
 		TemplateID: "drake",
-		Text:       []string{"Remote renderer", "OpenPost renderer"},
+		Text:       []string{"Remote renderer", "SocialFlow.ai renderer"},
 		Extension:  "png",
 	})
 	require.NoError(t, err)

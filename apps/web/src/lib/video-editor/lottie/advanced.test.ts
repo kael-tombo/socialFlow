@@ -54,9 +54,9 @@ describe('advanced Lottie editing', () => {
 			{ key: 'c0', color: '#0000ff', label: 'Coat', named: true }
 		]);
 
-		const text = JSON.parse(applyLottieTextOverrides(animation, { 's:headline': 'OpenPost' })!);
-		expect(text.slots.headline.p.k[0].s.t).toBe('OpenPost');
-		expect(text.layers[0].t.d.k[0].s.t).toBe('OpenPost');
+		const text = JSON.parse(applyLottieTextOverrides(animation, { 's:headline': 'SocialFlow.ai' })!);
+		expect(text.slots.headline.p.k[0].s.t).toBe('SocialFlow.ai');
+		expect(text.layers[0].t.d.k[0].s.t).toBe('SocialFlow.ai');
 
 		const color = JSON.parse(applyLottieColorOverrides(animation, { 's:accent': '#00ff00' })!);
 		expect(color.slots.accent.p.k).toEqual([0, 1, 0, 1]);

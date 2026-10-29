@@ -21,9 +21,9 @@ import (
 )
 
 var (
-	ErrInvalidArchive    = errors.New("the file is not a valid OpenPost backup")
+	ErrInvalidArchive    = errors.New("the file is not a valid SocialFlow.ai backup")
 	ErrUnsupportedBackup = errors.New("this backup was made by an incompatible setup")
-	ErrBackupTooNew      = errors.New("this backup was made by a newer version of OpenPost")
+	ErrBackupTooNew      = errors.New("this backup was made by a newer version of SocialFlow.ai")
 	ErrKeyMismatch       = errors.New("this backup was made with a different encryption key")
 )
 

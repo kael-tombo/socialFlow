@@ -93,7 +93,7 @@ func TestYouTubeExchangeRefreshAndSelectChannel(t *testing.T) {
 			if req.URL.Query().Get("mine") != "true" {
 				t.Fatalf("expected mine=true, got %s", req.URL.RawQuery)
 			}
-			return jsonResponse(req, `{"items":[{"id":"channel-1","snippet":{"title":"OpenPost Channel","customUrl":"@openpost","thumbnails":{"default":{"url":"https://yt.example/avatar.jpg"}}},"statistics":{"subscriberCount":"123"}}]}`), nil
+			return jsonResponse(req, `{"items":[{"id":"channel-1","snippet":{"title":"SocialFlow.ai Channel","customUrl":"@openpost","thumbnails":{"default":{"url":"https://yt.example/avatar.jpg"}}},"statistics":{"subscriberCount":"123"}}]}`), nil
 		default:
 			t.Fatalf("unexpected request %s %s", req.Method, req.URL.String())
 			return nil, nil

@@ -79,7 +79,7 @@ export async function styleStarHistory(source, scheme) {
           `font-family:Geist,sans-serif;stroke-width:1;color:${theme.ink}`,
         );
         element.setAttribute("role", "img");
-        element.setAttribute("aria-label", "OpenPost GitHub star history");
+        element.setAttribute("aria-label", "SocialFlow.ai GitHub star history");
       },
     })
     .on(

@@ -214,12 +214,12 @@ func TestLoadMCPMode(t *testing.T) {
 
 func TestLoadAndValidateProxyAuthentication(t *testing.T) {
 	t.Setenv("OPENPOST_PROXY_AUTH_SECRET", "proxy-auth-secret-with-at-least-thirty-two-characters")
-	t.Setenv("OPENPOST_PROXY_AUTH_WORKSPACE_NAME", "OpenPost")
+	t.Setenv("OPENPOST_PROXY_AUTH_WORKSPACE_NAME", "SocialFlow.ai")
 
 	cfg := Load()
 
 	require.Equal(t, "proxy-auth-secret-with-at-least-thirty-two-characters", cfg.ProxyAuthSecret)
-	require.Equal(t, "OpenPost", cfg.ProxyAuthWorkspaceName)
+	require.Equal(t, "SocialFlow.ai", cfg.ProxyAuthWorkspaceName)
 	require.NoError(t, cfg.ValidateRuntime())
 
 	t.Setenv("OPENPOST_PROXY_AUTH_SECRET", "too-short")
@@ -591,10 +591,10 @@ func validCloudRuntimeConfig() *Config {
 		SupportEmail:                "openpost@rgo.pt",
 		EmailVerificationRequired:   true,
 		EmailProvider:               "smtp",
-		EmailFrom:                   "OpenPost <openpost@example.com>",
+		EmailFrom:                   "SocialFlow.ai <openpost@example.com>",
 		SMTPHost:                    "smtp.example.com",
 		SMTPPort:                    587,
-		SMTPFrom:                    "OpenPost <openpost@example.com>",
+		SMTPFrom:                    "SocialFlow.ai <openpost@example.com>",
 		TelemetryEnabled:            true,
 		PostHogProjectToken:         "phc_test",
 		PostHogAPIHost:              "https://eu.i.posthog.com",

@@ -38,7 +38,7 @@
 		destination.searchParams.set('token', token);
 		const receiver = window.open(destination.href, '_blank');
 		if (!receiver) {
-			failure = 'Allow OpenPost to open a new tab, then try again. Your draft is still here.';
+			failure = 'Allow SocialFlow.ai to open a new tab, then try again. Your draft is still here.';
 			return;
 		}
 		// Snapshot the reviewed output so editing this tab cannot change an in-flight transfer.
@@ -46,7 +46,7 @@
 		busy = true;
 		const timeout = window.setTimeout(() => {
 			cleanup();
-			failure = 'The draft could not reach OpenPost. Try again. Your draft is still here.';
+			failure = 'The draft could not reach SocialFlow.ai. Try again. Your draft is still here.';
 		}, draftTransferTimeoutMS);
 		const receive = (event: MessageEvent) => {
 			if (event.origin !== destination.origin || event.source !== receiver) return;
@@ -61,7 +61,7 @@
 			}
 			cleanup();
 			if (parsed.data.type === 'openpost:tool-error') {
-				failure = 'OpenPost could not keep this draft. Try again. Your draft is still here.';
+				failure = 'SocialFlow.ai could not keep this draft. Try again. Your draft is still here.';
 			}
 		};
 		cleanup = () => {
@@ -78,7 +78,7 @@
 		{busy ? 'Opening your draft…' : label}<ArrowRight data-icon="inline-end" />
 	</Button>
 	<p class="mt-2 text-sm leading-6 text-muted-foreground">
-		Your draft opens in OpenPost. Choose your accounts, review it, then schedule or publish.
+		Your draft opens in SocialFlow.ai. Choose your accounts, review it, then schedule or publish.
 		{#if draft.files.length}Selected files upload to your workspace after sign-in.{/if}
 	</p>
 	{#if failure}<p role="alert" class="mt-2 text-sm text-destructive">{failure}</p>{/if}

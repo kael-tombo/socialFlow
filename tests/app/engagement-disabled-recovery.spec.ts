@@ -80,7 +80,7 @@ for (const width of [1280, 390, 320]) {
       const popup = page.locator('[data-slot="popover-content"]');
       await expect(popup.getByText("Comments and replies are off", { exact: true })).toBeVisible();
       await expect(
-        popup.getByText("OpenPost will retry collection for 1 post.", { exact: true }),
+        popup.getByText("SocialFlow.ai will retry collection for 1 post.", { exact: true }),
       ).toHaveCount(1);
       await expect(
         popup.getByRole("button", { name: "Refresh engagement", exact: true }),
@@ -175,7 +175,7 @@ test("collection recovery explains zero, one and several affected posts", async 
     const posts = affected === 1 ? "1 post" : "3 posts";
     for (const sentence of [
       `Reconnect this account to restore collection for ${posts}.`,
-      `OpenPost will retry collection for ${posts}.`,
+      `SocialFlow.ai will retry collection for ${posts}.`,
       `${posts} ${affected === 1 ? "is" : "are"} no longer available from the provider. No action is needed.`,
       `Retry collection for ${posts}. Reconnect the account if it fails again.`,
     ])

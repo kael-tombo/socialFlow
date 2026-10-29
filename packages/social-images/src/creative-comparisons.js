@@ -1,11 +1,11 @@
 const freeEditorCosts = {
-  title: "What is free in OpenPost",
-  text: "OpenPost's local Image Editor and Video Editor are free without an account, watermark, or paid download. Media stays on your device in the local workflow. Hosted storage, account connections, and scheduled publishing are separate services with their own plans. A publishing subscription is not required to edit and export a local project.",
+  title: "What is free in SocialFlow.ai",
+  text: "SocialFlow.ai's local Image Editor and Video Editor are free without an account, watermark, or paid download. Media stays on your device in the local workflow. Hosted storage, account connections, and scheduled publishing are separate services with their own plans. A publishing subscription is not required to edit and export a local project.",
 };
 
 const editorSources = [
-  { label: "OpenPost free editor scope", href: "https://github.com/getopenpost/openpost#readme" },
-  { label: "OpenPost free tools", href: "https://openpo.st/tools" },
+  { label: "SocialFlow.ai free editor scope", href: "https://github.com/getopenpost/openpost#readme" },
+  { label: "SocialFlow.ai free tools", href: "https://openpo.st/tools" },
 ];
 
 export const creativeComparisons = [
@@ -19,11 +19,11 @@ export const creativeComparisons = [
       toolLabel: "Try the free Image Editor",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs Photoshop: social images or deep photo editing?",
+    question: "SocialFlow.ai vs Photoshop: social images or deep photo editing?",
     socialDescription:
       "Compare a free browser editor for social images with Photoshop's advanced photo and compositing workflow.",
     answer:
-      "Use OpenPost's free Image Editor for social graphics, carousel pages, and thumbnails in your browser. Choose Photoshop for precise selections, detailed retouching, and complex photo composites. OpenPost is a focused image tool, not a replacement for every Photoshop workflow.",
+      "Use SocialFlow.ai's free Image Editor for social graphics, carousel pages, and thumbnails in your browser. Choose Photoshop for precise selections, detailed retouching, and complex photo composites. SocialFlow.ai is a focused image tool, not a replacement for every Photoshop workflow.",
     sections: [
       {
         title: "When Photoshop is the better fit",
@@ -37,7 +37,7 @@ export const creativeComparisons = [
           caption: "Image editing costs",
           columns: ["Tool", "Cost", "Scope"],
           rows: [
-            ["OpenPost local Image Editor", "$0", "Browser editing and export"],
+            ["SocialFlow.ai local Image Editor", "$0", "Browser editing and export"],
             [
               "Photoshop desktop",
               "US$22.99/month, annual commitment",
@@ -47,8 +47,8 @@ export const creativeComparisons = [
         },
       },
       {
-        title: "When OpenPost is the better fit",
-        text: "Use OpenPost when you need text, shapes, images, and reusable layouts for a post, without installing an app or starting a subscription. Work on several social pages and export the result. Do not assume Photoshop document interchange, print color workflows, or professional retouching parity.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "Use SocialFlow.ai when you need text, shapes, images, and reusable layouts for a post, without installing an app or starting a subscription. Work on several social pages and export the result. Do not assume Photoshop document interchange, print color workflows, or professional retouching parity.",
       },
       {
         title: "Try the actual image",
@@ -74,11 +74,11 @@ export const creativeComparisons = [
       toolLabel: "Try the free Video Editor",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs DaVinci Resolve: browser clips or a full post studio?",
+    question: "SocialFlow.ai vs DaVinci Resolve: browser clips or a full post studio?",
     socialDescription:
       "Compare two free editing options, local browser projects, color grading, effects, and professional audio.",
     answer:
-      "Both have a free editing path. Use OpenPost for a product recording or social clip you want to finish in the browser. Choose DaVinci Resolve for a desktop workflow combining editing, advanced color work, Fusion effects, and Fairlight audio. Free does not mean the tools have the same scope.",
+      "Both have a free editing path. Use SocialFlow.ai for a product recording or social clip you want to finish in the browser. Choose DaVinci Resolve for a desktop workflow combining editing, advanced color work, Fusion effects, and Fairlight audio. Free does not mean the tools have the same scope.",
     sections: [
       {
         title: "When DaVinci Resolve is the better fit",
@@ -92,15 +92,15 @@ export const creativeComparisons = [
           caption: "Video editing costs",
           columns: ["Tool", "Cost", "Scope"],
           rows: [
-            ["OpenPost local Video Editor", "$0", "Browser recording, editing and export"],
+            ["SocialFlow.ai local Video Editor", "$0", "Browser recording, editing and export"],
             ["DaVinci Resolve", "$0", "Free desktop edition"],
             ["DaVinci Resolve Studio", "US$295 purchase", "Paid desktop edition"],
           ],
         },
       },
       {
-        title: "When OpenPost is the better fit",
-        text: "OpenPost brings recording and a multitrack timeline into your browser. Use it for demonstrations, short edits, captions, and social formats. Browser decoding and encoding depend on your device and supported codecs. It does not promise Fusion, Fairlight, professional grading, or Resolve project interchange.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "SocialFlow.ai brings recording and a multitrack timeline into your browser. Use it for demonstrations, short edits, captions, and social formats. Browser decoding and encoding depend on your device and supported codecs. It does not promise Fusion, Fairlight, professional grading, or Resolve project interchange.",
       },
       {
         title: "Test your source footage",
@@ -126,11 +126,11 @@ export const creativeComparisons = [
       toolLabel: "Try the free Video Editor",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs Premiere Pro: quick social edits or professional production?",
+    question: "SocialFlow.ai vs Premiere Pro: quick social edits or professional production?",
     socialDescription:
       "Compare free browser editing with Adobe Premiere's desktop production, collaboration, and subscription.",
     answer:
-      "Use OpenPost's free Video Editor to record and finish a social video in the browser. Choose Adobe Premiere, often called Premiere Pro, when your work needs its desktop editing tools, production integrations, and existing team workflow. Test the source footage and required handoff, not just the export price.",
+      "Use SocialFlow.ai's free Video Editor to record and finish a social video in the browser. Choose Adobe Premiere, often called Premiere Pro, when your work needs its desktop editing tools, production integrations, and existing team workflow. Test the source footage and required handoff, not just the export price.",
     sections: [
       {
         title: "When Premiere Pro is the better fit",
@@ -144,7 +144,7 @@ export const creativeComparisons = [
           caption: "Video editing costs",
           columns: ["Tool", "Cost", "Scope"],
           rows: [
-            ["OpenPost local Video Editor", "$0", "Browser recording, editing and export"],
+            ["SocialFlow.ai local Video Editor", "$0", "Browser recording, editing and export"],
             [
               "Adobe Premiere desktop",
               "US$22.99/month for new subscribers in year one, annual commitment",
@@ -154,8 +154,8 @@ export const creativeComparisons = [
         },
       },
       {
-        title: "When OpenPost is the better fit",
-        text: "OpenPost suits a founder recording a feature walkthrough, trimming it, adding text or captions, and exporting a social version. No account or subscription is required for local projects. Codec and export support depend on the browser and device; professional format coverage and Adobe project compatibility are not promised.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "SocialFlow.ai suits a founder recording a feature walkthrough, trimming it, adding text or captions, and exporting a social version. No account or subscription is required for local projects. Codec and export support depend on the browser and device; professional format coverage and Adobe project compatibility are not promised.",
       },
       {
         title: "Check the complete handoff",

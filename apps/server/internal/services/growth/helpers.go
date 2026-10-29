@@ -65,7 +65,7 @@ func classifyGrowthError(err error) (status, code, message string) {
 		case httpErr.StatusCode == 401 || httpErr.StatusCode == 403:
 			return models.GrowthSyncStatusPermissionRequired, firstNonEmpty(code, "permission"), "Reconnect this account to continue discovery."
 		case httpErr.StatusCode == 429:
-			return models.GrowthSyncStatusRateLimited, firstNonEmpty(code, "rate_limited"), "The provider is rate limiting. OpenPost will retry."
+			return models.GrowthSyncStatusRateLimited, firstNonEmpty(code, "rate_limited"), "The provider is rate limiting. SocialFlow.ai will retry."
 		case httpErr.StatusCode >= 500:
 			return models.GrowthSyncStatusTemporarilyUnavailable, firstNonEmpty(code, "provider_server"), "The provider is temporarily unavailable."
 		default:
@@ -79,7 +79,7 @@ func classifyGrowthError(err error) (status, code, message string) {
 	if strings.Contains(lower, "rate") {
 		return models.GrowthSyncStatusRateLimited, "rate_limited", "The provider is rate limiting."
 	}
-	return models.GrowthSyncStatusTemporarilyUnavailable, "unknown", "OpenPost could not reach the provider."
+	return models.GrowthSyncStatusTemporarilyUnavailable, "unknown", "SocialFlow.ai could not reach the provider."
 }
 
 func firstNonEmpty(values ...string) string {

@@ -218,11 +218,11 @@ func (h *StockMediaHandler) RegisterRoutes(api huma.API) {
 
 func (h *StockMediaHandler) adapter(key string) (stockmedia.Adapter, error) {
 	if !h.enabled {
-		return nil, huma.Error503ServiceUnavailable("stock media is not enabled on this OpenPost instance")
+		return nil, huma.Error503ServiceUnavailable("stock media is not enabled on this SocialFlow.ai instance")
 	}
 	adapter := h.adapters[strings.ToLower(strings.TrimSpace(key))]
 	if adapter == nil {
-		return nil, huma.Error404NotFound("stock provider is not configured on this OpenPost instance")
+		return nil, huma.Error404NotFound("stock provider is not configured on this SocialFlow.ai instance")
 	}
 	return adapter, nil
 }

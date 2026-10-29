@@ -8,17 +8,17 @@ export const marketingGuides = [
     reviewedAt: "2026-10-22",
     question: "What are the best social media tools for solo founders?",
     socialDescription:
-      "Compare Buffer, OpenPost, Postiz, and FeedHive against your publishing workflow, account needs, plan limits, and self-hosting costs.",
+      "Compare Buffer, SocialFlow.ai, Postiz, and FeedHive against your publishing workflow, account needs, plan limits, and self-hosting costs.",
     answer:
-      "Start with the work you need to finish. Buffer is worth comparing for scheduling and adapting drafts. OpenPost is worth evaluating when you want drafts, media editing, destination-specific versions, and automation together. Postiz is another option to compare if self-hosting matters. FeedHive is worth comparing when you want AI drafting, approvals, and automation in the tool you publish from. Test your actual accounts before choosing.",
+      "Start with the work you need to finish. Buffer is worth comparing for scheduling and adapting drafts. SocialFlow.ai is worth evaluating when you want drafts, media editing, destination-specific versions, and automation together. Postiz is another option to compare if self-hosting matters. FeedHive is worth comparing when you want AI drafting, approvals, and automation in the tool you publish from. Test your actual accounts before choosing.",
     sections: [
       {
         title: "Choose for your weekly workflow",
         text: "A founder sharing two product updates a week has different needs from a team answering customer messages all day. Write down your channels, post formats, and who reviews the content. Compare tools against that list before comparing plan names.",
         items: [
           "Mostly scheduling finished posts: try the queue, calendar, and per-channel preview in Buffer.",
-          "Creating content from product work: evaluate OpenPost's composer, media tools, and separate versions for each destination.",
-          "Running the service on your own infrastructure: compare OpenPost and Postiz, including maintenance and provider setup.",
+          "Creating content from product work: evaluate SocialFlow.ai's composer, media tools, and separate versions for each destination.",
+          "Running the service on your own infrastructure: compare SocialFlow.ai and Postiz, including maintenance and provider setup.",
           "Reviewing drafts with other people, or starting from AI drafts: compare FeedHive's approval workflow, AI credits, and automation.",
         ],
       },
@@ -64,7 +64,7 @@ export const marketingGuides = [
         href: "https://docs.feedhive.com/workspace-management/approval-workflow-for-feedhive-teams",
       },
     ],
-    next: { label: "Explore OpenPost features", href: "/#features" },
+    next: { label: "Explore SocialFlow.ai features", href: "/#features" },
   },
   {
     slug: "turn-product-updates-into-social-media-posts",
@@ -74,7 +74,7 @@ export const marketingGuides = [
     socialDescription:
       "Turn one verified product update into destination-specific social posts, with separate text, media, and calls to action.",
     answer:
-      "Start with a concrete change, explain who it helps, and show the result. Keep one source draft, then adapt its length, opening, media, and call to action for each destination. OpenPost keeps those versions together. AI can help with a draft, and you choose the final words.",
+      "Start with a concrete change, explain who it helps, and show the result. Keep one source draft, then adapt its length, opening, media, and call to action for each destination. SocialFlow.ai keeps those versions together. AI can help with a draft, and you choose the final words.",
     sections: [
       {
         title: "Write down the evidence first",
@@ -92,12 +92,12 @@ export const marketingGuides = [
       },
       {
         title: "Keep the versions attached to the same idea",
-        text: "Start a draft in OpenPost, choose your accounts, and adjust the words and images for each channel. Your versions stay together, so you can return to the same idea without searching through several apps. Buffer's AI Assistant is another option to compare for rewriting and adapting existing text.",
+        text: "Start a draft in SocialFlow.ai, choose your accounts, and adjust the words and images for each channel. Your versions stay together, so you can return to the same idea without searching through several apps. Buffer's AI Assistant is another option to compare for rewriting and adapting existing text.",
       },
     ],
     sources: [
       {
-        label: "OpenPost product and workflow",
+        label: "SocialFlow.ai product and workflow",
         href: "https://github.com/getopenpost/openpost/blob/main/PRODUCT.md",
       },
       { label: "Buffer AI Assistant", href: "https://buffer.com/ai-assistant" },
@@ -112,7 +112,7 @@ export const marketingGuides = [
     socialDescription:
       "Schedule one source idea across several platforms while checking account permissions, media rules, timezones, and partial failures.",
     answer:
-      "Use a scheduler that supports your exact accounts and formats. Connect the accounts, prepare a version for each destination, confirm the timezone, and schedule a small test. OpenPost keeps the drafts together while letting you change the text, media, and timing for each channel.",
+      "Use a scheduler that supports your exact accounts and formats. Connect the accounts, prepare a version for each destination, confirm the timezone, and schedule a small test. SocialFlow.ai keeps the drafts together while letting you change the text, media, and timing for each channel.",
     sections: [
       {
         title: "Check the account and format, not just the logo",
@@ -120,7 +120,7 @@ export const marketingGuides = [
       },
       {
         title: "Prepare and inspect every destination",
-        text: "Select the accounts in OpenPost's composer, write the shared draft, and then review each version. Adjust text and media for that account. Choose the schedule and inspect any destination-specific timing before confirming.",
+        text: "Select the accounts in SocialFlow.ai's composer, write the shared draft, and then review each version. Adjust text and media for that account. Choose the schedule and inspect any destination-specific timing before confirming.",
         items: [
           "Verify the timezone and calendar date, especially around daylight saving changes.",
           "Check that your images and videos fit the channel.",
@@ -130,12 +130,12 @@ export const marketingGuides = [
       },
       {
         title: "Plan for partial failure",
-        text: "One destination can fail while another publishes. Check which post exists on the provider before retrying so you do not create a duplicate. OpenPost exposes publishing and retry state; provider capabilities and readiness still vary. Buffer's scheduling guide documents its queue and custom-time workflow if you want another tool to compare.",
+        text: "One destination can fail while another publishes. Check which post exists on the provider before retrying so you do not create a duplicate. SocialFlow.ai exposes publishing and retry state; provider capabilities and readiness still vary. Buffer's scheduling guide documents its queue and custom-time workflow if you want another tool to compare.",
       },
     ],
     sources: [
       {
-        label: "OpenPost provider readiness",
+        label: "SocialFlow.ai provider readiness",
         href: "https://openpo.st/docs/self-hosting/maintenance",
       },
       {

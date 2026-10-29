@@ -38,8 +38,8 @@ func (l *LinkedInAdapter) AnalyticsSupportForAccount(input AnalyticsAccountConte
 		return AnalyticsSupport{
 			Account:            false,
 			Content:            false,
-			AccountUnavailable: "LinkedIn member analytics require Community Management API access for this OpenPost installation.",
-			ContentUnavailable: "LinkedIn member analytics require Community Management API access for this OpenPost installation.",
+			AccountUnavailable: "LinkedIn member analytics require Community Management API access for this SocialFlow.ai installation.",
+			ContentUnavailable: "LinkedIn member analytics require Community Management API access for this SocialFlow.ai installation.",
 		}
 	}
 	return AnalyticsSupport{
@@ -54,8 +54,8 @@ func linkedinCommunityManagementUnavailable() AnalyticsSupport {
 	return AnalyticsSupport{
 		Account:            false,
 		Content:            false,
-		AccountUnavailable: "LinkedIn analytics require Community Management API access for this OpenPost installation.",
-		ContentUnavailable: "LinkedIn analytics require Community Management API access for this OpenPost installation.",
+		AccountUnavailable: "LinkedIn analytics require Community Management API access for this SocialFlow.ai installation.",
+		ContentUnavailable: "LinkedIn analytics require Community Management API access for this SocialFlow.ai installation.",
 	}
 }
 

@@ -595,7 +595,7 @@ func (h *PublicationHandler) deletePublication(api huma.API) {
 		Method:      http.MethodDelete,
 		Path:        publicationPathByID,
 		Summary:     "Delete a publication",
-		Description: "Permanently removes a publication and its destinations from OpenPost. Published posts remain on the social networks. Publications with active delivery cannot be removed.",
+		Description: "Permanently removes a publication and its destinations from SocialFlow.ai. Published posts remain on the social networks. Publications with active delivery cannot be removed.",
 		Tags:        []string{tagPublications},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404, 409},

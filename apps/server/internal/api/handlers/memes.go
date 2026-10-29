@@ -342,7 +342,7 @@ type GenerateMemeSuggestionsOutput struct {
 type PreviewMemeInput struct {
 	Body struct {
 		WorkspaceID     string   `json:"workspace_id" required:"true" doc:"Workspace ID"`
-		TemplateID      string   `json:"template_id" required:"true" minLength:"1" maxLength:"80" doc:"OpenPost meme template ID"`
+		TemplateID      string   `json:"template_id" required:"true" minLength:"1" maxLength:"80" doc:"SocialFlow.ai meme template ID"`
 		Captions        []string `json:"captions" required:"true" minItems:"1" maxItems:"16" maxLength:"200" doc:"Caption values in template order"`
 		OverlayMediaIDs []string `json:"overlay_media_ids,omitempty" maxItems:"8" maxLength:"80" doc:"Workspace media IDs for replaceable image slots"`
 		Format          string   `json:"format,omitempty" default:"png" enum:"png,jpg,jpeg,gif,webp" doc:"Rendered image format"`
@@ -362,7 +362,7 @@ type RenderMemeInput struct {
 	Body struct {
 		RetentionClass  string   `json:"retention_class,omitempty" default:"temporary" enum:"library,temporary" doc:"Keep in the library or manage as temporary post media"`
 		WorkspaceID     string   `json:"workspace_id" required:"true" doc:"Workspace ID"`
-		TemplateID      string   `json:"template_id" required:"true" minLength:"1" maxLength:"80" doc:"OpenPost meme template ID"`
+		TemplateID      string   `json:"template_id" required:"true" minLength:"1" maxLength:"80" doc:"SocialFlow.ai meme template ID"`
 		Captions        []string `json:"captions" required:"true" minItems:"1" maxItems:"16" maxLength:"200" doc:"Caption values in template order"`
 		OverlayMediaIDs []string `json:"overlay_media_ids,omitempty" maxItems:"8" maxLength:"80" doc:"Workspace media IDs for replaceable image slots"`
 		Format          string   `json:"format,omitempty" default:"png" enum:"png,jpg,jpeg,gif,webp" doc:"Rendered image format"`
@@ -450,7 +450,7 @@ func (h *MemeHandler) RegisterRoutes(api huma.API) {
 		Method:      http.MethodGet,
 		Path:        "/memes/templates/{template_id}/thumbnail",
 		Summary:     "Load a meme template thumbnail",
-		Description: "Returns bounded cacheable image bytes from OpenPost's configured template catalog.",
+		Description: "Returns bounded cacheable image bytes from SocialFlow.ai's configured template catalog.",
 		Tags:        []string{tagMedia},
 		Responses: map[string]*huma.Response{
 			"200": {

@@ -13,7 +13,7 @@ const discordAccount: SocialAccount = {
 	slug: 'discord-bot',
 	platform: 'discord_bot',
 	account_id: 'guild-1',
-	account_username: 'OpenPost bot',
+	account_username: 'SocialFlow.ai bot',
 	account_avatar_url: '',
 	instance_url: '',
 	is_active: true,

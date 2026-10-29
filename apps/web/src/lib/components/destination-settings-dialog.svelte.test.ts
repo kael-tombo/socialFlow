@@ -28,7 +28,7 @@ const youtubeAccount: SocialAccount = {
 	slug: 'youtube-main',
 	platform: 'youtube',
 	account_id: 'channel-1',
-	account_username: 'OpenPost channel'
+	account_username: 'SocialFlow.ai channel'
 };
 
 const discordAccount: SocialAccount = {
@@ -37,7 +37,7 @@ const discordAccount: SocialAccount = {
 	slug: 'discord-bot',
 	platform: 'discord_bot',
 	account_id: 'guild-1',
-	account_username: 'OpenPost bot'
+	account_username: 'SocialFlow.ai bot'
 };
 
 function setting(

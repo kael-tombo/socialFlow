@@ -4,9 +4,9 @@
 
 AI can write a plausible social post in seconds. The harder part is deciding which account it belongs to, how it should change for that destination, and whether it is ready to publish.
 
-That is the problem OpenPost is built around.
+That is the problem SocialFlow.ai is built around.
 
-An authorized agent can inspect workspace context and prepare a canonical campaign with account-specific variants. It does not receive the social provider credentials. I can then open the work in OpenPost, review the copy, media, accessibility text, destinations, and timing, and approve the exact operation that enters the queue.
+An authorized agent can inspect workspace context and prepare a canonical campaign with account-specific variants. It does not receive the social provider credentials. I can then open the work in SocialFlow.ai, review the copy, media, accessibility text, destinations, and timing, and approve the exact operation that enters the queue.
 
 The queue keeps scheduled work, provider results, failures, and retries visible. The Hosted service and self-hosted deployment are the same AGPL product; the self-hosted runtime is one binary or container with SQLite by default and no required Redis service.
 

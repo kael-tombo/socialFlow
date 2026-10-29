@@ -89,7 +89,7 @@ func TestPinterestAmbiguousCreateIsFencedAcrossWorkerRestart(t *testing.T) {
 	httpClient = &http.Client{Transport: roundTripFunc(func(req *http.Request) (*http.Response, error) {
 		switch req.URL.Path {
 		case "/v5/user_account":
-			return jsonResponse(req, `{"username":"openpost","business_name":"OpenPost","account_type":"BUSINESS"}`), nil
+			return jsonResponse(req, `{"username":"openpost","business_name":"SocialFlow.ai","account_type":"BUSINESS"}`), nil
 		case "/v5/boards/board-owned":
 			return jsonResponse(req, `{"id":"board-owned","name":"Owned","owner":{"username":"openpost"}}`), nil
 		case "/v5/pins":
@@ -315,7 +315,7 @@ func TestPinterestPublishTargetValidationRejectsForeignStaleAndMismatchedTargets
 		}
 		switch req.URL.Path {
 		case "/v5/user_account":
-			return jsonResponse(req, `{"username":"openpost","business_name":"OpenPost","account_type":"BUSINESS","profile_image":"https://cdn.example/avatar.jpg"}`), nil
+			return jsonResponse(req, `{"username":"openpost","business_name":"SocialFlow.ai","account_type":"BUSINESS","profile_image":"https://cdn.example/avatar.jpg"}`), nil
 		case "/v5/boards/board-owned":
 			return jsonResponse(req, `{"id":"board-owned","name":"Owned","owner":{"username":"openpost"}}`), nil
 		case "/v5/boards/board-foreign":

@@ -47,13 +47,13 @@ x-casaos:
   scheme: http
   icon: https://openpo.st/docs/assets/brand/icon.svg
   title:
-    en_US: OpenPost
+    en_US: SocialFlow.ai
   tagline:
     en_US: Turn your work into channel-ready content
   description:
-    en_US: OpenPost is the all-in-one content team for solo founders. It turns your work into channel-ready posts, publishes them to your social accounts, and brings outcomes back into one workspace.
-  author: OpenPost
-  developer: OpenPost
+    en_US: SocialFlow.ai is the all-in-one content team for solo founders. It turns your work into channel-ready posts, publishes them to your social accounts, and brings outcomes back into one workspace.
+  author: SocialFlow.ai
+  developer: SocialFlow.ai
   category: Productivity
   architectures:
     - amd64
@@ -61,7 +61,7 @@ x-casaos:
   version: "4.31.1"
   update_at: "2026-09-13"
   release_notes:
-    en_US: Ready-to-import CasaOS customized-app recipe for OpenPost.
+    en_US: Ready-to-import CasaOS customized-app recipe for SocialFlow.ai.
   website: https://openpo.st
   repo: https://github.com/getopenpost/openpost
   support: https://github.com/getopenpost/openpost/issues

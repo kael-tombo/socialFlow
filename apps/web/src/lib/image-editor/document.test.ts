@@ -34,7 +34,7 @@ function group(id: string, parentID?: string): ImageEditorLayer {
 	};
 }
 
-describe('OpenPost Image Editor document contracts', () => {
+describe('SocialFlow.ai Image Editor document contracts', () => {
 	it('opens and snapshots reactive template documents without sharing authored state', () => {
 		const original = blankImageEditorDocument(preset);
 		const reactive = new Proxy(original, {});
@@ -189,7 +189,7 @@ describe('OpenPost Image Editor document contracts', () => {
 		});
 		expect(result.readOnly).toBe(true);
 		expect(result.document?.schema_version).toBe(99);
-		expect(result.error).toContain('newer OpenPost version');
+		expect(result.error).toContain('newer SocialFlow.ai version');
 	});
 
 	it('fills new image-adjustment defaults when opening an existing document', () => {
@@ -284,7 +284,7 @@ describe('OpenPost Image Editor document contracts', () => {
 				opacity: 1,
 				transform: defaultTransform(600, 180),
 				text: {
-					text: 'OpenPost',
+					text: 'SocialFlow.ai',
 					font_family: 'Geist Variable',
 					font_weight: 700,
 					font_style: 'normal',

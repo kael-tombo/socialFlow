@@ -89,7 +89,7 @@ test("failed-payment recovery stays account-wide, permission-aware, and clears f
   await expect(recoveryCard).toBeVisible();
   await expect(recoveryCard).toContainText("Payment recovery");
   await expect(recoveryCard).toContainText(
-    "OpenPost restores paid-plan access after Paddle confirms recovery.",
+    "SocialFlow.ai restores paid-plan access after Paddle confirms recovery.",
   );
   await expect(recoveryCard.getByRole("button", { name: "Update payment method" })).toBeVisible();
 

@@ -47,7 +47,7 @@ func insertOrganizationDeletionFixture(t *testing.T, db *bun.DB) {
 	modelsToInsert := []any{
 		&models.User{ID: "user-1", Email: "owner@example.com", PasswordHash: hash, CreatedAt: now},
 		&models.User{ID: "user-2", Email: "member@example.com", CreatedAt: now},
-		&models.Organization{ID: "org-1", Name: "OpenPost Studio", CreatedByID: "user-1", CreatedAt: now, UpdatedAt: now},
+		&models.Organization{ID: "org-1", Name: "SocialFlow.ai Studio", CreatedByID: "user-1", CreatedAt: now, UpdatedAt: now},
 		&models.OrganizationMember{OrganizationID: "org-1", UserID: "user-1", Role: models.OrganizationRoleOwner, CreatedAt: now},
 		&models.OrganizationMember{OrganizationID: "org-1", UserID: "user-2", Role: models.OrganizationRoleMember, CreatedAt: now},
 		&models.Workspace{ID: "workspace-1", OrganizationID: "org-1", Name: "Editorial", Timezone: "UTC", CreatedAt: now},
@@ -80,7 +80,7 @@ func TestOrganizationDeletionPreviewEnumeratesImpactAndAllBlockers(t *testing.T)
 
 	rec := jsonRequest(t, server.echo, http.MethodGet, "/api/v1/organizations/org-1/deletion-preview", nil, "web-token")
 	require.Equal(t, http.StatusOK, rec.Code, rec.Body.String())
-	require.Contains(t, rec.Body.String(), `"organization_name":"OpenPost Studio"`)
+	require.Contains(t, rec.Body.String(), `"organization_name":"SocialFlow.ai Studio"`)
 	require.Contains(t, rec.Body.String(), `"workspace_name":"Editorial"`)
 	require.Contains(t, rec.Body.String(), `"workspace_name":"Launches"`)
 	require.Contains(t, rec.Body.String(), `"billing_state":"active"`)
@@ -93,7 +93,7 @@ func TestOrganizationDeletionPreviewEnumeratesImpactAndAllBlockers(t *testing.T)
 	require.Contains(t, rec.Body.String(), `"retained":[`)
 	require.Contains(t, rec.Body.String(), `"irreversible_loss":[`)
 
-	blocked := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", map[string]any{"confirm_name": "OpenPost Studio", "current_password": "current-password-123"}, "web-token")
+	blocked := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", map[string]any{"confirm_name": "SocialFlow.ai Studio", "current_password": "current-password-123"}, "web-token")
 	require.Equal(t, http.StatusConflict, blocked.Code, blocked.Body.String())
 	require.Equal(t, 1, countRows[models.Organization](t, server.db, "id = ?", "org-1"))
 	canceled := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1/billing-checkout-attempts/pending", nil, "web-token")
@@ -131,7 +131,7 @@ func TestOrganizationDeletionRequiresCurrentOwnerExactNameAndRecentAuthenticatio
 		want int
 	}{
 		{map[string]any{"confirm_name": "openpost studio", "current_password": "current-password-123"}, http.StatusBadRequest},
-		{map[string]any{"confirm_name": "OpenPost Studio", "current_password": "wrong"}, http.StatusUnauthorized},
+		{map[string]any{"confirm_name": "SocialFlow.ai Studio", "current_password": "wrong"}, http.StatusUnauthorized},
 	} {
 		rec := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", test.body, "web-token")
 		require.Equal(t, test.want, rec.Code, rec.Body.String())
@@ -216,7 +216,7 @@ func TestOrganizationDeletionRemovesWholeBoundaryAndRetainsSafeAudit(t *testing.
 	require.NoError(t, err)
 	_, err = server.db.NewInsert().Model(&models.WorkspaceInvitationDeliveryEvent{EventID: "historical-delivery-event", InvitationID: "invitation", DeliveryID: "historical-invitation-email-job", Outcome: "delivered", OccurredAt: time.Now().UTC(), CreatedAt: time.Now().UTC()}).Exec(t.Context())
 	require.NoError(t, err)
-	rec := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", map[string]any{"confirm_name": "OpenPost Studio", "current_password": "current-password-123"}, "web-token")
+	rec := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", map[string]any{"confirm_name": "SocialFlow.ai Studio", "current_password": "current-password-123"}, "web-token")
 	require.Equal(t, http.StatusOK, rec.Code, rec.Body.String())
 	require.Zero(t, countRows[models.Organization](t, server.db, "id = ?", "org-1"))
 	require.Zero(t, countRows[models.Workspace](t, server.db, "organization_id = ?", "org-1"))
@@ -250,7 +250,7 @@ func TestOrganizationDeletionRemovesWholeBoundaryAndRetainsSafeAudit(t *testing.
 	var event models.OrganizationLifecycleAuditEvent
 	require.NoError(t, server.db.NewSelect().Model(&event).Where("organization_id = ?", "org-1").Scan(t.Context()))
 	require.Equal(t, "organization.deleted", event.Action)
-	require.Equal(t, "OpenPost Studio", event.OrganizationName)
+	require.Equal(t, "SocialFlow.ai Studio", event.OrganizationName)
 	require.Equal(t, 2, event.WorkspaceCount)
 }
 
@@ -259,7 +259,7 @@ func TestOrganizationDeletionFailureIsAtomic(t *testing.T) {
 	insertOrganizationDeletionFixture(t, server.db)
 	_, err := server.db.Exec("DROP TABLE organization_lifecycle_audit_events")
 	require.NoError(t, err)
-	rec := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", map[string]any{"confirm_name": "OpenPost Studio", "current_password": "current-password-123"}, "web-token")
+	rec := jsonRequest(t, server.echo, http.MethodDelete, "/api/v1/organizations/org-1", map[string]any{"confirm_name": "SocialFlow.ai Studio", "current_password": "current-password-123"}, "web-token")
 	require.Equal(t, http.StatusInternalServerError, rec.Code, rec.Body.String())
 	require.Equal(t, 1, countRows[models.Organization](t, server.db, "id = ?", "org-1"))
 	require.Equal(t, 2, countRows[models.Workspace](t, server.db, "organization_id = ?", "org-1"))

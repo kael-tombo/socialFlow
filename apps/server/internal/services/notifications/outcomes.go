@@ -355,14 +355,14 @@ func materializeReplyFailedOutcome(value semanticOutcome) (createInput, error) {
 	input := baseOutcomeInput(value)
 	if conversationID, ok := value.payload["conversation_id"].(string); ok {
 		input.Title = "Message failed"
-		input.Body = "OpenPost could not send a direct message."
+		input.Body = "SocialFlow.ai could not send a direct message."
 		input.Href = "/inbox/messages?conversation=" + url.QueryEscape(conversationID)
 		input.Actions = []models.NotificationAction{{Label: "Review message", Href: input.Href, Kind: "primary"}}
 		return input, nil
 	}
 	engagementID, _ := value.payload["engagement_id"].(string)
 	input.Title = "Reply failed"
-	input.Body = "OpenPost could not send a reply or engagement action."
+	input.Body = "SocialFlow.ai could not send a reply or engagement action."
 	input.Href = "/inbox/engagement?item=" + url.QueryEscape(engagementID)
 	input.Actions = []models.NotificationAction{{Label: "Review reply", Href: input.Href, Kind: "primary"}}
 	return input, nil
@@ -394,7 +394,7 @@ func materializeOwnershipTransferOutcome(value semanticOutcome) (createInput, er
 func materializeRequiredAccountOutcome(value semanticOutcome) (createInput, error) {
 	input := baseOutcomeInput(value)
 	input.Title = "Account action required"
-	input.Body = "Review this required account action in OpenPost."
+	input.Body = "Review this required account action in SocialFlow.ai."
 	input.Href = "/settings"
 	input.Actions = []models.NotificationAction{{Label: "Review settings", Href: input.Href, Kind: "primary"}}
 	return input, nil

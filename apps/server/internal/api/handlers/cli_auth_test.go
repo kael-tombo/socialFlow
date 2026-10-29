@@ -344,7 +344,7 @@ func TestCLIAuthHappyPathReturnsTokenOnFirstApprovedPollOnly(t *testing.T) {
 	require.NotContains(t, start.VerificationURL, start.DeviceCode)
 
 	session := srv.getSession(t, start.UserCode)
-	require.Equal(t, "OpenPost CLI", session.ClientName)
+	require.Equal(t, "SocialFlow.ai CLI", session.ClientName)
 	require.Equal(t, "1.2.3", session.ClientVersion)
 	require.Equal(t, "linux/amd64", session.ClientOS)
 	require.Equal(t, "cli:full", session.RequestedScopes)
@@ -604,7 +604,7 @@ func (s *cliAuthTestServer) request(t *testing.T, method, path string, body any,
 
 func startRequest() map[string]string {
 	return map[string]string{
-		"client_name":      "OpenPost CLI",
+		"client_name":      "SocialFlow.ai CLI",
 		"client_version":   "1.2.3",
 		"client_os":        "linux/amd64",
 		"requested_scopes": "cli:full",

@@ -19,7 +19,7 @@ func newAccountCmd() *cobra.Command {
 		Short: "Manage connected social accounts",
 		Long: "List, rename, and disconnect social accounts. Account slugs are the\n" +
 			"preferred selector for --accounts. New accounts are connected in the\n" +
-			"OpenPost web UI at <instance>/settings?tab=accounts.",
+			"SocialFlow.ai web UI at <instance>/settings?tab=accounts.",
 	}
 	cmd.AddCommand(newAccountListCmd())
 	cmd.AddCommand(newAccountMentionsCmd())

@@ -105,7 +105,7 @@ test("a persistent route import failure stops at a visible error", async ({ page
   await page.goto("/forgot-password");
   await expect.poll(() => failures, { timeout: 15_000 }).toBe(4);
   await expect(
-    page.getByRole("heading", { name: /^(OpenPost could not show this page|Internal Error)$/ }),
+    page.getByRole("heading", { name: /^(SocialFlow.ai could not show this page|Internal Error)$/ }),
   ).toBeVisible({ timeout: 30_000 });
   expect(forgotNavigationCount).toBe(4);
 });

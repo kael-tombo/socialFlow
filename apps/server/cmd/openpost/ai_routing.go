@@ -16,7 +16,7 @@ func openRouterConfigs(cfg *config.Config) (ai.OpenRouterConfig, ai.OpenRouterCo
 	base := ai.OpenRouterConfig{
 		APIKey:      cfg.OpenRouterAPIKey,
 		HTTPReferer: cfg.PublicURL,
-		XTitle:      "OpenPost",
+		XTitle:      "SocialFlow.ai",
 	}
 	imageConfig := base
 	imageConfig.Provider = cfg.ImageCaptionProvider

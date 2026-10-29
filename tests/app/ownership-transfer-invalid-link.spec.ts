@@ -30,7 +30,7 @@ test("an incomplete transfer keeps its explanation and never retries an absent I
       await page.screenshot({ path: info.outputPath(`transfer-${width}-${scheme}.png`) });
       await expect(explanation).toBeVisible();
       await expect(retry).toHaveCount(0);
-      const recovery = page.getByRole("link", { name: "Return to OpenPost", exact: true });
+      const recovery = page.getByRole("link", { name: "Return to SocialFlow.ai", exact: true });
       await recovery.focus();
       await page.keyboard.press("Enter");
       await expect(page).toHaveURL(/\/$/);

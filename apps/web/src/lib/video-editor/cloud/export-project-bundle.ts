@@ -53,7 +53,7 @@ export function createCloudBundleRuntime(repository: CloudBundleRepository): Bun
 			const snapshot: ProjectSnapshot = {
 				version: PROJECT_SNAPSHOT_VERSION,
 				exportedAt: new Date().toISOString(),
-				editorVersion: 'OpenPost',
+				editorVersion: 'SocialFlow.ai',
 				project: structuredClone(cloudProject.document),
 				mediaReferences: projectMedia.map(mediaReference)
 			};

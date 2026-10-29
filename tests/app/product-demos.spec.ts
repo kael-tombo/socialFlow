@@ -150,7 +150,7 @@ for (const name of ["publishing", "image-editor", "video-editor"] as const) {
             await expect(page.getByTestId("composer-account-loading")).toHaveCount(0);
             await page
               .getByRole("textbox", { name: "Post text" })
-              .pressSequentially("Just shipped: make it, post it, measure it. All in OpenPost.", {
+              .pressSequentially("Just shipped: make it, post it, measure it. All in SocialFlow.ai.", {
                 delay: 28,
               });
           },
@@ -177,7 +177,7 @@ for (const name of ["publishing", "image-editor", "video-editor"] as const) {
               .fill("Five apps to publish one post");
             await dialog
               .getByRole("textbox", { name: "Caption 2", exact: true })
-              .fill("Make it all in OpenPost");
+              .fill("Make it all in SocialFlow.ai");
             await expect(dialog.getByText("Updating preview", { exact: true })).toHaveCount(0);
             await expect
               .poll(() =>

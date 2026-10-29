@@ -86,7 +86,7 @@
 		<section class="privacy" id="privacy">
 			<h2>Privacy policy</h2>
 			<p>
-				Updated {extension.privacyUpdated}. This policy covers {extension.name}, not the OpenPost
+				Updated {extension.privacyUpdated}. This policy covers {extension.name}, not the SocialFlow.ai
 				hosted service.
 			</p>
 			<p>{extension.privacy}</p>
@@ -100,7 +100,7 @@
 		</section>
 		{#if other}
 			<a class="other-extension focus-ring" href={`/tools/${other.slug}`}
-				>Also from OpenPost: {other.name}<ArrowRight size={18} /></a
+				>Also from SocialFlow.ai: {other.name}<ArrowRight size={18} /></a
 			>
 		{/if}
 	</div>

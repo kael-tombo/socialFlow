@@ -1,4 +1,4 @@
-# OpenPost CLI workflows
+# SocialFlow.ai CLI workflows
 
 Use live `--help` output if a flag in this reference differs from the installed CLI.
 
@@ -104,7 +104,7 @@ openpost post create \
   --accounts main-x \
   --content 'The new queue is live.' \
   --media ./queue.png \
-  --media-alt 'OpenPost queue screen' \
+  --media-alt 'SocialFlow.ai queue screen' \
   --json
 ```
 
@@ -271,7 +271,7 @@ openpost media storage --json
 openpost media delete media-id --yes --json
 ```
 
-Check usage before deletion. OpenPost rejects deletion while media is used by an editable draft, design, template, or brand kit.
+Check usage before deletion. SocialFlow.ai rejects deletion while media is used by an editable draft, design, template, or brand kit.
 
 ## Manage reusable schedule slots
 

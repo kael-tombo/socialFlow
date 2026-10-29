@@ -3,7 +3,7 @@ import createClient from 'openapi-fetch';
 import { describe, expect, it, vi } from 'vitest';
 import { createOpenPostQueryAPI } from './api';
 
-describe('OpenPost web query API', () => {
+describe('SocialFlow.ai web query API', () => {
 	it('forwards cancellation and returns page metadata with Activity publications', async () => {
 		const controller = new AbortController();
 		const fetchMock = vi.fn(async (_request: Request) => {

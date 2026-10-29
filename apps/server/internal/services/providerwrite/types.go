@@ -56,7 +56,7 @@ func DeliveryRecoveryAction(delivery models.ProviderDelivery) string {
 }
 
 var (
-	ErrOutcomeAmbiguous      = errors.New("provider write outcome is ambiguous; OpenPost will not replay it")
+	ErrOutcomeAmbiguous      = errors.New("provider write outcome is ambiguous; SocialFlow.ai will not replay it")
 	ErrOutcomePending        = errors.New("provider write is pending provider reconciliation")
 	ErrReconciliationExpired = errors.New("provider reconciliation expired; check the provider before publishing again")
 	ErrWriteInProgress       = errors.New("provider write is already in progress")

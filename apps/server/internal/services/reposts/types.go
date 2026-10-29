@@ -53,7 +53,7 @@ func invalidInputf(format string, args ...any) error {
 
 type Rule struct {
 	DelaySeconds            int     `json:"delay_seconds" minimum:"0" maximum:"2592000" doc:"Wait after publishing before the first eligibility check"`
-	EvaluationWindowSeconds int     `json:"evaluation_window_seconds" minimum:"900" maximum:"2592000" doc:"How long OpenPost may wait for engagement gates"`
+	EvaluationWindowSeconds int     `json:"evaluation_window_seconds" minimum:"900" maximum:"2592000" doc:"How long SocialFlow.ai may wait for engagement gates"`
 	ThresholdMode           string  `json:"threshold_mode" enum:"all,any" doc:"Require all configured thresholds or any one"`
 	MinLikes                int64   `json:"min_likes" minimum:"0" doc:"Minimum likes; zero disables this gate"`
 	MinComments             int64   `json:"min_comments" minimum:"0" doc:"Minimum comments; zero disables this gate"`

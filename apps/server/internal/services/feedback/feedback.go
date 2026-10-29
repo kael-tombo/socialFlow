@@ -208,7 +208,7 @@ func diagnosticCategories() []string {
 		"app version and page path",
 		"viewport and browser",
 		"recent page paths",
-		"failed OpenPost API request metadata",
+		"failed SocialFlow.ai API request metadata",
 		"sanitized client errors",
 	}
 }

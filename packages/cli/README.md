@@ -1,6 +1,6 @@
 # @getopenpost/cli
 
-Run the OpenPost CLI and MCP proxy without installing Go or downloading release archives by hand. The `openpost` and `openpost-mcp` commands resolve a verified prebuilt binary from the OpenPost GitHub release and exec it with your arguments.
+Run the SocialFlow.ai CLI and MCP proxy without installing Go or downloading release archives by hand. The `openpost` and `openpost-mcp` commands resolve a verified prebuilt binary from the SocialFlow.ai GitHub release and exec it with your arguments.
 
 ```bash
 npm install -g @getopenpost/cli
@@ -34,7 +34,7 @@ Checksum verification fails closed: a mismatch or a missing `.sha256` asset abor
 
 ## Versioning
 
-The wrapper version is independent of the OpenPost app version. The `openpost.releaseTag` field in `package.json` pins the CLI release it installs by default; bump both together when picking up a new CLI. `openpost version` always reports the installed binary version.
+The wrapper version is independent of the SocialFlow.ai app version. The `openpost.releaseTag` field in `package.json` pins the CLI release it installs by default; bump both together when picking up a new CLI. `openpost version` always reports the installed binary version.
 
 ## License
 

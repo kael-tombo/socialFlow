@@ -29,7 +29,7 @@ export function releaseTag(options: ResolveOptions = {}): string {
   const tag = options.releaseTag ?? env("OPENPOST_CLI_TAG") ?? defaultReleaseTag();
   if (!RELEASE_TAG_PATTERN.test(tag)) {
     throw new Error(
-      `Refusing to resolve OpenPost CLI release ${JSON.stringify(tag)}: ` +
+      `Refusing to resolve SocialFlow.ai CLI release ${JSON.stringify(tag)}: ` +
         `expected a release tag like v4.35.0.`,
     );
   }

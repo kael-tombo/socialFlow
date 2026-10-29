@@ -1,11 +1,11 @@
 # @getopenpost/sdk
 
-Official TypeScript SDK for the [OpenPost](https://openpo.st) API. Create publications, manage per-account renditions, upload media, and track publishing jobs from Node 20+, Bun, or Cloudflare Workers. Zero runtime dependencies: only `fetch` is used.
+Official TypeScript SDK for the [SocialFlow.ai](https://openpo.st) API. Create publications, manage per-account renditions, upload media, and track publishing jobs from Node 20+, Bun, or Cloudflare Workers. Zero runtime dependencies: only `fetch` is used.
 
 ```ts
-import { OpenPost } from "@getopenpost/sdk";
+import { SocialFlow.ai } from "@getopenpost/sdk";
 
-const openpost = new OpenPost({
+const openpost = new SocialFlow.ai({
   baseUrl: "https://app.openpo.st",
   token: process.env.OPENPOST_TOKEN,
   workspaceId: process.env.OPENPOST_WORKSPACE_ID,
@@ -32,7 +32,7 @@ console.log(done.status); // published
 npm install @getopenpost/sdk
 ```
 
-Mint a workspace API token in OpenPost (API tokens settings) and pass it as `token`, or set `OPENPOST_TOKEN`. Override the instance with `baseUrl` or `OPENPOST_URL`. The default workspace comes from `workspaceId`, `OPENPOST_WORKSPACE_ID`, or `OPENPOST_WORKSPACE` (shared with the Go CLI).
+Mint a workspace API token in SocialFlow.ai (API tokens settings) and pass it as `token`, or set `OPENPOST_TOKEN`. Override the instance with `baseUrl` or `OPENPOST_URL`. The default workspace comes from `workspaceId`, `OPENPOST_WORKSPACE_ID`, or `OPENPOST_WORKSPACE` (shared with the Go CLI).
 
 ## Publications
 
@@ -87,7 +87,7 @@ Publication responses expose `creation_source`. Records created through this pac
 ## Errors
 
 ```ts
-import { OpenPost, OpenPostError } from "@getopenpost/sdk";
+import { SocialFlow.ai, OpenPostError } from "@getopenpost/sdk";
 
 try {
   await openpost.publications.schedule(id, revision);
@@ -173,9 +173,9 @@ number; `reset()` clears state and counters.
 
 | Surface            | Use when                                                |
 | ------------------ | ------------------------------------------------------- |
-| **SDK** (this pkg) | CI jobs, scripts, and agents calling OpenPost over HTTP |
+| **SDK** (this pkg) | CI jobs, scripts, and agents calling SocialFlow.ai over HTTP |
 | **CLI**            | Terminal publishing and login via `openpost`            |
-| **MCP**            | Agentic tools inside a running OpenPost instance        |
+| **MCP**            | Agentic tools inside a running SocialFlow.ai instance        |
 | **n8n**            | Visual workflows with `@getopenpost/n8n-nodes-openpost` |
 
 ## License

@@ -630,7 +630,7 @@ async function freshRenderDigest(page: ImageEditorPage, selectedIDs: string[]): 
 	}
 }
 
-describe('OpenPost Image Editor Fabric reconciliation', () => {
+describe('SocialFlow.ai Image Editor Fabric reconciliation', () => {
 	it('updates selected-layer eyedropper pixels after an edit', async () => {
 		const layer = renderLayer('sampled', 10, 10, 40, 40);
 		layer.transform.rotation = 30;
@@ -1072,7 +1072,7 @@ describe('OpenPost Image Editor Fabric reconciliation', () => {
 	});
 });
 
-describe('OpenPost Image Editor text layer outlines', () => {
+describe('SocialFlow.ai Image Editor text layer outlines', () => {
 	function textLayer(): ImageEditorLayer {
 		return {
 			...renderLayer('text', 40, 40, 260, 100),
@@ -1232,7 +1232,7 @@ describe('OpenPost Image Editor text layer outlines', () => {
 	});
 });
 
-describe('OpenPost Image Editor page gradient rendering', () => {
+describe('SocialFlow.ai Image Editor page gradient rendering', () => {
 	it.each(['diamond', 'reflected'] as const)(
 		'renders %s from a colored center to matching outer edges',
 		async (type: ImageEditorGradientType) => {

@@ -605,7 +605,7 @@ func (h *OIDCHandler) registerOIDCLogoutRoute(api huma.API) {
 		OperationID: "logout-oidc-session",
 		Method:      http.MethodPost,
 		Path:        "/auth/oidc/{provider_id}/logout",
-		Summary:     "Revoke the OpenPost session and prepare optional provider logout",
+		Summary:     "Revoke the SocialFlow.ai session and prepare optional provider logout",
 		Tags:        []string{tagAuth},
 		Middlewares: huma.Middlewares{middleware.RequestMetadataMiddleware(), authMiddleware},
 	}, func(ctx context.Context, input *OIDCLogoutInput) (*OIDCLogoutOutput, error) {
@@ -613,7 +613,7 @@ func (h *OIDCHandler) registerOIDCLogoutRoute(api huma.API) {
 		if h.auth.sessions != nil && sessionID != "" {
 			if err := h.auth.sessions.RevokeSession(ctx, middleware.GetUserID(ctx), sessionID); err != nil &&
 				!errors.Is(err, sql.ErrNoRows) {
-				return nil, huma.Error500InternalServerError("failed to revoke OpenPost session")
+				return nil, huma.Error500InternalServerError("failed to revoke SocialFlow.ai session")
 			}
 		}
 		logoutURL, _ := h.identity.RPLogoutURL(ctx, input.ProviderID, input.Body.ReturnPath)
@@ -842,15 +842,15 @@ func oidcPublicError(err error) string {
 	case errors.Is(err, identity.ErrEmailConflict):
 		return "An account already uses this email. Sign in to that account, then link this provider."
 	case errors.Is(err, identity.ErrJITDisabled):
-		return "This identity is not assigned to an OpenPost account."
+		return "This identity is not assigned to an SocialFlow.ai account."
 	case errors.Is(err, identity.ErrExplicitSignupRequired):
-		return "Choose a plan before creating a new OpenPost account."
+		return "Choose a plan before creating a new SocialFlow.ai account."
 	case errors.Is(err, identity.ErrVerifiedEmailRequired):
 		return "The identity provider did not return a verified email."
 	case errors.Is(err, identity.ErrIdentityCollision):
-		return "This identity is already linked to another OpenPost account."
+		return "This identity is already linked to another SocialFlow.ai account."
 	case errors.Is(err, identity.ErrRegistrationsClosed):
-		return "Registrations are disabled for this OpenPost instance."
+		return "Registrations are disabled for this SocialFlow.ai instance."
 	case errors.Is(err, identity.ErrProviderDisabled), errors.Is(err, identity.ErrProviderNotFound):
 		return "This identity provider is unavailable."
 	case errors.Is(err, identity.ErrBrowserBinding), errors.Is(err, identity.ErrInvalidAuthRequest),

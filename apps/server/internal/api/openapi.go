@@ -2,18 +2,18 @@ package api
 
 import "github.com/danielgtaylor/huma/v2"
 
-const openAPIDescription = "OpenPost HTTP API for workspace-scoped social publishing. Use it to inspect accounts and provider readiness, manage media and publications, schedule work, and read publishing results. Every operation still follows token scopes, workspace roles, plan limits, provider capabilities, and destination validation."
+const openAPIDescription = "SocialFlow.ai HTTP API for workspace-scoped social publishing. Use it to inspect accounts and provider readiness, manage media and publications, schedule work, and read publishing results. Every operation still follows token scopes, workspace roles, plan limits, provider capabilities, and destination validation."
 
 // OpenAPIConfig returns the shared public contract metadata used by the server and generator.
 func OpenAPIConfig(version string) huma.Config {
-	config := huma.DefaultConfig("OpenPost API", version)
+	config := huma.DefaultConfig("SocialFlow.ai API", version)
 	configureAutomationContract(&config)
 	// Huma builds the reference URL while registering routes, before finalization.
 	config.Servers = []*huma.Server{{URL: "https://example.com/api/v1"}}
 	config.Info.Description = openAPIDescription
 	config.Info.TermsOfService = "https://openpo.st/terms"
 	config.Info.Contact = &huma.Contact{
-		Name:  "OpenPost support",
+		Name:  "SocialFlow.ai support",
 		URL:   "https://openpo.st/contact",
 		Email: "hello@openpo.st",
 	}
@@ -30,11 +30,11 @@ func FinalizeOpenAPIContract(api huma.API) {
 	api.OpenAPI().Servers = []*huma.Server{
 		{
 			URL:         "https://app.openpo.st/api/v1",
-			Description: "OpenPost Hosted service",
+			Description: "SocialFlow.ai Hosted service",
 		},
 		{
 			URL:         "/api/v1",
-			Description: "The OpenPost instance serving this contract",
+			Description: "The SocialFlow.ai instance serving this contract",
 		},
 	}
 }

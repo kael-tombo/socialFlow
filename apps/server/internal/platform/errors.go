@@ -226,14 +226,14 @@ func MetaFailureMessage(code string) string {
 
 var metaFailureMessages = map[string]string{
 	"meta:trial_reel_limit:2207078":          "Instagram has temporarily limited Trial Reels for this account. Wait for the limit to reset or turn off Trial Reel before publishing again.",
-	"meta:rate_limit:368:1390008":            "Facebook temporarily limited posting for this account. OpenPost will retry later.",
+	"meta:rate_limit:368:1390008":            "Facebook temporarily limited posting for this account. SocialFlow.ai will retry later.",
 	"meta:checkpoint:190:459":                "Facebook asked for a security check. Log in at facebook.com, complete it, then reconnect this account and try again.",
 	"meta:checkpoint:instagram":              "Instagram asked for a login check. Log in at instagram.com, follow its instructions, then reconnect this account.",
 	"meta:missing_page_role:190:492":         "Your Facebook user no longer has a role on this Page. Ask a Page admin to grant you a role, then reconnect this account.",
 	metaUnavailableTargetCode:                "The Facebook Page or post this was targeting no longer exists. Reconnect this account and schedule again.",
 	"meta:media_silent_audio:2207082":        "Instagram could not process this video. If you attached audio to a video that has no sound track, set the original video volume to 0 and try again.",
 	"meta:media_format:2207085":              "Instagram could not process the video. Check the video format, duration, and resolution, then try again.",
-	"meta:media_not_ready:9004:2207052":      "Instagram did not finish preparing the media container. OpenPost retried the safe creation step. You can try again later.",
+	"meta:media_not_ready:9004:2207052":      "Instagram did not finish preparing the media container. SocialFlow.ai retried the safe creation step. You can try again later.",
 	"meta:invalid_collaborator:110:2207018":  "Instagram rejected a collaborator. Check that each collaborator is eligible and accepts collaboration invites, then edit the post.",
 	"meta:first_comment_rejected:20:1772107": "Instagram published the post but rejected its first comment. Review the comment and add it manually.",
 }

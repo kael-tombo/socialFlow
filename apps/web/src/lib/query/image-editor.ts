@@ -113,7 +113,7 @@ export function createImageEditorQueryAPI(
 		async getConfig(signal): Promise<ImageEditorConfig> {
 			const { data } = await queryGET({
 				signal,
-				fallback: 'Could not load the OpenPost Image Editor setup.',
+				fallback: 'Could not load the SocialFlow.ai Image Editor setup.',
 				request: (requestSignal) =>
 					transport.GET('/image-editor/presets', { signal: requestSignal })
 			});
@@ -186,7 +186,7 @@ export function createImageEditorQueryAPI(
 		async listPublicTemplates(signal): Promise<ImageEditorTemplate[]> {
 			const { data } = await queryGET({
 				signal,
-				fallback: 'Could not load OpenPost Image Editor starter templates.',
+				fallback: 'Could not load SocialFlow.ai Image Editor starter templates.',
 				request: (requestSignal) =>
 					transport.GET('/image-editor/public-templates', { signal: requestSignal })
 			});

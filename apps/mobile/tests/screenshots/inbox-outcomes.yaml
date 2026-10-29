@@ -5,7 +5,7 @@ appId: com.openpost.app
 - openLink: openpost:///inbox/comment/comment-one
 - runFlow:
     when:
-      visible: "Open in.*OpenPost.*"
+      visible: "Open in.*SocialFlow.ai.*"
     commands:
       - tapOn: Open
 - runFlow: settings-guard.yaml

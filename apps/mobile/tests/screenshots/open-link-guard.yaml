@@ -3,6 +3,6 @@ appId: com.openpost.app
 - waitForAnimationToEnd
 - runFlow:
     when:
-      visible: "Open in.*OpenPost.*"
+      visible: "Open in.*SocialFlow.ai.*"
     commands:
       - tapOn: Open

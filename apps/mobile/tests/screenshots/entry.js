@@ -417,10 +417,10 @@ const routes = new Map([
     {
       workspace_id: workspace.id,
       organization_id: workspace.organization_id,
-      organization_default: { display_name: "OpenPost" },
+      organization_default: { display_name: "SocialFlow.ai" },
       organization_revision: 0,
       workspace_revision: 0,
-      effective: global.__OPENPOST_SCREENSHOT_APP_BRANDING__ ?? { display_name: "OpenPost" },
+      effective: global.__OPENPOST_SCREENSHOT_APP_BRANDING__ ?? { display_name: "SocialFlow.ai" },
       allow_workspace_override: false,
       can_manage_organization: false,
       can_manage_workspace: false,

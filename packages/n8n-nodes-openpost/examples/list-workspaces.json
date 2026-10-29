@@ -1,5 +1,5 @@
 {
-  "name": "OpenPost - List workspaces",
+  "name": "SocialFlow.ai - List workspaces",
   "nodes": [
     {
       "parameters": {},
@@ -22,7 +22,7 @@
       "credentials": {
         "openPostApi": {
           "id": "REPLACE_WITH_CREDENTIAL_ID",
-          "name": "OpenPost account"
+          "name": "SocialFlow.ai account"
         }
       }
     }

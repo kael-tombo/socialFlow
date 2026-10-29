@@ -1,6 +1,6 @@
 # n8n package release
 
-The npm package is `@getopenpost/n8n-nodes-openpost`. Its SemVer is independent from the OpenPost app version.
+The npm package is `@getopenpost/n8n-nodes-openpost`. Its SemVer is independent from the SocialFlow.ai app version.
 
 ## One-time registry bootstrap
 

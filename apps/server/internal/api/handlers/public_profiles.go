@@ -36,7 +36,7 @@ type GetPublicProfileInput struct {
 
 type PublicProfileActivityDay struct {
 	Date  string `json:"date" doc:"UTC activity date in YYYY-MM-DD format"`
-	Count int    `json:"count" doc:"Published OpenPost publications on this date"`
+	Count int    `json:"count" doc:"Published SocialFlow.ai publications on this date"`
 	Level int    `json:"level" doc:"Activity intensity from 0 through 4"`
 }
 
@@ -52,7 +52,7 @@ type PublicProfileOutput struct {
 		VisibleFields []string                   `json:"visible_fields" doc:"Optional account fields this profile owner chose to disclose"`
 		DisplayName   string                     `json:"display_name,omitempty"`
 		AvatarURL     string                     `json:"avatar_url,omitempty"`
-		PlanID        string                     `json:"plan_id,omitempty" doc:"Highest active OpenPost plan available to the profile owner"`
+		PlanID        string                     `json:"plan_id,omitempty" doc:"Highest active SocialFlow.ai plan available to the profile owner"`
 		JoinedAt      *time.Time                 `json:"joined_at,omitempty"`
 		LifetimePosts *int                       `json:"lifetime_posts,omitempty"`
 		PeakPosts     *int                       `json:"peak_posts,omitempty"`

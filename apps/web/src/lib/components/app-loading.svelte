@@ -6,7 +6,7 @@
 		minHeight?: string;
 	}
 
-	let { label = 'Loading OpenPost', minHeight = '100dvh' }: Props = $props();
+	let { label = 'Loading SocialFlow.ai', minHeight = '100dvh' }: Props = $props();
 </script>
 
 <div

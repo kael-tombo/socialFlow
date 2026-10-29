@@ -15,7 +15,7 @@
 			<h2>Ask us directly.</h2>
 			<p>
 				For product questions, help with your account, or billing. Tell us what you need and include
-				the email you use for OpenPost.
+				the email you use for SocialFlow.ai.
 			</p>
 			<a href={supportMailUrl} class="focus-ring">{supportEmail}<ArrowUpRight size={20} /></a><small
 				>Please leave out passwords and payment-card details.</small
@@ -24,7 +24,7 @@
 		<section class="community">
 			<MessageCircle size={28} />
 			<h2>Join the conversation.</h2>
-			<p>Share what you’re making, swap ideas, and ask the community about using OpenPost.</p>
+			<p>Share what you’re making, swap ideas, and ask the community about using SocialFlow.ai.</p>
 			<a href={discordCommunityUrl} class="focus-ring"
 				>Join us on Discord <ArrowUpRight size={20} /></a
 			>

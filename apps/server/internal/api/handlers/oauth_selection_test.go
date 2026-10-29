@@ -79,7 +79,7 @@ func (a *selectionTestAdapter) ListAccountSelections(_ context.Context, token *p
 	}
 	return []platform.AccountSelectionOption{
 		{ID: "page-1", DisplayName: "Main Page", Username: "main-page", Kind: "page"},
-		{ID: "page-2", DisplayName: "OpenPost Image Editor Page", Username: "studio", AvatarURL: "https://cdn.example/image-editor.png", Kind: "page"},
+		{ID: "page-2", DisplayName: "SocialFlow.ai Image Editor Page", Username: "studio", AvatarURL: "https://cdn.example/image-editor.png", Kind: "page"},
 	}, nil
 }
 
@@ -177,7 +177,7 @@ func TestOAuthCallbackCreatesAndCompletesAccountSelection(t *testing.T) {
 	require.Equal(t, "facebook", selectionBody.Platform)
 	require.Equal(t, "ws-1", selectionBody.WorkspaceID)
 	require.Len(t, selectionBody.Options, 2)
-	require.Equal(t, "OpenPost Image Editor Page", selectionBody.Options[1].DisplayName)
+	require.Equal(t, "SocialFlow.ai Image Editor Page", selectionBody.Options[1].DisplayName)
 
 	completeResp := oauthSelectionRequest(t, e, http.MethodPost, "/api/v1/accounts/selections/"+connectionID+"/complete", map[string]string{
 		"selection_id": "page-2",

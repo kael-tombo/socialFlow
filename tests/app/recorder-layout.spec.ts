@@ -17,12 +17,12 @@ test("Recorder keeps its identity and save controls usable on phones", async ({
   await page.goto("/record");
   const header = page.locator("header");
   const local = header.getByRole("button", { name: "Local only", exact: true });
-  const cloud = header.getByRole("button", { name: "Saved to OpenPost", exact: true });
+  const cloud = header.getByRole("button", { name: "Saved to SocialFlow.ai", exact: true });
   for (const width of [390, 360, 320]) {
     await page.setViewportSize({ width, height: 900 });
     for (const colorScheme of ["light", "dark"] as const) {
       await page.emulateMedia({ colorScheme, reducedMotion: "reduce" });
-      await expect(header.getByRole("link", { name: "OpenPost home", exact: true })).toBeVisible();
+      await expect(header.getByRole("link", { name: "SocialFlow.ai home", exact: true })).toBeVisible();
       await expect(local).toBeVisible();
       await expect(cloud).toBeVisible();
       await expect

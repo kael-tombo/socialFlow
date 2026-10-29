@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { blankImageEditorDocument, cloneImageEditorDocument } from './document';
 import { imageEditorRevisionHasChanges, summarizeImageEditorRevision } from './revision-summary';
 
-describe('OpenPost Image Editor revision summaries', () => {
+describe('SocialFlow.ai Image Editor revision summaries', () => {
 	it('reports directional page, layer, canvas, and guide changes', () => {
 		const current = blankImageEditorDocument({
 			key: 'instagram-square',

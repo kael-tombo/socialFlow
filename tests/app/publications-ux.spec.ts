@@ -168,10 +168,10 @@ test("published records show a confirmed local removal action", async ({
     path: testInfo.outputPath("published-before-removal.png"),
     fullPage: true,
   });
-  await page.getByRole("button", { name: "Remove from OpenPost", exact: true }).click();
+  await page.getByRole("button", { name: "Remove from SocialFlow.ai", exact: true }).click();
   const dialog = page.getByRole("dialog");
   await expect(dialog).toContainText("Posts on social networks will not be deleted");
-  await dialog.getByRole("button", { name: "Remove from OpenPost", exact: true }).click();
+  await dialog.getByRole("button", { name: "Remove from SocialFlow.ai", exact: true }).click();
   await expect(page).toHaveURL(/\/publications(?:\?.*)?$/);
   const result = await request.get(`/api/v1/publications/${created.id}`, {
     headers: { Authorization: `Bearer ${auth.token}` },

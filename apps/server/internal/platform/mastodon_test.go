@@ -109,7 +109,7 @@ func TestMastodonPublishAppliesStatusSettings(t *testing.T) {
 	assertFormValue(t, postedValues, "sensitive", "true")
 	assertFormValue(t, postedValues, "language", "pt")
 	if postedValues.Has("scheduled_at") {
-		t.Fatalf("OpenPost scheduling must not be forwarded to Mastodon: %#v", postedValues)
+		t.Fatalf("SocialFlow.ai scheduling must not be forwarded to Mastodon: %#v", postedValues)
 	}
 	assertFormValue(t, postedValues, "poll[expires_in]", "3600")
 	assertFormValue(t, postedValues, "poll[multiple]", "true")

@@ -540,7 +540,7 @@ func newPublicationBuildTestServer(t *testing.T) *publicationBuildTestServer {
 	_, err = db.NewInsert().Model(&users).Exec(t.Context())
 	require.NoError(t, err)
 	workspaces := []models.Workspace{
-		{ID: "ws-1", OrganizationID: "org-1", Name: "OpenPost"},
+		{ID: "ws-1", OrganizationID: "org-1", Name: "SocialFlow.ai"},
 		{ID: "ws-2", OrganizationID: "org-2", Name: "Other"},
 	}
 	_, err = db.NewInsert().Model(&workspaces).Exec(t.Context())

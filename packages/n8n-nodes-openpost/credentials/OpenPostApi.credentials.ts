@@ -7,13 +7,13 @@ import type {
 
 export class OpenPostApi implements ICredentialType {
   name = "openPostApi";
-  displayName = "OpenPost API";
+  displayName = "SocialFlow.ai API";
   icon = "file:openpost.svg" as const;
   documentationUrl = "https://openpo.st/docs/development/api-tokens";
   genericAuth = true;
   supportedNodes = ["openPost"];
   httpRequestNode = {
-    name: "OpenPost API",
+    name: "SocialFlow.ai API",
     docsUrl: "https://openpo.st/docs/development/api-tokens",
     apiBaseUrlPlaceholder: "https://app.openpo.st/api/v1",
   };
@@ -27,7 +27,7 @@ export class OpenPostApi implements ICredentialType {
       placeholder: "https://app.openpo.st",
       required: true,
       description:
-        "OpenPost origin without /api or /api/v1. In Docker, localhost means the n8n container.",
+        "SocialFlow.ai origin without /api or /api/v1. In Docker, localhost means the n8n container.",
     },
     {
       displayName: "API Token",

@@ -154,7 +154,7 @@ func TestXRequestStoreLegacyModeDoesNotInterpretEncryptionPrefix(t *testing.T) {
 	store := newXRequestStore(db, servicecrypto.NewTokenEncryptor("legacy-compatible-encryption-key"))
 	rawSecrets := []string{
 		xRequestEncryptedSecretPrefix + "raw-provider-secret",
-		xRequestEncryptedSecretPrefix + base64.StdEncoding.EncodeToString([]byte("base64 but not an OpenPost envelope")),
+		xRequestEncryptedSecretPrefix + base64.StdEncoding.EncodeToString([]byte("base64 but not an SocialFlow.ai envelope")),
 	}
 	for index, rawSecret := range rawSecrets {
 		requestToken := fmt.Sprintf("legacy-prefixed-%d", index)

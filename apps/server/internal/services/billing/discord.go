@@ -229,11 +229,11 @@ func (n paddleBillingNotification) discordPayload() discordWebhookPayload {
 	if n.organization != nil {
 		fields = appendOptionalField(fields, "Organization", n.organization.Name)
 	}
-	embed := discordEmbed{Title: "Paddle " + humanizeBillingEvent(n.event.EventType), Description: "A billing event was received by OpenPost.", Color: n.color, Timestamp: n.event.OccurredAt, Fields: fields, Footer: discordEmbedFooter{Text: "Paddle event " + n.event.EventID}}
+	embed := discordEmbed{Title: "Paddle " + humanizeBillingEvent(n.event.EventType), Description: "A billing event was received by SocialFlow.ai.", Color: n.color, Timestamp: n.event.OccurredAt, Fields: fields, Footer: discordEmbedFooter{Text: "Paddle event " + n.event.EventID}}
 	if n.avatarURL != "" {
 		embed.Thumbnail = &discordEmbedThumbnail{URL: n.avatarURL}
 	}
-	return discordWebhookPayload{Username: "OpenPost billing", AllowedMentions: discordMentions{Parse: []string{}}, Embeds: []discordEmbed{embed}}
+	return discordWebhookPayload{Username: "SocialFlow.ai billing", AllowedMentions: discordMentions{Parse: []string{}}, Embeds: []discordEmbed{embed}}
 }
 
 func appendOptionalField(fields []discordEmbedField, name, value string) []discordEmbedField {

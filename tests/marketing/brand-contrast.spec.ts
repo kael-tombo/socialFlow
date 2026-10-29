@@ -6,7 +6,7 @@ test("public logo remains legible when the visitor switches appearance", async (
   await page.goto("/");
   await dismissTelemetryConsent(page);
   const header = page.locator("header.marketing-nav");
-  const logo = header.getByRole("link", { name: "OpenPost home", exact: true }).locator("img");
+  const logo = header.getByRole("link", { name: "SocialFlow.ai home", exact: true }).locator("img");
   const colors = [];
 
   for (const scheme of ["light", "dark", "light"] as const) {

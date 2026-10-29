@@ -42,10 +42,10 @@
 			mask.width = Math.ceil(width);
 			mask.height = Math.ceil(height);
 			maskContext.font = `600 ${height}px Geist Variable, sans-serif`;
-			const fontSize = (height * width) / maskContext.measureText('OpenPost').width;
+			const fontSize = (height * width) / maskContext.measureText('SocialFlow.ai').width;
 			maskContext.font = `600 ${fontSize * 0.98}px Geist Variable, sans-serif`;
 			maskContext.textBaseline = 'middle';
-			maskContext.fillText('OpenPost', 0, height * 0.5);
+			maskContext.fillText('SocialFlow.ai', 0, height * 0.5);
 			const pixels = maskContext.getImageData(0, 0, mask.width, mask.height).data;
 			step = width / (width < 500 ? 110 : 170);
 			cells = [];
@@ -85,7 +85,7 @@
 </script>
 
 <div class="ascii-wordmark" aria-hidden="true">
-	<span class:hidden={ready}>OpenPost</span><canvas bind:this={canvas} class:ready></canvas>
+	<span class:hidden={ready}>SocialFlow.ai</span><canvas bind:this={canvas} class:ready></canvas>
 </div>
 
 <style>

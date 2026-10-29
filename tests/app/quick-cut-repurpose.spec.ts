@@ -63,7 +63,7 @@ test("Repurpose reviews real source clips and creates independent editable proje
     await chooser
   ).setFiles(path.join(process.cwd(), "tests/app/fixtures/product-screenshots/study-sos-demo.mp4"));
   await expect(page).toHaveURL(/project=[^&]+&storage=cloud/u);
-  await expect(page.getByRole("img", { name: /Saved to OpenPost/u })).toBeVisible();
+  await expect(page.getByRole("img", { name: /Saved to SocialFlow.ai/u })).toBeVisible();
   const originalId = new URL(page.url()).searchParams.get("project")!;
   const original = projectSchema.parse(
     await (

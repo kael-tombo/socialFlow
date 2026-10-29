@@ -94,7 +94,7 @@ test("top navigation keeps the requested section order and active state", async 
     "API reference",
   ]);
   await expect(page.locator(".home-paths").getByRole("link")).toHaveText([
-    "Install OpenPost on your own server",
+    "Install SocialFlow.ai on your own server",
     "Connect an AI assistant",
     "Build a workflow",
     "Edit a video",
@@ -102,8 +102,8 @@ test("top navigation keeps the requested section order and active state", async 
     "Browse the API reference",
   ]);
   for (const [route, section, heading] of [
-    ["/", "Guides", "OpenPost documentation"],
-    ["/self-hosting", "Self-hosting", "Self-host OpenPost"],
+    ["/", "Guides", "SocialFlow.ai documentation"],
+    ["/self-hosting", "Self-hosting", "Self-host SocialFlow.ai"],
     ["/mcp", "AI assistants", "AI assistants"],
     ["/workflows", "Workflows", "Workflows"],
     ["/automate", "Automate", "Automate"],
@@ -209,7 +209,7 @@ test("AI client links open the matching setup guide", async ({ page }) => {
     await expect(
       page.getByRole("heading", { level: 1, name: `Connect ${client.name}`, exact: true }),
     ).toBeVisible();
-    await expect(page.locator("#nd-page")).toContainText("OpenPost");
+    await expect(page.locator("#nd-page")).toContainText("SocialFlow.ai");
   }
 });
 

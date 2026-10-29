@@ -53,7 +53,7 @@
 	let selectedFormat = $state<PreviewFormat>(
 		untrack(() => previewCapabilities[initialPlatform].formats[0])
 	);
-	let author = $state('OpenPost');
+	let author = $state('SocialFlow.ai');
 	let handle = $state('openpost');
 	let draft = $state(
 		'One shared draft can become a better post for each account. Tailor the text, check the preview, then schedule it.'
@@ -162,7 +162,7 @@
 			: mediaKindLabel(allowedMediaKinds)
 	);
 	const activeOptionCount = $derived(
-		Number(author !== 'OpenPost' || handle !== 'openpost' || avatarUrl !== '' || verified) +
+		Number(author !== 'SocialFlow.ai' || handle !== 'openpost' || avatarUrl !== '' || verified) +
 			Number(pollEnabled) +
 			Number(Boolean(contentWarning.trim())) +
 			Number(Boolean(linkUrl.trim())) +
@@ -824,7 +824,7 @@
 	>
 		<h2 id="preview-controls-title" class="text-lg font-semibold">Write your post</h2>
 		<p class="mt-1 text-sm leading-6 text-muted-foreground">
-			Preview native formats. Publishing availability in OpenPost may differ.
+			Preview native formats. Publishing availability in SocialFlow.ai may differ.
 		</p>
 
 		<div class="mt-5 grid gap-4">
@@ -949,7 +949,7 @@
 		/>
 		<p class="mt-2 text-xs leading-5 text-muted-foreground">
 			Text, selected files, links and polls continue into your draft. Set the destination format and
-			other preview details in OpenPost.
+			other preview details in SocialFlow.ai.
 		</p>
 		{#if publicMediaUrl.trim()}<p class="mt-2 text-sm text-muted-foreground">
 				Replace the public media URL with a local file to continue this draft.

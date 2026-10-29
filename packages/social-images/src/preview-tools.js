@@ -4,7 +4,7 @@ export const previewTools = [
     platform: "x",
     slug: "x-post-preview",
     name: "X post preview",
-    title: "Free X post preview - OpenPost",
+    title: "Free X post preview - SocialFlow.ai",
     description: "Check a short post, a reply thread, a quoted post, or a poll before sharing it.",
     checks: [
       "A short opening should make sense before a reader expands the post. Use a thread when the next point deserves its own reply.",
@@ -15,7 +15,7 @@ export const previewTools = [
     platform: "bluesky",
     slug: "bluesky-post-preview",
     name: "Bluesky post preview",
-    title: "Free Bluesky post preview - OpenPost",
+    title: "Free Bluesky post preview - SocialFlow.ai",
     description: "Check thread continuity, image descriptions, quoted posts, and link cards.",
     checks: [
       "Check a four-image grid with both portrait and landscape photos. Alt text should describe the useful content of each image.",
@@ -26,7 +26,7 @@ export const previewTools = [
     platform: "mastodon",
     slug: "mastodon-post-preview",
     name: "Mastodon post preview",
-    title: "Free Mastodon post preview - OpenPost",
+    title: "Free Mastodon post preview - SocialFlow.ai",
     description: "Review a federated handle, content warning, poll, or thread. Server limits vary.",
     checks: [
       "Write a content warning that explains what is behind it. Expand the warning in the preview and check the revealed text.",
@@ -37,7 +37,7 @@ export const previewTools = [
     platform: "pixelfed",
     slug: "pixelfed-post-preview",
     name: "Pixelfed post preview",
-    title: "Free Pixelfed post preview - OpenPost",
+    title: "Free Pixelfed post preview - SocialFlow.ai",
     description:
       "Review a photo caption and album in its feed context. Album limits vary by server.",
     checks: [
@@ -49,7 +49,7 @@ export const previewTools = [
     platform: "peertube",
     slug: "peertube-post-preview",
     name: "PeerTube post preview",
-    title: "Free PeerTube post preview - OpenPost",
+    title: "Free PeerTube post preview - SocialFlow.ai",
     description: "Review your video title, description, and player in a watch page.",
     checks: [
       "A useful title should explain the video before playback. Compare its length beside the channel identity in the watch page.",
@@ -60,7 +60,7 @@ export const previewTools = [
     platform: "lemmy",
     slug: "lemmy-post-preview",
     name: "Lemmy post preview",
-    title: "Free Lemmy post preview - OpenPost",
+    title: "Free Lemmy post preview - SocialFlow.ai",
     description: "Check a community post title, body, image, and linked page.",
     checks: [
       "The post title introduces the discussion independently of the body. Include enough context for readers arriving from another community.",
@@ -71,7 +71,7 @@ export const previewTools = [
     platform: "piefed",
     slug: "piefed-post-preview",
     name: "PieFed post preview",
-    title: "Free PieFed post preview - OpenPost",
+    title: "Free PieFed post preview - SocialFlow.ai",
     description: "Review the title and body of a community discussion with its image or link.",
     checks: [
       "Start with a descriptive discussion title and identify the community in Post details. Check the text at phone width.",
@@ -82,7 +82,7 @@ export const previewTools = [
     platform: "linkedin",
     slug: "linkedin-post-preview",
     name: "LinkedIn post preview",
-    title: "Free LinkedIn post preview - OpenPost",
+    title: "Free LinkedIn post preview - SocialFlow.ai",
     description: "Review a professional post, multi-image layout, poll, or document card.",
     checks: [
       "Check the opening lines with your professional identity. Expand a long post and make sure the ending still has a clear next step.",
@@ -93,7 +93,7 @@ export const previewTools = [
     platform: "threads",
     slug: "threads-post-preview",
     name: "Threads post preview",
-    title: "Free Threads post preview - OpenPost",
+    title: "Free Threads post preview - SocialFlow.ai",
     description: "Check conversational copy, replies, quoted posts, and photo carousels.",
     checks: [
       "Use short paragraphs and inspect each reply when preparing a thread. Check quoted text separately from the text introducing it.",
@@ -104,7 +104,7 @@ export const previewTools = [
     platform: "instagram",
     slug: "instagram-post-preview",
     name: "Instagram post preview",
-    title: "Free Instagram post preview - OpenPost",
+    title: "Free Instagram post preview - SocialFlow.ai",
     description: "Review captions and media in a feed post, carousel, Story, or Reel.",
     checks: [
       "Compare the square feed context with a vertical Story or Reel. Keep important image content clear of names, captions, and action controls.",
@@ -115,7 +115,7 @@ export const previewTools = [
     platform: "facebook",
     slug: "facebook-post-preview",
     name: "Facebook post preview",
-    title: "Free Facebook post preview - OpenPost",
+    title: "Free Facebook post preview - SocialFlow.ai",
     description: "Check page identity, post copy, photos, linked pages, Stories, and Reels.",
     checks: [
       "Check the page name and opening lines together. A linked page, a photo collection, and a Reel each give the text a different position.",
@@ -126,7 +126,7 @@ export const previewTools = [
     platform: "youtube",
     slug: "youtube-post-preview",
     name: "YouTube post preview",
-    title: "Free YouTube post preview - OpenPost",
+    title: "Free YouTube post preview - SocialFlow.ai",
     description: "Review a video title and watch page, or check a vertical Short.",
     checks: [
       "Check whether the title still explains the video when it wraps. Use the watch page for long videos and Short for vertical footage.",
@@ -137,7 +137,7 @@ export const previewTools = [
     platform: "tiktok",
     slug: "tiktok-post-preview",
     name: "TikTok post preview",
-    title: "Free TikTok post preview - OpenPost",
+    title: "Free TikTok post preview - SocialFlow.ai",
     description: "Check vertical video overlays or the first impression of a photo carousel.",
     checks: [
       "Inspect the vertical media with the caption and action controls visible. Keep important on-screen text away from those controls.",
@@ -148,7 +148,7 @@ export const previewTools = [
     platform: "pinterest",
     slug: "pinterest-post-preview",
     name: "Pinterest post preview",
-    title: "Free Pinterest post preview - OpenPost",
+    title: "Free Pinterest post preview - SocialFlow.ai",
     description: "Review a Pin image, title, description, and destination card.",
     checks: [
       "The image introduces the Pin before its description. Inspect the portrait crop and choose a title that explains what the image offers.",
@@ -159,7 +159,7 @@ export const previewTools = [
     platform: "reddit",
     slug: "reddit-post-preview",
     name: "Reddit post preview",
-    title: "Free Reddit post preview - OpenPost",
+    title: "Free Reddit post preview - SocialFlow.ai",
     description: "Check a community post title, discussion text, image gallery, or poll.",
     previewOnly: true,
     checks: [
@@ -171,7 +171,7 @@ export const previewTools = [
     platform: "googlebusiness",
     slug: "googlebusiness-post-preview",
     name: "Google Business post preview",
-    title: "Free Google Business post preview - OpenPost",
+    title: "Free Google Business post preview - SocialFlow.ai",
     description: "Review a business update and image in a local business profile.",
     checks: [
       "Choose an update, event, or offer in Post details. Events need a useful title and dates; offers can include a coupon code and terms.",
@@ -182,7 +182,7 @@ export const previewTools = [
     platform: "discord",
     slug: "discord-post-preview",
     name: "Discord post preview",
-    title: "Free Discord post preview - OpenPost",
+    title: "Free Discord post preview - SocialFlow.ai",
     description: "Check a channel message, attachments, linked content, and a reply thread.",
     checks: [
       "Keep the opening line meaningful inside a channel conversation. Use the context field to identify the channel.",
@@ -193,7 +193,7 @@ export const previewTools = [
     platform: "telegram",
     slug: "telegram-post-preview",
     name: "Telegram post preview",
-    title: "Free Telegram post preview - OpenPost",
+    title: "Free Telegram post preview - SocialFlow.ai",
     description: "Review a channel message, its media album, and caption.",
     checks: [
       "Review the message in channel context and keep the useful part of the caption near the beginning.",

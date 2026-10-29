@@ -197,7 +197,7 @@ test("Video Editor sends a rendered export into a new composer", async ({ page, 
   await addTextItem(page);
 
   await openHeaderMoreMenu(page);
-  await page.getByRole("menuitem", { name: "Send to OpenPost" }).click();
+  await page.getByRole("menuitem", { name: "Send to SocialFlow.ai" }).click();
   const openComposer = page.getByRole("menuitem", { name: "Open composer" });
   await expect(openComposer).toBeVisible({
     timeout: 60_000,

@@ -284,7 +284,7 @@ function brandKitFixture(): ImageEditorBrandKit {
 		effect_presets: [],
 		id: 'brand-1',
 		workspace_id: 'workspace-1',
-		name: 'OpenPost',
+		name: 'SocialFlow.ai',
 		revision: 2,
 		exists: true,
 		can_edit: true,

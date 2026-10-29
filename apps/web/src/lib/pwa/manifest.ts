@@ -3,8 +3,8 @@ import type { ManifestOptions } from 'vite-plugin-pwa';
 export const appManifest = {
 	id: '/',
 	scope: '/',
-	name: 'OpenPost',
-	short_name: 'OpenPost',
+	name: 'SocialFlow.ai',
+	short_name: 'SocialFlow.ai',
 	description: 'Schedule and publish content across multiple social platforms.',
 	theme_color: '#b74c05',
 	background_color: '#faf9f7',

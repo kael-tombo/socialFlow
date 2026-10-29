@@ -20,7 +20,7 @@ import (
 const (
 	defaultOpenRouterBaseURL     = "https://openrouter.ai/api/v1"
 	defaultOpenRouterHTTPReferer = "https://openpo.st"
-	defaultOpenRouterTitle       = "OpenPost"
+	defaultOpenRouterTitle       = "SocialFlow.ai"
 	defaultOpenRouterTimeout     = 15 * time.Second
 	defaultOpenRouterMaxRetries  = 4
 	defaultRetryMaxInterval      = 2 * time.Second

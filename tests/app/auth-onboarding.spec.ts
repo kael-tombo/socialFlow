@@ -98,14 +98,14 @@ test("email signup confirms a six-digit code before onboarding", async ({ page }
   await page.route("**/api/v1/workspaces", (route) => route.fulfill({ json: [] }));
 
   await page.goto("/register?plan=team&billing_period=annual");
-  await expect(page.getByText("OpenPost Team")).toBeVisible();
+  await expect(page.getByText("SocialFlow.ai Team")).toBeVisible();
   await expect(page.getByText("$590/year", { exact: true })).toBeVisible();
   await expect(page.getByText("14-day free trial")).toBeVisible();
   await expect(page.getByText("$0 due today. A card is required at checkout.")).toBeVisible();
   await expect(page.getByText("After the trial, $590/year until canceled.")).toBeVisible();
   await page.reload();
   expect(new URL(page.url()).searchParams.get("purchase_choice")).toBe(purchaseChoiceToken);
-  await expect(page.getByText("OpenPost Team")).toBeVisible();
+  await expect(page.getByText("SocialFlow.ai Team")).toBeVisible();
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByLabel("Confirm Password").fill(password);
@@ -115,7 +115,7 @@ test("email signup confirms a six-digit code before onboarding", async ({ page }
   expect(new URL(page.url()).searchParams.get("purchase_choice")).toBe(purchaseChoiceToken);
   await expect(page.getByRole("heading", { name: "Check your email" })).toBeVisible();
   await expect(page.getByText(`Enter the 6-digit code sent to ${email}.`)).toBeVisible();
-  await expect(page.getByText("OpenPost Team")).toBeVisible();
+  await expect(page.getByText("SocialFlow.ai Team")).toBeVisible();
   await expect(page.getByRole("button", { name: /Send a new code in/ })).toBeDisabled();
 
   const verificationCode = page.getByLabel("Verification code");

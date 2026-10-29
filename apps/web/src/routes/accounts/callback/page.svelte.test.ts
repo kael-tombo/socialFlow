@@ -19,7 +19,7 @@ const pendingSelection = {
 	options: [
 		{
 			id: 'page_1',
-			display_name: 'OpenPost Page',
+			display_name: 'SocialFlow.ai Page',
 			username: 'openpost',
 			kind: 'page',
 			description: 'Main brand page',
@@ -78,7 +78,7 @@ describe('account OAuth callback selection flow', () => {
 				})
 			)
 			.toBeVisible();
-		await expect.element(screen.getByText('OpenPost Page')).toBeVisible();
+		await expect.element(screen.getByText('SocialFlow.ai Page')).toBeVisible();
 		expect(screen.container.textContent).toMatch(/Facebook\s*·\s*openpost\s*·\s*page/);
 		await expect.element(screen.getByText('followers: 1,240')).toBeVisible();
 		await expect
@@ -167,7 +167,7 @@ describe('account OAuth callback selection flow', () => {
 					},
 					{
 						id: 'organization:42',
-						display_name: 'OpenPost',
+						display_name: 'SocialFlow.ai',
 						kind: 'Organization Page'
 					}
 				]

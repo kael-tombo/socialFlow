@@ -177,7 +177,7 @@ func (i *InstagramAdapter) RefreshToken(ctx context.Context, input RefreshTokenI
 	if i.instagramLogin {
 		return i.refreshInstagramLoginToken(ctx, input)
 	}
-	return nil, fmt.Errorf("instagram page tokens do not support OpenPost refresh yet")
+	return nil, fmt.Errorf("instagram page tokens do not support SocialFlow.ai refresh yet")
 }
 
 func (i *InstagramAdapter) GetProfile(ctx context.Context, accessToken string) (*UserProfile, error) {

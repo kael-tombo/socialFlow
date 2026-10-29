@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { blankImageEditorDocument } from './document';
 import { imageEditorPageExportFingerprint, reusableImageEditorExports } from './export-resume';
 
-describe('OpenPost Image Editor resumable export ledger', () => {
+describe('SocialFlow.ai Image Editor resumable export ledger', () => {
 	it('reuses only pages whose render-affecting content still matches', () => {
 		const document = blankImageEditorDocument({
 			key: 'custom',

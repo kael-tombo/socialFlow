@@ -6,7 +6,7 @@ import { dismissTelemetryConsent } from "./helpers";
 test("marketing index links to the app and documentation @desktop", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page).toHaveTitle("OpenPost - The all-in-one content team for solo founders");
+  await expect(page).toHaveTitle("SocialFlow.ai - The all-in-one content team for solo founders");
   await expect(
     page.getByRole("link", { name: "Get started", exact: true }).first(),
   ).toHaveAttribute("href", "https://app.openpo.st/register?plan=founder&billing_period=monthly");
@@ -32,8 +32,8 @@ test("landing header shows the live GitHub star link beside the wordmark", async
   await expect(starPill).toHaveText("512");
   await expect(starPill.locator("svg")).toBeVisible();
   await expect(
-    header.getByRole("link", { name: "OpenPost home", exact: true }).locator(".."),
-  ).toContainText("OpenPost");
+    header.getByRole("link", { name: "SocialFlow.ai home", exact: true }).locator(".."),
+  ).toContainText("SocialFlow.ai");
   await expect(page.getByTestId("github-star-pill")).toHaveCount(1);
 });
 

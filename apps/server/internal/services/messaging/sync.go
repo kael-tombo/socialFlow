@@ -87,7 +87,7 @@ func (s *Service) syncMessages(ctx context.Context, accountID string) (resultErr
 	}
 	if incremental, ok := provider.(platform.IncrementalMessagingAdapter); ok {
 		if err := s.syncIncremental(ctx, account, provider, incremental, token); err != nil {
-			_ = s.states.record(ctx, syncStateUpdate{account: account, status: syncStateFailed, failure: syncStateFailure{code: "provider_error", message: "Could not refresh messages. OpenPost will try again."}, cursor: progress.cursor, backfillComplete: progress.backfillComplete, cadence: providerRetryDelay(err, time.Minute), attemptedAt: s.now()})
+			_ = s.states.record(ctx, syncStateUpdate{account: account, status: syncStateFailed, failure: syncStateFailure{code: "provider_error", message: "Could not refresh messages. SocialFlow.ai will try again."}, cursor: progress.cursor, backfillComplete: progress.backfillComplete, cadence: providerRetryDelay(err, time.Minute), attemptedAt: s.now()})
 			return err
 		}
 		return s.states.record(ctx, syncStateUpdate{account: account, status: syncStateOK, cursor: progress.cursor, backfillComplete: true, cadence: s.collectionCadence(ctx, account, 15*time.Minute), attemptedAt: s.now()})
@@ -133,7 +133,7 @@ func (s *Service) collectMessages(ctx context.Context, account models.SocialAcco
 	if err != nil {
 		return collectedMessages{}, errors.Join(err, s.states.record(ctx, syncStateUpdate{
 			account: account, status: syncStateFailed,
-			failure: syncStateFailure{code: "provider_error", message: "OpenPost could not collect messages from this provider."},
+			failure: syncStateFailure{code: "provider_error", message: "SocialFlow.ai could not collect messages from this provider."},
 			cursor:  progress.cursor, backfillComplete: progress.backfillComplete,
 			cadence: providerRetryDelay(err, time.Hour), emptyStreak: progress.emptyStreak, attemptedAt: s.now(),
 		}))
@@ -158,7 +158,7 @@ func (s *Service) collectMessages(ctx context.Context, account models.SocialAcco
 	if err != nil {
 		return collectedMessages{}, errors.Join(err, s.states.record(ctx, syncStateUpdate{
 			account: account, status: syncStateFailed,
-			failure: syncStateFailure{code: "backfill_failed", message: "Current messages were collected, but OpenPost could not collect older message history."},
+			failure: syncStateFailure{code: "backfill_failed", message: "Current messages were collected, but SocialFlow.ai could not collect older message history."},
 			cursor:  progress.cursor, cadence: providerRetryDelay(err, time.Hour), emptyStreak: progress.emptyStreak, attemptedAt: s.now(),
 		}))
 	}

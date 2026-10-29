@@ -1,6 +1,6 @@
 # Complete UX program browser matrix
 
-This matrix joins the four releasable UX cohorts without replacing their focused evidence. The representative cohort tests use the built OpenPost application, HTTP authorization, and database persistence. Deterministic local adapters replace only email, Paddle, provider OAuth, and provider delivery boundaries whose live behavior cannot be made repeatable in CI. Older focused suites may use browser fixtures for narrow UI and race contracts; their owning service tests remain the persistence and authorization authority.
+This matrix joins the four releasable UX cohorts without replacing their focused evidence. The representative cohort tests use the built SocialFlow.ai application, HTTP authorization, and database persistence. Deterministic local adapters replace only email, Paddle, provider OAuth, and provider delivery boundaries whose live behavior cannot be made repeatable in CI. Older focused suites may use browser fixtures for narrow UI and race contracts; their owning service tests remain the persistence and authorization authority.
 
 ## One first-use journey
 
@@ -66,7 +66,7 @@ The dimensions are spread across focused journeys so a failure identifies one pr
 
 `tests/app/accessibility.ts` runs axe WCAG A and AA rules against settled first-use, daily-workflow, collaboration-safety, and local-recovery states. It reports serious and critical accessibility violations and fails if either is present. The collaboration cohort scans the complete 1280 px English light, 390 px English dark, and 320 px Portuguese light presentation set; the other cohorts scan their representative authoring, history, Activity, validation, Activation, not-found, and offline states. No rule is suppressed.
 
-The Self-hosted public path is not a Hosted service free tier. Responsive pricing and dedicated Self-hosted pages are covered by `tests/marketing/marketing.spec.ts`; documentation, GitHub access, and the agent-readable page are covered by `e2e-docs/docs-audience.spec.ts`. These suites keep public claims synchronized with the product and documentation without changing the established OpenPost visual identity.
+The Self-hosted public path is not a Hosted service free tier. Responsive pricing and dedicated Self-hosted pages are covered by `tests/marketing/marketing.spec.ts`; documentation, GitHub access, and the agent-readable page are covered by `e2e-docs/docs-audience.spec.ts`. These suites keep public claims synchronized with the product and documentation without changing the established SocialFlow.ai visual identity.
 
 The line-by-line prose review is recorded in `docs/evidence/complete-ux-program-copy-review.md`.
 

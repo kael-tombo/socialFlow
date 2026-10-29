@@ -6,7 +6,7 @@ import {
 } from "../../../../../nodes/OpenPost/v1/actions/mapper";
 import { findGeneratedAction } from "../../../../../nodes/OpenPost/v1/actions/generated/requestMappers";
 
-describe("OpenPost request mapper", () => {
+describe("SocialFlow.ai request mapper", () => {
   test("maps native create publication fields and default idempotency keys", () => {
     const mapper = findGeneratedAction("publication", "create");
     if (!mapper) throw new Error("missing mapper");

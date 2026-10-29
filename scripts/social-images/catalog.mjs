@@ -28,7 +28,7 @@ function pageTitle(page, source) {
   if (typeof heroName === "string" && heroName.trim()) return heroName.trim();
   const heading = body.match(/^#\s+(.+)$/m)?.[1]?.trim();
   if (heading) return heading.replaceAll("`", "");
-  if (page === "index.md" || page === "index.mdx") return "OpenPost";
+  if (page === "index.md" || page === "index.mdx") return "SocialFlow.ai";
   return path
     .basename(page)
     .replace(/\.mdx?$/u, "")

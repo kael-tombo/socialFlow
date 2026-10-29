@@ -191,7 +191,7 @@
 			<summary class="focus-ring">Trial and billing details</summary>
 			<div>
 				<p>
-					{managedPaymentExpectation} OpenPost shows the renewal date and price before you start. Cancel
+					{managedPaymentExpectation} SocialFlow.ai shows the renewal date and price before you start. Cancel
 					or manage your plan in
 					<a class="focus-ring" href={billingSettingsUrl}>Billing settings</a> before renewal.
 				</p>

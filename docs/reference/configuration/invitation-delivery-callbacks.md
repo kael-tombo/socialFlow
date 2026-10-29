@@ -10,7 +10,7 @@ can later mark that exact delivery **Delivered** or **Delivery failed**.
 Set `OPENPOST_EMAIL_DELIVERY_WEBHOOK_SECRET` and send callbacks to
 `POST /api/v1/email/delivery/webhook`. Sign the exact request body with
 HMAC-SHA256 and send the lowercase hexadecimal digest as
-`SocialFlow.ai-Signature: v1=<digest>`.
+`OpenPost-Signature: v1=<digest>`.
 
 ```json
 {

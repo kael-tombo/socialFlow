@@ -75,7 +75,7 @@ var platformPolicies = map[string]platformPolicy{
 		Distribution: "Topic and community context may help interested readers understand and find a post, but do not claim a guaranteed reward, recommendation, or cross-Meta reach. Recommendation eligibility and basic publishability are separate.",
 		Writing:      "Use the account voice to state one specific tension, observation, or useful point completely. Ask for replies only when there is a genuine question or decision boundary. Reuse wording from another destination when it already fits; platform-specific rewriting is optional, not a quota. Use a current reference only when supplied evidence makes it relevant. Follow-up notes may suggest how the author can participate after publishing, but never generate automatic replies.",
 		Media:        "A visual needs written context that explains the proof, demo, punchline, or trade-off. Prefer before-and-after artifacts, product demos, and images that support the conversation. Do not leave media to carry an unstated claim.",
-		Safety:       "Do not assume a topic, community, recommendation status, or cross-Meta eligibility that OpenPost did not supply. Do not import mismatched platform bait, ask a generic question, or recommend reply automation; fitting source wording may be reused. Keep policy warnings separate from the draft.",
+		Safety:       "Do not assume a topic, community, recommendation status, or cross-Meta eligibility that SocialFlow.ai did not supply. Do not import mismatched platform bait, ask a generic question, or recommend reply automation; fitting source wording may be reused. Keep policy warnings separate from the draft.",
 	},
 }
 
@@ -92,7 +92,7 @@ func policyFor(platform string) (platformPolicy, bool) {
 		Native:       false,
 		Objectives:   []string{"clarity"},
 		Archetypes:   []string{"straight_adaptation"},
-		Distribution: "OpenPost has no platform-specific creative model for this destination. Produce a conservative publishable adaptation and do not claim it is optimized for reach or recommendations.",
+		Distribution: "SocialFlow.ai has no platform-specific creative model for this destination. Produce a conservative publishable adaptation and do not claim it is optimized for reach or recommendations.",
 		Writing:      "Preserve the factual kernel, thesis, voice, and useful context. Fit the connected account's current output limits without inventing platform conventions, hashtags, engagement prompts, or algorithm advice.",
 		Media:        "Keep existing media and recommend new media only when it is necessary proof or context. Do not add decorative generated media.",
 		Safety:       "Label this as a basic adaptation. If a safe adaptation would change the meaning or require unknown provider behavior, keep the current text and warn that it was not adapted.",

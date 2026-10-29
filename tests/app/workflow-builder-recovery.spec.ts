@@ -38,7 +38,7 @@ test("failed native Builder output opens its authorized read-only build record",
   const workflow = await created.json();
   const runID = randomUUID(),
     buildID = randomUUID();
-  const message = "OpenPost could not build this post. You can retry it.";
+  const message = "SocialFlow.ai could not build this post. You can retry it.";
   const output = {
     build_id: buildID,
     state: "failed",

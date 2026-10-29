@@ -31,8 +31,8 @@ test("current MCP server card describes the real remote endpoint", () => {
     $schema: "https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
     name: "getopenpost/openpost",
     version: "4.16.0",
-    description: "Create, schedule, publish, and inspect social content through OpenPost.",
-    title: "OpenPost MCP server",
+    description: "Create, schedule, publish, and inspect social content through SocialFlow.ai.",
+    title: "SocialFlow.ai MCP server",
     websiteUrl: "https://openpo.st",
     repository: {
       url: "https://github.com/getopenpost/openpost",
@@ -76,7 +76,7 @@ test("marketing discovery build publishes a verifiable complete CLI skill", asyn
   assert.equal(skill.type, "archive");
   assert.match(
     skill.description,
-    /^Operate a running OpenPost instance through the openpost CLI\./u,
+    /^Operate a running SocialFlow.ai instance through the openpost CLI\./u,
   );
   assert.equal(skill.url, "/.well-known/agent-skills/openpost-cli.tar.gz");
 

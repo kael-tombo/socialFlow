@@ -1,6 +1,6 @@
 # Ten-User Pilot Evidence Log
 
-> **Empty research template.** No row represents a real OpenPost user until a named researcher records the session. Do not turn placeholders into testimonials or public proof.
+> **Empty research template.** No row represents a real SocialFlow.ai user until a named researcher records the session. Do not turn placeholders into testimonials or public proof.
 
 ## Pilot goal
 
@@ -63,6 +63,6 @@ The attached launch recommendation suggests waiting for:
 - five users who complete the core workflow;
 - three useful attributed quotes with explicit permission;
 - two concrete campaign examples with explicit permission;
-- one honest comparison explaining why a user chose OpenPost over their previous workflow.
+- one honest comparison explaining why a user chose SocialFlow.ai over their previous workflow.
 
-These are readiness targets, not current OpenPost results. If the pilot does not reach them, report the gap and fix the observed failure points instead of filling it with anonymous praise.
+These are readiness targets, not current SocialFlow.ai results. If the pilot does not reach them, report the gap and fix the observed failure points instead of filling it with anonymous praise.

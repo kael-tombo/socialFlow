@@ -35,7 +35,7 @@ export function renderChangelogAtomFeed(markdown: string) {
 				})
 				.join(' ');
 			return `  <entry>
-    <title>OpenPost v${escapeXml(release.label)}</title>
+    <title>SocialFlow.ai v${escapeXml(release.label)}</title>
     <id>${escapeXml(stableId)}</id>
     <link href="${escapeXml(url)}" />
     <updated>${release.date}T00:00:00Z</updated>
@@ -46,7 +46,7 @@ export function renderChangelogAtomFeed(markdown: string) {
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>OpenPost changelog</title>
+  <title>SocialFlow.ai changelog</title>
   <id>${stableChangelogId}</id>
   <link href="${canonicalChangelogUrl}" />
   <link href="${canonicalChangelogUrl}.xml" rel="self" type="application/atom+xml" />

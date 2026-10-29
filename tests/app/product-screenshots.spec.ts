@@ -349,7 +349,7 @@ test.describe("product screenshot capture", () => {
       await capture(page, `calendar-${captureScheme}.png`, [
         page.getByRole("region", { name: "Monthly publishing calendar" }),
         page.getByRole("button", {
-          name: /Launch notes for the next OpenPost release/u,
+          name: /Launch notes for the next SocialFlow.ai release/u,
         }),
       ]);
 

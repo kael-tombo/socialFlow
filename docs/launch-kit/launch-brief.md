@@ -1,21 +1,21 @@
-# Illustrative OpenPost Launch Brief
+# Illustrative SocialFlow.ai Launch Brief
 
 > **Sample brief — not a record of an actual launch.** Replace every bracketed field and verify every provider claim before use.
 
 ## Campaign
 
-- **Working name:** OpenPost launched OpenPost
+- **Working name:** SocialFlow.ai launched SocialFlow.ai
 - **Primary action:** `[WATCH THE NEW DEMO / USE THE HOSTED SERVICE / SELF-HOST]`
 - **Audience:** solo founders who need to turn what they are building into consistent content without hiring a content team
 - **Core problem:** AI can prepare content quickly, but provider credentials, account-specific formatting, mutation approval, and publishing outcomes need an inspectable boundary
 
 ## Position
 
-OpenPost is the all-in-one content team for solo founders.
+SocialFlow.ai is the all-in-one content team for solo founders.
 
-The founder brings a launch, product update, lesson, or idea. OpenPost keeps the source, destination-specific versions, reusable media, calendar, and publishing outcomes together so that work becomes a repeatable content system instead of another isolated post.
+The founder brings a launch, product update, lesson, or idea. SocialFlow.ai keeps the source, destination-specific versions, reusable media, calendar, and publishing outcomes together so that work becomes a repeatable content system instead of another isolated post.
 
-An authorized agent can inspect workspace context and prepare destination-specific work through MCP without receiving provider credentials. A person reviews the campaign in OpenPost before allowing a state-changing operation. The durable queue keeps scheduled work, published outcomes, failures, and retries visible.
+An authorized agent can inspect workspace context and prepare destination-specific work through MCP without receiving provider credentials. A person reviews the campaign in SocialFlow.ai before allowing a state-changing operation. The durable queue keeps scheduled work, published outcomes, failures, and retries visible.
 
 Use the Hosted service or self-host the same AGPL product as one binary or container. SQLite and local media are the defaults, and Redis is not required.
 
@@ -23,18 +23,18 @@ Use the Hosted service or self-host the same AGPL product as one binary or conta
 
 Use this only after the verification log proves the exact count and paths:
 
-> An AI agent prepared this launch for `[VERIFIED DESTINATION COUNT]` networks without receiving a provider credential. I reviewed every destination in OpenPost, then scheduled the campaign from one visible queue.
+> An AI agent prepared this launch for `[VERIFIED DESTINATION COUNT]` networks without receiving a provider credential. I reviewed every destination in SocialFlow.ai, then scheduled the campaign from one visible queue.
 
 If any destination remains unverified, use a claim that does not imply post:
 
-> I used an AI agent to prepare account-specific launch drafts in OpenPost. I reviewed each destination before deciding what to schedule.
+> I used an AI agent to prepare account-specific launch drafts in SocialFlow.ai. I reviewed each destination before deciding what to schedule.
 
 ## Facts the campaign may use
 
 - MCP exposes separate read-only and state-changing operation paths.
-- A workspace-scoped `mcp:read` token can inspect permitted OpenPost data and is server-blocked from mutations.
+- A workspace-scoped `mcp:read` token can inspect permitted SocialFlow.ai data and is server-blocked from mutations.
 - A workspace-scoped `mcp:full` token is required to create or update drafts and variants, schedule, publish, upload media, or perform other mutations.
-- OpenPost does not return decrypted provider access or refresh tokens through MCP.
+- SocialFlow.ai does not return decrypted provider access or refresh tokens through MCP.
 - MCP tokens are revocable, can be limited to one workspace, and have recent activity visible in Settings.
 - Base content and account-specific variants remain editable in the web app.
 - Publishing uses a durable database-backed queue with visible lifecycle and failure state.
@@ -69,10 +69,10 @@ If any destination remains unverified, use a claim that does not imply post:
 2. Give the agent this brief.
 3. Show read-only inspection of the workspace, accounts, media, schedule, and provider readiness.
 4. Show the base post and genuinely different destination variants.
-5. Open the campaign in the OpenPost web app.
+5. Open the campaign in the SocialFlow.ai web app.
 6. Review and edit account, copy, media, alt text, format, and schedule.
 7. Show the exact `execute_operation` request and explicit client approval.
-8. Show the OpenPost queue. After it runs, show provider URLs or honest failures.
+8. Show the SocialFlow.ai queue. After it runs, show provider URLs or honest failures.
 
 Do not use a logo intro, founder monologue, or generic feature carousel before the result.
 

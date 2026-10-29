@@ -46,7 +46,7 @@ export default function PairScreen() {
       let navigationTimer: ReturnType<typeof setTimeout> | undefined;
       void (async () => {
         try {
-          const state = await startPairing("OpenPost Mobile", controller.signal);
+          const state = await startPairing("SocialFlow.ai Mobile", controller.signal);
           if (isCancelled()) return;
           setUserCode(state.userCode);
           setVerificationUrl(state.verificationUrl);

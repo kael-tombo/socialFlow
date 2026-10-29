@@ -40,7 +40,7 @@
 		<div class="sendoff-copy">
 			<h2>Go make something<br /><HeroAccent>worth sharing.</HeroAccent></h2>
 			<Button href={managedSignupUrl} size="lg"
-				>Try OpenPost <ArrowUpRight data-icon="inline-end" /></Button
+				>Try SocialFlow.ai <ArrowUpRight data-icon="inline-end" /></Button
 			>
 			<p>{managedTrialNote}</p>
 		</div>
@@ -60,7 +60,7 @@
 				<a
 					href={resolve('/')}
 					class="focus-ring inline-flex min-h-11 items-center gap-2 rounded-md"
-					aria-label="OpenPost home"
+					aria-label="SocialFlow.ai home"
 				>
 					<ThemeImage
 						lightSrc="/assets/brand/logo.svg"
@@ -71,7 +71,7 @@
 						class="shrink-0"
 					/>
 					<span class="font-brand text-sm leading-none font-semibold tracking-[-0.02em]"
-						>OpenPost</span
+						>SocialFlow.ai</span
 					>
 				</a>
 				<p class="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">
@@ -105,7 +105,7 @@
 					rel="noopener noreferrer"
 					class="mt-5 min-h-11"
 				>
-					Prefer OpenPost on Google <ArrowUpRight data-icon="inline-end" />
+					Prefer SocialFlow.ai on Google <ArrowUpRight data-icon="inline-end" />
 				</Button>
 				<div
 					class="platform-guides mt-6 text-muted-foreground"
@@ -157,7 +157,7 @@
 		<div
 			class="marketing-shell flex flex-col gap-3 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"
 		>
-			<span>© 2026 OpenPost</span>
+			<span>© 2026 SocialFlow.ai</span>
 			<span class="flex flex-wrap items-center gap-x-5 gap-y-1">
 				<span class="hidden sm:inline">Made in Porto. For your business.</span>
 				<button

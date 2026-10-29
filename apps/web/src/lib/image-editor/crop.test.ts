@@ -49,7 +49,7 @@ function layer(overrides: Partial<ImageEditorLayer['transform']> = {}): ImageEdi
 	};
 }
 
-describe('OpenPost Image Editor interactive crop geometry', () => {
+describe('SocialFlow.ai Image Editor interactive crop geometry', () => {
 	it('clamps interactive crop windows to a non-empty source region', () => {
 		expect(normalizeImageEditorCropWindow({ x: -1, y: 0.9, width: 2, height: 0 })).toEqual({
 			x: 0,

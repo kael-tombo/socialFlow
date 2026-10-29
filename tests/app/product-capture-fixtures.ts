@@ -533,7 +533,7 @@ function analyticsFixture() {
     },
     {
       key: "analytics-rendition-studio",
-      label: "A first look at OpenPost Studio",
+      label: "A first look at SocialFlow.ai Studio",
       platform: "youtube",
       publication_id: "analytics-publication-studio",
     },
@@ -1073,7 +1073,7 @@ export async function prepareProductPage({
       workspace.id,
       "scheduled-aug-21",
       "scheduled",
-      "Launch notes for the next OpenPost release",
+      "Launch notes for the next SocialFlow.ai release",
       "2026-08-21T16:00:00Z",
       ["account-mastodon", "account-x", "account-linkedin"],
     ),

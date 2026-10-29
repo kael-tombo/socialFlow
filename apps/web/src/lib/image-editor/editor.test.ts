@@ -61,7 +61,7 @@ function response(): ImageEditorDocumentResponse {
 	};
 }
 
-describe('OpenPost Image Editor editor layer interactions', () => {
+describe('SocialFlow.ai Image Editor editor layer interactions', () => {
 	it('keeps new cover text readable over light and dark frames without restyling other designs', () => {
 		const editor = new ImageEditorController({ textAppearance: () => 'over-image' });
 		const initial = response();

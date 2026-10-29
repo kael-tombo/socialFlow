@@ -99,7 +99,7 @@ func TestInstagramReportsNoPageLinkedProfessionalAccount(t *testing.T) {
 		if req.URL.Path != "/v25.0/me/accounts" {
 			t.Fatalf("unexpected request %s %s", req.Method, req.URL.String())
 		}
-		return jsonResponse(req, `{"data":[{"id":"page-1","name":"OpenPost Page","access_token":"page-token"}]}`), nil
+		return jsonResponse(req, `{"data":[{"id":"page-1","name":"SocialFlow.ai Page","access_token":"page-token"}]}`), nil
 	})}
 
 	adapter := NewInstagramAdapter("client-id", "client-secret", "https://app.example/callback")
@@ -166,7 +166,7 @@ func TestInstagramExchangeAndSelectBusinessAccount(t *testing.T) {
 			if req.Header.Get(headerAuthorization) != "Bearer long-token" {
 				t.Fatalf("unexpected accounts token %q", req.URL.Query().Get(oauthParamAccessToken))
 			}
-			return jsonResponse(req, `{"data":[{"id":"page-1","name":"OpenPost Page","access_token":"page-token","picture":{"data":{"url":"https://cdn.example/page.png"}},"instagram_business_account":{"id":"ig-1","username":"openpost","name":"OpenPost IG","profile_picture_url":"https://cdn.example/ig.png","account_type":"CREATOR"}}]}`), nil
+			return jsonResponse(req, `{"data":[{"id":"page-1","name":"SocialFlow.ai Page","access_token":"page-token","picture":{"data":{"url":"https://cdn.example/page.png"}},"instagram_business_account":{"id":"ig-1","username":"openpost","name":"SocialFlow.ai IG","profile_picture_url":"https://cdn.example/ig.png","account_type":"CREATOR"}}]}`), nil
 		case "/v25.0/me/permissions":
 			return jsonResponse(req, `{"data":[{"permission":"instagram_basic","status":"granted"},{"permission":"instagram_content_publish","status":"granted"},{"permission":"instagram_manage_insights","status":"granted"},{"permission":"pages_show_list","status":"granted"},{"permission":"pages_read_engagement","status":"granted"}]}`), nil
 		default:

@@ -151,7 +151,7 @@ func materializeWorkflowApproval(value semanticOutcome) (createInput, error) {
 			input.Actions = []models.NotificationAction{{Label: label, Href: input.Href, Kind: "primary"}}
 		default:
 			input.Title = "A post is waiting for your approval"
-			input.Body = approvalBodyWithName(workflowName, "OpenPost paused this workflow until someone approves or rejects the post.")
+			input.Body = approvalBodyWithName(workflowName, "SocialFlow.ai paused this workflow until someone approves or rejects the post.")
 			input.Actions = []models.NotificationAction{{Label: "Review post", Href: input.Href, Kind: "primary"}}
 		}
 	case ApprovalStateReminder:

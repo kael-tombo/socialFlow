@@ -476,7 +476,7 @@ func (application *Application) HandleJob(ctx context.Context, jobType, payload 
 		if errors.Is(err, errBuildStopped) {
 			return nil
 		}
-		return application.fail(ctx, &record, leaseToken, trace, "generation_failed", "OpenPost could not build this post. You can retry it.", err)
+		return application.fail(ctx, &record, leaseToken, trace, "generation_failed", "SocialFlow.ai could not build this post. You can retry it.", err)
 	}
 	if request.SeriesOrigin != nil && len(result.Options) == 0 {
 		result.Options = []PostOption{{ID: "post", Label: "Post", CanonicalText: result.CanonicalText, Direction: result.Direction, Destinations: result.Destinations, ReviewFlags: result.ReviewFlags}}
@@ -491,7 +491,7 @@ func (application *Application) HandleJob(ctx context.Context, jobType, payload 
 	}
 	resultJSON, err := json.Marshal(result)
 	if err != nil {
-		return application.fail(ctx, &record, leaseToken, trace, "result_encoding_failed", "OpenPost could not save the generated post.", err)
+		return application.fail(ctx, &record, leaseToken, trace, "result_encoding_failed", "SocialFlow.ai could not save the generated post.", err)
 	}
 	model, providerRequestID, usageJSON := trace.encoded()
 	if model == "" {
@@ -805,9 +805,9 @@ func (failure *sourceResolutionError) Unwrap() error { return failure.cause }
 func sourceFailureMessage(err error) string {
 	var failure *sourceResolutionError
 	if errors.As(err, &failure) {
-		return fmt.Sprintf("OpenPost could not read selected %s %d.", failure.kind, failure.index)
+		return fmt.Sprintf("SocialFlow.ai could not read selected %s %d.", failure.kind, failure.index)
 	}
-	return "OpenPost could not read one of the selected sources."
+	return "SocialFlow.ai could not read one of the selected sources."
 }
 
 type safeBuildJobError struct {
@@ -886,7 +886,7 @@ func (application *Application) MarkTerminalJobFailure(ctx context.Context, db b
 		Set("state = ?", BuildStateFailed).
 		Set("phase = ?", BuildPhaseFailed).
 		Set("error_code = ?", "job_failed").
-		Set("error_message = ?", "OpenPost could not complete this build. You can retry it.").
+		Set("error_message = ?", "SocialFlow.ai could not complete this build. You can retry it.").
 		Set("lease_token = ''").
 		Set("lease_expires_at = NULL").
 		Set("updated_at = ?", now).

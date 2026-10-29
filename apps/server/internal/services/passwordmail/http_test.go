@@ -27,7 +27,7 @@ func TestResendSenderUsesBearerAuthAndIdempotency(t *testing.T) {
 
 	sender, err := NewResendSender(ResendConfig{
 		APIKey:  "resend-secret",
-		From:    "OpenPost <hello@example.com>",
+		From:    "SocialFlow.ai <hello@example.com>",
 		BaseURL: server.URL,
 		Client:  server.Client(),
 	})
@@ -36,6 +36,6 @@ func TestResendSenderUsesBearerAuthAndIdempotency(t *testing.T) {
 		Recipient: "person@example.com", Code: "123456",
 		ExpiresAt: time.Now().UTC().Add(10 * time.Minute), IdempotencyKey: "verify-challenge-1",
 	}))
-	require.Equal(t, "Verify your OpenPost email", received["subject"])
+	require.Equal(t, "Verify your SocialFlow.ai email", received["subject"])
 	require.Contains(t, received["text"], "123456")
 }

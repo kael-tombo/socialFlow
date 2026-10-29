@@ -2,7 +2,7 @@
 
 > **Planning template.** This file contains no user proof, endorsements, launch date, or campaign result.
 
-Launch OpenPost around a demonstrated workflow: an agent prepared destination-specific work without receiving provider credentials, a person reviewed every destination, and OpenPost kept execution and outcomes visible.
+Launch SocialFlow.ai around a demonstrated workflow: an agent prepared destination-specific work without receiving provider credentials, a person reviewed every destination, and SocialFlow.ai kept execution and outcomes visible.
 
 Do not position the product as another generic Buffer alternative or lead with a count of provider logos.
 
@@ -38,7 +38,7 @@ Prepare material for each destination instead of pasting one announcement everyw
 
 Suggested Show HN title:
 
-> Show HN: OpenPost – a self-hosted publishing layer for humans and AI agents
+> Show HN: SocialFlow.ai – a self-hosted publishing layer for humans and AI agents
 
 The body should explain why “write once, publish everywhere” hides real provider differences; how canonical content and account-specific variants work; why `mcp:read` and `mcp:full` have different authority; how the durable queue exposes failures; and which paths remain preview or unverified.
 
@@ -50,7 +50,7 @@ Share this launch kit as the reusable artifact. It should prove the workflow wit
 
 ## Wave 3: broader launch after proof
 
-Use a broad launch channel only after OpenPost has:
+Use a broad launch channel only after SocialFlow.ai has:
 
 - real users who completed the core workflow;
 - attributed quotes and campaign examples with permission;
@@ -61,11 +61,11 @@ Use a broad launch channel only after OpenPost has:
 
 ## Supporter guidance
 
-Ask only people who have seen or used OpenPost. Send the direct launch URL and invite honest feedback or sharing if they genuinely find it useful. Do not provide scripted praise, buy engagement, or recruit irrelevant accounts to simulate demand.
+Ask only people who have seen or used SocialFlow.ai. Send the direct launch URL and invite honest feedback or sharing if they genuinely find it useful. Do not provide scripted praise, buy engagement, or recruit irrelevant accounts to simulate demand.
 
 ## Measure activation
 
-Define targets before launch, then collect the first fourteen days with [`metrics-plan.md`](./metrics-plan.md). The social-provider Analytics page does not measure product activation, and OpenPost does not include a product-usage analytics vendor or launch KPI dashboard, so assign an owner and evidence source for every value.
+Define targets before launch, then collect the first fourteen days with [`metrics-plan.md`](./metrics-plan.md). The social-provider Analytics page does not measure product activation, and SocialFlow.ai does not include a product-usage analytics vendor or launch KPI dashboard, so assign an owner and evidence source for every value.
 
 The recommended starting targets are planning values, not current results:
 

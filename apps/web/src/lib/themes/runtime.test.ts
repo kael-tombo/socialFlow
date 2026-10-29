@@ -328,7 +328,7 @@ describe('WebThemeRuntime', () => {
 			})
 		]);
 		expect(scope.properties.get('--theme-font-sans')).toContain(
-			'OpenPost Theme organization:theme-id:2'
+			'SocialFlow.ai Theme organization:theme-id:2'
 		);
 		expect(scope.properties.get('--theme-font-brand')).toContain('Manrope Variable');
 		expect(scope.properties.get('--theme-font-brand')).not.toContain('Organization Sans');

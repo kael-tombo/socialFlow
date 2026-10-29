@@ -1,6 +1,6 @@
 # Daily-workflow browser matrix
 
-The daily-workflow release cohort uses the built OpenPost application, HTTP authorization, and Workspace persistence. Browser route fixtures provide deterministic stored projections for the history and delivery contracts under test, and replace destination-provider and Paddle boundaries where exact external outcomes are required.
+The daily-workflow release cohort uses the built SocialFlow.ai application, HTTP authorization, and Workspace persistence. Browser route fixtures provide deterministic stored projections for the history and delivery contracts under test, and replace destination-provider and Paddle boundaries where exact external outcomes are required.
 
 ## Complete saved history
 
@@ -44,7 +44,7 @@ The presentation dimensions are orthogonal so a failure identifies one boundary 
 | Billing facts and purpose-specific Paddle actions                     | `tests/app/billing-settings.spec.ts`                                     |
 | Account-wide recovery and permission boundaries at 390 px             | `tests/app/billing-recovery.spec.ts`                                     |
 | Inline Paddle checkout at desktop, 390 px, and 320 px                 | `tests/app/billing-settings.spec.ts`                                     |
-| Light checkout surface inside a dark OpenPost theme                   | `tests/app/billing-settings.spec.ts`                                     |
+| Light checkout surface inside a dark SocialFlow.ai theme                   | `tests/app/billing-settings.spec.ts`                                     |
 | English and Portuguese Accounts, Billing, and Paddle locale routing   | `tests/app/ui-consistency.spec.ts`, `tests/app/billing-settings.spec.ts` |
 | Shared light and dark application theme contract                      | `tests/app/app-shell.spec.ts`                                            |
 

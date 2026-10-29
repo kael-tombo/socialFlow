@@ -25,7 +25,7 @@
 	const description = $derived(
 		storage === 'local' && syncStatus === 'synced' && !reason
 			? label
-			: `${storage === 'local' ? m.video_editor_local_only() : syncStatus === 'synced' ? m.video_editor_saved_cloud() : 'OpenPost'} · ${label}${reason ? ` · ${reason}` : ''}`
+			: `${storage === 'local' ? m.video_editor_local_only() : syncStatus === 'synced' ? m.video_editor_saved_cloud() : 'SocialFlow.ai'} · ${label}${reason ? ` · ${reason}` : ''}`
 	);
 </script>
 

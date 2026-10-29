@@ -230,7 +230,7 @@ func (service *Service) draftDestination(ctx context.Context, input BuildInput, 
 	}, func(plan *DestinationPlan) error {
 		plan.Platform = destination.Platform
 		if !policy.Native {
-			plan.Warnings = append([]string{"Basic adaptation: OpenPost does not yet have a native creative model for this platform."}, plan.Warnings...)
+			plan.Warnings = append([]string{"Basic adaptation: SocialFlow.ai does not yet have a native creative model for this platform."}, plan.Warnings...)
 		}
 		return validateDestinationPlan(*plan, destination, policy, sources)
 	})
@@ -326,7 +326,7 @@ func partitionDestinations(destinations []Destination) ([]Destination, []Skipped
 		skipped = append(skipped, SkippedDestination{
 			AccountID: destination.AccountID,
 			Platform:  destination.Platform,
-			Reason:    "OpenPost does not have a native builder adapter for this platform yet.",
+			Reason:    "SocialFlow.ai does not have a native builder adapter for this platform yet.",
 		})
 	}
 	return supported, skipped

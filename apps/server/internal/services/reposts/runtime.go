@@ -164,7 +164,7 @@ func (s *Service) MarkAmbiguousWrite(ctx context.Context, payload string) {
 	}
 	execution, _, err := s.loadExecutionRule(ctx, input.ExecutionID, StatusReady)
 	if err == nil && execution != nil {
-		_ = s.failExecution(ctx, execution, "ambiguous_provider_result", "The worker stopped during the provider repost. OpenPost did not retry because the provider result may be ambiguous.")
+		_ = s.failExecution(ctx, execution, "ambiguous_provider_result", "The worker stopped during the provider repost. SocialFlow.ai did not retry because the provider result may be ambiguous.")
 	}
 }
 
@@ -403,7 +403,7 @@ func (s *Service) execute(ctx context.Context, executionID string) error {
 
 	result, err := s.executeRepostWrite(ctx, *execution, source, target, rendition, adapter, token)
 	if err != nil {
-		if persistErr := s.failExecution(ctx, execution, "provider_write_failed", "The provider write failed. OpenPost did not retry because the result may be ambiguous."); persistErr != nil {
+		if persistErr := s.failExecution(ctx, execution, "provider_write_failed", "The provider write failed. SocialFlow.ai did not retry because the result may be ambiguous."); persistErr != nil {
 			return errors.Join(err, persistErr)
 		}
 		return err

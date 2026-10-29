@@ -29,8 +29,8 @@ func (h *GitHubStarsHandler) RegisterRoutes(api huma.API) {
 		OperationID: "get-github-star-count",
 		Method:      http.MethodGet,
 		Path:        "/github-stars",
-		Summary:     "Get the OpenPost GitHub star count",
-		Description: "Returns a cached public count for the OpenPost GitHub repository when GitHub is available.",
+		Summary:     "Get the SocialFlow.ai GitHub star count",
+		Description: "Returns a cached public count for the SocialFlow.ai GitHub repository when GitHub is available.",
 		Tags:        []string{"System"},
 	}, h.getCount)
 }

@@ -15,14 +15,14 @@ test("Image Editor keeps local and cloud designs visible when changing creation 
   await expect(page).toHaveURL(/image-editor\/local_design_/);
   await page.goto("/image-editor");
   await expect(page.getByRole("img", { name: "Local only" })).toBeVisible();
-  await page.getByRole("button", { name: "Saved to OpenPost", exact: true }).click();
+  await page.getByRole("button", { name: "Saved to SocialFlow.ai", exact: true }).click();
   await page.getByRole("button", { name: "New project", exact: true }).click();
   await expect(page).toHaveURL(/image-editor\/(?!local_design_)[^/]+$/);
   await page.goto("/image-editor");
-  await expect(page.getByRole("img", { name: "Saved to OpenPost · Online" })).toBeVisible();
+  await expect(page.getByRole("img", { name: "Saved to SocialFlow.ai · Online" })).toBeVisible();
   await expect(page.getByRole("img", { name: "Local only" })).toBeVisible();
   await page.getByRole("button", { name: "Local only", exact: true }).click();
-  await expect(page.getByRole("img", { name: "Saved to OpenPost · Online" })).toBeVisible();
+  await expect(page.getByRole("img", { name: "Saved to SocialFlow.ai · Online" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Your designs", exact: true })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("image-project-storage.png"), fullPage: true });
   await page.addInitScript(() => {
@@ -36,7 +36,7 @@ test("Image Editor keeps local and cloud designs visible when changing creation 
   await expect(
     page.getByRole("alert").filter({ hasText: "Local library unavailable" }),
   ).toBeVisible();
-  await expect(page.getByRole("img", { name: "Saved to OpenPost · Online" })).toBeVisible();
+  await expect(page.getByRole("img", { name: "Saved to SocialFlow.ai · Online" })).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   await expect
     .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))

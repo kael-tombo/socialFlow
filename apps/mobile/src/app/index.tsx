@@ -38,7 +38,7 @@ export default function Gate() {
         <View style={styles.content}>
           <Brand compact style={styles.brand} />
           <InitialQueryError
-            title="Could not start OpenPost"
+            title="Could not start SocialFlow.ai"
             message={launch.state.error.message}
             retry={launch.reload}
           />

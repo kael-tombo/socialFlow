@@ -64,7 +64,7 @@ func exerciseOAuthGrantMigrations(t *testing.T, db *bun.DB) {
 		Slug:                "linkedin-openpost",
 		Platform:            "linkedin",
 		AccountID:           "urn:li:organization:42",
-		AccountUsername:     "OpenPost",
+		AccountUsername:     "SocialFlow.ai",
 		AccessTokenEnc:      []byte("opaque-access-ciphertext"),
 		RefreshTokenEnc:     []byte("opaque-refresh-ciphertext"),
 		TokenExpiresAt:      expiresAt,

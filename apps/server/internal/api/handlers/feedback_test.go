@@ -66,7 +66,7 @@ func TestFeedbackHandlerQueuesOptionalReportAndRateLimits(t *testing.T) {
 	require.NoError(t, err)
 	service := feedback.NewService(db, feedback.Config{
 		Enabled:    true,
-		Recipient:  "OpenPost team",
+		Recipient:  "SocialFlow.ai team",
 		AppVersion: "1.2.3",
 	}, feedbackTestDestination{})
 	e := echo.New()
@@ -86,7 +86,7 @@ func TestFeedbackHandlerQueuesOptionalReportAndRateLimits(t *testing.T) {
 		submitRec := httptest.NewRecorder()
 		e.ServeHTTP(submitRec, submit)
 		require.Equal(t, http.StatusOK, submitRec.Code, submitRec.Body.String())
-		require.Contains(t, submitRec.Body.String(), `"recipient":"OpenPost team"`)
+		require.Contains(t, submitRec.Body.String(), `"recipient":"SocialFlow.ai team"`)
 	}
 
 	limited := httptest.NewRequestWithContext(
@@ -101,7 +101,7 @@ func TestFeedbackHandlerQueuesOptionalReportAndRateLimits(t *testing.T) {
 	e.ServeHTTP(limitedRec, limited)
 	require.Equal(t, http.StatusTooManyRequests, limitedRec.Code, limitedRec.Body.String())
 	allowedAfterRestart, err := feedback.NewService(db, feedback.Config{
-		Enabled: true, Recipient: "OpenPost team", AppVersion: "1.2.3",
+		Enabled: true, Recipient: "SocialFlow.ai team", AppVersion: "1.2.3",
 	}, feedbackTestDestination{}).AllowSubmission(context.Background(), "user-1", feedbackRateLimit, time.Minute)
 	require.NoError(t, err)
 	require.False(t, allowedAfterRestart)

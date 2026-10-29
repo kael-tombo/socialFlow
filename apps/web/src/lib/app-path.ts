@@ -9,7 +9,7 @@ const resolveRuntimePath = resolve as RuntimePathResolver;
 
 export function resolveAppPath(path: string): ResolvedPathname {
 	if (!path.startsWith('/') || path.startsWith('//') || path.startsWith('/\\')) {
-		throw new Error('OpenPost app paths must be root-relative.');
+		throw new Error('SocialFlow.ai app paths must be root-relative.');
 	}
 	// SAFETY: SvelteKit's generated pathname union cannot represent server-provided redirects or
 	// assembled queries. The root-relative checks above establish the resolver's runtime contract.

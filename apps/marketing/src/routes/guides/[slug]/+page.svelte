@@ -35,13 +35,13 @@
 				>
 				<h1 class="guide-title mt-5">{data.guide.question}</h1>
 				<p class="mt-6 text-sm text-muted-foreground">
-					By OpenPost · Reviewed <time datetime={data.guide.reviewedAt}
+					By SocialFlow.ai · Reviewed <time datetime={data.guide.reviewedAt}
 						>{reviewDateFormat.format(new Date(data.guide.reviewedAt))}</time
 					>
 				</p>
 				<p class="marketing-copy mt-6">{data.guide.answer}</p>
 				<p class="mt-6 max-w-3xl text-sm leading-6 text-muted-foreground">
-					Written by the team behind OpenPost. See the linked sources when comparing tools.
+					Written by the team behind SocialFlow.ai. See the linked sources when comparing tools.
 				</p>
 			</div>
 			<div class="hero-visual">
@@ -51,7 +51,7 @@
 		<div class="guide-layout">
 			<div class="max-w-3xl min-w-0">
 				{#if !data.guide.comparison || data.guide.comparison.category === 'Publishing'}
-					<aside class="readiness" aria-label="OpenPost Hosted readiness">
+					<aside class="readiness" aria-label="SocialFlow.ai Hosted readiness">
 						<h2 class="text-base font-semibold">Check your channels first</h2>
 						<p class="mt-3 leading-7 text-muted-foreground">
 							Posting, inbox, and analytics vary by account and format. Check provider requirements

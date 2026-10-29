@@ -4,7 +4,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "api-reference/index.mdx",
     "title": "API reference",
-    "description": "Authenticate and call the OpenPost HTTP API.",
+    "description": "Authenticate and call the SocialFlow.ai HTTP API.",
     "route": "/api-reference",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -21,7 +21,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "automate/api/index.mdx",
     "title": "HTTP API",
-    "description": "Authenticate and make your first OpenPost API request.",
+    "description": "Authenticate and make your first SocialFlow.ai API request.",
     "route": "/automate/api",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -37,7 +37,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "automate/api/media.mdx",
     "title": "Media uploads",
-    "description": "Upload bytes through OpenPost's storage-safe HTTP flow.",
+    "description": "Upload bytes through SocialFlow.ai's storage-safe HTTP flow.",
     "route": "/automate/api/media",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -182,7 +182,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "automate/n8n/index.mdx",
     "title": "n8n workflows",
-    "description": "Install the OpenPost node and test its credentials.",
+    "description": "Install the SocialFlow.ai node and test its credentials.",
     "route": "/automate/n8n",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -327,7 +327,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "guides/media-limits.mdx",
     "title": "Media limits",
-    "description": "Default attachment limits used by OpenPost before publishing.",
+    "description": "Default attachment limits used by SocialFlow.ai before publishing.",
     "route": "/guides/media-limits",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -359,7 +359,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "guides/quickstart.mdx",
     "title": "Publish your first post",
-    "description": "Connect an account and publish your first OpenPost post.",
+    "description": "Connect an account and publish your first SocialFlow.ai post.",
     "route": "/guides/quickstart",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -568,8 +568,8 @@ export const docsPageCatalog = Object.freeze([
   },
   {
     "page": "index.mdx",
-    "title": "OpenPost documentation",
-    "description": "Connect social accounts, write and schedule posts, and check delivery in OpenPost.",
+    "title": "SocialFlow.ai documentation",
+    "description": "Connect social accounts, write and schedule posts, and check delivery in SocialFlow.ai.",
     "route": "/",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -586,7 +586,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/antigravity.mdx",
     "title": "Connect Antigravity",
-    "description": "Use the OpenPost local bridge from Antigravity.",
+    "description": "Use the SocialFlow.ai local bridge from Antigravity.",
     "route": "/mcp/antigravity",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -602,7 +602,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/chat-assistants.mdx",
     "title": "Chat assistants",
-    "description": "Connect your assistant to OpenPost through MCP.",
+    "description": "Connect your assistant to SocialFlow.ai through MCP.",
     "route": "/mcp/chat-assistants",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -618,7 +618,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/chatgpt.mdx",
     "title": "Connect ChatGPT",
-    "description": "Connect OpenPost's MCP server to ChatGPT for schedule reviews and drafts.",
+    "description": "Connect SocialFlow.ai's MCP server to ChatGPT for schedule reviews and drafts.",
     "route": "/mcp/chatgpt",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -634,7 +634,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/claude-code.mdx",
     "title": "Connect Claude Code",
-    "description": "Use OpenPost from Claude Code in your terminal.",
+    "description": "Use SocialFlow.ai from Claude Code in your terminal.",
     "route": "/mcp/claude-code",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -650,7 +650,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/claude-desktop.mdx",
     "title": "Connect Claude Desktop",
-    "description": "Connect through Claude account settings or a local OpenPost bridge.",
+    "description": "Connect through Claude account settings or a local SocialFlow.ai bridge.",
     "route": "/mcp/claude-desktop",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -666,7 +666,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/claude.mdx",
     "title": "Connect Claude web",
-    "description": "Connect OpenPost to Claude through a custom connector.",
+    "description": "Connect SocialFlow.ai to Claude through a custom connector.",
     "route": "/mcp/claude",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -682,7 +682,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/codex.mdx",
     "title": "Connect Codex",
-    "description": "Add OpenPost to Codex with remote MCP and browser sign-in.",
+    "description": "Add SocialFlow.ai to Codex with remote MCP and browser sign-in.",
     "route": "/mcp/codex",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -698,7 +698,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/coding-assistants.mdx",
     "title": "Coding assistants",
-    "description": "Connect your assistant to OpenPost through MCP.",
+    "description": "Connect your assistant to SocialFlow.ai through MCP.",
     "route": "/mcp/coding-assistants",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -714,7 +714,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/cursor.mdx",
     "title": "Connect Cursor",
-    "description": "Add OpenPost to Cursor using remote MCP and OAuth.",
+    "description": "Add SocialFlow.ai to Cursor using remote MCP and OAuth.",
     "route": "/mcp/cursor",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -730,7 +730,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/devin.mdx",
     "title": "Connect Devin",
-    "description": "Give Devin access to your OpenPost workspace through MCP.",
+    "description": "Give Devin access to your SocialFlow.ai workspace through MCP.",
     "route": "/mcp/devin",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -746,7 +746,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/gemini-cli.mdx",
     "title": "Connect Gemini CLI",
-    "description": "Review and prepare OpenPost posts from Gemini CLI.",
+    "description": "Review and prepare SocialFlow.ai posts from Gemini CLI.",
     "route": "/mcp/gemini-cli",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -762,7 +762,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/github-copilot.mdx",
     "title": "Connect GitHub Copilot",
-    "description": "Use OpenPost from Copilot agent chat in VS Code.",
+    "description": "Use SocialFlow.ai from Copilot agent chat in VS Code.",
     "route": "/mcp/github-copilot",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -777,8 +777,8 @@ export const docsPageCatalog = Object.freeze([
   },
   {
     "page": "mcp/grok-bot.mdx",
-    "title": "Create a Grok Bot for OpenPost",
-    "description": "Save an OpenPost Bot profile, API skill, and read-only review routine in Grok Bot.",
+    "title": "Create a Grok Bot for SocialFlow.ai",
+    "description": "Save an SocialFlow.ai Bot profile, API skill, and read-only review routine in Grok Bot.",
     "route": "/mcp/grok-bot",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -794,7 +794,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/grok.mdx",
     "title": "Connect Grok",
-    "description": "Add OpenPost as a custom Grok connector.",
+    "description": "Add SocialFlow.ai as a custom Grok connector.",
     "route": "/mcp/grok",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -810,7 +810,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/hermes.mdx",
     "title": "Connect Hermes Agent",
-    "description": "Add OpenPost to Hermes Agent as an OAuth MCP server.",
+    "description": "Add SocialFlow.ai to Hermes Agent as an OAuth MCP server.",
     "route": "/mcp/hermes",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -826,7 +826,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/index.mdx",
     "title": "AI assistants",
-    "description": "Choose how an assistant connects to your OpenPost account.",
+    "description": "Choose how an assistant connects to your SocialFlow.ai account.",
     "route": "/mcp",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -891,7 +891,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/openclaw.mdx",
     "title": "Connect OpenClaw",
-    "description": "Connect an OpenClaw agent to your OpenPost workspace.",
+    "description": "Connect an OpenClaw agent to your SocialFlow.ai workspace.",
     "route": "/mcp/openclaw",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -907,7 +907,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/opencode.mdx",
     "title": "Connect OpenCode",
-    "description": "Add OpenPost to OpenCode using remote MCP and OAuth.",
+    "description": "Add SocialFlow.ai to OpenCode using remote MCP and OAuth.",
     "route": "/mcp/opencode",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -923,7 +923,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/perplexity.mdx",
     "title": "Connect Perplexity",
-    "description": "Use OpenPost through a custom remote Perplexity connector.",
+    "description": "Use SocialFlow.ai through a custom remote Perplexity connector.",
     "route": "/mcp/perplexity",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -938,8 +938,8 @@ export const docsPageCatalog = Object.freeze([
   },
   {
     "page": "mcp/skills/index.mdx",
-    "title": "Install and use the OpenPost skill",
-    "description": "Give a coding assistant instructions for the OpenPost CLI.",
+    "title": "Install and use the SocialFlow.ai skill",
+    "description": "Give a coding assistant instructions for the SocialFlow.ai CLI.",
     "route": "/mcp/skills",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -955,7 +955,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "mcp/vs-code.mdx",
     "title": "Connect VS Code",
-    "description": "Use OpenPost tools in VS Code agent chat.",
+    "description": "Use SocialFlow.ai tools in VS Code agent chat.",
     "route": "/mcp/vs-code",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -987,7 +987,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/binary.mdx",
     "title": "Install from a binary",
-    "description": "Run OpenPost as a single Go binary with systemd, without Docker.",
+    "description": "Run SocialFlow.ai as a single Go binary with systemd, without Docker.",
     "route": "/self-hosting/binary",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1003,7 +1003,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/casaos.mdx",
     "title": "Install on CasaOS",
-    "description": "Import OpenPost as a CasaOS customized app from a ready-to-use Compose file.",
+    "description": "Import SocialFlow.ai as a CasaOS customized app from a ready-to-use Compose file.",
     "route": "/self-hosting/casaos",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1035,7 +1035,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/coolify.mdx",
     "title": "Install on Coolify",
-    "description": "Deploy OpenPost on Coolify with the Git-repository Docker Compose build pack.",
+    "description": "Deploy SocialFlow.ai on Coolify with the Git-repository Docker Compose build pack.",
     "route": "/self-hosting/coolify",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1051,7 +1051,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/dockge.mdx",
     "title": "Install on Dockge",
-    "description": "Manage OpenPost as a Dockge stack from the canonical Compose file.",
+    "description": "Manage SocialFlow.ai as a Dockge stack from the canonical Compose file.",
     "route": "/self-hosting/dockge",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1067,7 +1067,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/dokploy.mdx",
     "title": "Install on Dokploy",
-    "description": "Deploy OpenPost on Dokploy as a Docker Compose service.",
+    "description": "Deploy SocialFlow.ai on Dokploy as a Docker Compose service.",
     "route": "/self-hosting/dokploy",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1098,8 +1098,8 @@ export const docsPageCatalog = Object.freeze([
   },
   {
     "page": "self-hosting/index.mdx",
-    "title": "Self-host OpenPost",
-    "description": "Run OpenPost on your own server with Docker Compose.",
+    "title": "Self-host SocialFlow.ai",
+    "description": "Run SocialFlow.ai on your own server with Docker Compose.",
     "route": "/self-hosting",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1164,7 +1164,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/integrations/facebook.mdx",
     "title": "Facebook",
-    "description": "Configure Meta OAuth and connect a Facebook Page to OpenPost.",
+    "description": "Configure Meta OAuth and connect a Facebook Page to SocialFlow.ai.",
     "route": "/self-hosting/integrations/facebook",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1340,7 +1340,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/integrations/threads.mdx",
     "title": "Threads",
-    "description": "Create a Threads API app and connect a Threads account to OpenPost.",
+    "description": "Create a Threads API app and connect a Threads account to SocialFlow.ai.",
     "route": "/self-hosting/integrations/threads",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1436,7 +1436,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/nixos.mdx",
     "title": "Install on NixOS",
-    "description": "Run OpenPost on NixOS through the maintained module with sops secrets.",
+    "description": "Run SocialFlow.ai on NixOS through the maintained module with sops secrets.",
     "route": "/self-hosting/nixos",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1452,7 +1452,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/portainer.mdx",
     "title": "Install on Portainer",
-    "description": "Deploy OpenPost as a Portainer stack with environment variables entered in the UI.",
+    "description": "Deploy SocialFlow.ai as a Portainer stack with environment variables entered in the UI.",
     "route": "/self-hosting/portainer",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1468,7 +1468,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/reverse-proxy.mdx",
     "title": "Reverse proxy and public access",
-    "description": "Put OpenPost behind HTTPS so sign-in, callbacks, and media fetching work.",
+    "description": "Put SocialFlow.ai behind HTTPS so sign-in, callbacks, and media fetching work.",
     "route": "/self-hosting/reverse-proxy",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1484,7 +1484,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "self-hosting/umbrelos.mdx",
     "title": "Install on umbrelOS",
-    "description": "Run OpenPost on umbrelOS through Portainer, check the local installation, and set up public access before connecting social accounts.",
+    "description": "Run SocialFlow.ai on umbrelOS through Portainer, check the local installation, and set up public access before connecting social accounts.",
     "route": "/self-hosting/umbrelos",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1499,8 +1499,8 @@ export const docsPageCatalog = Object.freeze([
   },
   {
     "page": "self-hosting/zimaos.mdx",
-    "title": "Install OpenPost on ZimaOS with Docker Compose",
-    "description": "Import OpenPost as a ZimaOS custom app, set your device IP and secrets, then check readiness before connecting social accounts.",
+    "title": "Install SocialFlow.ai on ZimaOS with Docker Compose",
+    "description": "Import SocialFlow.ai as a ZimaOS custom app, set your device IP and secrets, then check readiness before connecting social accounts.",
     "route": "/self-hosting/zimaos",
     "agentRepresentation": {
       "membership": "ordinary"
@@ -1822,7 +1822,7 @@ export const docsPageCatalog = Object.freeze([
   {
     "page": "workflows/triggers.mdx",
     "title": "Choose a trigger",
-    "description": "Start workflows from releases, feed items, intervals, or OpenPost publishing events.",
+    "description": "Start workflows from releases, feed items, intervals, or SocialFlow.ai publishing events.",
     "route": "/workflows/triggers",
     "agentRepresentation": {
       "membership": "ordinary"

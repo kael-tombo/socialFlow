@@ -189,7 +189,7 @@ const PROJECT_MIGRATIONS: ReadonlyMap<number, ProjectMigration> = new Map([
 		5,
 		{
 			version: 5,
-			description: 'Identify the OpenPost project schema family',
+			description: 'Identify the SocialFlow.ai project schema family',
 			migrate: (project) => ({ ...project, schemaFamily: 'openpost' })
 		}
 	],

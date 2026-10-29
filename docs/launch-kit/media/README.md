@@ -26,12 +26,12 @@ Check every asset against the release candidate before use. The existing demo ca
 - `[ ]` alt text for every informative still or animated asset
 - `[ ]` rights and attribution notes for third-party media
 
-Do not record or publish provider credentials, OpenPost tokens, email addresses, private workspace data, unpublished account IDs, environment files, browser password managers, or secret-bearing terminal output.
+Do not record or publish provider credentials, SocialFlow.ai tokens, email addresses, private workspace data, unpublished account IDs, environment files, browser password managers, or secret-bearing terminal output.
 
 ## Suggested alt text pattern
 
 Describe the evidence visible in the image rather than the interface decoration:
 
-> OpenPost composer showing one campaign with separate X, LinkedIn, Bluesky, Mastodon, and Threads variants ready for human review. No post result is shown.
+> SocialFlow.ai composer showing one campaign with separate X, LinkedIn, Bluesky, Mastodon, and Threads variants ready for human review. No post result is shown.
 
 After the campaign publishes, update the description only when the captured image actually contains the final provider outcomes.

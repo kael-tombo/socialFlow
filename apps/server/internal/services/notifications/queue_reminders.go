@@ -343,7 +343,7 @@ func (s *Service) enqueueQueueReminderEmail(
 	if err := db.NewSelect().Model(&workspace).Column("name", "timezone").Where("id = ?", subscription.WorkspaceID).Scan(ctx); err != nil {
 		return err
 	}
-	title := "Your OpenPost queue is empty"
+	title := "Your SocialFlow.ai queue is empty"
 	body := fmt.Sprintf("%s has no posts left in its publishing queue. Schedule the next post to keep publishing.", workspace.Name)
 	if kind == QueueReminderLowRunway {
 		daysLeft := 0
@@ -354,7 +354,7 @@ func (s *Service) enqueueQueueReminderEmail(
 		if daysLeft == 1 {
 			dayLabel = "day"
 		}
-		title = fmt.Sprintf("Your OpenPost queue has %d %s left", daysLeft, dayLabel)
+		title = fmt.Sprintf("Your SocialFlow.ai queue has %d %s left", daysLeft, dayLabel)
 		body = fmt.Sprintf("%s has %d days or less of scheduled posts left.", workspace.Name, subscription.RunwayDays)
 	}
 	if deliveryID == "" {

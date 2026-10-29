@@ -74,7 +74,7 @@ for (const width of [1280, 390, 320]) {
         exact: true,
       });
       const text =
-        "مرحبا بكم في OpenPost! هذا تحديث طويل لاختبار التفاف النص في المحرر.\n\nשלום OpenPost!\n\nThe final English paragraph stays readable.";
+        "مرحبا بكم في SocialFlow.ai! هذا تحديث طويل لاختبار التفاف النص في المحرر.\n\nשלום SocialFlow.ai!\n\nThe final English paragraph stays readable.";
       await editor.fill(text);
       await page.screenshot({
         path: testInfo.outputPath("mixed-direction-composer.png"),
@@ -94,7 +94,7 @@ for (const width of [1280, 390, 320]) {
         path: testInfo.outputPath("synced.png"),
         fullPage: true,
       });
-      const revised = "שלום OpenPost! זהו טקסט מותאם ליעד.";
+      const revised = "שלום SocialFlow.ai! זהו טקסט מותאם ליעד.";
       await editor.fill(revised);
       await expect(editor).toHaveCSS("direction", "rtl");
       await expect(editor).toHaveText(revised, { useInnerText: true });

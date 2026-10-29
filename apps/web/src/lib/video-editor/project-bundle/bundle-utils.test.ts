@@ -92,7 +92,7 @@ describe('project bundle utilities', () => {
 		expect(() => validateBundleManifest(changed)).toThrow('checksum does not match');
 	});
 
-	it('creates safe internal paths and OpenPost bundle names', () => {
+	it('creates safe internal paths and SocialFlow.ai bundle names', () => {
 		expect(bundleMediaPath('abc', '../Launch: final.mp4')).toBe('media/abc/_Launch_ final.mp4');
 		expect(sanitizeBundleFileName('Launch: final')).toBe('Launch_ final.openpost.zip');
 		expect(PROJECT_BUNDLE_MANIFEST_PATH).toBe('manifest.json');

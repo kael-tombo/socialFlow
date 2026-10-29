@@ -130,7 +130,7 @@ func devNullSignatureParts(t *testing.T, armored string) (namespace, hashAlg, ke
 // here is a 401 from dev-null.sh.
 func TestDevNullSignatureMatchesServerVerification(t *testing.T) {
 	signer, _ := devNullTestSigner(t)
-	payload := devNullPayload("", "Hello from OpenPost", nil)
+	payload := devNullPayload("", "Hello from SocialFlow.ai", nil)
 	armored, err := signDevNullPayload(signer, devNullNamespace, []byte(payload))
 	if err != nil {
 		t.Fatal(err)
@@ -175,7 +175,7 @@ func TestDevNullSignatureVerifiesWithSSHKeygen(t *testing.T) {
 	}
 	signer, pemKey := devNullTestSigner(t)
 	dir := t.TempDir()
-	payload := devNullPayload("01a14c0f", "Hello from OpenPost", nil)
+	payload := devNullPayload("01a14c0f", "Hello from SocialFlow.ai", nil)
 	dataPath := dir + "/commit"
 	if err := os.WriteFile(dataPath, []byte(payload), 0o600); err != nil {
 		t.Fatal(err)
@@ -276,7 +276,7 @@ func TestDevNullLoginAndTextPublish(t *testing.T) {
 	if err != nil || username != "testuser" {
 		t.Fatalf("credential username = %q, err = %v", username, err)
 	}
-	result, err := adapter.Publish(context.Background(), token.AccessToken, profile.ID, &PublishRequest{Content: "Hello from OpenPost"})
+	result, err := adapter.Publish(context.Background(), token.AccessToken, profile.ID, &PublishRequest{Content: "Hello from SocialFlow.ai"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -289,7 +289,7 @@ func TestDevNullLoginAndTextPublish(t *testing.T) {
 	if _, err := base64.StdEncoding.DecodeString(gotSignature); err != nil {
 		t.Fatalf("signature header is not base64: %v", err)
 	}
-	if !strings.HasSuffix(gotBody, "\nHello from OpenPost") {
+	if !strings.HasSuffix(gotBody, "\nHello from SocialFlow.ai") {
 		t.Fatalf("payload body = %q", gotBody)
 	}
 }
@@ -371,7 +371,7 @@ func TestDevNullPublishMapsProviderErrors(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		_, err = adapter.Publish(context.Background(), token.AccessToken, "id", &PublishRequest{Content: "Hello from OpenPost"})
+		_, err = adapter.Publish(context.Background(), token.AccessToken, "id", &PublishRequest{Content: "Hello from SocialFlow.ai"})
 		if err == nil {
 			t.Fatalf("status %d: expected an error", status)
 		}

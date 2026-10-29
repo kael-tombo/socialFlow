@@ -208,8 +208,8 @@ export function renderBadge(kind, value, mode, detail) {
       : displayValue;
   const description =
     typeof detail === "string" && detail && !isFollowBadge
-      ? `OpenPost ${label} badge (${detail})`
-      : `OpenPost ${label} badge`;
+      ? `SocialFlow.ai ${label} badge (${detail})`
+      : `SocialFlow.ai ${label} badge`;
   const labelWidth = textWidth(label);
   const valueWidth = isFollowBadge ? 28 : textWidth(displayValue);
   const width = labelWidth + valueWidth;

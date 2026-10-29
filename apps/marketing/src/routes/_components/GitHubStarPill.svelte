@@ -35,8 +35,8 @@
 		target="_blank"
 		rel="noreferrer"
 		class="focus-ring inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-full border px-3 text-xs font-medium text-muted-foreground tabular-nums transition-colors hover:border-foreground/30 hover:bg-muted/70 hover:text-foreground"
-		aria-label="OpenPost on GitHub"
-		title="OpenPost on GitHub"
+		aria-label="SocialFlow.ai on GitHub"
+		title="SocialFlow.ai on GitHub"
 		data-testid="github-star-pill"
 	>
 		<Github class="size-3.5" aria-hidden="true" />

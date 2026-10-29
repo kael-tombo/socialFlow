@@ -66,11 +66,11 @@ type ListRenditionCommentsInput struct {
 }
 
 type CommentActionInput struct {
-	PathID string `path:"id" doc:"Opaque OpenPost comment ID"`
+	PathID string `path:"id" doc:"Opaque SocialFlow.ai comment ID"`
 }
 
 type CommentReplyInput struct {
-	PathID string `path:"id" doc:"Opaque OpenPost comment ID"`
+	PathID string `path:"id" doc:"Opaque SocialFlow.ai comment ID"`
 	Body   struct {
 		Body string `json:"body" doc:"Reply body"`
 	}

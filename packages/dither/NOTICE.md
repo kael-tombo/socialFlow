@@ -2,16 +2,16 @@
 
 The ordered dithering and alpha falloff in `src/paint.ts` are adapted from
 [`pixel.ts`, `dither-paint.ts`, and `gradient.tsx`](https://github.com/Boring-Software-Inc/dither-kit/tree/1e7faee9aa252e499651e6736ed65f7a07d9a6bd/registry/dither-kit).
-The button interaction is adapted from `button.tsx` at that revision. OpenPost
+The button interaction is adapted from `button.tsx` at that revision. SocialFlow.ai
 uses a binary mask and a fixed ink tint so hover and press change density without
 increasing color contrast. The
 directional gradients and chart hover emphasis follow `gradient.tsx` and
-`bar-canvas.tsx`; chart scales and data remain owned by OpenPost.
+`bar-canvas.tsx`; chart scales and data remain owned by SocialFlow.ai.
 
 Dither Kit's root `package.json` declares MIT. That revision has no separate
 license file or copyright notice. Attribution: Boring Software Inc., Dither Kit.
 
-OpenPost renders the shared 4 by 4 Bayer thresholds as a native-resolution SVG
+SocialFlow.ai renders the shared 4 by 4 Bayer thresholds as a native-resolution SVG
 mask. Buttons use two fixed colors; other surfaces retain the adapted alpha falloff. Svelte, React, and the existing semantic component recipes own the
 controls, chart data, focus, and interaction. No React, Motion, chart engine,
 remote assets, or continuous rendering loop is required.
@@ -25,7 +25,7 @@ and [DitherKit](https://ditherkit.com/). Canvas UI's `DitheredObject` and
 `RetroDither` Svelte wrappers and renderers were inspected. Its MIT + Commons
 Clause license restricts redistribution of components and ports; no Canvas UI
 code is included here. DitherKit's browser demo informed the pixel treatment;
-no application code or artwork was copied. `dither-field.svelte` is OpenPost's
+no application code or artwork was copied. `dither-field.svelte` is SocialFlow.ai's
 own geometric wave field, using the attributed Bayer thresholds above.
 
 MIT License

@@ -1,9 +1,9 @@
 ---
 name: agent-workflow
-description: Coordinate substantial OpenPost features, refactors, or multi-ticket work. Use when scope, module boundaries, or dependencies need to be recorded for implementation. Small, explicit changes go directly to implementation and scoped verification.
+description: Coordinate substantial SocialFlow.ai features, refactors, or multi-ticket work. Use when scope, module boundaries, or dependencies need to be recorded for implementation. Small, explicit changes go directly to implementation and scoped verification.
 ---
 
-# OpenPost Agent Workflow
+# SocialFlow.ai Agent Workflow
 
 Follow the user's authorized scope through implementation and verification. Use the branches below only when the task needs them. Approval requirements live in `AGENTS.md`; routine planning and test placement do not add approval gates.
 

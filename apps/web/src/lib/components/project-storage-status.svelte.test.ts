@@ -5,7 +5,7 @@ import ProjectStorageStatus from './project-storage-status.svelte';
 test('cloud sync completion does not claim the project is available offline', async () => {
 	const screen = await render(ProjectStorageStatus, { storage: 'cloud', syncStatus: 'synced' });
 	await expect
-		.element(screen.getByRole('img', { name: 'Saved to OpenPost · Online' }))
+		.element(screen.getByRole('img', { name: 'Saved to SocialFlow.ai · Online' }))
 		.toBeVisible();
 	await screen.rerender({ storage: 'cloud', syncStatus: 'synced', offline: true });
 	await expect

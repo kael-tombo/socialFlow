@@ -1,20 +1,20 @@
 # MCP Connection and Security Boundary
 
-OpenPost keeps social-provider credentials inside the server while exposing authenticated publishing operations through MCP. That reduces credential exposure, but the OpenPost token still carries authority and must be scoped deliberately.
+SocialFlow.ai keeps social-provider credentials inside the server while exposing authenticated publishing operations through MCP. That reduces credential exposure, but the SocialFlow.ai token still carries authority and must be scoped deliberately.
 
 ## Data flow
 
 ```text
 MCP client
-  -> OpenPost MCP token
-  -> OpenPost authorization and workspace checks
+  -> SocialFlow.ai MCP token
+  -> SocialFlow.ai authorization and workspace checks
   -> read-only query or approved mutation
-  -> OpenPost validation, quota, and durable queue
-  -> provider call made by OpenPost with its encrypted provider token
-  -> provider result recorded in OpenPost
+  -> SocialFlow.ai validation, quota, and durable queue
+  -> provider call made by SocialFlow.ai with its encrypted provider token
+  -> provider result recorded in SocialFlow.ai
 ```
 
-The MCP client does not need the X, Meta, LinkedIn, Bluesky, Mastodon, TikTok, or Google credential. OpenPost stores provider access and refresh tokens encrypted at rest and uses them internally when a provider call is required.
+The MCP client does not need the X, Meta, LinkedIn, Bluesky, Mastodon, TikTok, or Google credential. SocialFlow.ai stores provider access and refresh tokens encrypted at rest and uses them internally when a provider call is required.
 
 ## Choose the token for the task
 
@@ -27,7 +27,7 @@ Bind either token to one workspace unless the client genuinely needs more. Start
 
 ## Read and mutation separation
 
-OpenPost advertises each operation directly at `/mcp` by default. Clients with a strict tool-context limit can use the compact `/mcp/code` surface:
+SocialFlow.ai advertises each operation directly at `/mcp` by default. Clients with a strict tool-context limit can use the compact `/mcp/code` surface:
 
 - `search_operations` discovers relevant operations and returns the required execution tool;
 - `query_operation` runs guaranteed read-only operations and rejects mutations;
@@ -35,12 +35,12 @@ OpenPost advertises each operation directly at `/mcp` by default. Clients with a
 - `render_scheduler_widget` renders a read-only scheduler summary in compatible clients.
 
 Compatible MCP Apps clients with `mcp:full` can also open
-`render_local_media_upload`. The file travels directly from the app to OpenPost
+`render_local_media_upload`. The file travels directly from the app to SocialFlow.ai
 with a one-use, ten-minute ticket that is hidden from model context.
 
 With `mcp:read`, discovery omits mutation operations and the server rejects attempts to execute them. With `mcp:full`, the server still enforces the catalog classification, while the MCP client can place an approval prompt around `execute_operation`.
 
-## What OpenPost enforces
+## What SocialFlow.ai enforces
 
 - bearer-token authentication and MCP scope;
 - optional single-workspace token boundaries;
@@ -59,8 +59,8 @@ With `mcp:read`, discovery omits mutation operations and the server rejects atte
 - `mcp:full` can execute post operations when the client allows it. Provider-token secrecy is not the same as read-only access.
 - Human review is not a mandatory server-side approval stage. It is a process enforced by token choice, client approval, and the person operating the campaign.
 - Provider configuration or OAuth initiation does not prove that a specific format can publish.
-- External provider approval, quotas, outages, and API changes remain outside OpenPost.
-- Protect the OpenPost database, encryption key, application secrets, backups, logs, and host. Encryption at rest does not protect a fully compromised running server.
+- External provider approval, quotas, outages, and API changes remain outside SocialFlow.ai.
+- Protect the SocialFlow.ai database, encryption key, application secrets, backups, logs, and host. Encryption at rest does not protect a fully compromised running server.
 
 ## Connection guidance
 
@@ -80,6 +80,6 @@ openpost --profile local auth login https://your-openpost-host.example
 openpost-mcp --profile local
 ```
 
-Prefer a workspace-scoped `mcp:read` token for audit and readiness work. Switch to `mcp:full` only when the agent must create or change OpenPost data. Never paste provider credentials, `OPENPOST_ENCRYPTION_KEY`, `OPENPOST_JWT_SECRET`, or server secrets into an agent prompt.
+Prefer a workspace-scoped `mcp:read` token for audit and readiness work. Switch to `mcp:full` only when the agent must create or change SocialFlow.ai data. Never paste provider credentials, `OPENPOST_ENCRYPTION_KEY`, `OPENPOST_JWT_SECRET`, or server secrets into an agent prompt.
 
 See the [MCP documentation](https://openpo.st/docs/mcp/) for current connection steps.

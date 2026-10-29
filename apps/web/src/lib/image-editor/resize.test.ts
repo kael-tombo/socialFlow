@@ -27,7 +27,7 @@ function textLayer(): ImageEditorLayer {
 		opacity: 1,
 		transform: defaultTransform(20, 10, 10, 5),
 		text: {
-			text: 'OpenPost',
+			text: 'SocialFlow.ai',
 			font_family: 'Geist',
 			font_weight: 500,
 			font_style: 'normal',
@@ -121,7 +121,7 @@ function documentFixture() {
 	return document;
 }
 
-describe('OpenPost Image Editor design resize', () => {
+describe('SocialFlow.ai Image Editor design resize', () => {
 	it('resizes only the selected page and keeps other page formats intact', () => {
 		const source = blankImageEditorDocument({ ...preset, width_px: 128, height_px: 128 });
 		const second = cloneImageEditorPage(source.pages[0], 'Second page');

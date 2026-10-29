@@ -113,7 +113,7 @@ const nativeBoundaries = Object.freeze([
   },
   {
     label: "Agent Skill",
-    name: "OpenPost CLI Agent Skill archive",
+    name: "SocialFlow.ai CLI Agent Skill archive",
     canonicalURL: "https://openpo.st/.well-known/agent-skills/openpost-cli.tar.gz",
     contentType: "application/gzip",
     deployment: "marketing",
@@ -596,7 +596,7 @@ export async function buildPublicProofChecks({
         contentType: "text/markdown; charset=utf-8",
         expectedBody,
         queryIsolation: Boolean(sample),
-        bodyIncludes: ["Generated from the canonical OpenPost public page", provenance],
+        bodyIncludes: ["Generated from the canonical SocialFlow.ai public page", provenance],
       });
     }
   }

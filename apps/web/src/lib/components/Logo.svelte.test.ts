@@ -4,7 +4,7 @@ import Logo from './Logo.svelte';
 
 it('updates the mark when the active theme accent changes', async () => {
 	const screen = await render(Logo);
-	const logo = screen.getByRole('img', { name: 'OpenPost' }).element();
+	const logo = screen.getByRole('img', { name: 'SocialFlow.ai' }).element();
 	const container = logo.parentElement!;
 	const paths = [...logo.querySelectorAll('path')];
 	expect(paths).toHaveLength(4);

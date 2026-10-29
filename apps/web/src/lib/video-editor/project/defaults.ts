@@ -326,7 +326,7 @@ export function migrateProjectDocument(stored: Project): MigratedProject {
 		);
 		normalized.warnings.unshift({
 			code: 'FREECUT_SCHEMA_IMPORTED',
-			message: `Converted FreeCut schema ${version} to the OpenPost project format.`
+			message: `Converted FreeCut schema ${version} to the SocialFlow.ai project format.`
 		});
 		return {
 			project: normalized.project,

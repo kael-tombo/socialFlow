@@ -35,7 +35,7 @@ func TestVoiceProfileRoutesPreserveInheritanceAndRevisionSafety(t *testing.T) {
 
 	response = server.request(t, http.MethodPost, "/api/v1/voice-profiles", map[string]any{
 		"workspace_id": "ws-1",
-		"name":         "OpenPost",
+		"name":         "SocialFlow.ai",
 		"definition": map[string]any{
 			"identity_summary": "Clear product voice",
 		},
@@ -68,7 +68,7 @@ func TestVoiceProfileRoutesPreserveInheritanceAndRevisionSafety(t *testing.T) {
 	response = server.request(t, http.MethodPut, "/api/v1/voice-profiles/"+company.ID, map[string]any{
 		"workspace_id":      "ws-1",
 		"expected_revision": company.Revision,
-		"name":              "OpenPost company",
+		"name":              "SocialFlow.ai company",
 		"definition": map[string]any{
 			"identity_summary": "Precise product updates",
 		},

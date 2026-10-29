@@ -600,20 +600,20 @@ type CreateBillingCheckoutInput struct {
 }
 
 type BillingURLResponse struct {
-	URL                 string            `json:"url,omitempty" doc:"OpenPost checkout URL or short-lived Paddle customer portal URL"`
-	ID                  string            `json:"id,omitempty" doc:"OpenPost checkout attempt or Paddle portal session ID"`
+	URL                 string            `json:"url,omitempty" doc:"SocialFlow.ai checkout URL or short-lived Paddle customer portal URL"`
+	ID                  string            `json:"id,omitempty" doc:"SocialFlow.ai checkout attempt or Paddle portal session ID"`
 	ProviderPriceID     string            `json:"provider_price_id,omitempty" doc:"Paddle price ID for the selected plan and period"`
 	PriceIDs            map[string]string `json:"price_ids,omitempty" doc:"Paddle price IDs for localized previews in the selected billing period"`
-	PlanID              string            `json:"plan_id,omitempty" doc:"OpenPost plan ID"`
+	PlanID              string            `json:"plan_id,omitempty" doc:"SocialFlow.ai plan ID"`
 	BillingPeriod       string            `json:"billing_period,omitempty" doc:"Selected billing period"`
 	TrialEndsAt         string            `json:"trial_ends_at,omitempty" doc:"Expected end of the 14-day trial"`
-	ReturnURL           string            `json:"return_url,omitempty" doc:"OpenPost URL used after Paddle checkout completes"`
+	ReturnURL           string            `json:"return_url,omitempty" doc:"SocialFlow.ai URL used after Paddle checkout completes"`
 	ClientToken         string            `json:"client_token,omitempty" doc:"Browser-safe Paddle.js client token"`
 	Environment         string            `json:"environment,omitempty" doc:"Explicit Paddle.js environment: sandbox or production"`
 	CustomerEmail       string            `json:"customer_email,omitempty" doc:"Authenticated customer's checkout email"`
 	WorkspaceID         string            `json:"workspace_id,omitempty" doc:"Workspace bound to this checkout attempt"`
 	Purpose             string            `json:"purpose,omitempty" doc:"Requested Paddle portal destination"`
-	UsedGenericFallback *bool             `json:"used_generic_fallback,omitempty" doc:"Whether Paddle omitted the purpose-specific link and OpenPost returned the generic portal"`
+	UsedGenericFallback *bool             `json:"used_generic_fallback,omitempty" doc:"Whether Paddle omitted the purpose-specific link and SocialFlow.ai returned the generic portal"`
 }
 
 type BillingCheckoutConfigResponse struct {
@@ -637,7 +637,7 @@ func (h *BillingHandler) getCheckoutConfig(context.Context, *struct{}) (*Billing
 }
 
 type ResumeBillingCheckoutInput struct {
-	AttemptID string `path:"attempt_id" doc:"Opaque OpenPost checkout attempt ID"`
+	AttemptID string `path:"attempt_id" doc:"Opaque SocialFlow.ai checkout attempt ID"`
 }
 
 func (h *BillingHandler) resumeCheckout(ctx context.Context, input *ResumeBillingCheckoutInput) (*BillingURLOutput, error) {
@@ -706,7 +706,7 @@ func (h *BillingHandler) createCheckout(ctx context.Context, input *CreateBillin
 }
 
 type ConsumeBillingCheckoutReturnInput struct {
-	AttemptID string `path:"attempt_id" doc:"Opaque OpenPost checkout attempt ID"`
+	AttemptID string `path:"attempt_id" doc:"Opaque SocialFlow.ai checkout attempt ID"`
 }
 
 type ConsumeBillingCheckoutReturnOutput struct {

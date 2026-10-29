@@ -83,7 +83,7 @@ export type PairPoll =
   | { status: "expired" };
 
 export async function startPairing(
-  clientName = "OpenPost Mobile",
+  clientName = "SocialFlow.ai Mobile",
   signal?: AbortSignal,
 ): Promise<PairingState> {
   throwIfAborted(signal);

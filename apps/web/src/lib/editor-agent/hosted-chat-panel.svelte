@@ -1,5 +1,5 @@
 <script lang="ts">
-	/* oxlint-disable anti-slop/require-safety-comment-for-type-assertion -- These fetches target Huma-generated responses from OpenPost's own authenticated editor assistant endpoints. */
+	/* oxlint-disable anti-slop/require-safety-comment-for-type-assertion -- These fetches target Huma-generated responses from SocialFlow.ai's own authenticated editor assistant endpoints. */
 	import { onDestroy } from 'svelte';
 	import { createQuery } from '@tanstack/svelte-query';
 	import { m } from '$lib/paraglide/messages';

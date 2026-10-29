@@ -9,7 +9,7 @@ import {
 
 afterEach(() => vi.unstubAllGlobals());
 
-describe('OpenPost Image Editor background removal', () => {
+describe('SocialFlow.ai Image Editor background removal', () => {
 	it('resolves the bundled root-relative model path against the current app URL', () => {
 		expect(
 			resolveBackgroundRemovalPublicPath(

@@ -90,17 +90,17 @@ export function renderPublicClaimProjection(manifest, options = {}) {
   );
   const checkedCount =
     claims.length === 0
-      ? "No posting option has passed our final live check on OpenPost Hosted yet."
+      ? "No posting option has passed our final live check on SocialFlow.ai Hosted yet."
       : claims.length === 1
-        ? "**1 way to post** has passed our final live check on OpenPost Hosted."
-        : `**${claims.length} ways to post** have passed our final live check on OpenPost Hosted.`;
+        ? "**1 way to post** has passed our final live check on SocialFlow.ai Hosted."
+        : `**${claims.length} ways to post** have passed our final live check on SocialFlow.ai Hosted.`;
   const lines = [publicProjectionStart, checkedCount, ""];
   if (claims.length === 0) {
-    lines.push("A social app can appear in OpenPost before it is ready for real accounts.");
+    lines.push("A social app can appear in SocialFlow.ai before it is ready for real accounts.");
   } else if (options.detailLevel === "summary") {
     lines.push("See the full readiness list for details.");
   } else {
-    lines.push("Ready on OpenPost Hosted:");
+    lines.push("Ready on SocialFlow.ai Hosted:");
     for (const claim of claims) {
       const subject = claim.subject;
       lines.push(
@@ -125,7 +125,7 @@ export function validatePublicClaimSurfaceSources(manifest, sources) {
   if (
     /platform\.status/u.test(marketingIndex) ||
     /platform\.status/u.test(marketingDetail) ||
-    /supported by OpenPost/iu.test(marketingIndex)
+    /supported by SocialFlow.ai/iu.test(marketingIndex)
   ) {
     throw new Error(
       "marketing provider pages must use implementation and exact certification facts",

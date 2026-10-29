@@ -30,7 +30,7 @@ FROM docker.io/library/alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b
 
 ARG VERSION=dev
 ARG COMMIT=unknown
-LABEL org.opencontainers.image.title="OpenPost" \
+LABEL org.opencontainers.image.title="SocialFlow.ai" \
       org.opencontainers.image.version="${VERSION}" \
       org.opencontainers.image.revision="${COMMIT}" \
       org.opencontainers.image.source="https://github.com/getopenpost/openpost" \

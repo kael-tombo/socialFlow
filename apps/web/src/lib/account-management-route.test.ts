@@ -23,7 +23,7 @@ describe('account management route URL interpretation', () => {
 		expect(presentAccountManagementFeedback(state.feedback)).toEqual({
 			tone: 'error',
 			message:
-				'OpenPost could not read the provider profile. Check the app permissions and account eligibility, then reconnect. HTTP 400; code=100; subcode=33; trace=trace-safe.'
+				'SocialFlow.ai could not read the provider profile. Check the app permissions and account eligibility, then reconnect. HTTP 400; code=100; subcode=33; trace=trace-safe.'
 		});
 	});
 

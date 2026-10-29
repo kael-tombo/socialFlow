@@ -19,7 +19,7 @@ const mcpServerCardBase = JSON.parse(
   ),
 );
 const ardSkillDescription =
-  "Operate a running OpenPost instance through the openpost CLI for safe publishing, scheduling, inspection, and recovery workflows.";
+  "Operate a running SocialFlow.ai instance through the openpost CLI for safe publishing, scheduling, inspection, and recovery workflows.";
 
 function jsonDocument(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
@@ -41,40 +41,40 @@ export function renderARDManifest() {
     entries: [
       {
         identifier: "urn:air:openpo.st:api:openpost",
-        displayName: "OpenPost HTTP API",
+        displayName: "SocialFlow.ai HTTP API",
         type: "application/vnd.oai.openapi+json",
         url: "https://openpo.st/openapi.json",
         description:
-          "Authenticated HTTP API for OpenPost workspaces, publications, renditions, media, providers, jobs, analytics, and billing.",
+          "Authenticated HTTP API for SocialFlow.ai workspaces, publications, renditions, media, providers, jobs, analytics, and billing.",
         capabilities: ["OpenAPI", "social-publishing", "content-operations"],
         representativeQueries: [
           "create and schedule a social publication through an HTTP API",
-          "inspect publishing jobs and rendition outcomes in an OpenPost workspace",
+          "inspect publishing jobs and rendition outcomes in an SocialFlow.ai workspace",
         ],
       },
       {
         identifier: "urn:air:openpo.st:mcp:openpost",
-        displayName: "OpenPost MCP server",
+        displayName: "SocialFlow.ai MCP server",
         type: "application/mcp-server-card+json",
         url: "https://openpo.st/.well-known/mcp/server-card.json",
         description:
-          "Remote MCP server for scoped discovery and execution of OpenPost publishing operations.",
+          "Remote MCP server for scoped discovery and execution of SocialFlow.ai publishing operations.",
         capabilities: ["MCP", "social-publishing", "content-operations"],
         representativeQueries: [
-          "use MCP to draft and schedule social content in OpenPost",
-          "find an OpenPost operation and inspect its current publishing result",
+          "use MCP to draft and schedule social content in SocialFlow.ai",
+          "find an SocialFlow.ai operation and inspect its current publishing result",
         ],
       },
       {
         identifier: "urn:air:openpo.st:skill:openpost-cli",
-        displayName: "OpenPost CLI Agent Skill",
+        displayName: "SocialFlow.ai CLI Agent Skill",
         type: "application/gzip",
         url: "https://openpo.st/.well-known/agent-skills/openpost-cli.tar.gz",
         description: ardSkillDescription,
         capabilities: ["Agent Skills", "CLI", "social-publishing"],
         representativeQueries: [
-          "operate an OpenPost instance safely from the command line",
-          "create, validate, schedule, or recover an OpenPost publication with the CLI",
+          "operate an SocialFlow.ai instance safely from the command line",
+          "create, validate, schedule, or recover an SocialFlow.ai publication with the CLI",
         ],
       },
     ],

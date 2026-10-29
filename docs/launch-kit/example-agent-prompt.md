@@ -3,7 +3,7 @@
 > **Illustrative prompt.** Replace every bracketed value. Do not include provider credentials, API secrets, or unreviewed claims.
 
 ```text
-Help me prepare an OpenPost campaign from the attached launch brief.
+Help me prepare an SocialFlow.ai campaign from the attached launch brief.
 
 Workspace: [WORKSPACE NAME OR ID]
 Campaign goal: [GOAL]
@@ -18,7 +18,7 @@ Safety and evidence rules:
 4. Prepare one canonical source message and a distinct variant for each eligible destination. Preserve facts, but adapt length, structure, link placement, thread shape, media, alt text, and tone.
 5. Flag any claim that the brief or linked source does not support. Do not invent testimonials, users, metrics, published URLs, provider verification, or campaign outcomes.
 6. Before any mutation, show me:
-   - the exact OpenPost operation;
+   - the exact SocialFlow.ai operation;
    - workspace ID;
    - destination account IDs and provider names;
    - final copy for every destination;
@@ -28,7 +28,7 @@ Safety and evidence rules:
    - validation warnings or blockers.
 7. Stop and wait for explicit approval before calling execute_operation.
 8. Do not publish immediately. Prepare drafts and variants first. Creating or updating them requires mcp:full and explicit client approval.
-9. After I review the campaign in the OpenPost web app, accept my final edits as the source of truth. Ask again before scheduling.
+9. After I review the campaign in the SocialFlow.ai web app, accept my final edits as the source of truth. Ask again before scheduling.
 10. After the queue runs, query the post lifecycle and report a provider URL or failure for every destination. A saved or scheduled state is not proof of post.
 
 First, return a read-only readiness summary. Do not create, update, upload, schedule, publish, cancel, reply, hide, or delete anything in this step.

@@ -15,7 +15,7 @@
 			baseDark: '/assets/screenshots/image-canvas-detail-dark.webp',
 			detailLight: '/assets/screenshots/image-controls-detail-light.webp',
 			detailDark: '/assets/screenshots/image-controls-detail-dark.webp',
-			alt: 'An editable OpenPost design with a tram photo',
+			alt: 'An editable SocialFlow.ai design with a tram photo',
 			detailAlt: 'The Image Editor tone controls'
 		},
 		{
@@ -30,7 +30,7 @@
 			baseDark: '/assets/screenshots/video-preview-detail-dark.webp',
 			detailLight: '/assets/screenshots/video-timeline-detail-light.webp',
 			detailDark: '/assets/screenshots/video-timeline-detail-dark.webp',
-			alt: 'A video frame in the OpenPost program monitor',
+			alt: 'A video frame in the SocialFlow.ai program monitor',
 			detailAlt: 'The video timeline with its tracks, clip, and playhead'
 		}
 	];

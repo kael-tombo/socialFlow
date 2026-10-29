@@ -131,7 +131,7 @@ async function createMetadataWebM(): Promise<File> {
 	const audio = new AudioSampleSource({ codec: 'opus', bitrate: 64_000 });
 	output.setMetadataTags({
 		title: 'Field Interview',
-		artist: 'OpenPost Test',
+		artist: 'SocialFlow.ai Test',
 		raw: { WORKFLOW: 'quick-cut' }
 	});
 	output.addVideoTrack(video, {
@@ -284,7 +284,7 @@ describe('quick-cut stream selection browser', () => {
 			input.getPrimaryAudioTrack()
 		]);
 		expect(tags.title).toBe('Field Interview');
-		expect(tags.artist).toBe('OpenPost Test');
+		expect(tags.artist).toBe('SocialFlow.ai Test');
 		expect(tags.raw?.WORKFLOW).toBe('quick-cut');
 		expect(await videoTrack?.getName()).toBe('Camera A');
 		expect(await videoTrack?.getLanguageCode()).toBe('eng');
@@ -318,7 +318,7 @@ describe('quick-cut stream selection browser', () => {
 			input.getPrimaryAudioTrack()
 		]);
 		expect(tags.title).toBe('Field Interview');
-		expect(tags.artist).toBe('OpenPost Test');
+		expect(tags.artist).toBe('SocialFlow.ai Test');
 		expect(tags.raw?.WORKFLOW).toBe('quick-cut');
 		expect(await videoTrack?.getName()).toBe('Camera A');
 		expect(await videoTrack?.getLanguageCode()).toBe('eng');

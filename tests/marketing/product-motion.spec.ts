@@ -19,7 +19,7 @@ test("repeat visits do not accumulate screenshot click listeners", async ({ page
   for (let visit = 0; visit < 3; visit++) {
     await page.getByRole("link", { name: "Pricing", exact: true }).first().click();
     await expect(page).toHaveURL(/\/pricing$/);
-    await page.getByRole("link", { name: "OpenPost home", exact: true }).first().click();
+    await page.getByRole("link", { name: "SocialFlow.ai home", exact: true }).first().click();
     await expect(page).toHaveURL(/\/$/);
     await expect(page.locator(".rough-annotation")).toHaveCount(2);
     expect(await listenerCount()).toBe(originalListeners);

@@ -19,7 +19,7 @@ const getMock = vi.spyOn(client, 'GET');
 
 const config = {
 	enabled: true,
-	recipient: 'OpenPost team',
+	recipient: 'SocialFlow.ai team',
 	support_url: '',
 	app_version: 'test',
 	max_message_characters: 4000,

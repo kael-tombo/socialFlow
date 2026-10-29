@@ -4,7 +4,7 @@
 
 AI can draft social posts. It should not publish them blind.
 
-OpenPost gives an authorized agent a bounded place to inspect workspace context, prepare destination-specific variants, and suggest a schedule without receiving provider credentials.
+SocialFlow.ai gives an authorized agent a bounded place to inspect workspace context, prepare destination-specific variants, and suggest a schedule without receiving provider credentials.
 
 You review every account, variant, media choice, and time in the web app. Then you decide what enters the visible publishing queue.
 
@@ -18,8 +18,8 @@ https://openpo.st
 
 - The agent does not receive provider credentials through MCP.
 - `mcp:read` is server-restricted to inspection; `mcp:full` is required for mutations.
-- Human review is the chosen workflow, not a mandatory OpenPost approval state.
+- Human review is the chosen workflow, not a mandatory SocialFlow.ai approval state.
 - Hosted service and self-hosted deployments are the same AGPL product.
-- The queue and final lifecycle outcomes are visible in OpenPost.
+- The queue and final lifecycle outcomes are visible in SocialFlow.ai.
 
 The files in [`variants/`](./variants/) show how to adapt these facts without pasting identical copy into every destination.

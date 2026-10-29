@@ -132,7 +132,7 @@ beforeEach(() => {
 		contextKey: 'composer:milestone',
 		input: {
 			workspace_id: 'workspace-ideate',
-			idea: 'OpenPost reached 750 stars on GitHub.',
+			idea: 'SocialFlow.ai reached 750 stars on GitHub.',
 			account_ids: ['account-1'],
 			assets: [{ media_id: image.id, role: 'context', may_publish: true }]
 		}
@@ -221,7 +221,7 @@ it('keeps topic research failures beside the research action and allows post gen
 		.toBeEnabled();
 	expect(JSON.parse(mutation.mock.calls[0][1].body)).toMatchObject({
 		platforms: ['x'],
-		focus: 'OpenPost reached 750 stars on GitHub.'
+		focus: 'SocialFlow.ai reached 750 stars on GitHub.'
 	});
 });
 
@@ -250,7 +250,7 @@ it.each([
 			await screen
 				.getByRole('textbox', { name: m.ideate_idea_label(), exact: true })
 				.fill(
-					"Aaaaand OpenPost has now reached 750 stars on GitHub! Slow period as we're just getting through tons of bugs and polishing existing features rather than marketing, but happy as our users seem happy!"
+					"Aaaaand SocialFlow.ai has now reached 750 stars on GitHub! Slow period as we're just getting through tons of bugs and polishing existing features rather than marketing, but happy as our users seem happy!"
 				);
 			const preview = screen.getByRole('img', { name: 'Milestone image', exact: true }).element();
 			if (!(preview instanceof HTMLImageElement))

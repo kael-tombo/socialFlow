@@ -49,7 +49,7 @@
 {:else}
 	{#if previewOnlyPlatform}
 		<p class="preview-only-note" role="note">
-			Preview only: this tool shows {previewOnlyPlatform}'s native layout. OpenPost does not publish
+			Preview only: this tool shows {previewOnlyPlatform}'s native layout. SocialFlow.ai does not publish
 			to {previewOnlyPlatform}.
 		</p>
 	{/if}

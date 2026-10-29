@@ -158,7 +158,7 @@ func TestTextLengthUsesUTF8BytesForThreads(t *testing.T) {
 		text string
 		want int
 	}{
-		{name: "ASCII", text: "OpenPost", want: 8},
+		{name: "ASCII", text: "SocialFlow.ai", want: 8},
 		{name: "accented letter", text: "é", want: 2},
 		{name: "curly apostrophe", text: "’", want: 3},
 		{name: "emoji", text: "👋", want: 4},

@@ -207,7 +207,7 @@ export async function parseImageEditorProjectArchive(
 		archive = await unzipProjectSafely(file);
 		if (Object.keys(archive).length === 0) throw new Error('Empty archive');
 	} catch {
-		throw new Error('The project archive is damaged or is not an OpenPost Image Editor project.');
+		throw new Error('The project archive is damaged or is not an SocialFlow.ai Image Editor project.');
 	}
 	const projectJSON = archive['project.json'];
 	if (!projectJSON || projectJSON.size > 10 * 1024 * 1024) {
@@ -224,7 +224,7 @@ export async function parseImageEditorProjectArchive(
 		rawManifest.format !== PROJECT_FORMAT ||
 		rawManifest.version !== PROJECT_VERSION
 	) {
-		throw new Error('This OpenPost Image Editor project version is not supported.');
+		throw new Error('This SocialFlow.ai Image Editor project version is not supported.');
 	}
 	const manifest = parseImageEditorProjectManifest(rawManifest);
 	if (!manifest || manifest.media.length > MAX_PROJECT_MEDIA_ITEMS) {

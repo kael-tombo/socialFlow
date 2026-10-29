@@ -1,6 +1,6 @@
 # Data-encryption key rotation
 
-OpenPost encrypts persisted credentials and protected runtime state with
+SocialFlow.ai encrypts persisted credentials and protected runtime state with
 `OPENPOST_ENCRYPTION_KEY`. New keyring writes carry an authenticated version and
 key ID. Readers accept the current key, configured previous keys, and legacy
 unversioned ciphertext.
@@ -21,7 +21,7 @@ until the rotation command completes successfully.
 
 Key IDs may contain letters, numbers, periods, underscores, and hyphens. Never
 put key material on the command line or in logs. If a configured key ID,
-previous-key, or media-signing `*_FILE` is unreadable or empty, OpenPost refuses
+previous-key, or media-signing `*_FILE` is unreadable or empty, SocialFlow.ai refuses
 to start instead of falling back to another key.
 
 ## Cutover

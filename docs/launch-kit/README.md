@@ -1,8 +1,8 @@
-# OpenPost Launch Kit
+# SocialFlow.ai Launch Kit
 
-This folder is a worked example of an agent-assisted, human-reviewed OpenPost campaign. It is designed to be copied, edited, rehearsed, and audited.
+This folder is a worked example of an agent-assisted, human-reviewed SocialFlow.ai campaign. It is designed to be copied, edited, rehearsed, and audited.
 
-**Nothing in this folder is evidence that a campaign was published.** The posts are illustrative, the verification log starts empty, and the results file is a template. Add provider URLs or success claims only after OpenPost records the final live outcome.
+**Nothing in this folder is evidence that a campaign was published.** The posts are illustrative, the verification log starts empty, and the results file is a template. Add provider URLs or success claims only after SocialFlow.ai records the final live outcome.
 
 ## What is included
 
@@ -12,7 +12,7 @@ This folder is a worked example of an agent-assisted, human-reviewed OpenPost ca
 | [`example-agent-prompt.md`](./example-agent-prompt.md) | Prompt that starts read-only, prepares variants, and stops before execution |
 | [`sample-base-post.md`](./sample-base-post.md) | Canonical source message for the worked example |
 | [`variants/`](./variants/) | Five destination-specific sample versions for X, LinkedIn, Bluesky, Mastodon, and Threads |
-| [`mcp-security-boundary.md`](./mcp-security-boundary.md) | What MCP access reveals, what it can change, and what stays inside OpenPost |
+| [`mcp-security-boundary.md`](./mcp-security-boundary.md) | What MCP access reveals, what it can change, and what stays inside SocialFlow.ai |
 | [`provider-verification-log.md`](./provider-verification-log.md) | Empty evidence log for each exact account and format |
 | [`review-checklist.md`](./review-checklist.md) | Human review, scheduling, queue, and post-publication checks |
 | [`release-freeze-checklist.md`](./release-freeze-checklist.md) | Version freeze, production smoke, campaign rehearsal, and rollback template |
@@ -30,9 +30,9 @@ This folder is a worked example of an agent-assisted, human-reviewed OpenPost ca
 3. Connect with a workspace-scoped `mcp:read` token for inspection. It cannot create, update, schedule, or publish.
 4. Fill the provider verification log by rehearsing the exact account and format. Implemented or configured is not the same as live-verified.
 5. Give the agent the brief and prompt. If it needs to create drafts or variants, use a workspace-scoped `mcp:full` token and require client approval for mutations.
-6. Review every variant, account, media attachment, and time in the OpenPost web app.
+6. Review every variant, account, media attachment, and time in the SocialFlow.ai web app.
 7. Approve only the exact scheduling or publishing operation you inspected.
-8. Record actual provider URLs or failures from OpenPost lifecycle events in the results template.
+8. Record actual provider URLs or failures from SocialFlow.ai lifecycle events in the results template.
 
 Before the public campaign, complete the release-freeze checklist and collect ten pilot records. During the first fourteen days, update the metrics plan from named manual evidence sources. The social-provider Analytics page does not measure product activation, and this repository does not include a product-usage analytics vendor or automatic launch KPI dashboard.
 
@@ -42,7 +42,7 @@ The five sample variant files are not a recommendation to include five providers
 
 Hosted service publishing starts at $15/month. Every plan includes a card-required 14-day trial. Registration creates one workspace before checkout; connecting accounts, uploading media, scheduling, publishing, and other provider writes require an active or trialing Paddle subscription.
 
-Self-hosted OpenPost has no software subscription. The operator remains responsible for infrastructure, provider applications, secrets, backups, and upgrades.
+Self-hosted SocialFlow.ai has no software subscription. The operator remains responsible for infrastructure, provider applications, secrets, backups, and upgrades.
 
 ## Product documentation
 

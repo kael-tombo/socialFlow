@@ -4,10 +4,10 @@ import { creativeComparisons } from "./creative-comparisons.js";
 const BYTES_PER_GIGABYTE = 1_000_000_000;
 
 const openPostPlans = {
-  title: "OpenPost Hosted costs and limits",
+  title: "SocialFlow.ai Hosted costs and limits",
   text: "Prices are in USD before tax. Limits apply separately to each workspace. Hosted signups are currently on a waitlist while the remaining platform approvals are completed. Check admission and your exact account and format before choosing a plan.",
   table: {
-    caption: "OpenPost Hosted plans",
+    caption: "SocialFlow.ai Hosted plans",
     columns: ["Plan", "Billing", "Workspaces", "Limits per workspace"],
     rows: planCatalog.plans.map((plan) => [
       plan.name,
@@ -24,12 +24,12 @@ const openPostPlans = {
 };
 
 const openPostSources = [
-  { label: "OpenPost pricing and usage limits", href: "https://openpo.st/pricing" },
+  { label: "SocialFlow.ai pricing and usage limits", href: "https://openpo.st/pricing" },
   {
-    label: "OpenPost admission and product scope",
+    label: "SocialFlow.ai admission and product scope",
     href: "https://github.com/getopenpost/openpost#readme",
   },
-  { label: "OpenPost channel requirements", href: "https://openpo.st/platforms" },
+  { label: "SocialFlow.ai channel requirements", href: "https://openpo.st/platforms" },
 ];
 
 // Review competitor facts against these official sources before changing the date.
@@ -42,11 +42,11 @@ export const comparisonGuides = [
       category: "Publishing",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs Buffer: which fits your content workflow?",
+    question: "SocialFlow.ai vs Buffer: which fits your content workflow?",
     socialDescription:
       "Compare costs, account limits, content creation, collaboration, and reasons to choose either tool.",
     answer:
-      "Choose Buffer when you want a free starting plan or paid scheduling for a few channels. Evaluate OpenPost when you want to turn product work into posts, edit the media, and keep channel versions and automation together. OpenPost Hosted admission is currently on a waitlist, which matters if you need to start today.",
+      "Choose Buffer when you want a free starting plan or paid scheduling for a few channels. Evaluate SocialFlow.ai when you want to turn product work into posts, edit the media, and keep channel versions and automation together. SocialFlow.ai Hosted admission is currently on a waitlist, which matters if you need to start today.",
     sections: [
       {
         title: "When Buffer is the better fit",
@@ -84,10 +84,10 @@ export const comparisonGuides = [
       },
       openPostPlans,
       {
-        title: "When OpenPost is the better fit",
-        text: "Evaluate OpenPost if preparing content takes more of your time than placing finished posts in a queue. Its Image Editor, Video Editor, Recorder, media library, and channel-specific versions keep creation and publishing in one workspace. Built-in Workflows can prepare drafts from releases, feeds, or API responses for review.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "Evaluate SocialFlow.ai if preparing content takes more of your time than placing finished posts in a queue. Its Image Editor, Video Editor, Recorder, media library, and channel-specific versions keep creation and publishing in one workspace. Built-in Workflows can prepare drafts from releases, feeds, or API responses for review.",
         items: [
-          "OpenPost offers self-hosting if you need to operate your own instance. You own provider setup and maintenance.",
+          "SocialFlow.ai offers self-hosting if you need to operate your own instance. You own provider setup and maintenance.",
           "Compare the actual workflow, not a feature count. Test media editing, one destination-specific change, and a failed delivery before moving important posts.",
         ],
       },
@@ -103,9 +103,9 @@ export const comparisonGuides = [
       },
       { label: "Buffer pricing calculator and fair-use terms", href: "https://buffer.com/pricing" },
       ...openPostSources,
-      { label: "OpenPost Workflows", href: "https://openpo.st/docs/workflows" },
+      { label: "SocialFlow.ai Workflows", href: "https://openpo.st/docs/workflows" },
     ],
-    next: { label: "Compare OpenPost plans", href: "/pricing" },
+    next: { label: "Compare SocialFlow.ai plans", href: "/pricing" },
   },
   {
     slug: "openpost-vs-postiz",
@@ -115,17 +115,17 @@ export const comparisonGuides = [
       category: "Publishing",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs Postiz: which fits your content workflow?",
+    question: "SocialFlow.ai vs Postiz: which fits your content workflow?",
     socialDescription:
       "Compare Hosted plans, channel and posting limits, media workflows, and the work involved in self-hosting.",
     answer:
-      "Both products offer hosted and self-hosted publishing. Choose Postiz if its channel coverage or higher posting allowance fits your needs. Evaluate OpenPost for integrated image and timeline video editing, recording, and reviewed content workflows. OpenPost Hosted admission is currently on a waitlist, so it may not fit an immediate move.",
+      "Both products offer hosted and self-hosted publishing. Choose Postiz if its channel coverage or higher posting allowance fits your needs. Evaluate SocialFlow.ai for integrated image and timeline video editing, recording, and reviewed content workflows. SocialFlow.ai Hosted admission is currently on a waitlist, so it may not fit an immediate move.",
     sections: [
       {
         title: "When Postiz is the better fit",
-        text: "Postiz documents channels beyond OpenPost's current integration list, including Reddit. It also supports per-channel content, a calendar, AI media tools, and automation. Check the exact account type and publishing format instead of treating either product's integration list as a guarantee.",
+        text: "Postiz documents channels beyond SocialFlow.ai's current integration list, including Reddit. It also supports per-channel content, a calendar, AI media tools, and automation. Check the exact account type and publishing format instead of treating either product's integration list as a guarantee.",
         items: [
-          "Postiz includes API, CLI, MCP, and webhooks on every Hosted plan. These are shared capabilities, not an OpenPost advantage.",
+          "Postiz includes API, CLI, MCP, and webhooks on every Hosted plan. These are shared capabilities, not an SocialFlow.ai advantage.",
           "Postiz's paid plans advertise unlimited monthly posts. Confirm applicable provider and service limits for your workload.",
         ],
       },
@@ -163,17 +163,17 @@ export const comparisonGuides = [
           ],
         },
         items: [
-          "Postiz offers a seven-day trial. For ten channels and multiple people, compare its Team plan with the OpenPost plan that covers your people and workspaces.",
+          "Postiz offers a seven-day trial. For ten channels and multiple people, compare its Team plan with the SocialFlow.ai plan that covers your people and workspaces.",
         ],
       },
       openPostPlans,
       {
-        title: "When OpenPost is the better fit",
-        text: "Evaluate OpenPost when you want to record a product demonstration, edit it on a multitrack timeline, prepare reusable images, and adapt one source idea for several channels. Its Workflows can combine triggers, conditions, AI steps, and review before scheduling. Postiz also offers media editing and automation, so test the particular editing and review tasks you need.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "Evaluate SocialFlow.ai when you want to record a product demonstration, edit it on a multitrack timeline, prepare reusable images, and adapt one source idea for several channels. Its Workflows can combine triggers, conditions, AI steps, and review before scheduling. Postiz also offers media editing and automation, so test the particular editing and review tasks you need.",
       },
       {
         title: "Compare self-hosting responsibilities",
-        text: "OpenPost's default deployment uses one container with SQLite and local media storage. Postiz's recommended Docker Compose stack includes the application, PostgreSQL, Redis, and Temporal. OpenPost can fit an operator who wants fewer services to maintain; Postiz can fit an operator already comfortable with its stack and provider coverage.",
+        text: "SocialFlow.ai's default deployment uses one container with SQLite and local media storage. Postiz's recommended Docker Compose stack includes the application, PostgreSQL, Redis, and Temporal. SocialFlow.ai can fit an operator who wants fewer services to maintain; Postiz can fit an operator already comfortable with its stack and provider coverage.",
         items: [
           "Both require you to maintain backups, upgrades, storage, credentials, and the provider applications your accounts need.",
           "Postiz documents a Polotno license requirement for its self-hosted design editor. Check that requirement and any AI provider costs before budgeting media features.",
@@ -196,9 +196,9 @@ export const comparisonGuides = [
         href: "https://docs.postiz.com/self-host/configuration/polotno",
       },
       ...openPostSources,
-      { label: "OpenPost self-hosting", href: planCatalog.self_hosted.documentation_url },
+      { label: "SocialFlow.ai self-hosting", href: planCatalog.self_hosted.documentation_url },
     ],
-    next: { label: "Compare OpenPost plans", href: "/pricing" },
+    next: { label: "Compare SocialFlow.ai plans", href: "/pricing" },
   },
   {
     slug: "openpost-vs-metricool",
@@ -208,11 +208,11 @@ export const comparisonGuides = [
       category: "Publishing",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs Metricool: creation or reporting first?",
+    question: "SocialFlow.ai vs Metricool: creation or reporting first?",
     socialDescription:
       "Compare brand limits, reporting, publishing costs, and the work of preparing your content.",
     answer:
-      "Choose Metricool when reporting across brands and reviewing competitor performance drives your week. Evaluate OpenPost when recording, editing, and adapting your own product updates takes more time. Test both with your actual channels before moving your schedule.",
+      "Choose Metricool when reporting across brands and reviewing competitor performance drives your week. Evaluate SocialFlow.ai when recording, editing, and adapting your own product updates takes more time. Test both with your actual channels before moving your schedule.",
     sections: [
       {
         title: "When Metricool is the better fit",
@@ -233,12 +233,12 @@ export const comparisonGuides = [
       },
       openPostPlans,
       {
-        title: "When OpenPost is the better fit",
-        text: "OpenPost keeps recording, image and timeline video editing, source ideas, and destination versions together. Its free local editors are available separately from Hosted publishing. Compare the time needed to turn one product demonstration into a finished post, alongside the reports your business actually needs.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "SocialFlow.ai keeps recording, image and timeline video editing, source ideas, and destination versions together. Its free local editors are available separately from Hosted publishing. Compare the time needed to turn one product demonstration into a finished post, alongside the reports your business actually needs.",
       },
       {
         title: "Compare the same working week",
-        text: "Prepare one announcement, make a channel-specific change, and retrieve a report for the same date range. Include brand counts, collaborators, X access, and review steps in the bill. OpenPost Hosted admission is currently on a waitlist.",
+        text: "Prepare one announcement, make a channel-specific change, and retrieve a report for the same date range. Include brand counts, collaborators, X access, and review steps in the bill. SocialFlow.ai Hosted admission is currently on a waitlist.",
       },
     ],
     sources: [
@@ -248,7 +248,7 @@ export const comparisonGuides = [
       },
       ...openPostSources,
     ],
-    next: { label: "Compare OpenPost plans", href: "/pricing" },
+    next: { label: "Compare SocialFlow.ai plans", href: "/pricing" },
   },
   {
     slug: "openpost-vs-hootsuite",
@@ -258,11 +258,11 @@ export const comparisonGuides = [
       category: "Publishing",
     },
     reviewedAt: "2026-10-04",
-    question: "OpenPost vs Hootsuite: founder workflow or social team?",
+    question: "SocialFlow.ai vs Hootsuite: founder workflow or social team?",
     socialDescription:
       "Compare content creation with team approvals, inbox routing, reporting, and per-user billing.",
     answer:
-      "Choose Hootsuite when a social team needs approvals, customer-care routing, and reporting across departments. Evaluate OpenPost when a founder needs to record, edit, adapt, and publish their own work from one workspace. The tools overlap in publishing, but serve different operating needs.",
+      "Choose Hootsuite when a social team needs approvals, customer-care routing, and reporting across departments. Evaluate SocialFlow.ai when a founder needs to record, edit, adapt, and publish their own work from one workspace. The tools overlap in publishing, but serve different operating needs.",
     sections: [
       {
         title: "When Hootsuite is the better fit",
@@ -274,19 +274,19 @@ export const comparisonGuides = [
       },
       openPostPlans,
       {
-        title: "When OpenPost is the better fit",
-        text: "OpenPost suits a creation-heavy workflow: record a demonstration, edit the video, make a supporting image, and adapt one idea for different accounts. Workflows can prepare content for review. Self-hosting is also available. Test the inbox and analytics your accounts expose, rather than assuming enterprise reporting or customer-care parity.",
+        title: "When SocialFlow.ai is the better fit",
+        text: "SocialFlow.ai suits a creation-heavy workflow: record a demonstration, edit the video, make a supporting image, and adapt one idea for different accounts. Workflows can prepare content for review. Self-hosting is also available. Test the inbox and analytics your accounts expose, rather than assuming enterprise reporting or customer-care parity.",
       },
       {
         title: "Check the workflow beyond scheduling",
-        text: "Try a real review, a failed delivery, and an inbox conversation. Compare who can approve, who sees the failure, and which outcomes are available. Include every paid seat in Hootsuite's cost. OpenPost Hosted admission is currently on a waitlist.",
+        text: "Try a real review, a failed delivery, and an inbox conversation. Compare who can approve, who sees the failure, and which outcomes are available. Include every paid seat in Hootsuite's cost. SocialFlow.ai Hosted admission is currently on a waitlist.",
       },
     ],
     sources: [
       { label: "Hootsuite plans and billing terms", href: "https://www.hootsuite.com/plans" },
       ...openPostSources,
     ],
-    next: { label: "Compare OpenPost plans", href: "/pricing" },
+    next: { label: "Compare SocialFlow.ai plans", href: "/pricing" },
   },
   ...creativeComparisons,
 ];

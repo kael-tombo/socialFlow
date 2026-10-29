@@ -4,14 +4,14 @@
 
 Implemented, configured, and live-verified are separate states:
 
-- **Implemented:** the adapter and OpenPost path exist in the repository.
+- **Implemented:** the adapter and SocialFlow.ai path exist in the repository.
 - **Configured:** the current server and account satisfy provider app, permission, public-media, and quota requirements.
 - **Live-verified:** the exact account and format published recently, and the final provider result was recorded.
 
 ## Campaign context
 
 - Campaign: `[CAMPAIGN NAME]`
-- OpenPost version or commit: `[VERSION]`
+- SocialFlow.ai version or commit: `[VERSION]`
 - Instance: `[HOSTED SERVICE OR SELF-HOSTED; DO NOT RECORD SECRETS]`
 - Verification window: `[START]` to `[END]`
 - Reviewer: `[NAME]`
@@ -34,12 +34,12 @@ Create separate rows for text, image, video, carousel, Story, thread/reply, and 
 
 ## Evidence required for `live-verified`
 
-- OpenPost version or commit and verification date;
+- SocialFlow.ai version or commit and verification date;
 - provider account ID or non-secret slug;
 - exact content profile and media count/type;
 - connection and readiness result;
 - scheduled time and workspace timezone when scheduling is shown;
-- final OpenPost lifecycle event;
+- final SocialFlow.ai lifecycle event;
 - provider post ID and URL, or an honest failure ID and message;
 - reviewer name and any manual edits made after agent preparation.
 

@@ -82,7 +82,7 @@ it('keeps mixed destination outcomes and canonical recovery actions visible', as
 	await screen.getByRole('button', { name: 'Create another' }).click();
 	expect(onCreateAnother).toHaveBeenCalledOnce();
 	await expect
-		.element(screen.getByText('OpenPost is checking the provider before another send.'))
+		.element(screen.getByText('SocialFlow.ai is checking the provider before another send.'))
 		.toBeVisible();
 });
 

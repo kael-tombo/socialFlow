@@ -1,6 +1,6 @@
 # Application-state recovery browser matrix
 
-OpenPost keeps local page context when a recoverable request or destructive action fails. Shared application primitives own the visible state; routes retain their page heading and useful content while retrying in place.
+SocialFlow.ai keeps local page context when a recoverable request or destructive action fails. Shared application primitives own the visible state; routes retain their page heading and useful content while retrying in place.
 
 ## State contract
 

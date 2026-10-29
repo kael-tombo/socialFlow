@@ -15,7 +15,7 @@ afterEach(() => {
 	vi.unstubAllGlobals();
 });
 
-describe('OpenPost Image Editor external image preflight', () => {
+describe('SocialFlow.ai Image Editor external image preflight', () => {
 	it('accepts only explicit editor image types and extension fallbacks', () => {
 		expect(imageEditorImportMIME(new File(['x'], 'photo.jpg', { type: '' }))).toBe('image/jpeg');
 		expect(

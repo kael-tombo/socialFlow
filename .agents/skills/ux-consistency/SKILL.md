@@ -1,11 +1,11 @@
 ---
 name: ux-consistency
-description: OpenPost acceptance bar for frontend UI and copy changes. Load when changing frontend UI (components, pages, design tokens) or user-facing copy; run again as the final check before finishing.
+description: SocialFlow.ai acceptance bar for frontend UI and copy changes. Load when changing frontend UI (components, pages, design tokens) or user-facing copy; run again as the final check before finishing.
 ---
 
 # UX and visual consistency
 
-UX and visual consistency is OpenPost's highest product priority. Apply these criteria to any frontend, UI, component, design-token, or user-facing copy change. `DESIGN.md` and `PRODUCT.md` describe the system itself; this skill is the acceptance bar.
+UX and visual consistency is SocialFlow.ai's highest product priority. Apply these criteria to any frontend, UI, component, design-token, or user-facing copy change. `DESIGN.md` and `PRODUCT.md` describe the system itself; this skill is the acceptance bar.
 
 ## Direct over blocking
 

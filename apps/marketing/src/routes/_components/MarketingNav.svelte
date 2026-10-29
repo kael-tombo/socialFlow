@@ -89,7 +89,7 @@
 			<a
 				class="focus-ring inline-flex min-h-11 items-center gap-2 rounded-md"
 				href={resolve('/')}
-				aria-label="OpenPost home"
+				aria-label="SocialFlow.ai home"
 			>
 				<ThemeImage
 					lightSrc="/assets/brand/logo.svg"
@@ -101,7 +101,7 @@
 					class="shrink-0"
 				/>
 				<span class="font-brand text-sm leading-none font-semibold tracking-[-0.02em]"
-					>OpenPost</span
+					>SocialFlow.ai</span
 				>
 			</a>
 			<GitHubStarPill />

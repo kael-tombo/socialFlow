@@ -12,7 +12,7 @@ describe('AppErrorState', () => {
 			onRetry
 		});
 
-		const heading = screen.getByRole('heading', { name: 'OpenPost could not show this page' });
+		const heading = screen.getByRole('heading', { name: 'SocialFlow.ai could not show this page' });
 		await expect.element(heading).toHaveFocus();
 		await expect.element(screen.getByTestId('app-error-page')).not.toHaveAttribute('aria-live');
 		const retry = screen.getByRole('button', { name: 'Try again' });
@@ -63,7 +63,7 @@ describe('AppErrorState', () => {
 		});
 
 		await expect
-			.element(screen.getByRole('heading', { name: 'OpenPost could not complete this request' }))
+			.element(screen.getByRole('heading', { name: 'SocialFlow.ai could not complete this request' }))
 			.toBeVisible();
 		await expect.element(screen.getByRole('button', { name: 'Try again' })).not.toBeInTheDocument();
 		await expect

@@ -33,7 +33,7 @@ func TestOpenRouterGenerateSendsPrivateMultimodalRequest(t *testing.T) {
 		require.Equal(t, "/api/v1/chat/completions", r.URL.Path)
 		require.Equal(t, "Bearer test-api-key", r.Header.Get("Authorization"))
 		require.Equal(t, "https://app.example.test", r.Header.Get("HTTP-Referer"))
-		require.Equal(t, "OpenPost Test", r.Header.Get("X-Title"))
+		require.Equal(t, "SocialFlow.ai Test", r.Header.Get("X-Title"))
 		require.Contains(t, r.Header.Get("Accept"), "application/json")
 		require.Equal(t, "application/json", r.Header.Get("Content-Type"))
 		require.NoError(t, json.NewDecoder(r.Body).Decode(&received))
@@ -61,7 +61,7 @@ func TestOpenRouterGenerateSendsPrivateMultimodalRequest(t *testing.T) {
 		BaseURL:     server.URL + "/api/v1",
 		HTTPClient:  server.Client(),
 		HTTPReferer: "https://app.example.test",
-		XTitle:      "OpenPost Test",
+		XTitle:      "SocialFlow.ai Test",
 		Provider:    " azure/eu ",
 		RequireZDR:  true,
 	})

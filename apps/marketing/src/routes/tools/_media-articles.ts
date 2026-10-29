@@ -111,7 +111,7 @@ const guides: ToolGuides = {
 			'Export your cut without adding a watermark.'
 		],
 		privacy:
-			'Quick Cut runs in the OpenPost app without requiring an account. Local projects and source files stay in browser storage. The tool explains browser and format limitations before export.',
+			'Quick Cut runs in the SocialFlow.ai app without requiring an account. Local projects and source files stay in browser storage. The tool explains browser and format limitations before export.',
 		sections: [
 			{
 				title: 'Quick Cut or the full Video Editor?',

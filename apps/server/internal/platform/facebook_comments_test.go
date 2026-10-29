@@ -22,7 +22,7 @@ func TestFacebookListCommentsMarksPageCommentsAsOurs(t *testing.T) {
 		return jsonResponse(req, `{
 			"data": [
 				{"id": "post-1_c1", "message": "Nice launch", "created_time": "2026-09-14T10:00:00+0000", "can_comment": true, "can_hide": true, "from": {"id": "fan-1", "name": "Fan"}},
-				{"id": "post-1_c2", "message": "Read the full changelog.", "created_time": "2026-09-14T10:00:05+0000", "can_comment": true, "from": {"id": "page-1", "name": "OpenPost Page"}}
+				{"id": "post-1_c2", "message": "Read the full changelog.", "created_time": "2026-09-14T10:00:05+0000", "can_comment": true, "from": {"id": "page-1", "name": "SocialFlow.ai Page"}}
 			]
 		}`), nil
 	})}
@@ -108,7 +108,7 @@ func TestFacebookListCommentsCollectsNestedReplies(t *testing.T) {
 						"message": "Yes, up to five minutes.",
 						"created_time": "2026-09-14T10:05:00+0000",
 						"can_comment": true,
-						"from": {"id": "page-1", "name": "OpenPost Page"},
+						"from": {"id": "page-1", "name": "SocialFlow.ai Page"},
 						"parent": {"id": "post-1_c1"},
 						"comments": {
 							"data": [{

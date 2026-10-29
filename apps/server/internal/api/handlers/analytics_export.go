@@ -228,7 +228,7 @@ func analyticsExportWorkbook(dataset analyticsservice.ExportDataset) ([]byte, er
 		return nil, err
 	}
 	rows := [][]any{
-		{"OpenPost analytics export"},
+		{"SocialFlow.ai analytics export"},
 		{"Generated", dataset.GeneratedAt.Format("2006-01-02 15:04")},
 		{"Timezone", dataset.Timezone},
 		{"Period (UTC days)", dataset.From + " to " + dataset.To},

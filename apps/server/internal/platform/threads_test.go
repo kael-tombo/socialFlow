@@ -262,12 +262,12 @@ func TestThreadsSettingsUseOfficialPollAndSpoilerFields(t *testing.T) {
 	err := applyThreadsSettings(payload, &PublishRequest{Settings: map[string]interface{}{
 		"poll_options":  "One\nTwo\nThree",
 		"reply_control": "followers_only",
-		"topic_tag":     "OpenPost",
+		"topic_tag":     "SocialFlow.ai",
 	}})
 	if err != nil {
 		t.Fatalf("applyThreadsSettings returned error: %v", err)
 	}
-	if payload["reply_control"] != "followers_only" || payload["topic_tag"] != "OpenPost" {
+	if payload["reply_control"] != "followers_only" || payload["topic_tag"] != "SocialFlow.ai" {
 		t.Fatalf("unexpected Threads settings payload %#v", payload)
 	}
 	var poll map[string]string

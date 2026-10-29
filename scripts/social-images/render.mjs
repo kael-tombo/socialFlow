@@ -239,7 +239,7 @@ async function drawBrand(context, { docs = false, y = 56 } = {}) {
   context.drawImage(mark, 64, y, 40, 40);
   context.fillStyle = docs ? "#f6f1eb" : "#302b28";
   setFont(context, 30, 600, "Manrope");
-  context.fillText("OpenPost", 120, y + 31);
+  context.fillText("SocialFlow.ai", 120, y + 31);
 }
 
 export async function renderSocialCard(entry) {

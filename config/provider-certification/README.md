@@ -60,7 +60,7 @@ intent so the worker repeats the same decision immediately before a provider
 call. A certification test can execute but can never create a public claim.
 
 Self-hosted execution still requires effective configuration and exact account
-authorization, but does not require OpenPost's Hosted service approval or
+authorization, but does not require SocialFlow.ai's Hosted service approval or
 certification records. It is never projected as a Hosted service public claim. A
 healthy result stays quiet. Missing or unsafe facts project to a specific
 blocked state; they never default to ready.
@@ -125,9 +125,9 @@ records are invented or backfilled by migration.
 Reviewed 2026-08-09.
 
 <!-- provider-certification:begin -->
-No posting option has passed our final live check on OpenPost Hosted yet.
+No posting option has passed our final live check on SocialFlow.ai Hosted yet.
 
-A social app can appear in OpenPost before it is ready for real accounts.
+A social app can appear in SocialFlow.ai before it is ready for real accounts.
 <!-- provider-certification:end -->
 
 The repository contains no checked-in live evidence and migration 077 never
@@ -145,7 +145,7 @@ that passes the contract-digest release gate.
 
 ## Provider policy sources
 
-Reviewed 2026-08-09. These are implementation inputs, not proof that an OpenPost
+Reviewed 2026-08-09. These are implementation inputs, not proof that an SocialFlow.ai
 provider or format is live-certified.
 
 | Provider  | Current official source and certification dimension                                                                                                                                                                                                                     |
@@ -163,4 +163,4 @@ provider or format is live-certified.
 
 Postiz (`7d08f5b6fcac`) and Shoutrrr (`69e0621424a1`) were also inspected as
 behavioral references. Their runtime disabled/refresh gates are useful, but
-neither replaces OpenPost's evidence ledger or fail-closed public-claim gate.
+neither replaces SocialFlow.ai's evidence ledger or fail-closed public-claim gate.

@@ -1,6 +1,6 @@
-# OpenPost UI
+# SocialFlow.ai UI
 
-Shared Svelte 5 controls, theme manifests, local icons and styles for OpenPost and standalone tools. The package has no SvelteKit, API, auth, telemetry or generated-translation dependency.
+Shared Svelte 5 controls, theme manifests, local icons and styles for SocialFlow.ai and standalone tools. The package has no SvelteKit, API, auth, telemetry or generated-translation dependency.
 
 ```svelte
 <script lang="ts">
@@ -23,8 +23,8 @@ UI labels default to English. Svelte consumers call `provideUiMessages` from `me
 
 Run `devenv shell -- bunx turbo run check --filter @openpost/ui` from the repository root. Package builds depend on `@openpost/dither` and emit JavaScript, Svelte components and declarations into `dist`. The build lock protects shared output when root checks launch multiple Turbo processes.
 
-OpenPost uses workspace dependencies. Separate repositories may install versioned registry releases or `npm pack` archives of both `packages/ui` and `packages/dither`. Archives contain the compiled library and licenses, with no sibling-checkout paths. Rebuild, repack and update the consumer lockfile together when the library changes.
+SocialFlow.ai uses workspace dependencies. Separate repositories may install versioned registry releases or `npm pack` archives of both `packages/ui` and `packages/dither`. Archives contain the compiled library and licenses, with no sibling-checkout paths. Rebuild, repack and update the consumer lockfile together when the library changes.
 
 React Native cannot render Svelte or CSS. Its existing native theme renderer consumes generated theme contracts and icon data. Keep that platform adapter; do not copy web component implementations into native components.
 
-Licensed under AGPL-3.0-only, matching OpenPost. Third-party dependencies retain their own licenses.
+Licensed under AGPL-3.0-only, matching SocialFlow.ai. Third-party dependencies retain their own licenses.

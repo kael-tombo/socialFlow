@@ -240,7 +240,7 @@ export const desiredActions = [
     ],
   }),
   action("job", "get", "get-job", {
-    fields: [stringField("jobId", "Job ID", "OpenPost Job ID.", { required: true })],
+    fields: [stringField("jobId", "Job ID", "SocialFlow.ai Job ID.", { required: true })],
   }),
 ];
 
@@ -341,7 +341,7 @@ export function buildSelectedContract(openapi, desired = desiredActions) {
   const contract = {
     generatedAt: new Date(0).toISOString(),
     source: {
-      title: openapi.info?.title ?? "OpenPost",
+      title: openapi.info?.title ?? "SocialFlow.ai",
       version: openapi.info?.version ?? "",
       openapi: openapi.openapi,
       server: openapi.servers?.[0]?.url ?? "/api/v1",
@@ -675,7 +675,7 @@ function buildRequestMappers(contract) {
 
 function buildReport(contract) {
   const lines = [
-    "# Selected OpenPost automation contract",
+    "# Selected SocialFlow.ai automation contract",
     "",
     "Generated from the canonical OpenAPI `x-openpost-automation` metadata.",
     "",

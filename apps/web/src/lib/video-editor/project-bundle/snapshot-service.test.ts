@@ -136,7 +136,7 @@ describe('project snapshot service', () => {
 			toItemId: result.project.timeline!.items[0]?.id
 		});
 		expect(result.warnings).toContain(
-			'Converted FreeCut schema 15 to the OpenPost project format.'
+			'Converted FreeCut schema 15 to the SocialFlow.ai project format.'
 		);
 	});
 
@@ -197,7 +197,7 @@ describe('project snapshot service', () => {
 		snapshot.checksum = await computeSnapshotChecksum(snapshot);
 
 		await expect(testRuntime.service.importProjectSnapshot(snapshot)).rejects.toThrow(
-			'Update OpenPost before importing it'
+			'Update SocialFlow.ai before importing it'
 		);
 		expect(testRuntime.created).toEqual([]);
 	});

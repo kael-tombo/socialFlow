@@ -229,8 +229,8 @@ type MediaListItem struct {
 	Source             string   `json:"source" doc:"Media provenance"`
 	AssetKind          string   `json:"asset_kind" doc:"Media library role"`
 	ParentMediaID      string   `json:"parent_media_id,omitempty" doc:"Source media for this derivative"`
-	DesignDocumentID   string   `json:"design_document_id,omitempty" doc:"Producing OpenPost Image Editor design"`
-	DesignPageID       string   `json:"design_page_id,omitempty" doc:"Producing OpenPost Image Editor page"`
+	DesignDocumentID   string   `json:"design_document_id,omitempty" doc:"Producing SocialFlow.ai Image Editor design"`
+	DesignPageID       string   `json:"design_page_id,omitempty" doc:"Producing SocialFlow.ai Image Editor page"`
 	Tags               []string `json:"tags" doc:"Tag IDs assigned to this media"`
 	RetentionClass     string   `json:"retention_class" enum:"library,temporary" doc:"Whether the asset is kept in the library or managed as temporary post media"`
 	LastUsedAt         string   `json:"last_used_at,omitempty" doc:"Most recent known reference time"`
@@ -426,8 +426,8 @@ type CreateMediaUploadSessionInput struct {
 		RetentionClass   string                `json:"retention_class,omitempty" enum:"library,temporary" doc:"Keep in the library or manage as temporary post media"`
 		TagID            string                `json:"tag_id,omitempty" doc:"Optional tag to assign to this upload"`
 		ParentMediaID    string                `json:"parent_media_id,omitempty" doc:"Source media ID for a derivative"`
-		DesignDocumentID string                `json:"design_document_id,omitempty" doc:"Producing OpenPost Image Editor design ID"`
-		DesignPageID     string                `json:"design_page_id,omitempty" doc:"Producing OpenPost Image Editor page ID"`
+		DesignDocumentID string                `json:"design_document_id,omitempty" doc:"Producing SocialFlow.ai Image Editor design ID"`
+		DesignPageID     string                `json:"design_page_id,omitempty" doc:"Producing SocialFlow.ai Image Editor page ID"`
 		ClientSHA256     string                `json:"client_sha256,omitempty" pattern:"^[a-fA-F0-9]{64}$" doc:"Optional SHA-256 used to reuse an identical ready asset in this workspace"`
 		ProjectAssetID   string                `json:"project_asset_id,omitempty" doc:"Reserved Project Asset receiving this upload"`
 		StockProvenance  *StockMediaProvenance `json:"stock_provenance,omitempty" doc:"License and creator provenance for a selected stock asset"`
@@ -475,8 +475,8 @@ type MediaUploadResult struct {
 	AssetKind          string `json:"asset_kind" doc:"Media library role"`
 	RetentionClass     string `json:"retention_class" enum:"library,temporary" doc:"Media lifecycle class"`
 	ParentMediaID      string `json:"parent_media_id,omitempty" doc:"Source media ID"`
-	DesignDocumentID   string `json:"design_document_id,omitempty" doc:"Producing OpenPost Image Editor design ID"`
-	DesignPageID       string `json:"design_page_id,omitempty" doc:"Producing OpenPost Image Editor page ID"`
+	DesignDocumentID   string `json:"design_document_id,omitempty" doc:"Producing SocialFlow.ai Image Editor design ID"`
+	DesignPageID       string `json:"design_page_id,omitempty" doc:"Producing SocialFlow.ai Image Editor page ID"`
 	ProcessingStatus   string `json:"processing_status" doc:"Media processing status"`
 	ProcessingProgress int    `json:"processing_progress" doc:"Server processing progress from 0 to 100"`
 	AnalysisStatus     string `json:"analysis_status" doc:"Media analysis status"`
@@ -1030,7 +1030,7 @@ func (h *MediaHandler) getMediaUsage(ctx context.Context, input *GetMediaUsageIn
 	}
 	otherUsage, err := h.nonPublicationMediaUsage(ctx, media.WorkspaceID, input.PathID)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to fetch OpenPost Image Editor media usage")
+		return nil, huma.Error500InternalServerError("failed to fetch SocialFlow.ai Image Editor media usage")
 	}
 	usage = append(usage, otherUsage...)
 
@@ -2480,7 +2480,7 @@ func normalizeMediaProvenance(source, assetKind string) (string, string, error) 
 		return "", "", errors.New("invalid media asset kind")
 	}
 	if assetKind == "design_preview" && source != "image_editor_export" && source != "image_editor_edit" {
-		return "", "", errors.New("design previews must be produced by OpenPost Image Editor")
+		return "", "", errors.New("design previews must be produced by SocialFlow.ai Image Editor")
 	}
 	if assetKind == "project_asset" && source != "upload" && source != "camera" && source != "video_editor_source" {
 		return "", "", errors.New("project Assets must come from an upload, camera, or Video Editor source")
@@ -2636,10 +2636,10 @@ func (h *MediaHandler) validateMediaProvenanceReferences(ctx context.Context, wo
 			Where("id = ? AND workspace_id = ? AND deleted_at IS NULL", designDocumentID, workspaceID).
 			Count(ctx)
 		if err != nil {
-			return huma.Error500InternalServerError("failed to validate OpenPost Image Editor design")
+			return huma.Error500InternalServerError("failed to validate SocialFlow.ai Image Editor design")
 		}
 		if count != 1 {
-			return huma.Error400BadRequest("OpenPost Image Editor design must belong to the workspace")
+			return huma.Error400BadRequest("SocialFlow.ai Image Editor design must belong to the workspace")
 		}
 	}
 	if designPageID != "" {
@@ -2647,10 +2647,10 @@ func (h *MediaHandler) validateMediaProvenanceReferences(ctx context.Context, wo
 			Where("id = ? AND design_document_id = ?", designPageID, designDocumentID).
 			Count(ctx)
 		if err != nil {
-			return huma.Error500InternalServerError("failed to validate OpenPost Image Editor page")
+			return huma.Error500InternalServerError("failed to validate SocialFlow.ai Image Editor page")
 		}
 		if count != 1 {
-			return huma.Error400BadRequest("OpenPost Image Editor page must belong to the design")
+			return huma.Error400BadRequest("SocialFlow.ai Image Editor page must belong to the design")
 		}
 	}
 	return nil

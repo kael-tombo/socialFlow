@@ -22,7 +22,7 @@
 <section class="border-b py-16 sm:py-24">
 	<div class="marketing-shell">
 		<div class="max-w-4xl">
-			<h1 class="marketing-title mt-5">What’s new in OpenPost.</h1>
+			<h1 class="marketing-title mt-5">What’s new in SocialFlow.ai.</h1>
 			<p class="marketing-copy mt-6">
 				New tools, small improvements, and fixes that make your day easier.
 			</p>

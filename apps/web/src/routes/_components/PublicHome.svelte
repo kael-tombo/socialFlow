@@ -1,5 +1,5 @@
 <!--
-THESIS: Make OpenPost and its price legible before sign-in without duplicating the full marketing site.
+THESIS: Make SocialFlow.ai and its price legible before sign-in without duplicating the full marketing site.
 STORY: A visitor understands the product, sees every plan, and can start a trial or inspect the full product site.
 FIRST VIEWPORT: Brand and sign-in sit above the offer; entry price and trial terms stay beside the primary action.
 -->
@@ -57,7 +57,7 @@ FIRST VIEWPORT: Brand and sign-in sit above the offer; entry price and trial ter
 			>
 				<Logo width={36} height={28} decorative />
 				<span class="font-brand text-sm leading-none font-semibold tracking-[-0.02em]"
-					>OpenPost</span
+					>SocialFlow.ai</span
 				>
 			</a>
 			<div class="flex items-center gap-1.5">

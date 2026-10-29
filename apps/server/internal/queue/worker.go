@@ -869,7 +869,7 @@ func (w *BackgroundWorker) recordTerminalFailure(ctx context.Context, job *model
 	captureErr := w.telemetry.CaptureException(ctx, telemetry.Exception{
 		DistinctID:  "job:" + job.ID,
 		WorkspaceID: w.jobErrorWorkspaceID(ctx, job),
-		Title:       "OpenPost " + job.Type + " job failed",
+		Title:       "SocialFlow.ai " + job.Type + " job failed",
 		Description: "Durable background processing reached a terminal failure",
 		Properties:  properties,
 	})
@@ -1024,25 +1024,25 @@ func (w *BackgroundWorker) classifyJobFailure(ctx context.Context, job *models.J
 func classifyPublicationBuildFailure(processErr error) classifiedJobFailure {
 	switch {
 	case errors.Is(processErr, publicationbuilder.ErrRuntimeUnavailable):
-		return classifiedJobFailure{retryable: true, retryAfter: publicationBuilderUnavailableRetry, message: "Publication Builder is temporarily unavailable. OpenPost will retry when it is configured.", preserveAttempts: true}
+		return classifiedJobFailure{retryable: true, retryAfter: publicationBuilderUnavailableRetry, message: "Publication Builder is temporarily unavailable. SocialFlow.ai will retry when it is configured.", preserveAttempts: true}
 	case errors.Is(processErr, publicationbuilder.ErrTooManyActiveBuilds):
 		return classifiedJobFailure{retryable: true, retryAfter: publicationBuilderUnavailableRetry, message: "Publication Builder is waiting for an active build slot.", preserveAttempts: true}
 	case errors.Is(processErr, publicationbuilder.ErrBuildLeaseActive):
 		return classifiedJobFailure{retryable: true, retryAfter: publicationBuilderUnavailableRetry, message: "Publication Builder is waiting for the active generation lease.", preserveAttempts: true}
 	}
-	return classifiedJobFailure{retryable: true, message: "Publication Builder could not complete this build. OpenPost will retry when possible."}
+	return classifiedJobFailure{retryable: true, message: "Publication Builder could not complete this build. SocialFlow.ai will retry when possible."}
 }
 
 func classifyRepurposeFailure(err error) classifiedJobFailure {
 	if errors.Is(err, repurpose.ErrLeaseActive) || errors.Is(err, repurpose.ErrUnavailable) {
 		return classifiedJobFailure{retryable: true, retryAfter: time.Minute, message: "Clip analysis is waiting for an available worker.", preserveAttempts: true}
 	}
-	return classifiedJobFailure{retryable: !jobregistry.IsInvalidPayload(err), message: "Clip analysis was interrupted. OpenPost will retry when possible."}
+	return classifiedJobFailure{retryable: !jobregistry.IsInvalidPayload(err), message: "Clip analysis was interrupted. SocialFlow.ai will retry when possible."}
 }
 
 func classifyJobContinuation(processErr error) (classifiedJobFailure, bool) {
 	if retryAfter, pending := providerwrite.IsPending(processErr); pending {
-		return classifiedJobFailure{retryable: true, retryAfter: retryAfter, message: "The provider write is awaiting reconciliation. OpenPost will check its outcome before sending again.", preserveAttempts: true}, true
+		return classifiedJobFailure{retryable: true, retryAfter: retryAfter, message: "The provider write is awaiting reconciliation. SocialFlow.ai will check its outcome before sending again.", preserveAttempts: true}, true
 	}
 	if errors.Is(processErr, imagegeneration.ErrBillingPending) || errors.Is(processErr, imagegeneration.ErrUnavailable) {
 		return classifiedJobFailure{retryable: true, retryAfter: 5 * time.Minute, message: "Image generation is waiting for configuration or billing.", preserveAttempts: true}, true

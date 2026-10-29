@@ -49,7 +49,7 @@ for (const colorScheme of ["light", "dark"] as const) {
 
       await page.goto("/register?plan=founder&billing_period=monthly&redirect=%2Fimage-editor");
       await expect(
-        page.getByRole("heading", { name: "OpenPost Cloud is almost ready" }),
+        page.getByRole("heading", { name: "SocialFlow.ai Cloud is almost ready" }),
       ).toBeVisible();
       await expect(page.getByLabel("Password", { exact: true })).toHaveCount(0);
       await expect(page.getByRole("checkbox")).toHaveCount(0);

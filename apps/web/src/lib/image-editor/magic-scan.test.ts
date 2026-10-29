@@ -11,7 +11,7 @@ function image(width: number, height: number): Uint8ClampedArray {
 	return data;
 }
 
-describe('OpenPost Image Editor cancellable magic pixel scan', () => {
+describe('SocialFlow.ai Image Editor cancellable magic pixel scan', () => {
 	it.each([true, false])(
 		'rejects an already-cancelled small scan, contiguous=%s',
 		async (contiguous) => {

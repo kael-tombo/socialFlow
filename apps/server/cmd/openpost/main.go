@@ -371,8 +371,8 @@ func main() {
 	externalApplicationService.SetDynamicRegistrationEnabled(cfg.OAuthDCR)
 	externalWebhookService := externalwebhooks.NewService(db, tokenEncryptor)
 	mediaSigner := mediasigner.New(cfg.MediaSigningKey)
-	mfaService, err := mfa.NewService("OpenPost", mfa.RelyingPartyConfig{
-		Name:    "OpenPost",
+	mfaService, err := mfa.NewService("SocialFlow.ai", mfa.RelyingPartyConfig{
+		Name:    "SocialFlow.ai",
 		ID:      cfg.WebAuthnRPID,
 		Origins: []string{cfg.PublicURL},
 	})
@@ -1110,12 +1110,12 @@ func main() {
 		if discordPresenceService != nil {
 			discordPresenceService.Start(workerCtx)
 		}
-		log.Printf("Starting OpenPost %s process", command.role)
+		log.Printf("Starting SocialFlow.ai %s process", command.role)
 	}
 
 	var serverErrCh <-chan error
 	if command.role.runsWeb() {
-		log.Println("Starting OpenPost on :" + cfg.Port)
+		log.Println("Starting SocialFlow.ai on :" + cfg.Port)
 		log.Println("OpenAPI spec available at http://localhost:" + cfg.Port + "/openapi.json")
 		serverErrors := make(chan error, 1)
 		serverErrCh = serverErrors
@@ -1162,7 +1162,7 @@ func main() {
 		log.Printf("Server error: %v", runtimeErr)
 		return
 	}
-	log.Printf("OpenPost %s process stopped", command.role)
+	log.Printf("SocialFlow.ai %s process stopped", command.role)
 }
 
 func runCheckConfigCommand(cfg *config.Config, diagnosticsReporter *diagnostics.Reporter) {
@@ -1297,7 +1297,7 @@ func observeHTTPFailures(recorder telemetry.Recorder, reporter *diagnostics.Repo
 				if !handled && !panicked {
 					c.Set(telemetryHTTPErrorHandledKey, true)
 					captureErr := recorder.CaptureException(c.Request().Context(), telemetry.Exception{
-						Title:       "OpenPost HTTP " + strconv.Itoa(status),
+						Title:       "SocialFlow.ai HTTP " + strconv.Itoa(status),
 						Description: "An HTTP request failed",
 						Properties: map[string]any{
 							"method": c.Request().Method, "route": normalizedRequestRoute(c.Path()),
@@ -1380,7 +1380,7 @@ func capturePanics(recorder telemetry.Recorder, diagnosticsReporter *diagnostics
 						})
 					}
 					captureErr := recorder.CaptureException(c.Request().Context(), telemetry.Exception{
-						Title:       "OpenPost request panic",
+						Title:       "SocialFlow.ai request panic",
 						Description: "An HTTP request panicked",
 						Properties: map[string]any{
 							"method":         c.Request().Method,
@@ -1429,12 +1429,12 @@ func installTelemetryErrorHandler(e *echo.Echo, recorder telemetry.Recorder, dia
 		if status < http.StatusInternalServerError && !c.Response().Committed {
 			return
 		}
-		title := "OpenPost HTTP " + strconv.Itoa(status)
+		title := "SocialFlow.ai HTTP " + strconv.Itoa(status)
 		description := "An HTTP request failed"
 		boundary := "http_error"
 		code := diagnostics.CodeAPI5xx
 		if status < http.StatusInternalServerError {
-			title = "OpenPost HTTP response stream failed"
+			title = "SocialFlow.ai HTTP response stream failed"
 			description = "An HTTP response failed after headers were sent"
 			boundary = "http_stream_error"
 			code = diagnostics.CodeHTTPStreamFailed

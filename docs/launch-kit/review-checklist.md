@@ -44,7 +44,7 @@ Repeat for every destination:
 
 - [ ] The MCP token is limited to the intended workspace.
 - [ ] `mcp:read` was used for inspection where possible.
-- [ ] `mcp:full` is enabled only because this step creates or changes OpenPost data.
+- [ ] `mcp:full` is enabled only because this step creates or changes SocialFlow.ai data.
 - [ ] The client requires approval for `execute_operation`.
 - [ ] The operation name, account IDs, media IDs, format, and time are visible before approval.
 - [ ] Approval covers this exact operation, not future agent-generated work.

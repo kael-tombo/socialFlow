@@ -21,7 +21,7 @@ export function writeImageEditorMediaDrag(
 ): void {
 	dataTransfer.effectAllowed = 'copy';
 	dataTransfer.setData(IMAGE_EDITOR_MEDIA_DRAG_TYPE, JSON.stringify(payload));
-	dataTransfer.setData('text/plain', payload.name || 'OpenPost media');
+	dataTransfer.setData('text/plain', payload.name || 'SocialFlow.ai media');
 }
 
 interface RawImageEditorMediaDragPayload {

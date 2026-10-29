@@ -1,11 +1,11 @@
 ---
 name: openpost-cli
-description: Operate a running OpenPost instance through the openpost CLI. Use for authentication and profile setup; workspace, account, provider, media, schedule, job, and billing inspection; creating or editing text posts, threads, and format-first publications; scheduling or publishing content; checking lifecycle events; recovering failed destinations; and comment replies or moderation. Prefer this skill when terminal or scripted OpenPost work is requested. It is not needed when an OpenPost MCP connector is already being used.
+description: Operate a running SocialFlow.ai instance through the openpost CLI. Use for authentication and profile setup; workspace, account, provider, media, schedule, job, and billing inspection; creating or editing text posts, threads, and format-first publications; scheduling or publishing content; checking lifecycle events; recovering failed destinations; and comment replies or moderation. Prefer this skill when terminal or scripted SocialFlow.ai work is requested. It is not needed when an SocialFlow.ai MCP connector is already being used.
 ---
 
-# OpenPost CLI
+# SocialFlow.ai CLI
 
-Use the `openpost` executable as an external client of a running OpenPost instance. Keep the instance, workspace, destination accounts, content, and publish time explicit.
+Use the `openpost` executable as an external client of a running SocialFlow.ai instance. Keep the instance, workspace, destination accounts, content, and publish time explicit.
 
 ## Start safely
 

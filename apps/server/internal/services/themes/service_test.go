@@ -493,7 +493,7 @@ func TestThemeFontUploadValidatesWOFF2AndDeletesThroughDurableJob(t *testing.T) 
 
 	_, err := service.UploadAsset(t.Context(), actor, UploadAssetInput{
 		OrganizationID: "org-1", Kind: AssetFont, Name: "Fake", MediaType: "font/woff2",
-		FontFamily: "OpenPost Sans", FontStyle: "normal", FontWeight: 500, LicenseAcknowledged: true,
+		FontFamily: "SocialFlow.ai Sans", FontStyle: "normal", FontWeight: 500, LicenseAcknowledged: true,
 		Content: bytes.NewReader([]byte("not a font")),
 	})
 	require.ErrorIs(t, err, ErrInvalidAsset)
@@ -742,7 +742,7 @@ func (deleteFailingStorage) Delete(context.Context, string) error {
 func seedThemeTestAccess(t *testing.T, db *bun.DB) {
 	t.Helper()
 	statements := []string{
-		`INSERT INTO organizations (id, name) VALUES ('org-1', 'OpenPost')`,
+		`INSERT INTO organizations (id, name) VALUES ('org-1', 'SocialFlow.ai')`,
 		`INSERT INTO organization_members (organization_id, user_id, role) VALUES ('org-1', 'admin-1', 'admin'), ('org-1', 'member-1', 'member')`,
 		`INSERT INTO workspaces (id, organization_id, name) VALUES ('workspace-1', 'org-1', 'Main')`,
 		`INSERT INTO workspace_members (workspace_id, user_id, role, status) VALUES ('workspace-1', 'admin-1', 'admin', 'active'), ('workspace-1', 'member-1', 'viewer', 'active')`,

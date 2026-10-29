@@ -31,7 +31,7 @@ func TestQueueReminderSweepSendsLowRunwayOncePerDepletionEpisode(t *testing.T) {
 	require.Len(t, jobs, 1)
 	require.NoError(t, service.HandleJob(t.Context(), jobs[0].Type, jobs[0].Payload))
 	require.Len(t, sender.messages, 1)
-	require.Equal(t, "Your OpenPost queue has 3 days left", sender.messages[0].Title)
+	require.Equal(t, "Your SocialFlow.ai queue has 3 days left", sender.messages[0].Title)
 	require.Contains(t, sender.messages[0].Body, "One")
 	require.Equal(t, "https://app.openpost.test/calendar", sender.messages[0].ActionURL)
 
@@ -88,7 +88,7 @@ func TestLowRunwayReminderSendsForAnAlreadyEmptyActivatedWorkspace(t *testing.T)
 	require.Len(t, jobs, 1)
 	require.NoError(t, service.HandleJob(t.Context(), jobs[0].Type, jobs[0].Payload))
 	require.Len(t, sender.messages, 1)
-	require.Equal(t, "Your OpenPost queue has 0 days left", sender.messages[0].Title)
+	require.Equal(t, "Your SocialFlow.ai queue has 0 days left", sender.messages[0].Title)
 }
 
 func TestQueueEmptiedReminderOnlyFiresAfterTheLastQueuedPublicationFinishes(t *testing.T) {
@@ -113,7 +113,7 @@ func TestQueueEmptiedReminderOnlyFiresAfterTheLastQueuedPublicationFinishes(t *t
 	require.Len(t, jobs, 1)
 	require.NoError(t, service.HandleJob(t.Context(), jobs[0].Type, jobs[0].Payload))
 	require.Len(t, sender.messages, 1)
-	require.Equal(t, "Your OpenPost queue is empty", sender.messages[0].Title)
+	require.Equal(t, "Your SocialFlow.ai queue is empty", sender.messages[0].Title)
 }
 
 func TestQueueEmptiedReminderCatchesQueueFilledAndDrainedBetweenSweeps(t *testing.T) {
@@ -179,7 +179,7 @@ func TestQueueEmptiedReminderSupersedesPendingLowRunwayEmail(t *testing.T) {
 		require.NoError(t, service.HandleJob(t.Context(), job.Type, job.Payload))
 	}
 	require.Len(t, sender.messages, 1)
-	require.Equal(t, "Your OpenPost queue is empty", sender.messages[0].Title)
+	require.Equal(t, "Your SocialFlow.ai queue is empty", sender.messages[0].Title)
 }
 
 func TestQueueReminderSettingsRequireActiveMembershipAndPropagateAuthorizationErrors(t *testing.T) {

@@ -134,7 +134,7 @@ it('does not offer replay while an ambiguous attempt is being reconciled', async
 	});
 
 	await expect
-		.element(screen.getByText('OpenPost is checking the provider before another send.'))
+		.element(screen.getByText('SocialFlow.ai is checking the provider before another send.'))
 		.toBeVisible();
 	await expect
 		.element(screen.getByRole('button', { name: 'Retry destination' }))

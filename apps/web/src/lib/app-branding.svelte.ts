@@ -25,7 +25,7 @@ export const appBranding = {
 		return state.dark;
 	},
 	title(value: string) {
-		return value.replaceAll('OpenPost', () => this.profile.display_name);
+		return value.replaceAll('SocialFlow.ai', () => this.profile.display_name);
 	},
 	apply(identity: string, active: boolean, profile: AppBrandingProfile, dark: boolean) {
 		state.identity = identity;

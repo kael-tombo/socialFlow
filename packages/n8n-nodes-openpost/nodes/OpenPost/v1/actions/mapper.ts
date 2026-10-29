@@ -18,7 +18,7 @@ export function findRequestMapper(resource: string, operation: string): Generate
   const mapper = generatedActionRequestMappers.find(
     (item) => item.actionKey === `${resource}.${operation}`,
   );
-  if (!mapper) throw new Error(`Unsupported OpenPost action ${resource}.${operation}.`);
+  if (!mapper) throw new Error(`Unsupported SocialFlow.ai action ${resource}.${operation}.`);
   return mapper;
 }
 

@@ -24,7 +24,7 @@ for (const path of ["/invite", "/cli/authorize", "/preview"]) {
         await page.goto(path);
         await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
         const recovery = page.getByRole("link", {
-          name: path === "/preview" ? "Open composer" : "Return to OpenPost",
+          name: path === "/preview" ? "Open composer" : "Return to SocialFlow.ai",
           exact: true,
         });
         await page.screenshot({

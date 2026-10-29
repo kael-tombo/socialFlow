@@ -25,7 +25,7 @@ import { normalizeOpenPostBaseUrl } from "./transport/url";
 
 export class OpenPostV1 implements INodeType {
   description: INodeTypeDescription = {
-    displayName: "OpenPost",
+    displayName: "SocialFlow.ai",
     name: "openPost",
     icon: { light: "file:openpost.svg", dark: "file:openpost.dark.svg" },
     group: ["output"],
@@ -33,9 +33,9 @@ export class OpenPostV1 implements INodeType {
     // n8n treats absence as opt-out, while its scanner requires an explicit declaration.
     usableAsTool: undefined,
     subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
-    description: "Publish, schedule, and inspect OpenPost Publications.",
+    description: "Publish, schedule, and inspect SocialFlow.ai Publications.",
     defaults: {
-      name: "OpenPost",
+      name: "SocialFlow.ai",
     },
     inputs: [NodeConnectionTypes.Main],
     outputs: [NodeConnectionTypes.Main],
@@ -142,7 +142,7 @@ export class OpenPostV1 implements INodeType {
             if (cursor && seenCursors.has(cursor)) {
               throw new NodeOperationError(
                 this.getNode(),
-                "OpenPost returned the same pagination cursor twice",
+                "SocialFlow.ai returned the same pagination cursor twice",
               );
             }
             if (cursor) seenCursors.add(cursor);

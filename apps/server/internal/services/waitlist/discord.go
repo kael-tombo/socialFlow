@@ -13,7 +13,7 @@ func (s *Service) notifyDiscord(ctx context.Context, item entry) error {
 		return errors.New("waitlist Discord webhook is not configured")
 	}
 	return discordwebhook.Send(ctx, s.client, s.webhookURL, map[string]any{
-		"username":         "OpenPost waitlist",
+		"username":         "SocialFlow.ai waitlist",
 		"allowed_mentions": map[string]any{"parse": []string{}},
 		"embeds": []map[string]any{{
 			"title":       "New Hosted waitlist signup",

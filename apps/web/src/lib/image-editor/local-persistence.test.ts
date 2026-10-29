@@ -12,7 +12,7 @@ const preset: ImageEditorPreset = {
 	profiles: ['instagram']
 };
 
-describe('guest OpenPost Image Editor document migration', () => {
+describe('guest SocialFlow.ai Image Editor document migration', () => {
 	it('collects local media from layers and page backgrounds without duplicates', () => {
 		const document = blankImageEditorDocument(preset);
 		document.pages[0].background = {

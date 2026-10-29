@@ -25,15 +25,15 @@ func resetContent(message ResetMessage) (messageContent, error) {
 		return messageContent{}, fmt.Errorf("password reset URL is required")
 	}
 	expires := message.ExpiresAt.UTC().Format(time.RFC1123)
-	text := "A password reset was requested for your OpenPost account.\n\n" +
+	text := "A password reset was requested for your SocialFlow.ai account.\n\n" +
 		"Open this link to choose a new password:\n" + resetURL + "\n\n" +
 		"This single-use link expires at " + expires + ".\n" +
 		"If you did not request this change, you can ignore this email.\n"
-	htmlBody := `<p>A password reset was requested for your OpenPost account.</p>` +
+	htmlBody := `<p>A password reset was requested for your SocialFlow.ai account.</p>` +
 		`<p><a href="` + html.EscapeString(resetURL) + `">Choose a new password</a></p>` +
 		`<p>This single-use link expires at ` + html.EscapeString(expires) + `.</p>` +
 		`<p>If you did not request this change, you can ignore this email.</p>`
-	return messageContent{Subject: "Reset your OpenPost password", Text: text, HTML: htmlBody}, nil
+	return messageContent{Subject: "Reset your SocialFlow.ai password", Text: text, HTML: htmlBody}, nil
 }
 
 func verificationContent(message VerificationMessage) (messageContent, error) {
@@ -42,14 +42,14 @@ func verificationContent(message VerificationMessage) (messageContent, error) {
 		return messageContent{}, fmt.Errorf("email verification code must contain six digits")
 	}
 	expires := message.ExpiresAt.UTC().Format(time.RFC1123)
-	text := "Use this code to verify your OpenPost email address:\n\n" + code + "\n\n" +
+	text := "Use this code to verify your SocialFlow.ai email address:\n\n" + code + "\n\n" +
 		"This code expires at " + expires + ".\n" +
-		"If you did not create an OpenPost account, you can ignore this email.\n"
-	htmlBody := `<p>Use this code to verify your OpenPost email address:</p>` +
+		"If you did not create an SocialFlow.ai account, you can ignore this email.\n"
+	htmlBody := `<p>Use this code to verify your SocialFlow.ai email address:</p>` +
 		`<p style="font-size:32px;font-weight:700;letter-spacing:0.2em">` + code + `</p>` +
 		`<p>This code expires at ` + html.EscapeString(expires) + `.</p>` +
-		`<p>If you did not create an OpenPost account, you can ignore this email.</p>`
-	return messageContent{Subject: "Verify your OpenPost email", Text: text, HTML: htmlBody}, nil
+		`<p>If you did not create an SocialFlow.ai account, you can ignore this email.</p>`
+	return messageContent{Subject: "Verify your SocialFlow.ai email", Text: text, HTML: htmlBody}, nil
 }
 
 func notificationContent(message notificationMessage) (messageContent, error) {
@@ -78,7 +78,7 @@ func notificationContent(message notificationMessage) (messageContent, error) {
 		textParts = append(textParts, body)
 	}
 	if actionURL != "" {
-		textParts = append(textParts, "Review in OpenPost:\n"+actionURL)
+		textParts = append(textParts, "Review in SocialFlow.ai:\n"+actionURL)
 	}
 	if preferencesURL != "" {
 		textParts = append(textParts, "Manage notification preferences:\n"+preferencesURL)
@@ -89,7 +89,7 @@ func notificationContent(message notificationMessage) (messageContent, error) {
 		htmlParts = append(htmlParts, `<p>`+html.EscapeString(body)+`</p>`)
 	}
 	if actionURL != "" {
-		htmlParts = append(htmlParts, `<p><a href="`+html.EscapeString(actionURL)+`">Review in OpenPost</a></p>`)
+		htmlParts = append(htmlParts, `<p><a href="`+html.EscapeString(actionURL)+`">Review in SocialFlow.ai</a></p>`)
 	}
 	if preferencesURL != "" {
 		htmlParts = append(htmlParts, `<p style="font-size:12px"><a href="`+
@@ -97,7 +97,7 @@ func notificationContent(message notificationMessage) (messageContent, error) {
 	}
 
 	return messageContent{
-		Subject: "OpenPost: " + title,
+		Subject: "SocialFlow.ai: " + title,
 		Text:    strings.Join(textParts, "\n\n") + "\n",
 		HTML:    strings.Join(htmlParts, ""),
 	}, nil
@@ -125,14 +125,14 @@ func workspaceInvitationContent(message transactionalmail.WorkspaceInvitationMes
 		return messageContent{}, fmt.Errorf("workspace invitation expiry is required")
 	}
 	expires := message.ExpiresAt.UTC().Format(time.RFC1123)
-	subject := "You are invited to " + workspaceName + " on OpenPost"
-	text := inviterName + " invited you to join " + workspaceName + " on OpenPost.\n\n" +
+	subject := "You are invited to " + workspaceName + " on SocialFlow.ai"
+	text := inviterName + " invited you to join " + workspaceName + " on SocialFlow.ai.\n\n" +
 		"Role: " + roleLabel + "\n" +
 		"Accept the invitation:\n" + acceptURL + "\n\n" +
 		"This single-use link expires at " + expires + ".\n" +
 		"If you were not expecting this invitation, you can ignore this email.\n"
 	htmlBody := `<p><strong>` + html.EscapeString(inviterName) + `</strong> invited you to join <strong>` +
-		html.EscapeString(workspaceName) + `</strong> on OpenPost.</p>` +
+		html.EscapeString(workspaceName) + `</strong> on SocialFlow.ai.</p>` +
 		`<p>Role: ` + html.EscapeString(roleLabel) + `</p>` +
 		`<p><a href="` + html.EscapeString(acceptURL) + `">Accept invitation</a></p>` +
 		`<p>This single-use link expires at ` + html.EscapeString(expires) + `.</p>` +

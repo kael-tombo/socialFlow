@@ -9,7 +9,7 @@
 	<header>
 		<h1>A business to run.<br /><HeroAccent>A story to tell.</HeroAccent></h1>
 		<p>
-			You made something useful. Now people need to hear about it.<br class="hidden sm:block" /> OpenPost
+			You made something useful. Now people need to hear about it.<br class="hidden sm:block" /> SocialFlow.ai
 			helps you do that without making social media your whole job.
 		</p>
 	</header>
@@ -22,7 +22,7 @@
 				apps to open.
 			</p>
 			<p>
-				OpenPost puts that work in one place. Start with what you’re building or learning. Write the
+				SocialFlow.ai puts that work in one place. Start with what you’re building or learning. Write the
 				post, make the media, and plan when to share it. Keep your drafts and assets ready for next
 				time.
 			</p>
@@ -33,7 +33,7 @@
 		</div>
 		<aside>
 			<h2>Independent.<br />Made in Porto.</h2>
-			<p>OpenPost is built and operated by Rodrigo Dias in Porto, Portugal.</p>
+			<p>SocialFlow.ai is built and operated by Rodrigo Dias in Porto, Portugal.</p>
 			<p>
 				It is a small, independent product for people building businesses of their own. Questions
 				and feedback reach the person making it.
@@ -52,11 +52,11 @@
 			<h3>See what happened.</h3>
 			<p>
 				Know what is drafted, planned, published, or needs attention. When a channel cannot do
-				something, OpenPost should tell you.
+				something, SocialFlow.ai should tell you.
 			</p>
 			<h3>Keep your options.</h3>
 			<p>
-				Use OpenPost in the cloud, or run the open-source software on your own server. The source is
+				Use SocialFlow.ai in the cloud, or run the open-source software on your own server. The source is
 				public.
 			</p>
 			<a href={githubUrl} class="focus-ring"
@@ -66,7 +66,7 @@
 	</section>
 	<div class="about-action">
 		<Button href={managedSignupUrl} size="lg"
-			>Try OpenPost <ArrowRight data-icon="inline-end" /></Button
+			>Try SocialFlow.ai <ArrowRight data-icon="inline-end" /></Button
 		><a href="/#features" class="focus-ring">See what you can make <ArrowRight size={16} /></a>
 	</div>
 </article>

@@ -349,7 +349,7 @@ func (s *Service) sendMessageThroughFence(
 func (s *Service) recordSendFailure(ctx context.Context, message models.DirectMessage, conversation models.Conversation, account models.SocialAccount, sendErr error) {
 	errorMessage := "The provider rejected this message."
 	if providerwrite.IsAmbiguous(sendErr) {
-		errorMessage = "The provider may have accepted this message. OpenPost did not send it again."
+		errorMessage = "The provider may have accepted this message. SocialFlow.ai did not send it again."
 	}
 	status := "failed"
 	if providerwrite.IsAmbiguous(sendErr) {

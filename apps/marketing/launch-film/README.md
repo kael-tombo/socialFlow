@@ -1,6 +1,6 @@
-# OpenPost launch film
+# SocialFlow.ai launch film
 
-A 32-second, 1920x1080, 60 fps launch film made in code. `film.js` draws a simplified version of the OpenPost
+A 32-second, 1920x1080, 60 fps launch film made in code. `film.js` draws a simplified version of the SocialFlow.ai
 interface in the Dither theme, using the Lucide icon set, the integration marks, the feature artwork and the
 Converge logo, so every part of it can move. Its sound is made in code with
 [earshot](https://github.com/Leonxlnx/earshot).

@@ -2799,6 +2799,6 @@ export function provideImageEditor(editor: ImageEditorController): ImageEditorCo
 
 export function useImageEditor(): ImageEditorController {
 	const editor = getContext<ImageEditorController>(IMAGE_EDITOR_CONTEXT);
-	if (!editor) throw new Error('OpenPost Image Editor editor context is missing.');
+	if (!editor) throw new Error('SocialFlow.ai Image Editor editor context is missing.');
 	return editor;
 }

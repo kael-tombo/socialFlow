@@ -16,7 +16,7 @@ test("landing product preview follows the visitor's selection", async ({ page })
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/");
   await dismissTelemetryConsent(page);
-  const picker = page.getByRole("group", { name: "Explore OpenPost" });
+  const picker = page.getByRole("group", { name: "Explore SocialFlow.ai" });
   for (const name of [
     "Image Editor",
     "Video Editor",
@@ -93,7 +93,7 @@ test("meme screenshot does not include the blurred dialog backdrop at its sides"
     await page.emulateMedia({ colorScheme });
     await page.goto("/");
     const image = page.getByRole("img", {
-      name: "OpenPost meme creator with editable captions and a rendered Drakeposting preview",
+      name: "SocialFlow.ai meme creator with editable captions and a rendered Drakeposting preview",
     });
     await image.scrollIntoViewIfNeeded();
     await expect
@@ -241,9 +241,9 @@ test("landing keeps trial terms and its tour accessible without JavaScript", asy
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("You build the business.");
   await expect(page.getByText("14 days free. $0 today. Card required.").first()).toBeVisible();
-  await expect(page.getByRole("group", { name: "Explore OpenPost" })).toBeVisible();
+  await expect(page.getByRole("group", { name: "Explore SocialFlow.ai" })).toBeVisible();
   for (const button of await page
-    .getByRole("group", { name: "Explore OpenPost" })
+    .getByRole("group", { name: "Explore SocialFlow.ai" })
     .getByRole("button")
     .all()) {
     await expect(button).toBeDisabled();
@@ -311,7 +311,7 @@ for (const width of [1440, 390, 320]) {
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
       ).toBe(true);
-      await expect(page.getByRole("group", { name: "Explore OpenPost" })).toBeVisible();
+      await expect(page.getByRole("group", { name: "Explore SocialFlow.ai" })).toBeVisible();
       await expect
         .poll(() =>
           page

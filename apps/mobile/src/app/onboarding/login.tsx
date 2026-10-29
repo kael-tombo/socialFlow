@@ -88,7 +88,7 @@ export default function LoginScreen() {
           <BodyText style={styles.subtitle}>
             {mfaToken
               ? "Enter the 6-digit code from your authenticator app."
-              : "Use your OpenPost account."}
+              : "Use your SocialFlow.ai account."}
           </BodyText>
 
           {mfaToken ? (

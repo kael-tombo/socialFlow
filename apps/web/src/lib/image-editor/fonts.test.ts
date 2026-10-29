@@ -11,7 +11,7 @@ const bangers: ImageEditorBrandFont = {
 	style: 'normal'
 };
 
-describe('OpenPost Image Editor brand fonts', () => {
+describe('SocialFlow.ai Image Editor brand fonts', () => {
 	it('does not treat an unregistered family as loaded', () => {
 		expect(hasRegisteredImageEditorBrandFont(bangers, [])).toBe(false);
 	});

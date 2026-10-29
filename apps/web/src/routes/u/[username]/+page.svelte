@@ -53,7 +53,7 @@
 				? (readQueryErrorMessage(authConfigurationQuery.error) ?? '')
 				: ''
 	);
-	const profileName = $derived(profile?.display_name || profile?.username || 'OpenPost');
+	const profileName = $derived(profile?.display_name || profile?.username || 'SocialFlow.ai');
 	const title = $derived(profile ? `${profileName} (@${profile.username})` : 'Public profile');
 	const activityCells = $derived.by<ActivityCell[]>(() => {
 		const days = profile?.activity ?? [];
@@ -144,8 +144,8 @@
 	<meta
 		name="description"
 		content={profile
-			? `See ${profileName}'s public publishing profile on OpenPost.`
-			: 'Public OpenPost publishing profile.'}
+			? `See ${profileName}'s public publishing profile on SocialFlow.ai.`
+			: 'Public SocialFlow.ai publishing profile.'}
 	/>
 	<meta name="robots" content={profile ? 'index, follow' : 'noindex'} />
 </svelte:head>
@@ -159,7 +159,7 @@
 			>
 				<Logo width={34} height={27} decorative />
 				<span class="font-brand text-sm leading-none font-semibold tracking-[-0.02em]"
-					>OpenPost</span
+					>SocialFlow.ai</span
 				>
 			</a>
 			{#if $auth.isAuthenticated}
@@ -214,7 +214,7 @@
 					<h1 data-theme-type="title" data-app-title class="mt-4 text-balance">
 						{m.public_profile_unavailable_body()}
 					</h1>
-					<Button href={resolve('/' as const)} class="mt-8">Visit OpenPost</Button>
+					<Button href={resolve('/' as const)} class="mt-8">Visit SocialFlow.ai</Button>
 				</div>
 			</div>
 		{:else if loadState === 'error'}

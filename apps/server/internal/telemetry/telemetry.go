@@ -149,14 +149,14 @@ type Config struct {
 }
 
 type BrowserConfig struct {
-	Enabled      bool   `json:"enabled" doc:"Whether browser telemetry is enabled for this OpenPost instance"`
+	Enabled      bool   `json:"enabled" doc:"Whether browser telemetry is enabled for this SocialFlow.ai instance"`
 	ProjectToken string `json:"project_token,omitempty" doc:"Browser-safe PostHog project token"`
 	APIHost      string `json:"api_host,omitempty" doc:"PostHog browser ingestion endpoint or proxy"`
 	UIHost       string `json:"ui_host,omitempty" doc:"PostHog user interface host used for generated links"`
 	Environment  string `json:"environment" doc:"Deployment environment attached to telemetry"`
-	Edition      string `json:"edition" doc:"Configured OpenPost edition"`
-	Version      string `json:"version" doc:"Running OpenPost version"`
-	Revision     string `json:"revision" doc:"Running OpenPost source revision"`
+	Edition      string `json:"edition" doc:"Configured SocialFlow.ai edition"`
+	Version      string `json:"version" doc:"Running SocialFlow.ai version"`
+	Revision     string `json:"revision" doc:"Running SocialFlow.ai source revision"`
 }
 
 type Event struct {
@@ -325,11 +325,11 @@ func (r *postHogRecorder) CaptureException(ctx context.Context, exception Except
 func newExceptionMessage(exception Exception, config Config, timestamp time.Time) posthog.Exception {
 	title := strings.TrimSpace(exception.Title)
 	if title == "" {
-		title = "OpenPost error"
+		title = "SocialFlow.ai error"
 	}
 	description := strings.TrimSpace(exception.Description)
 	if description == "" {
-		description = "An OpenPost operation failed"
+		description = "An SocialFlow.ai operation failed"
 	}
 	message := posthog.NewDefaultException(
 		timestamp,

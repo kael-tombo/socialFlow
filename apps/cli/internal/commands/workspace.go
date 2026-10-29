@@ -12,7 +12,7 @@ import (
 func newWorkspaceCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "workspace",
-		Short: "Manage the active OpenPost workspace",
+		Short: "Manage the active SocialFlow.ai workspace",
 	}
 	cmd.AddCommand(newWorkspaceListCmd())
 	cmd.AddCommand(newWorkspaceUseCmd())

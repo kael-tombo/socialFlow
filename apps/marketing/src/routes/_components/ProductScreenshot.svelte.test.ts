@@ -22,7 +22,7 @@ const composer: ScreenshotProps = {
 	darkSrcset:
 		'/assets/screenshots/main-dark-768.webp 768w, /assets/screenshots/main-dark-1536.webp 1536w, /assets/screenshots/main-dark.webp 2880w',
 	sizes: '(max-width: 800px) calc(100vw - 32px), 1248px',
-	alt: 'OpenPost composer with a draft',
+	alt: 'SocialFlow.ai composer with a draft',
 	label: 'Compose'
 };
 

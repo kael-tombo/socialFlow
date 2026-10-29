@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "owner": "OpenPost public-surface operators",
+  "owner": "SocialFlow.ai public-surface operators",
   "rule_ref_prefix": "openpost:markdown:",
   "api_base_url": "https://api.cloudflare.com/client/v4",
   "limits": {

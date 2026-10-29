@@ -56,10 +56,10 @@ Deliveries are durable jobs. The event record, delivery record, and queued job a
 
 Each request includes:
 
-- `X-SocialFlow.ai-Delivery`, the delivery ID;
-- `X-SocialFlow.ai-Event`, the lifecycle event type;
-- `X-SocialFlow.ai-Timestamp`, the timestamp used for signing;
-- `X-SocialFlow.ai-Signature`, `v1=` followed by the lowercase HMAC-SHA256 digest.
+- `X-OpenPost-Delivery`, the delivery ID;
+- `X-OpenPost-Event`, the lifecycle event type;
+- `X-OpenPost-Timestamp`, the timestamp used for signing;
+- `X-OpenPost-Signature`, `v1=` followed by the lowercase HMAC-SHA256 digest.
 
 Compute the HMAC over `<timestamp>.<raw request body>` with the signing secret, compare it in constant time, and reject stale timestamps before processing the event. Return any `2xx` status only after the event has been accepted durably.
 

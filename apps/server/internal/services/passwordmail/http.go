@@ -110,7 +110,7 @@ func (s *ResendSender) send(ctx context.Context, recipient, idempotencyKey strin
 	}
 	headers := map[string]string{
 		"Authorization": "Bearer " + s.apiKey,
-		"User-Agent":    "OpenPost transactional email",
+		"User-Agent":    "SocialFlow.ai transactional email",
 	}
 	if key := strings.TrimSpace(idempotencyKey); key != "" {
 		headers["Idempotency-Key"] = key

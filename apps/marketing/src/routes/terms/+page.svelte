@@ -12,7 +12,7 @@
 			Terms of Service
 		</h1>
 		<p class="mt-5 text-lg leading-8 text-muted-foreground">
-			Terms for the hosted OpenPost service. The open-source license governs self-hosted software.
+			Terms for the hosted SocialFlow.ai service. The open-source license governs self-hosted software.
 		</p>
 		<a href={resolve('/pricing')} class="mt-5 inline-flex text-sm font-medium text-primary"
 			>Pricing</a
@@ -28,26 +28,26 @@
 		<h2>1. Agreement and operator</h2>
 		<p>
 			These Terms of Service form an agreement between you and Rodrigo Dias, a sole trader in Porto,
-			Portugal who operates the OpenPost trade name and the hosted OpenPost service at
+			Portugal who operates the SocialFlow.ai trade name and the hosted SocialFlow.ai service at
 			<a href="https://app.openpo.st">app.openpo.st</a>. By creating an account or using the hosted
 			service, you agree to these terms and acknowledge the
 			<a href={resolve('/privacy')}>Privacy Policy</a>. Contact
 			<a href="mailto:openpost@rgo.pt">openpost@rgo.pt</a> with legal or account questions.
 		</p>
 		<p>
-			You must be at least 18 and able to enter a binding agreement. If you use OpenPost for an
+			You must be at least 18 and able to enter a binding agreement. If you use SocialFlow.ai for an
 			organization, you confirm that you can bind that organization.
 		</p>
 
 		<h2>2. The service</h2>
 		<p>
-			OpenPost provides tools to draft, store, preview, schedule, automate, and publish content to
+			SocialFlow.ai provides tools to draft, store, preview, schedule, automate, and publish content to
 			connected social accounts. Features can include workspaces, teams, media storage, a CLI, API,
 			and MCP tools. Access, review, plan limits, request limits, media rules, and account
-			eligibility differ by social network and can change outside OpenPost's control.
+			eligibility differ by social network and can change outside SocialFlow.ai's control.
 		</p>
 		<p>
-			A feature marked implemented or supported is present in OpenPost. It does not guarantee that
+			A feature marked implemented or supported is present in SocialFlow.ai. It does not guarantee that
 			every social network will approve or enable it for your account. You must check the content
 			and accounts before you publish.
 		</p>
@@ -63,24 +63,24 @@
 
 		<h2>4. Connected social networks</h2>
 		<p>
-			You allow OpenPost to access connected social networks and perform the actions you request.
+			You allow SocialFlow.ai to access connected social networks and perform the actions you request.
 			You must have permission to use each account, page, channel, key, and item of content. Your
 			use remains subject to each social network's terms, developer policies, and privacy rules.
 		</p>
 		<p>
-			You can disconnect an account in OpenPost and remove access on the social network. A social
+			You can disconnect an account in SocialFlow.ai and remove access on the social network. A social
 			network may suspend an app, reject content, delay work, change an API, or remove access.
-			OpenPost is not responsible for its service, moderation decisions, policies, outages, or data
+			SocialFlow.ai is not responsible for its service, moderation decisions, policies, outages, or data
 			handling.
 		</p>
 		<p>
-			By using OpenPost's YouTube integration, you also agree to the
+			By using SocialFlow.ai's YouTube integration, you also agree to the
 			<a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>.
 		</p>
 
 		<h2>5. Your content</h2>
 		<p>
-			You keep ownership of content you submit. You give OpenPost a limited, worldwide license to
+			You keep ownership of content you submit. You give SocialFlow.ai a limited, worldwide license to
 			host, copy, process, adapt for social network rules, send, and display that content only as
 			needed to operate, secure, and support the service and perform your instructions. This license
 			ends when the content is deleted, subject to short-lived backups and legal retention.
@@ -88,11 +88,11 @@
 		<p>
 			You confirm that your content and instructions do not violate law, intellectual-property,
 			privacy, publicity, confidentiality, consumer-protection, advertising, election, or social
-			network rules. OpenPost does not review or endorse content before publication.
+			network rules. SocialFlow.ai does not review or endorse content before publication.
 		</p>
 
 		<h2>6. Acceptable use</h2>
-		<p>You must not use OpenPost to:</p>
+		<p>You must not use SocialFlow.ai to:</p>
 		<ul>
 			<li>break the law, infringe rights, threaten people, or help abuse or exploitation;</li>
 			<li>
@@ -115,7 +115,7 @@
 			usage, seats, storage, and applicable taxes are shown before purchase. Paddle is the Merchant
 			of Record for orders processed by Paddle. Paddle processes the order, collects payment and
 			taxes, issues the customer document, and handles payment-related customer inquiries, returns,
-			and refunds. OpenPost provides the service and product support. Paddle's buyer terms also
+			and refunds. SocialFlow.ai provides the service and product support. Paddle's buyer terms also
 			apply to a Paddle order. If checkout identifies another payment provider, that provider
 			processes the order under the terms shown at checkout.
 		</p>
@@ -164,7 +164,7 @@
 
 		<h2>10. Open-source software</h2>
 		<p>
-			The OpenPost source code is available under the license in its repository. That license
+			The SocialFlow.ai source code is available under the license in its repository. That license
 			governs your copying, modification, and self-hosting of the software. These terms govern only
 			the hosted service and related accounts, subscriptions, and support.
 		</p>
@@ -172,7 +172,7 @@
 		<h2>11. Disclaimers</h2>
 		<p>
 			To the extent permitted by law, the service is provided as available and without implied
-			warranties beyond those that cannot legally be excluded. OpenPost does not guarantee audience
+			warranties beyond those that cannot legally be excluded. SocialFlow.ai does not guarantee audience
 			reach, engagement, social network approval, publication at an exact second, storage by a
 			social network, or compliance of your content. Nothing in these terms excludes mandatory
 			consumer rights.
@@ -180,7 +180,7 @@
 
 		<h2>12. Liability</h2>
 		<p>
-			OpenPost is not liable for indirect, incidental, special, consequential, or lost-profit
+			SocialFlow.ai is not liable for indirect, incidental, special, consequential, or lost-profit
 			damages where such exclusions are lawful. For claims arising from the hosted service, total
 			liability is limited to the amount you paid for the service during the 12 months before the
 			event giving rise to the claim. This limit does not apply to fraud, wilful misconduct, death
@@ -202,7 +202,7 @@
 			We may update these terms for legal, security, or service changes. We will provide reasonable
 			notice of material changes. Continued use after the stated effective date means you accept the
 			updated terms; if you do not, stop using the service and cancel your plan. A substantive
-			change updates the policy version and requires acceptance in OpenPost. Corrections to
+			change updates the policy version and requires acceptance in SocialFlow.ai. Corrections to
 			spelling, formatting, or links that do not change meaning keep the same version.
 		</p>
 		<p>

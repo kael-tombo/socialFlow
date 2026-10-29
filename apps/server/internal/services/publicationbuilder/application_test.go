@@ -223,7 +223,7 @@ func TestApplicationFailureNeverReturnsOrStoresPrivateModelText(t *testing.T) {
 			payload, err := EncodeBuildJobPayload(build.ID)
 			require.NoError(t, err)
 			err = application.HandleJob(t.Context(), jobregistry.TypePublicationBuild, payload)
-			require.EqualError(t, err, "OpenPost could not build this post. You can retry it.")
+			require.EqualError(t, err, "SocialFlow.ai could not build this post. You can retry it.")
 			require.NotContains(t, err.Error(), "private customer")
 			var coded interface{ FailureCode() string }
 			require.ErrorAs(t, err, &coded)
@@ -234,7 +234,7 @@ func TestApplicationFailureNeverReturnsOrStoresPrivateModelText(t *testing.T) {
 			require.NoError(t, err)
 			require.Equal(t, BuildStateFailed, failed.State)
 			require.Equal(t, expectedCode, failed.ErrorCode)
-			require.Equal(t, "OpenPost could not build this post. You can retry it.", failed.ErrorMessage)
+			require.Equal(t, "SocialFlow.ai could not build this post. You can retry it.", failed.ErrorMessage)
 		})
 	}
 }

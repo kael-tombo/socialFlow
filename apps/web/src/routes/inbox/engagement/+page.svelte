@@ -1,7 +1,7 @@
 <!--
 	Direction — Communications / Engagement
 	Intent: A scan-first operations queue for people managing replies across several accounts.
-	World: Existing OpenPost application shell, typography, controls, and neutral surfaces.
+	World: Existing SocialFlow.ai application shell, typography, controls, and neutral surfaces.
 	Density: Compact list rows with one expanded response area; filters stay above the queue.
 	Composition: Provider identity and author lead; content and actions follow in reading order.
 	Responsive: One column at every width, with controls wrapping into touch-safe rows on phones.

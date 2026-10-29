@@ -17,7 +17,7 @@ export function startProfileSpan(area: string, operation: string): (() => void) 
 	return () => {
 		if (finished) return;
 		finished = true;
-		const name = `OpenPost/${area}/${operation}`;
+		const name = `SocialFlow.ai/${area}/${operation}`;
 		performance.measure(name, {
 			start,
 			end: performance.now(),
@@ -25,7 +25,7 @@ export function startProfileSpan(area: string, operation: string): (() => void) 
 				devtools: {
 					dataType: 'track-entry',
 					track: area,
-					trackGroup: 'OpenPost',
+					trackGroup: 'SocialFlow.ai',
 					color: 'tertiary'
 				}
 			}

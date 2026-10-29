@@ -619,7 +619,7 @@ func (h *ImageEditorHandler) registerReturnTokens(api huma.API) {
 		OperationID:   "create-image-editor-return-token",
 		Method:        http.MethodPost,
 		Path:          "/image-editor/return-tokens",
-		Summary:       "Create a one-time OpenPost Image Editor composer return token",
+		Summary:       "Create a one-time SocialFlow.ai Image Editor composer return token",
 		Tags:          []string{tagImageEditor},
 		DefaultStatus: http.StatusCreated,
 		Middlewares:   huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
@@ -629,7 +629,7 @@ func (h *ImageEditorHandler) registerReturnTokens(api huma.API) {
 		OperationID: "complete-image-editor-return-token",
 		Method:      http.MethodPost,
 		Path:        "/image-editor/return-tokens/{token}/complete",
-		Summary:     "Store ordered OpenPost Image Editor exports for a composer return",
+		Summary:     "Store ordered SocialFlow.ai Image Editor exports for a composer return",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404, 409},
@@ -638,7 +638,7 @@ func (h *ImageEditorHandler) registerReturnTokens(api huma.API) {
 		OperationID: "consume-image-editor-return-token",
 		Method:      http.MethodPost,
 		Path:        "/image-editor/return-tokens/{token}/consume",
-		Summary:     "Consume a completed OpenPost Image Editor composer return token",
+		Summary:     "Consume a completed SocialFlow.ai Image Editor composer return token",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404, 409},
@@ -650,7 +650,7 @@ func (h *ImageEditorHandler) registerPresets(api huma.API) {
 		OperationID: "list-image-editor-presets",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/presets",
-		Summary:     "List OpenPost Image Editor presets and runtime configuration",
+		Summary:     "List SocialFlow.ai Image Editor presets and runtime configuration",
 		Tags:        []string{tagImageEditor},
 	}, func(_ context.Context, _ *struct{}) (*ImageEditorPresetOutput, error) {
 		out := &ImageEditorPresetOutput{}
@@ -667,7 +667,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID: "list-image-editor-designs",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/designs",
-		Summary:     "List OpenPost Image Editor designs",
+		Summary:     "List SocialFlow.ai Image Editor designs",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403},
@@ -677,7 +677,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID:   "create-image-editor-design",
 		Method:        http.MethodPost,
 		Path:          "/image-editor/designs",
-		Summary:       "Create an OpenPost Image Editor design",
+		Summary:       "Create an SocialFlow.ai Image Editor design",
 		Tags:          []string{tagImageEditor},
 		DefaultStatus: http.StatusCreated,
 		Middlewares:   huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
@@ -688,7 +688,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID: "get-image-editor-design",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/designs/{id}",
-		Summary:     "Get an OpenPost Image Editor design",
+		Summary:     "Get an SocialFlow.ai Image Editor design",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{403, 404},
@@ -696,7 +696,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 
 	huma.Register(api, huma.Operation{
 		OperationID: "restore-image-editor-design", Method: http.MethodPost,
-		Path: "/image-editor/designs/{id}/restore", Summary: "Restore a trashed OpenPost Image Editor design",
+		Path: "/image-editor/designs/{id}/restore", Summary: "Restore a trashed SocialFlow.ai Image Editor design",
 		Tags: []string{tagImageEditor}, Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors: []int{403, 404},
 	}, h.restoreDesign)
@@ -705,7 +705,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID: "update-image-editor-design",
 		Method:      http.MethodPatch,
 		Path:        "/image-editor/designs/{id}",
-		Summary:     "Save an OpenPost Image Editor design with optimistic concurrency",
+		Summary:     "Save an SocialFlow.ai Image Editor design with optimistic concurrency",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404, 409},
@@ -715,7 +715,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID: "delete-image-editor-design",
 		Method:      http.MethodDelete,
 		Path:        "/image-editor/designs/{id}",
-		Summary:     "Move an OpenPost Image Editor design to trash",
+		Summary:     "Move an SocialFlow.ai Image Editor design to trash",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{403, 404},
@@ -725,7 +725,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID: "toggle-image-editor-design-favorite",
 		Method:      http.MethodPatch,
 		Path:        "/image-editor/designs/{id}/favorite",
-		Summary:     "Toggle an OpenPost Image Editor design favorite",
+		Summary:     "Toggle an SocialFlow.ai Image Editor design favorite",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{403, 404},
@@ -735,7 +735,7 @@ func (h *ImageEditorHandler) registerDesigns(api huma.API) {
 		OperationID: "duplicate-image-editor-design",
 		Method:      http.MethodPost,
 		Path:        "/image-editor/designs/{id}/duplicate",
-		Summary:     "Duplicate an OpenPost Image Editor design",
+		Summary:     "Duplicate an SocialFlow.ai Image Editor design",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{403, 404},
@@ -747,7 +747,7 @@ func (h *ImageEditorHandler) registerRevisions(api huma.API) {
 		OperationID: "list-image-editor-design-revisions",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/designs/{id}/revisions",
-		Summary:     "List OpenPost Image Editor design recovery revisions and checkpoints",
+		Summary:     "List SocialFlow.ai Image Editor design recovery revisions and checkpoints",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404},
@@ -757,7 +757,7 @@ func (h *ImageEditorHandler) registerRevisions(api huma.API) {
 		OperationID: "get-image-editor-design-revision",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/designs/{id}/revisions/{revision_id}",
-		Summary:     "Inspect an OpenPost Image Editor design revision",
+		Summary:     "Inspect an SocialFlow.ai Image Editor design revision",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404},
@@ -767,7 +767,7 @@ func (h *ImageEditorHandler) registerRevisions(api huma.API) {
 		OperationID: "delete-image-editor-design-checkpoint",
 		Method:      http.MethodDelete,
 		Path:        "/image-editor/designs/{id}/revisions/{revision_id}",
-		Summary:     "Remove a named OpenPost Image Editor checkpoint",
+		Summary:     "Remove a named SocialFlow.ai Image Editor checkpoint",
 		Description: "Removes only the selected named checkpoint and its snapshot references. The current design and other versions remain unchanged.",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
@@ -778,7 +778,7 @@ func (h *ImageEditorHandler) registerRevisions(api huma.API) {
 		OperationID: "create-image-editor-design-checkpoint",
 		Method:      http.MethodPost,
 		Path:        "/image-editor/designs/{id}/revisions",
-		Summary:     "Create a named OpenPost Image Editor design checkpoint",
+		Summary:     "Create a named SocialFlow.ai Image Editor design checkpoint",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404, 409},
@@ -788,7 +788,7 @@ func (h *ImageEditorHandler) registerRevisions(api huma.API) {
 		OperationID: "restore-image-editor-design-revision",
 		Method:      http.MethodPost,
 		Path:        "/image-editor/designs/{id}/revisions/{revision_id}/restore",
-		Summary:     "Restore an OpenPost Image Editor design revision as a new head",
+		Summary:     "Restore an SocialFlow.ai Image Editor design revision as a new head",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404, 409},
@@ -797,7 +797,7 @@ func (h *ImageEditorHandler) registerRevisions(api huma.API) {
 
 func (h *ImageEditorHandler) ensureEnabled() error {
 	if !h.enabled {
-		return huma.Error404NotFound("OpenPost Image Editor is disabled")
+		return huma.Error404NotFound("SocialFlow.ai Image Editor is disabled")
 	}
 	return nil
 }
@@ -844,7 +844,7 @@ func (h *ImageEditorHandler) listDesigns(ctx context.Context, input *ListImageEd
 	}
 	total, err := query.Count(ctx)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to count OpenPost Image Editor designs")
+		return nil, huma.Error500InternalServerError("failed to count SocialFlow.ai Image Editor designs")
 	}
 	var rows []struct {
 		models.DesignDocument
@@ -877,7 +877,7 @@ func (h *ImageEditorHandler) listDesigns(ctx context.Context, input *ListImageEd
 		Offset(input.Offset).
 		Scan(ctx, &rows)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to list OpenPost Image Editor designs")
+		return nil, huma.Error500InternalServerError("failed to list SocialFlow.ai Image Editor designs")
 	}
 	out := &ListImageEditorDesignsOutput{}
 	out.Body.Total = total
@@ -992,7 +992,7 @@ func (h *ImageEditorHandler) completeDesignCreation(ctx context.Context, documen
 				return &CreateImageEditorDesignOutput{Body: *response}, nil
 			}
 		}
-		return nil, huma.Error500InternalServerError("failed to create OpenPost Image Editor design")
+		return nil, huma.Error500InternalServerError("failed to create SocialFlow.ai Image Editor design")
 	}
 	response, err := h.documentResponse(ctx, document.ID)
 	if err != nil {
@@ -1040,7 +1040,7 @@ func (h *ImageEditorHandler) resolveCreateDesignRequest(
 		Where("id = ? AND workspace_id = ? AND created_by_id = ?", documentID, workspaceID, userID).
 		Exists(ctx)
 	if err != nil {
-		return "", nil, huma.Error500InternalServerError("failed to check OpenPost Image Editor design request")
+		return "", nil, huma.Error500InternalServerError("failed to check SocialFlow.ai Image Editor design request")
 	}
 	if !exists {
 		return documentID, nil, nil
@@ -1125,7 +1125,7 @@ func (h *ImageEditorHandler) updateDesign(ctx context.Context, input *UpdateImag
 		return nil, err
 	}
 	if document.Revision != input.Body.ExpectedRevision {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor design changed elsewhere; reload or save a copy")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor design changed elsewhere; reload or save a copy")
 	}
 	if err := h.validateMediaReferences(
 		ctx,
@@ -1184,11 +1184,11 @@ func (h *ImageEditorHandler) updateDesign(ctx context.Context, input *UpdateImag
 		)
 	})
 	if errors.Is(err, errImageEditorRevisionConflict) {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor design changed elsewhere; reload or save a copy")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor design changed elsewhere; reload or save a copy")
 	}
 	if err != nil {
-		log.Printf("failed to save OpenPost Image Editor design %s: %v", document.ID, err)
-		return nil, huma.Error500InternalServerError("failed to save OpenPost Image Editor design")
+		log.Printf("failed to save SocialFlow.ai Image Editor design %s: %v", document.ID, err)
+		return nil, huma.Error500InternalServerError("failed to save SocialFlow.ai Image Editor design")
 	}
 	response, err := h.documentResponse(ctx, document.ID)
 	if err != nil {
@@ -1216,11 +1216,11 @@ func (h *ImageEditorHandler) deleteDesign(ctx context.Context, input *DeleteImag
 		Where("id = ? AND deleted_at IS NULL", document.ID).
 		Exec(ctx)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to delete OpenPost Image Editor design")
+		return nil, huma.Error500InternalServerError("failed to delete SocialFlow.ai Image Editor design")
 	}
 	affected, _ := result.RowsAffected()
 	if affected == 0 {
-		return nil, huma.Error404NotFound("OpenPost Image Editor design not found")
+		return nil, huma.Error404NotFound("SocialFlow.ai Image Editor design not found")
 	}
 	return &DeleteImageEditorDesignOutput{Body: struct {
 		Deleted bool `json:"deleted"`
@@ -1234,7 +1234,7 @@ func (h *ImageEditorHandler) restoreDesign(ctx context.Context, input *DeleteIma
 	var document models.DesignDocument
 	err := h.db.NewSelect().Model(&document).Where("id = ? AND deleted_at IS NOT NULL", input.PathID).Scan(ctx)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, huma.Error404NotFound("trashed OpenPost Image Editor design not found")
+		return nil, huma.Error404NotFound("trashed SocialFlow.ai Image Editor design not found")
 	}
 	if err != nil {
 		return nil, huma.Error500InternalServerError("failed to load trashed design")
@@ -1281,7 +1281,7 @@ func (h *ImageEditorHandler) toggleDesignFavorite(ctx context.Context, input *To
 		WherePK().
 		Exec(ctx)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to update OpenPost Image Editor design favorite")
+		return nil, huma.Error500InternalServerError("failed to update SocialFlow.ai Image Editor design favorite")
 	}
 	out := &ToggleImageEditorDesignFavoriteOutput{}
 	out.Body.IsFavorite = document.IsFavorite
@@ -1330,7 +1330,7 @@ func (h *ImageEditorHandler) duplicateDesign(ctx context.Context, input *Duplica
 		}
 		return replaceImageEditorMediaReferences(txCtx, tx, document, payload.Pages)
 	}); err != nil {
-		return nil, huma.Error500InternalServerError("failed to duplicate OpenPost Image Editor design")
+		return nil, huma.Error500InternalServerError("failed to duplicate SocialFlow.ai Image Editor design")
 	}
 	response, err := h.documentResponse(ctx, document.ID)
 	if err != nil {
@@ -1353,7 +1353,7 @@ func (h *ImageEditorHandler) listRevisions(ctx context.Context, input *ListImage
 	var revisions []models.DesignRevision
 	cursor, err := decodeEditorRevisionCursor(input.Cursor)
 	if err != nil {
-		return nil, huma.Error400BadRequest("invalid OpenPost Image Editor revision cursor")
+		return nil, huma.Error400BadRequest("invalid SocialFlow.ai Image Editor revision cursor")
 	}
 	limit := editorRevisionLimit(input.Limit)
 	query := h.db.NewSelect().Model(&revisions).
@@ -1369,7 +1369,7 @@ func (h *ImageEditorHandler) listRevisions(ctx context.Context, input *ListImage
 		)
 	}
 	if err := query.Scan(ctx); err != nil {
-		return nil, huma.Error500InternalServerError("failed to list OpenPost Image Editor revisions")
+		return nil, huma.Error500InternalServerError("failed to list SocialFlow.ai Image Editor revisions")
 	}
 	nextCursor := ""
 	if len(revisions) > limit {
@@ -1384,7 +1384,7 @@ func (h *ImageEditorHandler) listRevisions(ctx context.Context, input *ListImage
 	currentUserID := middleware.GetUserID(ctx)
 	actors, err := loadEditorRevisionActors(ctx, h.db, actorIDs, currentUserID)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor revision actors")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor revision actors")
 	}
 	out := &ListImageEditorRevisionsOutput{}
 	out.Body.NextCursor = nextCursor
@@ -1417,12 +1417,12 @@ func (h *ImageEditorHandler) getRevision(
 		return nil, err
 	}
 	if err := validateImageEditorPayload(snapshot.Document); err != nil {
-		return nil, huma.Error400BadRequest("OpenPost Image Editor revision is invalid")
+		return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor revision is invalid")
 	}
 	currentUserID := middleware.GetUserID(ctx)
 	actors, err := loadEditorRevisionActors(ctx, h.db, []string{revision.CreatedByID}, currentUserID)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor revision actor")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor revision actor")
 	}
 	return &GetImageEditorRevisionOutput{Body: ImageEditorRevisionResponse{
 		Summary: imageRevisionSummary(
@@ -1445,14 +1445,14 @@ func (h *ImageEditorHandler) loadImageEditorRevisionSnapshot(
 		Where("id = ? AND design_document_id = ?", revisionID, documentID).
 		Scan(ctx)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, imageEditorRevisionSnapshot{}, huma.Error404NotFound("OpenPost Image Editor revision not found")
+		return nil, imageEditorRevisionSnapshot{}, huma.Error404NotFound("SocialFlow.ai Image Editor revision not found")
 	}
 	if err != nil {
-		return nil, imageEditorRevisionSnapshot{}, huma.Error500InternalServerError("failed to load OpenPost Image Editor revision")
+		return nil, imageEditorRevisionSnapshot{}, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor revision")
 	}
 	snapshot, err := decompressImageEditorSnapshot(revision.Snapshot)
 	if err != nil {
-		return nil, imageEditorRevisionSnapshot{}, huma.Error400BadRequest("OpenPost Image Editor revision is corrupt")
+		return nil, imageEditorRevisionSnapshot{}, huma.Error400BadRequest("SocialFlow.ai Image Editor revision is corrupt")
 	}
 	return &revision, snapshot, nil
 }
@@ -1478,7 +1478,7 @@ func (h *ImageEditorHandler) deleteRevision(ctx context.Context, input *DeleteIm
 			query = query.For("UPDATE")
 		}
 		if err := query.Scan(txCtx); errors.Is(err, sql.ErrNoRows) {
-			return huma.Error404NotFound("OpenPost Image Editor checkpoint not found")
+			return huma.Error404NotFound("SocialFlow.ai Image Editor checkpoint not found")
 		} else if err != nil {
 			return err
 		}
@@ -1505,7 +1505,7 @@ func (h *ImageEditorHandler) deleteRevision(ctx context.Context, input *DeleteIm
 		if errors.As(err, &status) {
 			return nil, err
 		}
-		return nil, huma.Error500InternalServerError("failed to remove OpenPost Image Editor checkpoint")
+		return nil, huma.Error500InternalServerError("failed to remove SocialFlow.ai Image Editor checkpoint")
 	}
 	out := &DeleteImageEditorRevisionOutput{}
 	out.Body.Deleted = true
@@ -1578,15 +1578,15 @@ func (h *ImageEditorHandler) createCheckpoint(ctx context.Context, input *Create
 		)
 	})
 	if errors.Is(err, errImageEditorRevisionConflict) {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor design changed elsewhere; reload before creating a checkpoint")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor design changed elsewhere; reload before creating a checkpoint")
 	}
 	if err != nil || revision == nil {
-		return nil, huma.Error500InternalServerError("failed to create OpenPost Image Editor checkpoint")
+		return nil, huma.Error500InternalServerError("failed to create SocialFlow.ai Image Editor checkpoint")
 	}
 	currentUserID := middleware.GetUserID(ctx)
 	actors, err := loadEditorRevisionActors(ctx, h.db, []string{currentUserID}, currentUserID)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor revision actor")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor revision actor")
 	}
 	return &CreateImageEditorCheckpointOutput{Body: imageRevisionSummary(
 		*revision,
@@ -1616,15 +1616,15 @@ func (h *ImageEditorHandler) restoreRevision(ctx context.Context, input *Restore
 		now,
 	)
 	if errors.Is(err, errImageEditorRevisionConflict) {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor design changed elsewhere; reload before restoring")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor design changed elsewhere; reload before restoring")
 	}
 	if err != nil {
 		var statusError huma.StatusError
 		if errors.As(err, &statusError) {
 			return nil, err
 		}
-		log.Printf("failed to restore OpenPost Image Editor design %s: %v", document.ID, err)
-		return nil, huma.Error500InternalServerError("failed to restore OpenPost Image Editor revision")
+		log.Printf("failed to restore SocialFlow.ai Image Editor design %s: %v", document.ID, err)
+		return nil, huma.Error500InternalServerError("failed to restore SocialFlow.ai Image Editor revision")
 	}
 	response, err := h.documentResponse(ctx, document.ID)
 	if err != nil {
@@ -1700,7 +1700,7 @@ func (h *ImageEditorHandler) prepareImageEditorRevisionRestore(
 		return current, target, err
 	}
 	if err := validateImageEditorPayload(target.Document); err != nil {
-		return current, target, huma.Error400BadRequest("OpenPost Image Editor revision is invalid")
+		return current, target, huma.Error400BadRequest("SocialFlow.ai Image Editor revision is invalid")
 	}
 	if err := validateImageEditorMediaReferences(
 		ctx,
@@ -1830,11 +1830,11 @@ func (h *ImageEditorHandler) createReturnToken(ctx context.Context, input *Creat
 	}
 	constraints, err := json.Marshal(input.Body.Constraints)
 	if err != nil || len(constraints) > 32<<10 {
-		return nil, huma.Error400BadRequest("OpenPost Image Editor return constraints are invalid")
+		return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor return constraints are invalid")
 	}
 	rawToken, tokenHash, err := newImageEditorReturnToken()
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to create OpenPost Image Editor return token")
+		return nil, huma.Error500InternalServerError("failed to create SocialFlow.ai Image Editor return token")
 	}
 	now := time.Now().UTC()
 	record := &models.DesignReturnToken{
@@ -1854,7 +1854,7 @@ func (h *ImageEditorHandler) createReturnToken(ctx context.Context, input *Creat
 		record.Purpose = "post_media"
 	}
 	if _, err := h.db.NewInsert().Model(record).Exec(ctx); err != nil {
-		return nil, huma.Error500InternalServerError("failed to store OpenPost Image Editor return token")
+		return nil, huma.Error500InternalServerError("failed to store SocialFlow.ai Image Editor return token")
 	}
 	out := &CreateImageEditorReturnTokenOutput{}
 	out.Body.Token = rawToken
@@ -1869,21 +1869,21 @@ func (h *ImageEditorHandler) completeReturnToken(ctx context.Context, input *Com
 		return nil, err
 	}
 	if !record.CompletedAt.IsZero() || !record.ConsumedAt.IsZero() {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor return token has already been used")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor return token has already been used")
 	}
 	mediaIDs := uniqueImageEditorStringsInOrder(input.Body.MediaIDs)
 	if len(mediaIDs) == 0 || len(mediaIDs) > record.MaxSelection {
-		return nil, huma.Error400BadRequest("OpenPost Image Editor export count does not match the return constraints")
+		return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor export count does not match the return constraints")
 	}
 	var media []models.MediaAttachment
 	err = h.db.NewSelect().Model(&media).
 		Where("workspace_id = ? AND processing_status = ? AND id IN (?)", record.WorkspaceID, mediaReadyStatus, bun.List(mediaIDs)).
 		Scan(ctx)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to validate OpenPost Image Editor exports")
+		return nil, huma.Error500InternalServerError("failed to validate SocialFlow.ai Image Editor exports")
 	}
 	if len(media) != len(mediaIDs) {
-		return nil, huma.Error400BadRequest("every OpenPost Image Editor export must belong to the workspace")
+		return nil, huma.Error400BadRequest("every SocialFlow.ai Image Editor export must belong to the workspace")
 	}
 	var constraints struct {
 		AllowedMIMEs []string `json:"allowed_mimes"`
@@ -1892,7 +1892,7 @@ func (h *ImageEditorHandler) completeReturnToken(ctx context.Context, input *Com
 		MaxFileSize  int64    `json:"max_file_size"`
 	}
 	if err := json.Unmarshal([]byte(record.ConstraintsJSON), &constraints); err != nil {
-		return nil, huma.Error400BadRequest("OpenPost Image Editor return constraints are invalid")
+		return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor return constraints are invalid")
 	}
 	allowedMIMEs := make(map[string]struct{}, len(constraints.AllowedMIMEs))
 	for _, mime := range constraints.AllowedMIMEs {
@@ -1901,20 +1901,20 @@ func (h *ImageEditorHandler) completeReturnToken(ctx context.Context, input *Com
 	for _, item := range media {
 		if len(allowedMIMEs) > 0 {
 			if _, ok := allowedMIMEs[strings.ToLower(item.MimeType)]; !ok {
-				return nil, huma.Error400BadRequest("an OpenPost Image Editor export format is not supported by the composer")
+				return nil, huma.Error400BadRequest("an SocialFlow.ai Image Editor export format is not supported by the composer")
 			}
 		}
 		if constraints.MaxWidth > 0 && item.Width > constraints.MaxWidth {
-			return nil, huma.Error400BadRequest("an OpenPost Image Editor export is wider than the composer allows")
+			return nil, huma.Error400BadRequest("an SocialFlow.ai Image Editor export is wider than the composer allows")
 		}
 		if constraints.MaxHeight > 0 && item.Height > constraints.MaxHeight {
-			return nil, huma.Error400BadRequest("an OpenPost Image Editor export is taller than the composer allows")
+			return nil, huma.Error400BadRequest("an SocialFlow.ai Image Editor export is taller than the composer allows")
 		}
 		if constraints.MaxFileSize > 0 && item.Size > constraints.MaxFileSize {
-			return nil, huma.Error400BadRequest("an OpenPost Image Editor export is larger than the composer allows")
+			return nil, huma.Error400BadRequest("an SocialFlow.ai Image Editor export is larger than the composer allows")
 		}
 		if input.Body.DesignID != "" && item.DesignDocumentID != input.Body.DesignID {
-			return nil, huma.Error400BadRequest("every OpenPost Image Editor export must come from the returning design")
+			return nil, huma.Error400BadRequest("every SocialFlow.ai Image Editor export must come from the returning design")
 		}
 	}
 	if input.Body.DesignID != "" {
@@ -1922,7 +1922,7 @@ func (h *ImageEditorHandler) completeReturnToken(ctx context.Context, input *Com
 			Where("id = ? AND workspace_id = ? AND deleted_at IS NULL", input.Body.DesignID, record.WorkspaceID).
 			Count(ctx)
 		if err != nil || count != 1 {
-			return nil, huma.Error400BadRequest("OpenPost Image Editor design must belong to the workspace")
+			return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor design must belong to the workspace")
 		}
 	}
 	encodedIDs, _ := json.Marshal(mediaIDs)
@@ -1934,12 +1934,12 @@ func (h *ImageEditorHandler) completeReturnToken(ctx context.Context, input *Com
 		Where("id = ? AND completed_at IS NULL AND consumed_at IS NULL", record.ID).
 		Exec(ctx)
 	if err != nil {
-		log.Printf("failed to complete OpenPost Image Editor return token %s: %v", record.ID, err)
-		return nil, huma.Error500InternalServerError("failed to complete OpenPost Image Editor return token")
+		log.Printf("failed to complete SocialFlow.ai Image Editor return token %s: %v", record.ID, err)
+		return nil, huma.Error500InternalServerError("failed to complete SocialFlow.ai Image Editor return token")
 	}
 	affected, _ := result.RowsAffected()
 	if affected != 1 {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor return token has already been used")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor return token has already been used")
 	}
 	out := &CompleteImageEditorReturnTokenOutput{}
 	out.Body.ReturnURL = record.ReturnURL
@@ -1952,10 +1952,10 @@ func (h *ImageEditorHandler) consumeReturnToken(ctx context.Context, input *Cons
 		return nil, err
 	}
 	if record.CompletedAt.IsZero() {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor return token is not complete")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor return token is not complete")
 	}
 	if !record.ConsumedAt.IsZero() {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor return token has already been consumed")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor return token has already been consumed")
 	}
 	now := time.Now().UTC()
 	result, err := h.db.NewUpdate().Model((*models.DesignReturnToken)(nil)).
@@ -1963,11 +1963,11 @@ func (h *ImageEditorHandler) consumeReturnToken(ctx context.Context, input *Cons
 		Where("id = ? AND consumed_at IS NULL", record.ID).
 		Exec(ctx)
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to consume OpenPost Image Editor return token")
+		return nil, huma.Error500InternalServerError("failed to consume SocialFlow.ai Image Editor return token")
 	}
 	affected, _ := result.RowsAffected()
 	if affected != 1 {
-		return nil, huma.NewError(http.StatusConflict, "OpenPost Image Editor return token has already been consumed")
+		return nil, huma.NewError(http.StatusConflict, "SocialFlow.ai Image Editor return token has already been consumed")
 	}
 	out := &ConsumeImageEditorReturnTokenOutput{}
 	out.Body.WorkspaceID = record.WorkspaceID
@@ -1975,7 +1975,7 @@ func (h *ImageEditorHandler) consumeReturnToken(ctx context.Context, input *Cons
 	out.Body.Purpose = record.Purpose
 	out.Body.DesignID = record.DesignID
 	if err := json.Unmarshal([]byte(record.ResultMediaIDs), &out.Body.MediaIDs); err != nil {
-		return nil, huma.Error500InternalServerError("OpenPost Image Editor return token result is corrupt")
+		return nil, huma.Error500InternalServerError("SocialFlow.ai Image Editor return token result is corrupt")
 	}
 	if err := json.Unmarshal([]byte(record.ConstraintsJSON), &out.Body.Constraints); err != nil {
 		out.Body.Constraints = map[string]any{}
@@ -1985,7 +1985,7 @@ func (h *ImageEditorHandler) consumeReturnToken(ctx context.Context, input *Cons
 
 func (h *ImageEditorHandler) loadReturnToken(ctx context.Context, rawToken string) (*models.DesignReturnToken, error) {
 	if strings.TrimSpace(rawToken) == "" {
-		return nil, huma.Error400BadRequest("OpenPost Image Editor return token is required")
+		return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor return token is required")
 	}
 	hash := sha256.Sum256([]byte(rawToken))
 	var record models.DesignReturnToken
@@ -1993,13 +1993,13 @@ func (h *ImageEditorHandler) loadReturnToken(ctx context.Context, rawToken strin
 		Where("token_hash = ? AND user_id = ?", hex.EncodeToString(hash[:]), middleware.GetUserID(ctx)).
 		Scan(ctx)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, huma.Error404NotFound("OpenPost Image Editor return token not found")
+		return nil, huma.Error404NotFound("SocialFlow.ai Image Editor return token not found")
 	}
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor return token")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor return token")
 	}
 	if time.Now().UTC().After(record.ExpiresAt) {
-		return nil, huma.Error404NotFound("OpenPost Image Editor return token has expired")
+		return nil, huma.Error404NotFound("SocialFlow.ai Image Editor return token has expired")
 	}
 	if _, err := h.requireAccess(ctx, record.WorkspaceID, true); err != nil {
 		return nil, err
@@ -2020,7 +2020,7 @@ func newImageEditorReturnToken() (string, string, error) {
 func normalizeImageEditorReturnURL(raw string) (string, error) {
 	parsed, err := url.ParseRequestURI(strings.TrimSpace(raw))
 	if err != nil || parsed.IsAbs() || parsed.Host != "" || !strings.HasPrefix(parsed.Path, "/") || strings.HasPrefix(parsed.Path, "//") {
-		return "", errors.New("image editor return URL must be a same-origin OpenPost route")
+		return "", errors.New("image editor return URL must be a same-origin SocialFlow.ai route")
 	}
 	path := parsed.Path
 	allowed := path == "/" ||
@@ -2052,10 +2052,10 @@ func (h *ImageEditorHandler) loadDocument(ctx context.Context, id string) (*mode
 		Where("id = ? AND deleted_at IS NULL", id).
 		Scan(ctx)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, huma.Error404NotFound("OpenPost Image Editor design not found")
+		return nil, huma.Error404NotFound("SocialFlow.ai Image Editor design not found")
 	}
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor design")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor design")
 	}
 	return &document, nil
 }
@@ -2110,13 +2110,13 @@ func imageEditorDocumentPayload(
 		Where("design_document_id = ?", document.ID).
 		OrderExpr("display_order ASC").
 		Scan(ctx); err != nil {
-		return payload, errors.New("failed to load OpenPost Image Editor pages")
+		return payload, errors.New("failed to load SocialFlow.ai Image Editor pages")
 	}
 	payload.Pages = make([]ImageEditorPagePayload, 0, len(pages))
 	for _, page := range pages {
 		var layers []ImageEditorLayer
 		if err := json.Unmarshal([]byte(page.SceneJSON), &layers); err != nil {
-			return payload, errors.New("OpenPost Image Editor design contains an invalid page")
+			return payload, errors.New("SocialFlow.ai Image Editor design contains an invalid page")
 		}
 		background := defaultImageEditorPageBackground(page.BackgroundColor)
 		var guides *ImageEditorPageGuides
@@ -2131,7 +2131,7 @@ func imageEditorDocumentPayload(
 			var storedColorGrade *ImageEditorColorGrade
 			storedBackground, storedGuides, storedColorGradeVersion, storedColorGrade, pageWidth, pageHeight, err = decodeImageEditorPageState(encoded, page.BackgroundColor)
 			if err != nil {
-				return payload, errors.New("OpenPost Image Editor design contains an invalid page background")
+				return payload, errors.New("SocialFlow.ai Image Editor design contains an invalid page background")
 			}
 			background = storedBackground
 			guides = storedGuides
@@ -2191,10 +2191,10 @@ func validateImageEditorMediaReferences(
 	}
 	valid, err := allEditorMediaBelongToWorkspace(ctx, db, workspaceID, ids, "")
 	if err != nil {
-		return huma.Error500InternalServerError("failed to validate OpenPost Image Editor media")
+		return huma.Error500InternalServerError("failed to validate SocialFlow.ai Image Editor media")
 	}
 	if !valid {
-		return huma.Error400BadRequest("every OpenPost Image Editor media reference must belong to the workspace")
+		return huma.Error400BadRequest("every SocialFlow.ai Image Editor media reference must belong to the workspace")
 	}
 	return nil
 }
@@ -2215,7 +2215,7 @@ func resolveImageEditorDimensions(presetKey string, customWidth, customHeight in
 			return preset.WidthPX, preset.HeightPX, key, nil
 		}
 	}
-	return 0, 0, "", fmt.Errorf("unknown OpenPost Image Editor preset")
+	return 0, 0, "", fmt.Errorf("unknown SocialFlow.ai Image Editor preset")
 }
 
 func validateImageEditorDimensions(width, height int) error {
@@ -2231,7 +2231,7 @@ func validateImageEditorDimensions(width, height int) error {
 //nolint:gocyclo // Document validation reports precise failures across bounded pages and hierarchy.
 func validateImageEditorPayload(payload ImageEditorDocumentPayload) error {
 	if payload.SchemaVersion != 1 && payload.SchemaVersion != imageEditorSchemaVersion {
-		return fmt.Errorf("unsupported OpenPost Image Editor schema version")
+		return fmt.Errorf("unsupported SocialFlow.ai Image Editor schema version")
 	}
 	if strings.TrimSpace(payload.Title) == "" || len([]rune(payload.Title)) > 160 {
 		return fmt.Errorf("image editor title must be between 1 and 160 characters")
@@ -2284,7 +2284,7 @@ func validateImageEditorPayload(payload ImageEditorDocumentPayload) error {
 
 func validateImageEditorPage(payload ImageEditorDocumentPayload, page ImageEditorPagePayload, pageIDs, layerIDs map[string]struct{}) error {
 	if strings.TrimSpace(page.ID) == "" {
-		return fmt.Errorf("every OpenPost Image Editor page requires an ID")
+		return fmt.Errorf("every SocialFlow.ai Image Editor page requires an ID")
 	}
 	if _, exists := pageIDs[page.ID]; exists {
 		return fmt.Errorf("image editor page IDs must be unique")
@@ -2299,7 +2299,7 @@ func validateImageEditorPage(payload ImageEditorDocumentPayload, page ImageEdito
 		return err
 	}
 	if len(page.Layers) > imageEditorMaxLayersPerPage {
-		return fmt.Errorf("an OpenPost Image Editor page cannot contain more than %d layers", imageEditorMaxLayersPerPage)
+		return fmt.Errorf("an SocialFlow.ai Image Editor page cannot contain more than %d layers", imageEditorMaxLayersPerPage)
 	}
 	if err := validateImageEditorPageTextSchema(payload.SchemaVersion, page.Layers); err != nil {
 		return err
@@ -2366,7 +2366,7 @@ func collectImageEditorPageLayers(page ImageEditorPagePayload, layerIDs map[stri
 	parents := make(map[string]string, len(page.Layers))
 	for _, layer := range page.Layers {
 		if strings.TrimSpace(layer.ID) == "" {
-			return nil, nil, fmt.Errorf("every OpenPost Image Editor layer requires an ID")
+			return nil, nil, fmt.Errorf("every SocialFlow.ai Image Editor layer requires an ID")
 		}
 		if _, exists := layerIDs[layer.ID]; exists {
 			return nil, nil, fmt.Errorf("image editor layer IDs must be unique across the document")
@@ -2462,7 +2462,7 @@ func validateImageEditorPageBackground(page ImageEditorPagePayload) error {
 
 func validateTransparentImageEditorBackground(background *ImageEditorPageBackground) error {
 	if background.Gradient != nil || background.Image != nil {
-		return fmt.Errorf("transparent OpenPost Image Editor backgrounds cannot include fill properties")
+		return fmt.Errorf("transparent SocialFlow.ai Image Editor backgrounds cannot include fill properties")
 	}
 	return nil
 }
@@ -2471,14 +2471,14 @@ func validateSolidImageEditorBackground(background *ImageEditorPageBackground) e
 	if !imageEditorHexColor.MatchString(background.Color) ||
 		background.Gradient != nil ||
 		background.Image != nil {
-		return fmt.Errorf("solid OpenPost Image Editor backgrounds are invalid")
+		return fmt.Errorf("solid SocialFlow.ai Image Editor backgrounds are invalid")
 	}
 	return nil
 }
 
 func validateGradientImageEditorBackground(background *ImageEditorPageBackground) error {
 	if background.Image != nil {
-		return fmt.Errorf("gradient OpenPost Image Editor backgrounds cannot include an image")
+		return fmt.Errorf("gradient SocialFlow.ai Image Editor backgrounds cannot include an image")
 	}
 	return validateImageEditorGradient(background.Gradient)
 }
@@ -2488,7 +2488,7 @@ func validateImageImageEditorBackground(background *ImageEditorPageBackground) e
 		background.Image == nil ||
 		strings.TrimSpace(background.Image.MediaID) == "" ||
 		!oneOfImageEditorString(background.Image.Fit, "cover", "contain", "stretch") {
-		return fmt.Errorf("image OpenPost Image Editor backgrounds are invalid")
+		return fmt.Errorf("image SocialFlow.ai Image Editor backgrounds are invalid")
 	}
 	return nil
 }
@@ -2510,7 +2510,7 @@ func validateImageEditorLayer(layer ImageEditorLayer) error {
 	case "group":
 		return validateImageEditorGroupLayer(layer)
 	default:
-		return fmt.Errorf("unsupported OpenPost Image Editor layer type")
+		return fmt.Errorf("unsupported SocialFlow.ai Image Editor layer type")
 	}
 }
 
@@ -3158,7 +3158,7 @@ func decompressImageEditorSnapshot(compressed []byte) (imageEditorRevisionSnapsh
 	const envelopeAllowance = 64 << 10
 	data, err := io.ReadAll(io.LimitReader(reader, imageEditorMaxDocumentBytes+envelopeAllowance+1))
 	if err != nil || len(data) > imageEditorMaxDocumentBytes+envelopeAllowance {
-		return snapshot, fmt.Errorf("invalid OpenPost Image Editor snapshot")
+		return snapshot, fmt.Errorf("invalid SocialFlow.ai Image Editor snapshot")
 	}
 	var probe struct {
 		SnapshotVersion int `json:"snapshot_version"`
@@ -3173,7 +3173,7 @@ func decompressImageEditorSnapshot(compressed []byte) (imageEditorRevisionSnapsh
 		return snapshot, nil
 	}
 	if probe.SnapshotVersion != imageEditorSnapshotVersion {
-		return snapshot, fmt.Errorf("unsupported OpenPost Image Editor snapshot version %d", probe.SnapshotVersion)
+		return snapshot, fmt.Errorf("unsupported SocialFlow.ai Image Editor snapshot version %d", probe.SnapshotVersion)
 	}
 	if err := json.Unmarshal(data, &snapshot); err != nil {
 		return snapshot, err

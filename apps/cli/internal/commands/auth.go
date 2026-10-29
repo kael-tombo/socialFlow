@@ -21,7 +21,7 @@ import (
 func newAuthCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "auth",
-		Short: "Authenticate with an OpenPost instance",
+		Short: "Authenticate with an SocialFlow.ai instance",
 	}
 	cmd.AddCommand(newAuthLoginCmd())
 	cmd.AddCommand(newAuthStatusCmd())
@@ -38,7 +38,7 @@ func newAuthLoginCmd() *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "login <instance>",
-		Short: "Log in to an OpenPost instance",
+		Short: "Log in to an SocialFlow.ai instance",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cfg, err := runtimeFrom(cmd)

@@ -87,7 +87,7 @@
 			>
 				<div class="preview-mobile-brand hidden items-center gap-2">
 					<Logo width={20} height={20} decorative />
-					<span data-theme-type="label">OpenPost</span>
+					<span data-theme-type="label">SocialFlow.ai</span>
 				</div>
 				<div
 					data-theme-type="metadata"

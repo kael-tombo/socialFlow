@@ -216,7 +216,7 @@ func (s *Service) DenyRedirect(ctx context.Context, input AuthorizationRequest) 
 	return &AuthorizationResult{
 		RedirectURL: buildRedirect(redirectURI.String(), map[string]string{
 			"error":             "access_denied",
-			"error_description": "The user denied the OpenPost MCP connection.",
+			"error_description": "The user denied the SocialFlow.ai MCP connection.",
 			"state":             input.State,
 		}),
 	}, nil
@@ -634,7 +634,7 @@ func tokenName(code models.MCPOAuthCode) string {
 	if strings.TrimSpace(code.ClientName) != "" {
 		return strings.TrimSpace(code.ClientName)
 	}
-	return "OpenPost MCP"
+	return "SocialFlow.ai MCP"
 }
 
 // Revoke invalidates MCP bearer tokens even when external application OAuth is

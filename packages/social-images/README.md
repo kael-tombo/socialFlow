@@ -1,4 +1,4 @@
-# OpenPost social previews
+# SocialFlow.ai social previews
 
 This package owns social metadata and stable image URLs for the marketing and documentation sites. Every page gets a static card at `/og/<page-key>.png`; the route catalog defines marketing keys and docs paths define documentation keys.
 
@@ -6,7 +6,7 @@ This package owns social metadata and stable image URLs for the marketing and do
 
 `scripts/generate-social-images.mjs` creates the 1200 x 630 PNGs during each site build. The homepage composites the canonical brand mark and wordmark over the generated artwork in `assets/brand/social/home.png`. Other pages use large Geist titles and one prominent topic symbol, with mint, blue, or lilac panels. Documentation uses charcoal and a section label. Lucide supplies tool and guide symbols; provider and self-hosting pages use their existing logos from `assets/logos/`. Conversion cards show the source and output formats. Titles must fit in full, never truncate.
 
-The homepage prompt and provenance live beside its source in `assets/brand/social/generation.json`. The Feed Limiter and YouTube Localizer cards use adapted promo artwork from the same directory, with prompts in their matching JSON files. The renderer adds the canonical OpenPost brand to those images and keeps the existing `/og/tool-<slug>.png` URLs. Keep the launch-kit copies `assets/brand/og-image.png` and `assets/brand/og-docs.png` aligned with generated home cards. The renderer is the editable source for the documentation card.
+The homepage prompt and provenance live beside its source in `assets/brand/social/generation.json`. The Feed Limiter and YouTube Localizer cards use adapted promo artwork from the same directory, with prompts in their matching JSON files. The renderer adds the canonical SocialFlow.ai brand to those images and keeps the existing `/og/tool-<slug>.png` URLs. Keep the launch-kit copies `assets/brand/og-image.png` and `assets/brand/og-docs.png` aligned with generated home cards. The renderer is the editable source for the documentation card.
 
 `scripts/social-images/catalog.mjs` keeps the small docs-page catalog in sync with Markdown headings. Asset synchronization refreshes it automatically; `bun run check -- social-images` rejects stale catalog metadata.
 

@@ -239,7 +239,7 @@ func (h *ImageEditorHandler) registerTemplates(api huma.API) {
 		OperationID: "list-public-image-editor-templates",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/public-templates",
-		Summary:     "List built-in OpenPost Image Editor templates available without a workspace",
+		Summary:     "List built-in SocialFlow.ai Image Editor templates available without a workspace",
 		Tags:        []string{tagImageEditor},
 	}, h.listPublicTemplates)
 
@@ -247,7 +247,7 @@ func (h *ImageEditorHandler) registerTemplates(api huma.API) {
 		OperationID: "list-image-editor-templates",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/templates",
-		Summary:     "List built-in and workspace OpenPost Image Editor templates",
+		Summary:     "List built-in and workspace SocialFlow.ai Image Editor templates",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403},
@@ -257,7 +257,7 @@ func (h *ImageEditorHandler) registerTemplates(api huma.API) {
 		OperationID:   "create-image-editor-template",
 		Method:        http.MethodPost,
 		Path:          "/image-editor/templates",
-		Summary:       "Save an OpenPost Image Editor design as a workspace template",
+		Summary:       "Save an SocialFlow.ai Image Editor design as a workspace template",
 		Tags:          []string{tagImageEditor},
 		DefaultStatus: http.StatusCreated,
 		Middlewares:   huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
@@ -268,7 +268,7 @@ func (h *ImageEditorHandler) registerTemplates(api huma.API) {
 		OperationID: "update-image-editor-template",
 		Method:      http.MethodPatch,
 		Path:        "/image-editor/templates/{id}",
-		Summary:     "Replace a workspace OpenPost Image Editor template snapshot",
+		Summary:     "Replace a workspace SocialFlow.ai Image Editor template snapshot",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404},
@@ -278,7 +278,7 @@ func (h *ImageEditorHandler) registerTemplates(api huma.API) {
 		OperationID: "delete-image-editor-template",
 		Method:      http.MethodDelete,
 		Path:        "/image-editor/templates/{id}",
-		Summary:     "Delete a workspace OpenPost Image Editor template",
+		Summary:     "Delete a workspace SocialFlow.ai Image Editor template",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{403, 404},
@@ -288,7 +288,7 @@ func (h *ImageEditorHandler) registerTemplates(api huma.API) {
 		OperationID: "instantiate-image-editor-template",
 		Method:      http.MethodPost,
 		Path:        "/image-editor/templates/{id}/instantiate",
-		Summary:     "Create an OpenPost Image Editor design from a template",
+		Summary:     "Create an SocialFlow.ai Image Editor design from a template",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403, 404},
@@ -301,7 +301,7 @@ func (h *ImageEditorHandler) registerBrandKit(api huma.API) {
 		OperationID: "get-image-editor-brand-kit",
 		Method:      http.MethodGet,
 		Path:        "/image-editor/brand-kit",
-		Summary:     "Get the workspace OpenPost Image Editor brand kit",
+		Summary:     "Get the workspace SocialFlow.ai Image Editor brand kit",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403},
@@ -311,7 +311,7 @@ func (h *ImageEditorHandler) registerBrandKit(api huma.API) {
 		OperationID: "update-image-editor-brand-kit",
 		Method:      http.MethodPut,
 		Path:        "/image-editor/brand-kit",
-		Summary:     "Create or update the workspace OpenPost Image Editor brand kit",
+		Summary:     "Create or update the workspace SocialFlow.ai Image Editor brand kit",
 		Tags:        []string{tagImageEditor},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 		Errors:      []int{400, 403},
@@ -382,7 +382,7 @@ func (h *ImageEditorHandler) listTemplates(ctx context.Context, input *ListImage
 		Where("workspace_id = ?", input.WorkspaceID).
 		OrderExpr("updated_at DESC").
 		Scan(ctx); err != nil {
-		return nil, huma.Error500InternalServerError("failed to list OpenPost Image Editor templates")
+		return nil, huma.Error500InternalServerError("failed to list SocialFlow.ai Image Editor templates")
 	}
 	for _, template := range templates {
 		var payload ImageEditorDocumentPayload
@@ -409,7 +409,7 @@ func (h *ImageEditorHandler) createTemplate(ctx context.Context, input *CreateIm
 	}
 	snapshot, err := json.Marshal(input.Body.Document)
 	if err != nil {
-		return nil, huma.Error400BadRequest("invalid OpenPost Image Editor template")
+		return nil, huma.Error400BadRequest("invalid SocialFlow.ai Image Editor template")
 	}
 	now := time.Now().UTC()
 	template := &models.DesignTemplate{
@@ -447,7 +447,7 @@ func (h *ImageEditorHandler) createTemplate(ctx context.Context, input *CreateIm
 		_, err := tx.NewInsert().Model(&refs).Exec(txCtx)
 		return err
 	}); err != nil {
-		return nil, huma.Error500InternalServerError("failed to create OpenPost Image Editor template")
+		return nil, huma.Error500InternalServerError("failed to create SocialFlow.ai Image Editor template")
 	}
 	return &CreateImageEditorTemplateOutput{Body: templateResponse(*template, input.Body.Document)}, nil
 }
@@ -459,10 +459,10 @@ func (h *ImageEditorHandler) updateTemplate(ctx context.Context, input *UpdateIm
 	var template models.DesignTemplate
 	err := h.db.NewSelect().Model(&template).Where("id = ?", input.PathID).Scan(ctx)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, huma.Error404NotFound("OpenPost Image Editor template not found")
+		return nil, huma.Error404NotFound("SocialFlow.ai Image Editor template not found")
 	}
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor template")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor template")
 	}
 	if _, err := h.requireAccess(ctx, template.WorkspaceID, true); err != nil {
 		return nil, err
@@ -478,7 +478,7 @@ func (h *ImageEditorHandler) updateTemplate(ctx context.Context, input *UpdateIm
 	}
 	snapshot, err := json.Marshal(input.Body.Document)
 	if err != nil {
-		return nil, huma.Error400BadRequest("invalid OpenPost Image Editor template")
+		return nil, huma.Error400BadRequest("invalid SocialFlow.ai Image Editor template")
 	}
 	name := strings.TrimSpace(input.Body.Name)
 	if name == "" {
@@ -519,7 +519,7 @@ func (h *ImageEditorHandler) updateTemplate(ctx context.Context, input *UpdateIm
 		return err
 	})
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to replace OpenPost Image Editor template")
+		return nil, huma.Error500InternalServerError("failed to replace SocialFlow.ai Image Editor template")
 	}
 	template.Name = name
 	template.Category = strings.TrimSpace(input.Body.Category)
@@ -540,10 +540,10 @@ func (h *ImageEditorHandler) validateOptionalWorkspaceMedia(ctx context.Context,
 		Where("id = ? AND workspace_id = ?", mediaID, workspaceID).
 		Count(ctx)
 	if err != nil {
-		return huma.Error500InternalServerError("failed to validate OpenPost Image Editor template preview")
+		return huma.Error500InternalServerError("failed to validate SocialFlow.ai Image Editor template preview")
 	}
 	if count != 1 {
-		return huma.Error400BadRequest("OpenPost Image Editor template preview must belong to the workspace")
+		return huma.Error400BadRequest("SocialFlow.ai Image Editor template preview must belong to the workspace")
 	}
 	return nil
 }
@@ -555,16 +555,16 @@ func (h *ImageEditorHandler) deleteTemplate(ctx context.Context, input *DeleteIm
 	var template models.DesignTemplate
 	err := h.db.NewSelect().Model(&template).Where("id = ?", input.PathID).Scan(ctx)
 	if errors.Is(err, sql.ErrNoRows) {
-		return nil, huma.Error404NotFound("OpenPost Image Editor template not found")
+		return nil, huma.Error404NotFound("SocialFlow.ai Image Editor template not found")
 	}
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor template")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor template")
 	}
 	if _, err := h.requireAccess(ctx, template.WorkspaceID, true); err != nil {
 		return nil, err
 	}
 	if _, err := h.db.NewDelete().Model(&template).WherePK().Exec(ctx); err != nil {
-		return nil, huma.Error500InternalServerError("failed to delete OpenPost Image Editor template")
+		return nil, huma.Error500InternalServerError("failed to delete SocialFlow.ai Image Editor template")
 	}
 	return &DeleteImageEditorTemplateOutput{Body: struct {
 		Deleted bool `json:"deleted"`
@@ -590,13 +590,13 @@ func (h *ImageEditorHandler) instantiateTemplate(ctx context.Context, input *Ins
 			Where("id = ? AND workspace_id = ?", input.PathID, input.Body.WorkspaceID).
 			Scan(ctx)
 		if errors.Is(err, sql.ErrNoRows) {
-			return nil, huma.Error404NotFound("OpenPost Image Editor template not found")
+			return nil, huma.Error404NotFound("SocialFlow.ai Image Editor template not found")
 		}
 		if err != nil {
-			return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor template")
+			return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor template")
 		}
 		if err := json.Unmarshal([]byte(template.SnapshotJSON), &payload); err != nil {
-			return nil, huma.Error400BadRequest("OpenPost Image Editor template is corrupt")
+			return nil, huma.Error400BadRequest("SocialFlow.ai Image Editor template is corrupt")
 		}
 	}
 	payload = cloneImageEditorPayload(payload)
@@ -642,7 +642,7 @@ func (h *ImageEditorHandler) createDocumentFromPayload(ctx context.Context, work
 		}
 		return replaceImageEditorMediaReferences(txCtx, tx, document, payload.Pages)
 	}); err != nil {
-		return nil, huma.Error500InternalServerError("failed to create OpenPost Image Editor design")
+		return nil, huma.Error500InternalServerError("failed to create SocialFlow.ai Image Editor design")
 	}
 	return h.documentResponse(ctx, document.ID)
 }
@@ -711,7 +711,7 @@ func (h *ImageEditorHandler) updateBrandKit(ctx context.Context, input *UpdateIm
 			UpdatedAt:       now,
 		}
 	case err != nil:
-		return nil, huma.Error500InternalServerError("failed to load OpenPost Image Editor brand kit")
+		return nil, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor brand kit")
 	default:
 		kit.Name = name
 		kit.Revision++
@@ -802,7 +802,7 @@ func (h *ImageEditorHandler) updateBrandKit(ctx context.Context, input *UpdateIm
 		return nil
 	})
 	if err != nil {
-		return nil, huma.Error500InternalServerError("failed to update OpenPost Image Editor brand kit")
+		return nil, huma.Error500InternalServerError("failed to update SocialFlow.ai Image Editor brand kit")
 	}
 	response, err := h.loadBrandKit(ctx, input.Body.WorkspaceID, true)
 	if err != nil {
@@ -832,7 +832,7 @@ func (h *ImageEditorHandler) loadBrandKit(ctx context.Context, workspaceID strin
 		return response, nil
 	}
 	if err != nil {
-		return response, huma.Error500InternalServerError("failed to load OpenPost Image Editor brand kit")
+		return response, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor brand kit")
 	}
 	response.ID = kit.ID
 	response.Name = kit.Name
@@ -844,7 +844,7 @@ func (h *ImageEditorHandler) loadBrandKit(ctx context.Context, workspaceID strin
 	_ = json.Unmarshal([]byte(kit.BackgroundsJSON), &response.Backgrounds)
 	var fonts []models.BrandFont
 	if err := h.db.NewSelect().Model(&fonts).Where("brand_kit_id = ?", kit.ID).OrderExpr("family ASC, weight ASC").Scan(ctx); err != nil {
-		return response, huma.Error500InternalServerError("failed to load OpenPost Image Editor brand fonts")
+		return response, huma.Error500InternalServerError("failed to load SocialFlow.ai Image Editor brand fonts")
 	}
 	for _, font := range fonts {
 		response.Fonts = append(response.Fonts, ImageEditorBrandFont{

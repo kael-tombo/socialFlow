@@ -149,7 +149,7 @@ func TestTelemetryStreamingFailureUsesCommittedStatusAndRequestCancellation(t *t
 			require.Equal(t, "http_stream_failed", reports[0].ErrorCode)
 			require.Equal(t, http.StatusOK, reports[0].HTTPStatus)
 			require.Equal(t, "/media/:id", reports[0].Operation)
-			require.Equal(t, "OpenPost HTTP response stream failed", recorder.Exceptions[0].Title)
+			require.Equal(t, "SocialFlow.ai HTTP response stream failed", recorder.Exceptions[0].Title)
 			require.Equal(t, http.StatusOK, recorder.Exceptions[0].Properties["status"])
 			require.Equal(t, "http_stream_error", recorder.Exceptions[0].Properties["error_boundary"])
 			require.Equal(t, true, recorder.Exceptions[0].Properties["response_committed"])
@@ -175,7 +175,7 @@ func TestTelemetryServerDeadlineWithActiveRequestRemainsFailure(t *testing.T) {
 	require.NoError(t, request.Context().Err())
 	require.Equal(t, http.StatusInternalServerError, response.Code)
 	require.Len(t, recorder.Exceptions, 1)
-	require.Equal(t, "OpenPost HTTP 500", recorder.Exceptions[0].Title)
+	require.Equal(t, "SocialFlow.ai HTTP 500", recorder.Exceptions[0].Title)
 	require.Equal(t, http.StatusInternalServerError, recorder.Exceptions[0].Properties["status"])
 }
 

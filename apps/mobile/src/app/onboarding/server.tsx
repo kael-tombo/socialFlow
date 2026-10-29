@@ -60,11 +60,11 @@ export default function ServerScreen() {
       >
         <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
           <Brand style={styles.brand} />
-          <Text style={[styles.title, { color: colors.onSurface }]}>Sign in to OpenPost</Text>
+          <Text style={[styles.title, { color: colors.onSurface }]}>Sign in to SocialFlow.ai</Text>
           <BodyText style={styles.subtitle}>Choose where to sign in.</BodyText>
 
           <ContentSection style={styles.hostedCard}>
-            <Text style={[styles.hostedTitle, { color: colors.onSurface }]}>OpenPost Hosted</Text>
+            <Text style={[styles.hostedTitle, { color: colors.onSurface }]}>SocialFlow.ai Hosted</Text>
             <BodyText>Managed at {HOSTED_URL.replace("https://", "")}</BodyText>
             <Button
               title="Continue to sign in"
@@ -105,7 +105,7 @@ export default function ServerScreen() {
                 returnKeyType="done"
                 onSubmitEditing={() => void choose(url, "custom")}
               />
-              <BodyText>Use the HTTPS address for your OpenPost server.</BodyText>
+              <BodyText>Use the HTTPS address for your SocialFlow.ai server.</BodyText>
               <Button
                 title="Connect to server"
                 intent="ordinary"

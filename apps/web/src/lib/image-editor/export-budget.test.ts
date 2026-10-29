@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { imageEditorExportBudget } from './export-budget';
 
-describe('OpenPost Image Editor export budget', () => {
+describe('SocialFlow.ai Image Editor export budget', () => {
 	it('allows ordinary multi-page social exports', () => {
 		const pages = Array.from({ length: 10 }, (_, index) => ({
 			id: `page-${index}`

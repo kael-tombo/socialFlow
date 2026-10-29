@@ -40,10 +40,10 @@
 			Privacy Policy
 		</h1>
 		<p class="mt-5 text-lg leading-8 text-muted-foreground">
-			What the hosted OpenPost service processes, why it does so, and the choices available to you.
+			What the hosted SocialFlow.ai service processes, why it does so, and the choices available to you.
 		</p>
 		<p class="mt-4 text-sm font-medium">
-			This policy is for people who use or evaluate the hosted OpenPost service.
+			This policy is for people who use or evaluate the hosted SocialFlow.ai service.
 		</p>
 		<div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
 			<a
@@ -90,13 +90,13 @@
 
 		<h2>1. Who is responsible</h2>
 		<p>
-			The hosted OpenPost service at <a href="https://app.openpo.st">app.openpo.st</a>
+			The hosted SocialFlow.ai service at <a href="https://app.openpo.st">app.openpo.st</a>
 			is operated by Rodrigo Dias in Porto, Portugal. For privacy requests, email
-			<a href="mailto:openpost@rgo.pt">openpost@rgo.pt</a>. OpenPost is the data controller for
+			<a href="mailto:openpost@rgo.pt">openpost@rgo.pt</a>. SocialFlow.ai is the data controller for
 			account and service data described in this policy.
 		</p>
 		<p>
-			A self-hosted OpenPost installation is controlled by its operator. This policy does not govern
+			A self-hosted SocialFlow.ai installation is controlled by its operator. This policy does not govern
 			an independent self-hosted installation; contact that operator about its practices.
 		</p>
 
@@ -108,11 +108,11 @@
 			</li>
 			<li>
 				<strong>Post data:</strong> drafts, scheduled and published content, media, account versions,
-				OpenPost Image Editor designs and saved versions, explicitly cloud-saved OpenPost Video Editor
+				SocialFlow.ai Image Editor designs and saved versions, explicitly cloud-saved SocialFlow.ai Video Editor
 				projects, templates, brand settings, prompts, schedules, post status, and job history.
 			</li>
 			<li>
-				<strong>Analytics data:</strong> account and content numbers for posts published through OpenPost,
+				<strong>Analytics data:</strong> account and content numbers for posts published through SocialFlow.ai,
 				past results, update status, and safe platform error codes. This lets you inspect measured evidence
 				and prepare a repurpose draft for review. Analytics records do not contain raw platform replies,
 				remote media, access tokens, bot tokens, webhook secrets, or direct messages.
@@ -132,18 +132,18 @@
 			</li>
 			<li>
 				<strong>Connected-account data:</strong> social network, account ID, username, profile, supported
-				features, X plan when relevant, granted access, and encrypted access or refresh tokens. OpenPost
+				features, X plan when relevant, granted access, and encrypted access or refresh tokens. SocialFlow.ai
 				does not ask for your social-network password.
 			</li>
 			<li>
 				<strong>Security data:</strong> password hashes, session identifiers, passkey public-key material,
 				TOTP settings, API token details, IP address, browser details, sign-in and token activity, and
-				password-reset records. OpenPost never stores a readable account password.
+				password-reset records. SocialFlow.ai never stores a readable account password.
 			</li>
 			<li>
 				<strong>Billing data:</strong> plan access, subscription, checkout, customer, transaction, and
 				billing-status identifiers received from Paddle or the payment provider identified at checkout.
-				OpenPost does not receive or store full payment-card details.
+				SocialFlow.ai does not receive or store full payment-card details.
 			</li>
 			<li>
 				<strong>Support and service data:</strong> messages you send, service logs, errors, request timing,
@@ -161,7 +161,7 @@
 		<p>
 			Camera access is requested only after you choose a camera action. A live preview stays in the
 			browser and is not saved. A still photo is uploaded to the selected workspace only after you
-			choose to use it. OpenPost Video Editor can optionally record a camera track; that recording
+			choose to use it. SocialFlow.ai Video Editor can optionally record a camera track; that recording
 			and its local project stay in browser storage until you choose a cloud save, Media save, or
 			post handoff.
 		</p>
@@ -208,7 +208,7 @@
 			<li>
 				<strong>OpenRouter and selected AI model providers</strong>, when automatic image captioning
 				is enabled, to process a 400-pixel JPEG thumbnail and up to 1,000 characters of the relevant
-				draft or thread segment as untrusted context. OpenPost does not send the original image for
+				draft or thread segment as untrusted context. SocialFlow.ai does not send the original image for
 				this feature. Their service and privacy terms apply.
 			</li>
 			<li>
@@ -230,7 +230,7 @@
 			</li>
 		</ul>
 		<p>
-			OpenPost does not sell personal data, build advertising profiles, or share personal data for
+			SocialFlow.ai does not sell personal data, build advertising profiles, or share personal data for
 			cross-context behavioral advertising.
 		</p>
 		<p>
@@ -241,20 +241,20 @@
 
 		<h2>6. Google and YouTube API data</h2>
 		<p>
-			If you connect YouTube, OpenPost uses Google API data only to provide the connection,
+			If you connect YouTube, SocialFlow.ai uses Google API data only to provide the connection,
 			video-publishing, and channel or video analytics features you request. That use and transfer
 			comply with the
 			<a href="https://developers.google.com/terms/api-services-user-data-policy"
 				>Google API Services User Data Policy</a
-			>, including its Limited Use requirements. OpenPost does not use Google user data for ads,
+			>, including its Limited Use requirements. SocialFlow.ai does not use Google user data for ads,
 			credit decisions, or unrelated profiling.
 		</p>
 		<p>
-			OpenPost uses YouTube API Services. Google's handling of information is described in the
+			SocialFlow.ai uses YouTube API Services. Google's handling of information is described in the
 			<a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
 		</p>
 		<p>
-			You can disconnect a YouTube account in OpenPost and revoke access from your
+			You can disconnect a YouTube account in SocialFlow.ai and revoke access from your
 			<a href="https://myaccount.google.com/permissions">Google account permissions</a>.
 		</p>
 
@@ -274,7 +274,7 @@
 			deleted media versions are pruned by a daily job after they become more than 14 days old. A
 			copy can therefore remain until the next daily run. Operator-created repair or incident
 			snapshots follow a separate review and are kept only while needed for recovery, security,
-			legal duties, fraud prevention, or enforcing legal rights. OpenPost does not add a separate
+			legal duties, fraud prevention, or enforcing legal rights. SocialFlow.ai does not add a separate
 			application-level encryption layer to each backup artifact.
 		</p>
 		<p><strong>Retention schedule reviewed:</strong> {inventoryReviewedOn}</p>
@@ -333,19 +333,19 @@
 			one fixed name. A prefix covers names with a generated suffix. The inventory was reviewed on {inventoryReviewedOn}.
 		</p>
 		<p>
-			OpenPost Image Editor background removal runs in your browser with model and runtime files
-			served by the OpenPost operator. Source pixels are not sent to a background-removal service. A
+			SocialFlow.ai Image Editor background removal runs in your browser with model and runtime files
+			served by the SocialFlow.ai operator. Source pixels are not sent to a background-removal service. A
 			result is uploaded to the selected workspace only when processing succeeds.
 		</p>
 		<p>
 			The Hosted service, marketing site, and documentation site use PostHog EU Cloud for product,
-			service, error, and website telemetry. Before you choose, OpenPost sends no optional browser
+			service, error, and website telemetry. Before you choose, SocialFlow.ai sends no optional browser
 			telemetry. If you allow analytics cookies, first-party identity and sessions can continue
-			across OpenPost sibling subdomains. PostHog derives country for those browser events before
-			discarding the raw IP. If you choose cookie-free analytics under More options, OpenPost sends
+			across SocialFlow.ai sibling subdomains. PostHog derives country for those browser events before
+			discarding the raw IP. If you choose cookie-free analytics under More options, SocialFlow.ai sends
 			limited personless events with daily server-hashed identity and no geography. Decline turns
 			optional browser analytics fully off. Do Not Track and Global Privacy Control force that full
-			browser opt-out. The signed-in app and backend use opaque OpenPost identifiers for separately
+			browser opt-out. The signed-in app and backend use opaque SocialFlow.ai identifiers for separately
 			disclosed service telemetry; the browser choice does not disable authoritative backend
 			outcomes. Autocapture, session replay, heatmaps, surveys, console capture, network timing and
 			bodies, advertising profiles, and cross-site tracking are disabled. The privacy-enhanced
@@ -357,12 +357,12 @@
 			sanitized JavaScript errors only after you choose Allow analytics. Change this in Privacy. The
 			preference is stored securely for each server on the device. Analytics identity and pending
 			events stay in memory and are cleared when you decline, switch server, or change account.
-			Consented signed-in activity uses the opaque OpenPost user ID. Native analytics does not
+			Consented signed-in activity uses the opaque SocialFlow.ai user ID. Native analytics does not
 			include location, touch histories, recordings, post content, or native crash dumps.
 		</p>
 
 		<p>
-			OpenPost Video Editor live previews, optional screen, camera, and audio recording, editing,
+			SocialFlow.ai Video Editor live previews, optional screen, camera, and audio recording, editing,
 			transcription, voice detection, framing analysis, and export run in the browser. Model files
 			are downloaded only after the user starts the related tool. Local project data, recordings,
 			sources, and exports are uploaded only when the user chooses a cloud save, Media save, or post
@@ -426,7 +426,7 @@
 		<h2>9. International transfers</h2>
 		<p>
 			Your selected social networks and some service providers may process data outside Portugal or
-			the European Economic Area. When OpenPost controls a transfer and a safeguard is required, it
+			the European Economic Area. When SocialFlow.ai controls a transfer and a safeguard is required, it
 			must use an adequacy decision, contractual safeguards, or another lawful transfer method. The
 			Hosted service trust register states the current provider-specific facts and any unresolved
 			documentation gap. Publishing to a social network is also a transfer that you choose.
@@ -446,7 +446,7 @@
 
 		<h2>11. Security</h2>
 		<p>
-			OpenPost uses encrypted social account tokens, password hashing, secure session cookies,
+			SocialFlow.ai uses encrypted social account tokens, password hashing, secure session cookies,
 			limited tool tokens that you can remove, access controls, TOTP, passkeys, request limits,
 			backups, and checks for unsafe software packages. No internet service can guarantee full
 			security. Report a suspected security flaw to

@@ -23,13 +23,13 @@ import (
 func TestGetMastodonProviderReturnsConfiguredInstanceURL(t *testing.T) {
 	const instanceURL = "https://social.example"
 	handler := &OAuthHandler{providers: map[string]platform.Adapter{
-		"mastodon:OpenPost E2E": platform.NewMastodonAdapter(
+		"mastodon:SocialFlow.ai E2E": platform.NewMastodonAdapter(
 			"client", "secret", "https://openpost.example/callback", instanceURL,
 		),
 	}}
 
 	adapter, readinessInstanceURL, err := handler.getMastodonProvider(
-		context.Background(), "OpenPost E2E", "",
+		context.Background(), "SocialFlow.ai E2E", "",
 	)
 
 	require.NoError(t, err)
@@ -43,7 +43,7 @@ func TestGetMastodonProviderResolvesConfiguredInstanceURLAlias(t *testing.T) {
 		"client", "secret", "https://openpost.example/callback", instanceURL,
 	)
 	handler := &OAuthHandler{providers: map[string]platform.Adapter{
-		"mastodon:OpenPost E2E": adapter,
+		"mastodon:SocialFlow.ai E2E": adapter,
 	}}
 
 	resolved, readinessInstanceURL, err := handler.getMastodonProvider(
@@ -75,7 +75,7 @@ func TestGetAuthURLRegistersDynamicMastodonInstance(t *testing.T) {
 		require.Equal(t, http.MethodPost, r.Method)
 		require.Equal(t, "/api/v1/apps", r.URL.Path)
 		require.NoError(t, r.ParseForm())
-		require.Equal(t, "OpenPost", r.Form.Get("client_name"))
+		require.Equal(t, "SocialFlow.ai", r.Form.Get("client_name"))
 		require.Equal(t, "urn:ietf:wg:oauth:2.0:oob", r.Form.Get("redirect_uris"))
 		require.Equal(t, "read write", r.Form.Get("scopes"))
 		registrationCalls++

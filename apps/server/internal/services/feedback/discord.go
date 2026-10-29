@@ -37,12 +37,12 @@ type discordEmbedField struct {
 
 func (d *DiscordDestination) Deliver(ctx context.Context, report Report) error {
 	payload := discordWebhookPayload{
-		Username: "OpenPost feedback",
+		Username: "SocialFlow.ai feedback",
 		Embeds: []discordEmbed{{
 			Title:       strings.ToUpper(report.Category[:1]) + report.Category[1:] + " report",
 			Description: report.Message,
 			Fields: []discordEmbedField{
-				{Name: "OpenPost version", Value: report.AppVersion, Inline: true},
+				{Name: "SocialFlow.ai version", Value: report.AppVersion, Inline: true},
 				{Name: "User", Value: report.UserID, Inline: true},
 				{Name: "Received", Value: report.CreatedAt, Inline: true},
 			},

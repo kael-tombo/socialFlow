@@ -86,7 +86,7 @@
 		{#if !fullWidth}
 			<aside
 				class="tool-promo"
-				aria-label="Create and schedule with OpenPost"
+				aria-label="Create and schedule with SocialFlow.ai"
 				data-agent-exclude="application-cta"
 			>
 				<div class="promo-content">
@@ -97,7 +97,7 @@
 							alt=""
 							width={24}
 							height={24}
-						/><span>OpenPost</span>
+						/><span>SocialFlow.ai</span>
 					</div>
 					<h2>A good post.<br /><HeroAccent>Then another.</HeroAccent></h2>
 					<p>Keep your ideas, images, videos, and schedule in one place.</p>
@@ -106,14 +106,14 @@
 						<li><Check size={16} /> Edit images and videos</li>
 						<li><Check size={16} /> Plan your week of posts</li>
 					</ul>
-					<Button href={managedSignupUrl}>Try OpenPost <ArrowRight data-icon="inline-end" /></Button
+					<Button href={managedSignupUrl}>Try SocialFlow.ai <ArrowRight data-icon="inline-end" /></Button
 					>
 					<small>{managedTrialNote}</small>
 				</div>
 				<img
 					class="promo-preview"
 					src="/assets/screenshots/calendar-dark.webp"
-					alt="Scheduled posts in the OpenPost calendar"
+					alt="Scheduled posts in the SocialFlow.ai calendar"
 					width="1280"
 					height="800"
 					loading="lazy"

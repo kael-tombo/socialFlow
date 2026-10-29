@@ -303,7 +303,7 @@
 </svelte:head>
 
 {#if configurationLoading && !authConfiguration}
-	<StandaloneShell title="OpenPost" logoHref="/" loading loadingLabel={m.common_loading()} />
+	<StandaloneShell title="SocialFlow.ai" logoHref="/" loading loadingLabel={m.common_loading()} />
 {:else if authConfiguration?.waitlist_enabled}
 	<HostedWaitlist privacyURL={authConfiguration.privacy_url} loginHref={loginTarget()} />
 {:else}

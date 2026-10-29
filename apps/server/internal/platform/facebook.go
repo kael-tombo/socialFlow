@@ -195,7 +195,7 @@ func (f *FacebookAdapter) RefreshCapability() RefreshCapability {
 }
 
 func (f *FacebookAdapter) RefreshToken(_ context.Context, _ RefreshTokenInput) (*TokenResult, error) {
-	return nil, fmt.Errorf("facebook page tokens do not support OpenPost refresh yet")
+	return nil, fmt.Errorf("facebook page tokens do not support SocialFlow.ai refresh yet")
 }
 
 func (f *FacebookAdapter) GetProfile(ctx context.Context, accessToken string) (*UserProfile, error) {

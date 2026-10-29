@@ -116,7 +116,7 @@ interface ImageGeometryAdapterInternals {
 	updateObject(target: ImageObjectFixture, layer: ImageEditorLayer): void;
 }
 
-describe('OpenPost Image Editor image geometry', () => {
+describe('SocialFlow.ai Image Editor image geometry', () => {
 	it('builds a centered pixel grid with transparent padding at image edges', () => {
 		const image = {
 			width: 2,
@@ -224,7 +224,7 @@ describe('OpenPost Image Editor image geometry', () => {
 	);
 });
 
-describe('OpenPost Image Editor canvas reconciliation', () => {
+describe('SocialFlow.ai Image Editor canvas reconciliation', () => {
 	it('updates a solid background without rebuilding unchanged layer objects', async () => {
 		const layer = imageLayer(800, 800);
 		const page = pageFixture([layer]);
@@ -420,7 +420,7 @@ describe('OpenPost Image Editor canvas reconciliation', () => {
 	});
 });
 
-describe('OpenPost Image Editor rotation gestures', () => {
+describe('SocialFlow.ai Image Editor rotation gestures', () => {
 	it('configures snapping before Fabric calculates the angle without rewriting the live angle', () => {
 		interface RotationTargetFixture {
 			angle: number;
@@ -519,7 +519,7 @@ describe('OpenPost Image Editor rotation gestures', () => {
 	});
 });
 
-describe('OpenPost Image Editor multi-selection movement', () => {
+describe('SocialFlow.ai Image Editor multi-selection movement', () => {
 	it('does not snap an active selection against its own relative child coordinates', () => {
 		interface SelectionChildFixture {
 			__imageEditorLayerID: string;
@@ -589,7 +589,7 @@ describe('OpenPost Image Editor multi-selection movement', () => {
 	});
 });
 
-describe('OpenPost Image Editor point snapping', () => {
+describe('SocialFlow.ai Image Editor point snapping', () => {
 	it('uses the nearest axis target without changing pointer metadata', () => {
 		const snapped = snapImageEditorPoint(
 			{ x: 104, y: 197, pressure: 0.75 },
@@ -612,7 +612,7 @@ describe('OpenPost Image Editor point snapping', () => {
 	});
 });
 
-describe('OpenPost Image Editor screen zoom', () => {
+describe('SocialFlow.ai Image Editor screen zoom', () => {
 	it('combines Fabric and CSS scaling so tolerances remain stable on screen', () => {
 		expect(imageEditorScreenZoom(1, 464.4, 1080)).toBeCloseTo(0.43);
 		expect(imageEditorScreenZoom(2, 540, 1080)).toBe(1);
@@ -627,7 +627,7 @@ describe('OpenPost Image Editor screen zoom', () => {
 	});
 });
 
-describe('OpenPost Image Editor resize snapping', () => {
+describe('SocialFlow.ai Image Editor resize snapping', () => {
 	it('snaps a horizontal resize to the document edge', () => {
 		const snapped = snapImageEditorResize(
 			{ left: 30, top: 40, width: 1044, height: 500 },
@@ -661,7 +661,7 @@ describe('OpenPost Image Editor resize snapping', () => {
 	});
 });
 
-describe('OpenPost Image Editor layer render order', () => {
+describe('SocialFlow.ai Image Editor layer render order', () => {
 	function interleavedGroupLayers(): ImageEditorLayer[] {
 		const rectangle: ImageEditorLayer = {
 			...imageLayer(400, 300),
@@ -744,7 +744,7 @@ describe('OpenPost Image Editor layer render order', () => {
 	});
 });
 
-describe('OpenPost Image Editor group state', () => {
+describe('SocialFlow.ai Image Editor group state', () => {
 	it('refreshes unchanged descendants when a group becomes hidden and locked', async () => {
 		interface LayerObjectFixture {
 			visible: boolean;

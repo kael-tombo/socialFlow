@@ -171,7 +171,7 @@ test("notification panel keeps reads explicit, recovers failures and fits deskto
   );
   await panel.getByRole("button", { name: /Panel comment/ }).click();
   await expect(
-    panel.getByText("OpenPost could not mark this notification as read. Try again."),
+    panel.getByText("SocialFlow.ai could not mark this notification as read. Try again."),
   ).toBeVisible();
   await expect(panel.getByText("Panel comment", { exact: true })).toBeVisible();
   await expect(bell).toHaveAccessibleName("Notifications, 3 unread");

@@ -105,7 +105,7 @@ func TestDiscordBotAccountStoresGuildReferenceWithoutGlobalBotToken(t *testing.T
 		PlatformName:    "discord",
 		WorkspaceID:     "workspace-discord",
 		AccountID:       "guild-100",
-		AccountUsername: "OpenPost Guild",
+		AccountUsername: "SocialFlow.ai Guild",
 		Token:           &platform.TokenResult{AccessToken: "discord-guild:guild-100", TokenType: "Installation", Extra: map[string]string{"scope": "bot"}},
 		CapabilityState: map[string]string{"connection_type": "bot", "discord_guild_id": "guild-100"},
 		Grant:           AuthorizationGrantInput{ProviderProjectID: "discord-app", ProviderSubject: "user-1", ExecutionMode: "bot_oauth2"},
@@ -217,7 +217,7 @@ func TestSaveAccountsFromInputsKeepsDestinationsDistinctFromGrantSubject(t *test
 				},
 				{
 					Actor: accountSaverActor("user-1"), UserID: "user-1", WorkspaceID: "workspace-1", PlatformName: tc.provider,
-					AccountID: tc.secondID, AccountUsername: "OpenPost", Token: token,
+					AccountID: tc.secondID, AccountUsername: "SocialFlow.ai", Token: token,
 					CapabilityState: tc.secondCapabilities,
 				},
 			})

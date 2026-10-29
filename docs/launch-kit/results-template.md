@@ -1,11 +1,11 @@
 # Campaign Results Template
 
-> **TEMPLATE — NOT ACTUAL PUBLISHED PROOF.** Every field below is empty or marked pending. Do not share this file as a results report until real OpenPost lifecycle events and provider evidence replace the placeholders.
+> **TEMPLATE — NOT ACTUAL PUBLISHED PROOF.** Every field below is empty or marked pending. Do not share this file as a results report until real SocialFlow.ai lifecycle events and provider evidence replace the placeholders.
 
 ## Campaign record
 
 - Campaign: `[CAMPAIGN NAME]`
-- OpenPost version or commit: `[VERSION]`
+- SocialFlow.ai version or commit: `[VERSION]`
 - Launch window and timezone: `[WINDOW]`
 - Workspace: `[NON-SECRET NAME OR ID]`
 - Human reviewer: `[NAME]`
@@ -27,7 +27,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `[PROVIDER]` | `[ACCOUNT]` | `[FORMAT]` | Pending — not proof of post | Pending |  |  |  |  |
 
-Only mark a destination published when OpenPost records the provider result. Preserve failures and retries as outcomes; do not delete them to make the report look clean.
+Only mark a destination published when SocialFlow.ai records the provider result. Preserve failures and retries as outcomes; do not delete them to make the report look clean.
 
 ## Activation results
 
@@ -47,7 +47,7 @@ State the measurement window, denominator, and exclusions for every rate. Leave 
 
 Add a quote only when all are true:
 
-- the person used OpenPost;
+- the person used SocialFlow.ai;
 - the quote describes a specific workflow or outcome;
 - the name, role, and wording are accurate;
 - the person approved public attribution.
@@ -66,7 +66,7 @@ Quote: `[NONE COLLECTED YET]`
 
 - Verification log: `[LINK]`
 - Demo: `[LINK]`
-- OpenPost lifecycle export or screenshots: `[LINK]`
+- SocialFlow.ai lifecycle export or screenshots: `[LINK]`
 - Provider URLs: `[LINKS]`
 - Public technical write-up: `[LINK]`
 

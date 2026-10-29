@@ -25,7 +25,7 @@ const loaded = require(path.join(packageRoot, manifest.main));
 assert.equal(typeof loaded.OpenPost, "function");
 const node = new loaded.OpenPost();
 assert.equal(node.description.name, "openPost");
-assert.equal(node.description.displayName, "OpenPost");
+assert.equal(node.description.displayName, "SocialFlow.ai");
 assert.equal(node.description.defaultVersion, 1);
 
 for (const filename of ["list-workspaces.json", "create-draft.json"]) {

@@ -139,7 +139,7 @@ export default function AppearanceScreen() {
             >
               Appearance
             </Text>
-            <BodyText>Choose how OpenPost looks on this device.</BodyText>
+            <BodyText>Choose how SocialFlow.ai looks on this device.</BodyText>
           </View>
         </View>
 
@@ -273,7 +273,7 @@ export default function AppearanceScreen() {
               ) : settings && !settings.canManageWorkspace ? (
                 <BodyText>Ask a workspace admin to choose a different published theme.</BodyText>
               ) : null}
-              <BodyText>Create and edit themes in OpenPost on the web.</BodyText>
+              <BodyText>Create and edit themes in SocialFlow.ai on the web.</BodyText>
             </ContentSection>
           </View>
 

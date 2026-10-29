@@ -894,7 +894,7 @@ func protectedLegacyPublicationJobUsesCurrentAuthorization(ctx context.Context, 
 }
 
 func quarantineProtectedLegacyPublicationJob(ctx context.Context, tx bun.Tx, jobID string) error {
-	return quarantineLegacyPublicationJob(ctx, tx, jobID, "Provider delivery may already have succeeded before authorization receipts were introduced. OpenPost preserved this job and did not retry it.")
+	return quarantineLegacyPublicationJob(ctx, tx, jobID, "Provider delivery may already have succeeded before authorization receipts were introduced. SocialFlow.ai preserved this job and did not retry it.")
 }
 
 func quarantineInvalidLegacyPublicationJob(ctx context.Context, tx bun.Tx, jobID string, err error) error {
@@ -903,7 +903,7 @@ func quarantineInvalidLegacyPublicationJob(ctx context.Context, tx bun.Tx, jobID
 	if !errors.Is(err, errLegacyPublicationAuthorizationInvalid) && !errors.Is(err, errLegacyPublicationAuthorizationMissing) {
 		return err
 	}
-	return quarantineLegacyPublicationJob(ctx, tx, jobID, "OpenPost did not run this job because its authorization could not be verified. Review the post before retrying. Reason: "+err.Error())
+	return quarantineLegacyPublicationJob(ctx, tx, jobID, "SocialFlow.ai did not run this job because its authorization could not be verified. Review the post before retrying. Reason: "+err.Error())
 }
 
 func quarantineLegacyPublicationJob(ctx context.Context, tx bun.Tx, jobID, message string) error {
@@ -1222,7 +1222,7 @@ func quarantineUnprotectedLegacyPublishPostJobs(
 func quarantineConflictingPendingLegacyPublishPostJob(ctx context.Context, db bun.IDB, jobID string) error {
 	result, err := db.NewUpdate().Model((*models.Job)(nil)).
 		Set("status = ?", "failed").
-		Set("last_error = ?", "Another delivery for this post may still be active. OpenPost preserved that operation and did not start this duplicate job.").
+		Set("last_error = ?", "Another delivery for this post may still be active. SocialFlow.ai preserved that operation and did not start this duplicate job.").
 		Set("locked_at = NULL").
 		Set("locked_by = ''").
 		Where("id = ? AND type = ? AND status = ?", jobID, jobregistry.TypePublishPost, jobregistry.StatusPending).

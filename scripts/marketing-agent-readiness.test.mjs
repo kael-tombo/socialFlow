@@ -57,13 +57,13 @@ test("structured data joins each page to the product, site, and real operator", 
 
   assert.equal(page["@type"], "AboutPage");
   assert.deepEqual(page.about, { "@id": "https://openpo.st/#software" });
-  assert.equal(software.name, "OpenPost");
+  assert.equal(software.name, "SocialFlow.ai");
   assert.equal(software.operatingSystem, "Web, Android");
   assert.ok(software.sameAs.includes("https://github.com/getopenpost/openpost"));
   assert.ok(software.sameAs.includes("https://glama.ai/mcp/connectors/io.github.rodrgds/openpost"));
   const organization = graph.find((entry) => entry["@id"] === "https://openpo.st/#organization");
   assert.equal(organization["@type"], "Organization");
-  assert.equal(organization.name, "OpenPost");
+  assert.equal(organization.name, "SocialFlow.ai");
   assert.equal(organization.logo.url, "https://openpo.st/icon.svg");
   assert.ok(organization.logo.width >= 112 && organization.logo.height >= 112);
   assert.deepEqual(organization.founder, { "@id": "https://openpo.st/#operator" });
@@ -145,7 +145,7 @@ test("changelog feed contains only dated stable releases and escaped content", (
 `);
 
   assert.match(feed, /<updated>2026-08-23T00:00:00Z<\/updated>/u);
-  assert.match(feed, /OpenPost v4\.1\.0/u);
+  assert.match(feed, /SocialFlow.ai v4\.1\.0/u);
   assert.match(feed, /API &amp; agent discovery/u);
   assert.match(feed, /changelog#v4\.0\.1/u);
   assert.doesNotMatch(feed, /Work in progress|Unreleased/u);

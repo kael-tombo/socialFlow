@@ -50,7 +50,7 @@ func inboxFilterFlags(cmd *cobra.Command) {
 	cmd.Flags().String("kind", "", "comment, mention or review; omit for all")
 	cmd.Flags().String("account-id", "", "connected account ID")
 	cmd.Flags().String("platform", "", "filter by provider")
-	cmd.Flags().String("publication-id", "", "filter by an OpenPost post, excluding unrelated native activity")
+	cmd.Flags().String("publication-id", "", "filter by an SocialFlow.ai post, excluding unrelated native activity")
 	cmd.Flags().Bool("archived", false, "read archived items instead of active items")
 }
 

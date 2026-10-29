@@ -47,7 +47,7 @@ var (
 	ErrNonceMismatch          = errors.New("oidc nonce mismatch")
 	ErrMissingIDToken         = errors.New("oidc token response did not contain an id token")
 	ErrIdentityCollision      = errors.New("external identity is already linked to another user")
-	ErrEmailConflict          = errors.New("an OpenPost account already uses this email")
+	ErrEmailConflict          = errors.New("an SocialFlow.ai account already uses this email")
 	ErrJITDisabled            = errors.New("just-in-time provisioning is disabled")
 	ErrVerifiedEmailRequired  = errors.New("a verified email claim is required")
 	ErrUserInfoSubject        = errors.New("userinfo subject does not match id token subject")

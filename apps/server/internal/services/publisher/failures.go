@@ -117,15 +117,15 @@ func classifyLocalPublicationFailure(err error) (Failure, bool) {
 	}
 	var recovery *renditionRecoveryError
 	if errors.As(err, &recovery) {
-		return Failure{Kind: FailureUnknown, Code: "publication_recovery_pending", Retryable: true, Action: FailureActionRetry, Message: "Publishing was interrupted. OpenPost will check the saved delivery before sending again."}, true
+		return Failure{Kind: FailureUnknown, Code: "publication_recovery_pending", Retryable: true, Action: FailureActionRetry, Message: "Publishing was interrupted. SocialFlow.ai will check the saved delivery before sending again."}, true
 	}
 	var recovered *diagnostics.PanicError
 	if errors.As(err, &recovered) {
-		return Failure{Kind: FailureUnknown, Code: "publication_panic", Action: FailureActionEdit, Message: "OpenPost could not finish publishing this destination."}, true
+		return Failure{Kind: FailureUnknown, Code: "publication_panic", Action: FailureActionEdit, Message: "SocialFlow.ai could not finish publishing this destination."}, true
 	}
 	var completion *renditionCompletionError
 	if errors.As(err, &completion) {
-		return Failure{Kind: FailureUnknown, Code: "publication_finalization_pending", Retryable: true, Action: FailureActionRetry, Message: "The provider accepted this post. OpenPost will retry saving its result without sending it again."}, true
+		return Failure{Kind: FailureUnknown, Code: "publication_finalization_pending", Retryable: true, Action: FailureActionRetry, Message: "The provider accepted this post. SocialFlow.ai will retry saving its result without sending it again."}, true
 	}
 	return Failure{}, false
 }
@@ -133,11 +133,11 @@ func classifyLocalPublicationFailure(err error) (Failure, bool) {
 func classifyAmbiguousWrite(err error) Failure {
 	if retryAfter, retryable := providerwrite.IsRetryable(err); retryable {
 		failure := failureForKind(FailureProviderProcessing, "idempotent_provider_retry", 0, retryAfter)
-		failure.Message = "The provider result was interrupted. OpenPost will retry with the same provider idempotency key."
+		failure.Message = "The provider result was interrupted. SocialFlow.ai will retry with the same provider idempotency key."
 		return failure
 	}
 	failure := failureForKind(FailureUnknown, "ambiguous_provider_write", 0, 0)
-	failure.Message = "The provider may have accepted this publish. OpenPost did not send it again. Check the provider before retrying manually."
+	failure.Message = "The provider may have accepted this publish. SocialFlow.ai did not send it again. Check the provider before retrying manually."
 	failure.Action = FailureActionProvider
 	failure.Retryable = false
 	return failure
@@ -178,10 +178,10 @@ func classifyProviderHTTPFailure(err error) (Failure, bool) {
 		failure.Action = FailureActionEdit
 	}
 	if code == "devnull:rate_limited" {
-		failure.Message = "dev/null allows 10 commits a minute. OpenPost will retry."
+		failure.Message = "dev/null allows 10 commits a minute. SocialFlow.ai will retry."
 	}
 	if code == "google:invalid_rapt" {
-		failure.Message = "Google requires a new sign-in or approval from your Workspace administrator. Ask the administrator to trust OpenPost, then reconnect this account."
+		failure.Message = "Google requires a new sign-in or approval from your Workspace administrator. Ask the administrator to trust SocialFlow.ai, then reconnect this account."
 		failure.Action = FailureActionReconnect
 	}
 	if code == "pinterest:board_permission:29" {
@@ -323,19 +323,19 @@ func failureForKind(kind, code string, status int, retryAfter time.Duration) Fai
 		failure.Message = "The provider rejected this as duplicate content."
 		failure.Action = FailureActionEdit
 	case FailureRateLimited:
-		failure.Message = "The provider is rate limiting this account. OpenPost will retry."
+		failure.Message = "The provider is rate limiting this account. SocialFlow.ai will retry."
 		failure.Action = FailureActionRetry
 		failure.Retryable = true
 	case FailureNetwork:
-		failure.Message = "OpenPost could not reach the provider. It will retry."
+		failure.Message = "SocialFlow.ai could not reach the provider. It will retry."
 		failure.Action = FailureActionRetry
 		failure.Retryable = true
 	case FailureProviderServer:
-		failure.Message = "The provider is temporarily unavailable. OpenPost will retry."
+		failure.Message = "The provider is temporarily unavailable. SocialFlow.ai will retry."
 		failure.Action = FailureActionRetry
 		failure.Retryable = true
 	case FailureProviderProcessing:
-		failure.Message = "The provider did not finish processing the media. OpenPost will retry."
+		failure.Message = "The provider did not finish processing the media. SocialFlow.ai will retry."
 		failure.Action = FailureActionRetry
 		failure.Retryable = true
 	default:
@@ -368,12 +368,12 @@ func RetryDelay(attempt int, retryAfter time.Duration, jitterFraction float64) t
 
 func pendingProviderFailure(err error, retryAfter time.Duration) Failure {
 	failure := failureForKind(FailureProviderProcessing, "provider_submission_pending", 0, retryAfter)
-	failure.Message = "The provider is still processing this publish. OpenPost will check its status without sending it again."
+	failure.Message = "The provider is still processing this publish. SocialFlow.ai will check its status without sending it again."
 	var outcome *providerwrite.OutcomeError
 	if errors.As(err, &outcome) && outcome.ProviderState == "inbox_delivered" {
 		failure.Code = "tiktok_inbox_delivered"
 		failure.Action = FailureActionProvider
-		failure.Message = "Delivered to your TikTok inbox. Open TikTok to finish publishing. OpenPost will check for the published post."
+		failure.Message = "Delivered to your TikTok inbox. Open TikTok to finish publishing. SocialFlow.ai will check for the published post."
 	}
 	return failure
 }

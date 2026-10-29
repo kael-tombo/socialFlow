@@ -494,7 +494,7 @@ func (s *Service) listAvailableAccounts(
 		supported := SupportsPlatform(account.Platform) && s.repostAdapter(account) != nil
 		reason := ""
 		if !supported {
-			reason = "This provider does not expose a native repost action in OpenPost."
+			reason = "This provider does not expose a native repost action in SocialFlow.ai."
 		}
 		cross := account.WorkspaceID != workspaceID
 		result = append(result, AccountOption{

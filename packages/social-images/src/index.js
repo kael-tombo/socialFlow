@@ -83,58 +83,58 @@ const toolPages = [
   {
     slug: "social-media-video-editor",
     name: "Social media video editor",
-    title: "Free social media video editor - OpenPost Video Editor",
+    title: "Free social media video editor - SocialFlow.ai Video Editor",
     description:
       "Record or import footage, edit for four social formats, and export without a watermark.",
   },
   {
     slug: "social-media-image-editor",
     name: "Social media image editor",
-    title: "Free social media image editor - OpenPost Image Editor",
+    title: "Free social media image editor - SocialFlow.ai Image Editor",
     description: "Create posts, carousel pages, Story slides, and thumbnails in your browser.",
   },
   {
     slug: "multi-platform-character-counter",
     name: "Multi-platform character counter",
-    title: "Free social media character counter - OpenPost",
+    title: "Free social media character counter - SocialFlow.ai",
     description: `Check one draft against the limits and counting rules for ${counterPlatforms.length} social networks.`,
   },
   {
     slug: "post-preview-generator",
     name: "Post preview generator",
-    title: "Free social post preview generator - OpenPost",
+    title: "Free social post preview generator - SocialFlow.ai",
     description: "Preview text, links, media, and supported formats before you publish.",
   },
   {
     slug: "thread-splitter",
     name: "Thread splitter",
-    title: "Free thread splitter for X, Bluesky & Threads - OpenPost",
+    title: "Free thread splitter for X, Bluesky & Threads - SocialFlow.ai",
     description:
-      "Split a long post into numbered parts within each network's character limit. Review, copy, or continue your thread in OpenPost.",
+      "Split a long post into numbered parts within each network's character limit. Review, copy, or continue your thread in SocialFlow.ai.",
   },
   {
     slug: "fediverse-handle-checker",
     name: "Fediverse handle checker",
-    title: "Fediverse and Bluesky handle checker - OpenPost",
+    title: "Fediverse and Bluesky handle checker - SocialFlow.ai",
     description: "Validate a Fediverse or Bluesky handle, then choose whether to run a live check.",
   },
   {
     slug: "linkedin-text-formatter",
     name: "LinkedIn text formatter",
-    title: "Accessible LinkedIn post formatter - OpenPost",
+    title: "Accessible LinkedIn post formatter - SocialFlow.ai",
     description:
       "Clean up spacing, shorten paragraphs, and check length without using fake Unicode styles.",
   },
   {
     slug: "best-time-to-post-calculator",
     name: "Timezone posting planner",
-    title: "Free social posting schedule planner - OpenPost",
+    title: "Free social posting schedule planner - SocialFlow.ai",
     description: "Turn your audience hours and timezone into a weekly posting plan you can reuse.",
   },
   {
     slug: "utm-link-builder",
     name: "UTM link builder",
-    title: "Free UTM link builder - OpenPost",
+    title: "Free UTM link builder - SocialFlow.ai",
     description: "Add campaign tags to a link, then copy a clean URL for your social post.",
   },
 ];
@@ -143,7 +143,7 @@ const staticMarketingEntries = [
   {
     path: "/guides",
     key: "guides",
-    title: "Guides and tool comparisons - OpenPost",
+    title: "Guides and tool comparisons - SocialFlow.ai",
     socialTitle: "Make more of your work. Find a better way.",
     description:
       "Practical guides to choosing social tools, writing useful posts, and planning your content.",
@@ -156,10 +156,10 @@ const staticMarketingEntries = [
   {
     path: "/comparisons",
     key: "comparisons",
-    title: "Compare publishing, image and video tools - OpenPost",
+    title: "Compare publishing, image and video tools - SocialFlow.ai",
     socialTitle: "Compare your tools. Choose for the job.",
     description:
-      "Compare OpenPost with Buffer, Postiz, Metricool, Hootsuite, Photoshop, DaVinci Resolve and Premiere Pro. Sourced costs, limits, and reasons to choose each tool.",
+      "Compare SocialFlow.ai with Buffer, Postiz, Metricool, Hootsuite, Photoshop, DaVinci Resolve and Premiere Pro. Sourced costs, limits, and reasons to choose each tool.",
     label: "Comparisons",
     kind: "document",
     agentRepresentation: "static",
@@ -169,7 +169,7 @@ const staticMarketingEntries = [
   ...marketingGuides.map((guide) => ({
     path: `/guides/${guide.slug}`,
     key: `guide-${guide.slug}`,
-    title: `${guide.question} - OpenPost`,
+    title: `${guide.question} - SocialFlow.ai`,
     socialTitle: guide.question,
     description: guide.socialDescription,
     label: guide.comparison ? "Tool comparison" : "Content guide",
@@ -181,10 +181,10 @@ const staticMarketingEntries = [
   {
     path: "/",
     key: "home",
-    title: "OpenPost - The all-in-one content team for solo founders",
+    title: "SocialFlow.ai - The all-in-one content team for solo founders",
     socialTitle: "Your socials, on steroids.",
     description:
-      "Create, edit, and schedule social content in OpenPost. Turn GitHub releases and RSS feeds into drafts with visual workflows, AI, and review steps.",
+      "Create, edit, and schedule social content in SocialFlow.ai. Turn GitHub releases and RSS feeds into drafts with visual workflows, AI, and review steps.",
     label: "The content team for companies of one",
     kind: "home",
     agentRepresentation: "static",
@@ -194,10 +194,10 @@ const staticMarketingEntries = [
   {
     path: "/pricing",
     key: "pricing",
-    title: "OpenPost pricing",
+    title: "SocialFlow.ai pricing",
     socialTitle: "A content system that grows with your company.",
     description:
-      "Compare OpenPost Hosted service plans with clear limits for workspaces, accounts, posts, media, and seats.",
+      "Compare SocialFlow.ai Hosted service plans with clear limits for workspaces, accounts, posts, media, and seats.",
     label: "Hosted service plans",
     kind: "workflow",
     agentRepresentation: "static",
@@ -207,7 +207,7 @@ const staticMarketingEntries = [
   {
     path: "/platforms",
     key: "platforms",
-    title: "Social platform integrations in OpenPost",
+    title: "Social platform integrations in SocialFlow.ai",
     socialTitle: "Your business. Your channels.",
     description:
       "Find ideas and tools for your next Instagram, LinkedIn, Facebook, TikTok, or YouTube post. Check which channels work with your account.",
@@ -220,11 +220,11 @@ const staticMarketingEntries = [
   {
     path: "/tools",
     key: "tools",
-    title: "OpenPost free tools: post previews, threads, image & video editors",
+    title: "SocialFlow.ai free tools: post previews, threads, image & video editors",
     socialTitle: "Useful social tools. No account required.",
     description:
-      "Preview social posts, split threads, format LinkedIn text, edit images and videos, or convert files. Use OpenPost's free browser tools without an account.",
-    label: "OpenPost free tools",
+      "Preview social posts, split threads, format LinkedIn text, edit images and videos, or convert files. Use SocialFlow.ai's free browser tools without an account.",
+    label: "SocialFlow.ai free tools",
     kind: "tools-index",
     agentRepresentation: "static",
     agentDiscovery: { membership: "optional" },
@@ -233,7 +233,7 @@ const staticMarketingEntries = [
   {
     path: "/faq",
     key: "faq",
-    title: "OpenPost FAQ",
+    title: "SocialFlow.ai FAQ",
     socialTitle: "A few answers before you start.",
     description:
       "Answers about making content, scheduling posts, your free trial, billing, and account security.",
@@ -246,10 +246,10 @@ const staticMarketingEntries = [
   {
     path: "/security",
     key: "security",
-    title: "Security controls and responsibilities - OpenPost",
+    title: "Security controls and responsibilities - SocialFlow.ai",
     socialTitle: "Your accounts. Your control.",
     description:
-      "See how OpenPost encrypts account keys, limits tool access, and protects sign-in sessions.",
+      "See how SocialFlow.ai encrypts account keys, limits tool access, and protects sign-in sessions.",
     label: "Security",
     kind: "security",
     agentRepresentation: "static",
@@ -259,11 +259,11 @@ const staticMarketingEntries = [
   {
     path: "/trust",
     key: "trust",
-    title: "Your data and privacy - OpenPost",
+    title: "Your data and privacy - SocialFlow.ai",
     socialTitle: "Where your data goes.",
     description:
-      "See where OpenPost Cloud stores your data, which services help run it, and who can access it.",
-    label: "Your data in OpenPost",
+      "See where SocialFlow.ai Cloud stores your data, which services help run it, and who can access it.",
+    label: "Your data in SocialFlow.ai",
     kind: "security",
     agentRepresentation: "static",
     agentDiscovery: { membership: "primary" },
@@ -272,11 +272,11 @@ const staticMarketingEntries = [
   {
     path: "/about",
     key: "about",
-    title: "About OpenPost",
-    socialTitle: "Why OpenPost exists and who runs it.",
+    title: "About SocialFlow.ai",
+    socialTitle: "Why SocialFlow.ai exists and who runs it.",
     description:
-      "Meet the maker behind OpenPost and the idea behind a simpler way to create and schedule content for your business.",
-    label: "About OpenPost",
+      "Meet the maker behind SocialFlow.ai and the idea behind a simpler way to create and schedule content for your business.",
+    label: "About SocialFlow.ai",
     kind: "document",
     agentRepresentation: "static",
     agentDiscovery: { membership: "primary" },
@@ -285,11 +285,11 @@ const staticMarketingEntries = [
   {
     path: "/contact",
     key: "contact",
-    title: "Contact OpenPost",
-    socialTitle: "Contact OpenPost support or the community.",
+    title: "Contact SocialFlow.ai",
+    socialTitle: "Contact SocialFlow.ai support or the community.",
     description:
-      "Find the right OpenPost contact for product, account, billing, privacy, security, community, and contribution questions.",
-    label: "Contact OpenPost",
+      "Find the right SocialFlow.ai contact for product, account, billing, privacy, security, community, and contribution questions.",
+    label: "Contact SocialFlow.ai",
     kind: "document",
     agentRepresentation: "static",
     agentDiscovery: { membership: "primary" },
@@ -298,9 +298,9 @@ const staticMarketingEntries = [
   {
     path: "/changelog",
     key: "changelog",
-    title: "OpenPost changelog",
-    socialTitle: "What changed in OpenPost, in plain language.",
-    description: "See the latest tools, improvements, and fixes in OpenPost.",
+    title: "SocialFlow.ai changelog",
+    socialTitle: "What changed in SocialFlow.ai, in plain language.",
+    description: "See the latest tools, improvements, and fixes in SocialFlow.ai.",
     label: "Changelog",
     kind: "document",
     agentRepresentation: "static",
@@ -310,10 +310,10 @@ const staticMarketingEntries = [
   {
     path: "/privacy",
     key: "privacy",
-    title: "Privacy Policy - OpenPost",
-    socialTitle: "OpenPost privacy policy.",
+    title: "Privacy Policy - SocialFlow.ai",
+    socialTitle: "SocialFlow.ai privacy policy.",
     description:
-      "How OpenPost collects, uses, shares, protects, exports, and deletes hosted-service data.",
+      "How SocialFlow.ai collects, uses, shares, protects, exports, and deletes hosted-service data.",
     label: "Legal",
     kind: "document",
     agentRepresentation: "static",
@@ -323,8 +323,8 @@ const staticMarketingEntries = [
   {
     path: "/terms",
     key: "terms",
-    title: "Terms of Service - OpenPost",
-    socialTitle: "OpenPost terms of service.",
+    title: "Terms of Service - SocialFlow.ai",
+    socialTitle: "SocialFlow.ai terms of service.",
     description:
       "Terms for hosted accounts, plans, connected networks, publishing, and acceptable use.",
     label: "Legal",
@@ -336,8 +336,8 @@ const staticMarketingEntries = [
   {
     path: "/refunds",
     key: "refunds",
-    title: "Refund Policy - OpenPost",
-    socialTitle: "OpenPost refund policy.",
+    title: "Refund Policy - SocialFlow.ai",
+    socialTitle: "SocialFlow.ai refund policy.",
     description:
       "How to cancel, request a refund, report a billing error, and use mandatory consumer rights.",
     label: "Legal",
@@ -351,7 +351,7 @@ const staticMarketingEntries = [
 const platformEntries = platformNames.map(([slug, name]) => ({
   path: `/platforms/${slug}`,
   key: `platform-${slug}`,
-  title: `${name} content and scheduling - OpenPost`,
+  title: `${name} content and scheduling - SocialFlow.ai`,
   socialTitle: name,
   description: `Explore ideas, editing tools, and posting options for your business on ${name}.`,
   label: "Channel guide",
@@ -383,7 +383,7 @@ export const marketingRouteManifest = Object.freeze(
       ...entry,
       id: `marketing:${entry.key}`,
       canonical: canonicalMarketingUrl(entry.path),
-      imageAlt: `${entry.socialTitle} OpenPost social preview.`,
+      imageAlt: `${entry.socialTitle} SocialFlow.ai social preview.`,
     };
     return { ...resolved, imageUrl: socialImageUrl(resolved) };
   }),
@@ -453,7 +453,7 @@ export function docsImageKey(page) {
 
 export function docsSectionForPage(page) {
   const route = docsRouteFromPage(page);
-  if (route === "/") return "OpenPost docs";
+  if (route === "/") return "SocialFlow.ai docs";
   if (route.startsWith("/usage/") || route.startsWith("/guide/what-is")) {
     return "User guide";
   }
@@ -468,36 +468,36 @@ export function docsSectionForPage(page) {
   if (route.startsWith("/mcp/")) return "MCP guide";
   if (route.startsWith("/development/")) return "Developer docs";
   if (route.startsWith("/reference/")) return "Reference";
-  return "OpenPost docs";
+  return "SocialFlow.ai docs";
 }
 
 export function docsDescriptionForPage(page) {
   const section = docsSectionForPage(page);
   const descriptions = {
-    "OpenPost docs":
-      "Learn how to create, adapt, schedule, publish, and track content with OpenPost.",
+    "SocialFlow.ai docs":
+      "Learn how to create, adapt, schedule, publish, and track content with SocialFlow.ai.",
     "User guide":
-      "Use the OpenPost app to manage drafts, destinations, media, schedules, results, and replies.",
+      "Use the SocialFlow.ai app to manage drafts, destinations, media, schedules, results, and replies.",
     "Provider guide":
       "Check provider setup, supported formats, limits, permissions, and live-test requirements.",
-    Installation: "Install OpenPost with the deployment path that fits your server or device.",
+    Installation: "Install SocialFlow.ai with the deployment path that fits your server or device.",
     Configuration:
-      "Configure OpenPost storage, databases, URLs, providers, updates, and production settings.",
+      "Configure SocialFlow.ai storage, databases, URLs, providers, updates, and production settings.",
     Operations:
-      "Operate OpenPost with clear health checks, logs, backups, upgrades, and recovery steps.",
-    "Self-hosting": "Run OpenPost as one Go service with SQLite and local media by default.",
-    "CLI guide": "Use OpenPost from a terminal, script, scheduled job, or CI workflow.",
-    "MCP guide": "Connect AI tools to OpenPost without sharing social account credentials.",
+      "Operate SocialFlow.ai with clear health checks, logs, backups, upgrades, and recovery steps.",
+    "Self-hosting": "Run SocialFlow.ai as one Go service with SQLite and local media by default.",
+    "CLI guide": "Use SocialFlow.ai from a terminal, script, scheduled job, or CI workflow.",
+    "MCP guide": "Connect AI tools to SocialFlow.ai without sharing social account credentials.",
     "Developer docs":
-      "Understand the OpenPost architecture, API, tests, adapters, jobs, and release workflow.",
-    Reference: "Look up OpenPost API, CLI, configuration, and deployment details.",
+      "Understand the SocialFlow.ai architecture, API, tests, adapters, jobs, and release workflow.",
+    Reference: "Look up SocialFlow.ai API, CLI, configuration, and deployment details.",
   };
   return descriptions[section];
 }
 
 export function resolveDocsSocial({ page, title, description }) {
   const route = docsRouteFromPage(page);
-  const cleanTitle = title?.trim() || "OpenPost documentation";
+  const cleanTitle = title?.trim() || "SocialFlow.ai documentation";
   const cleanDescription = description?.trim() || docsDescriptionForPage(page);
   const key = docsImageKey(page);
 
@@ -505,13 +505,13 @@ export function resolveDocsSocial({ page, title, description }) {
     id: `docs:${key}`,
     path: route,
     key,
-    title: `${cleanTitle} | OpenPost Docs`,
+    title: `${cleanTitle} | SocialFlow.ai Docs`,
     socialTitle: cleanTitle,
     description: cleanDescription,
     label: docsSectionForPage(page),
     kind: "docs",
     canonical: route === "/" ? docsSiteUrl : `${docsSiteUrl}${route}`,
-    imageAlt: `${cleanTitle}. OpenPost documentation social preview.`,
+    imageAlt: `${cleanTitle}. SocialFlow.ai documentation social preview.`,
   };
   return { ...resolved, imageUrl: socialImageUrl(resolved) };
 }

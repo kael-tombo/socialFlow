@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 
 import { uploadBinaryMedia } from "../../../../../nodes/OpenPost/v1/media/uploadBinary";
 
-describe("OpenPost binary upload", () => {
+describe("SocialFlow.ai binary upload", () => {
   test.each([
     { completeURL: "/api/v1/media/upload-session/session-1/complete", reject: false },
     { completeURL: "https://evil.example/steal", reject: true },

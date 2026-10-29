@@ -17,7 +17,7 @@ func NewCapabilityHandler() *CapabilityHandler {
 type CapabilitiesOutput struct {
 	CacheControl string `header:"Cache-Control"`
 	Body         struct {
-		Profiles     []capabilities.Profile    `json:"profiles" doc:"Content profiles supported by OpenPost"`
+		Profiles     []capabilities.Profile    `json:"profiles" doc:"Content profiles supported by SocialFlow.ai"`
 		Capabilities []capabilities.Capability `json:"capabilities" doc:"Provider/profile capability matrix"`
 	} `json:"body"`
 }

@@ -26,7 +26,7 @@ const (
 	DefaultMaxTextCharacters = 30_000
 	DefaultMaxRedirects      = 5
 
-	defaultUserAgent   = "OpenPost/1.0"
+	defaultUserAgent   = "SocialFlow.ai/1.0"
 	maxURLCharacters   = 8_192
 	maxTitleCharacters = 300
 	maxHTMLNodes       = 100_000

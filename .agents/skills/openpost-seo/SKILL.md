@@ -1,9 +1,9 @@
 ---
 name: openpost-seo
-description: Audit OpenPost marketing and documentation SEO with the pinned claude-seo toolkit. Use for site audits, search discovery, structured data, sitemaps, or agent access checks.
+description: Audit SocialFlow.ai marketing and documentation SEO with the pinned claude-seo toolkit. Use for site audits, search discovery, structured data, sitemaps, or agent access checks.
 ---
 
-# OpenPost SEO audit
+# SocialFlow.ai SEO audit
 
 Run the [claude-seo](https://github.com/AgriciDaniel/claude-seo) scripts directly from Codex. Its Claude Code slash commands and agents are reference material for choosing checks, not part of this workflow.
 
@@ -13,7 +13,7 @@ Run the [claude-seo](https://github.com/AgriciDaniel/claude-seo) scripts directl
 - Read `skills/seo/SKILL.md` and only the relevant leaf skill in that checkout for the requested audit. Execute bundled Python scripts through `scripts/claude-seo run <script.py>`, not a bare interpreter.
 - Set `CLAUDE_SEO_PYTHON` to a Python 3.11–3.14 executable and `CLAUDE_SEO_DATA_DIR` to a dedicated user-data directory outside the repository. Run `scripts/claude-seo doctor --json` first. If it is not ready, run `scripts/claude-seo setup` only when the user requested setup or dependency repair, then confirm the doctor reports `ready: true`. The checkout's `install.sh` installs Claude Code skills globally and is unnecessary here.
 
-## OpenPost audit
+## SocialFlow.ai audit
 
 1. Identify the live target and the local Git revision. A local route absent from production may await release. Keep that distinction in every finding.
 2. Check the live marketing and documentation sitemaps with `sitemap_discovery.py`. Use `parse_html.py` for titles, descriptions, headings, canonicals, social metadata, and JSON-LD. Use `agentic_check.py` for robots, no-JavaScript content, Markdown alternates, and agent access. The upstream DNS-pinned fetcher is single-threaded; run its requests serially.

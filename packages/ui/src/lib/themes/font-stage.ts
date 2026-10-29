@@ -47,7 +47,7 @@ const bundledByFamily = new Map<string, BundledThemeFont>(
 );
 
 function uploadedRuntimeFamily(theme: WebResolvedTheme, family: string): string {
-  return `OpenPost Theme ${theme.source}:${theme.id}:${theme.revision}:${family}`;
+  return `SocialFlow.ai Theme ${theme.source}:${theme.id}:${theme.revision}:${family}`;
 }
 
 function matchingUploadedFace(

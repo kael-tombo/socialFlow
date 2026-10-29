@@ -91,7 +91,7 @@ func (h *DiagnosticsHandler) RegisterRoutes(api huma.API) {
 		Method:      http.MethodGet,
 		Path:        "/diagnostics/config",
 		Summary:     "Get maintainer diagnostics reporting settings",
-		Description: "Whether this instance sends privacy-limited diagnostic reports to OpenPost. No receiver URL, token, or installation identifier is exposed.",
+		Description: "Whether this instance sends privacy-limited diagnostic reports to SocialFlow.ai. No receiver URL, token, or installation identifier is exposed.",
 		Tags:        []string{"Diagnostics"},
 		Middlewares: huma.Middlewares{middleware.AuthMiddleware(api, h.auth)},
 	}, func(_ context.Context, _ *struct{}) (*DiagnosticsConfigOutput, error) {

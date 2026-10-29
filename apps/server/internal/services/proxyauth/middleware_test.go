@@ -32,7 +32,7 @@ func TestMiddlewareAuthenticatesAndProvisionsAProxyUserOnce(t *testing.T) {
 	e := echo.New()
 	e.Use(proxyauth.NewMiddleware(db, authService, proxyauth.Config{
 		SharedSecret:  testProxySecret,
-		WorkspaceName: "OpenPost",
+		WorkspaceName: "SocialFlow.ai",
 	}))
 	api := humaecho.NewWithGroup(e, e.Group("/api/v1"), huma.DefaultConfig("Test", "1.0.0"))
 	handlers.NewAppBootstrapHandler(
@@ -72,7 +72,7 @@ func TestMiddlewareAuthenticatesAndProvisionsAProxyUserOnce(t *testing.T) {
 	var workspaces []models.Workspace
 	require.NoError(t, db.NewSelect().Model(&workspaces).Scan(t.Context()))
 	require.Len(t, workspaces, 1)
-	require.Equal(t, "OpenPost", workspaces[0].Name)
+	require.Equal(t, "SocialFlow.ai", workspaces[0].Name)
 	require.Equal(t, organizations[0].ID, workspaces[0].OrganizationID)
 
 	var memberships []models.WorkspaceMember

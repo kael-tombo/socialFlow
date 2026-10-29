@@ -123,7 +123,7 @@ func TestMCPOAuthAuthorizationCodeFlowIssuesUsableMCPToken(t *testing.T) {
 			srv := newMCPOAuthTestServer(t)
 			redirectURI := "https://chatgpt.com/connector/oauth/callback/openpost"
 			client := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-				_, _ = fmt.Fprintf(w, `{"client_name":"ChatGPT OpenPost","redirect_uris":["%s"],"token_endpoint_auth_method":"none","scope":"mcp:read mcp:full"}`, redirectURI)
+				_, _ = fmt.Fprintf(w, `{"client_name":"ChatGPT SocialFlow.ai","redirect_uris":["%s"],"token_endpoint_auth_method":"none","scope":"mcp:read mcp:full"}`, redirectURI)
 			}))
 			t.Cleanup(client.Close)
 			srv.oauth.SetHTTPClient(client.Client())
@@ -195,7 +195,7 @@ func TestMCPOAuthAuthorizationCodeFlowIssuesUsableMCPToken(t *testing.T) {
 			require.NoError(t, srv.db.NewSelect().Model(&stored).Where("token_prefix = ?", tokenPrefix(t, token.AccessToken)).Scan(context.Background()))
 			require.Equal(t, "https://app.openpost.test/mcp", stored.Audience)
 			require.Equal(t, "ws-1", stored.WorkspaceID)
-			require.Equal(t, "ChatGPT OpenPost", stored.Name)
+			require.Equal(t, "ChatGPT SocialFlow.ai", stored.Name)
 		})
 	}
 }

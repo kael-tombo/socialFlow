@@ -50,7 +50,7 @@ export function createAppBootstrapReader(
 
     const status = result.response?.status;
     if (status !== 404 && status !== 405) {
-      throw createOpenPostQueryError(status, result.error, "Could not start OpenPost");
+      throw createOpenPostQueryError(status, result.error, "Could not start SocialFlow.ai");
     }
 
     capabilities.set(serverBaseUrl, "legacy");

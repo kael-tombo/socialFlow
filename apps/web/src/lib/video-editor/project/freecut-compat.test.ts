@@ -235,7 +235,7 @@ describe('FreeCut project compatibility', () => {
 		expect(unsupportedProjectSchemaVersion(result.project)).toBeNull();
 	});
 
-	it('keeps unknown future OpenPost projects out of the writable editor', () => {
+	it('keeps unknown future SocialFlow.ai projects out of the writable editor', () => {
 		const project = freeCutProject();
 		project.schemaFamily = 'openpost';
 		project.schemaVersion = 999;

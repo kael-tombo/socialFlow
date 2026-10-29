@@ -24,7 +24,7 @@ type UpdateStatusResponse struct {
 	State               string `json:"state" doc:"Release comparison state" enum:"current,update_available,stale,unavailable,disabled,development"`
 	RunningVersion      string `json:"running_version" doc:"Version embedded in the running server"`
 	RunningBuild        string `json:"running_build" doc:"Source revision embedded in or detected from the running server"`
-	LatestVersion       string `json:"latest_version,omitempty" doc:"Latest stable OpenPost release tag"`
+	LatestVersion       string `json:"latest_version,omitempty" doc:"Latest stable SocialFlow.ai release tag"`
 	ReleaseURL          string `json:"release_url,omitempty" doc:"Validated GitHub release page"`
 	PublishedAt         string `json:"published_at,omitempty" doc:"Latest release publication time"`
 	CheckedAt           string `json:"checked_at,omitempty" doc:"Last bounded release-check attempt"`

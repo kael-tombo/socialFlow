@@ -107,7 +107,7 @@ func checkLemmyVersion(version string) error {
 	major := strings.SplitN(trimmed, ".", 2)[0]
 	boundary := strings.SplitN(lemmyAPIVersionBoundary, ".", 2)[0]
 	if major >= boundary {
-		return fmt.Errorf("lemmy %s uses API v4, which OpenPost does not publish through yet; connect an instance on 0.19.x", trimmed)
+		return fmt.Errorf("lemmy %s uses API v4, which SocialFlow.ai does not publish through yet; connect an instance on 0.19.x", trimmed)
 	}
 	return nil
 }

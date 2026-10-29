@@ -1,7 +1,7 @@
 {
   "name": "@getopenpost/n8n-nodes-openpost",
   "version": "0.2.0",
-  "description": "Official n8n community node for OpenPost publishing automation.",
+  "description": "Official n8n community node for SocialFlow.ai publishing automation.",
   "keywords": [
     "n8n",
     "n8n-community-node-package",
@@ -12,7 +12,7 @@
   "homepage": "https://openpo.st",
   "license": "MIT",
   "author": {
-    "name": "OpenPost",
+    "name": "SocialFlow.ai",
     "email": "hello@openpo.st"
   },
   "repository": {

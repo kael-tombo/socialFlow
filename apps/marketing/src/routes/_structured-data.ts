@@ -75,10 +75,10 @@ export function structuredDataForMarketingPage(entry: MarketingRouteEntry) {
 			{
 				'@id': websiteId,
 				'@type': 'WebSite',
-				name: 'OpenPost',
+				name: 'SocialFlow.ai',
 				url: siteUrl,
 				description:
-					'OpenPost helps solo founders create, adapt, schedule, publish, and track social content from one workspace.',
+					'SocialFlow.ai helps solo founders create, adapt, schedule, publish, and track social content from one workspace.',
 				inLanguage: 'en',
 				publisher: { '@id': organizationId },
 				about: { '@id': softwareId }
@@ -86,7 +86,7 @@ export function structuredDataForMarketingPage(entry: MarketingRouteEntry) {
 			{
 				'@id': softwareId,
 				'@type': ['SoftwareApplication', 'WebApplication'],
-				name: 'OpenPost',
+				name: 'SocialFlow.ai',
 				url: siteUrl,
 				applicationCategory: 'BusinessApplication',
 				operatingSystem: 'Web, Android',
@@ -118,7 +118,7 @@ export function structuredDataForMarketingPage(entry: MarketingRouteEntry) {
 			{
 				'@id': `${siteUrl}/#source`,
 				'@type': 'SoftwareSourceCode',
-				name: 'OpenPost source code',
+				name: 'SocialFlow.ai source code',
 				codeRepository: githubUrl,
 				programmingLanguage: ['Go', 'TypeScript', 'Svelte'],
 				license: `${githubUrl}/blob/main/LICENSE`,

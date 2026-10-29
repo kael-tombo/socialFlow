@@ -902,7 +902,7 @@ func (g *GoogleBusinessAdapter) Publish(ctx context.Context, accessToken, accoun
 		return g.ReconcilePublish(ctx, accessToken, accountID, req.ResumeProviderReference)
 	}
 	if req.ResumeProviderState == "creating" {
-		return PublishResult{ProviderState: "creating", RetrySafety: PublishRetryNever}, fmt.Errorf("google business local post create outcome is ambiguous; OpenPost will not replay it")
+		return PublishResult{ProviderState: "creating", RetrySafety: PublishRetryNever}, fmt.Errorf("google business local post create outcome is ambiguous; SocialFlow.ai will not replay it")
 	}
 	if err := g.ValidatePublishingTarget(ctx, accessToken, accountID, req.Settings); err != nil {
 		return PublishResult{}, err

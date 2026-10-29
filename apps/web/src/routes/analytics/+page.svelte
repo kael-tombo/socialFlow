@@ -1,6 +1,6 @@
 <!--
 THESIS: Analytics explains stored account and content measurements without hiding provider limits.
-OWN-WORLD: It uses OpenPost's flat borders, compact controls, and provider marks.
+OWN-WORLD: It uses SocialFlow.ai's flat borders, compact controls, and provider marks.
 STORY: Read exact totals, verify evidence, then inspect published content in one list.
 FIRST VIEWPORT: The reporting window, refresh action, metric ledger, and unified follower trend are visible without scrolling.
 FORM: Server-owned insights and content rows preserve source, period, sample, and provider context.

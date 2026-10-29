@@ -11,10 +11,10 @@ test("the tour advances after five seconds and lets the visitor stop it @desktop
 }) => {
   await page.goto("/");
   await dismissTelemetryConsent(page);
-  const tour = page.getByRole("region", { name: "OpenPost screenshot tour" });
+  const tour = page.getByRole("region", { name: "SocialFlow.ai screenshot tour" });
   await tour.scrollIntoViewIfNeeded();
   await page.mouse.move(0, 0);
-  const picker = tour.getByRole("group", { name: "Explore OpenPost" });
+  const picker = tour.getByRole("group", { name: "Explore SocialFlow.ai" });
   await expect(picker.getByRole("button", { name: "Compose", exact: true })).toHaveAttribute(
     "aria-pressed",
     "true",
@@ -47,7 +47,7 @@ test("reduced motion keeps the tour still and manual choices remain available @d
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await dismissTelemetryConsent(page);
-  const tour = page.getByRole("region", { name: "OpenPost screenshot tour" });
+  const tour = page.getByRole("region", { name: "SocialFlow.ai screenshot tour" });
   await tour.scrollIntoViewIfNeeded();
   await page.mouse.move(0, 0);
   await page.clock.install();

@@ -1917,20 +1917,20 @@ func classifyEngagementReadError(err error) (status, code, message string, caden
 			if retryAfter <= 0 {
 				retryAfter = 24 * time.Hour
 			}
-			return "rate_limited", firstNonEmpty(providerErr.Code, "credits_depleted"), "X API read credits are depleted. OpenPost will wait before collecting replies again.", retryAfter
+			return "rate_limited", firstNonEmpty(providerErr.Code, "credits_depleted"), "X API read credits are depleted. SocialFlow.ai will wait before collecting replies again.", retryAfter
 		case providerErr.StatusCode == 429:
 			retryAfter := providerErr.RetryAfter
 			if retryAfter <= 0 {
 				retryAfter = time.Hour
 			}
-			return "rate_limited", firstNonEmpty(providerErr.Code, "rate_limited"), "The provider asked OpenPost to wait before collecting replies again.", retryAfter
+			return "rate_limited", firstNonEmpty(providerErr.Code, "rate_limited"), "The provider asked SocialFlow.ai to wait before collecting replies again.", retryAfter
 		case providerErr.StatusCode >= 500:
-			return "temporarily_unavailable", firstNonEmpty(providerErr.Code, "provider_server"), "The provider is temporarily unavailable. OpenPost will try again.", time.Hour
+			return "temporarily_unavailable", firstNonEmpty(providerErr.Code, "provider_server"), "The provider is temporarily unavailable. SocialFlow.ai will try again.", time.Hour
 		default:
-			return "failed", firstNonEmpty(providerErr.Code, "provider_error"), "OpenPost could not collect engagement from this provider.", time.Hour
+			return "failed", firstNonEmpty(providerErr.Code, "provider_error"), "SocialFlow.ai could not collect engagement from this provider.", time.Hour
 		}
 	}
-	return "temporarily_unavailable", "network", "OpenPost could not reach the provider. It will try again.", time.Hour
+	return "temporarily_unavailable", "network", "SocialFlow.ai could not reach the provider. It will try again.", time.Hour
 }
 
 func sanitizeCommentAttachments(input []platform.CommentAttachment) (string, []models.EngagementAttachment) {

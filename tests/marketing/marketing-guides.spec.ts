@@ -6,13 +6,13 @@ const guideQuestions = [
   "What are the best social media tools for solo founders?",
   "How do I turn product updates into social media posts?",
   "How do I schedule social media posts on multiple platforms?",
-  "OpenPost vs Buffer: which fits your content workflow?",
-  "OpenPost vs Postiz: which fits your content workflow?",
-  "OpenPost vs Metricool: creation or reporting first?",
-  "OpenPost vs Hootsuite: founder workflow or social team?",
-  "OpenPost vs Photoshop: social images or deep photo editing?",
-  "OpenPost vs DaVinci Resolve: browser clips or a full post studio?",
-  "OpenPost vs Premiere Pro: quick social edits or professional production?",
+  "SocialFlow.ai vs Buffer: which fits your content workflow?",
+  "SocialFlow.ai vs Postiz: which fits your content workflow?",
+  "SocialFlow.ai vs Metricool: creation or reporting first?",
+  "SocialFlow.ai vs Hootsuite: founder workflow or social team?",
+  "SocialFlow.ai vs Photoshop: social images or deep photo editing?",
+  "SocialFlow.ai vs DaVinci Resolve: browser clips or a full post studio?",
+  "SocialFlow.ai vs Premiere Pro: quick social edits or professional production?",
 ];
 
 test.describe("buying guides without JavaScript", () => {
@@ -40,20 +40,20 @@ test.describe("buying guides without JavaScript", () => {
         .getByRole("link")
         .filter({
           has: page.getByRole("heading", {
-            name: question.startsWith("OpenPost vs ") ? question.split(":")[0] : question,
+            name: question.startsWith("SocialFlow.ai vs ") ? question.split(":")[0] : question,
             exact: true,
           }),
         })
         .click();
       await expect(page.getByRole("heading", { level: 1 })).toHaveText(question);
-      await expect(page).toHaveTitle(`${question} - OpenPost`);
+      await expect(page).toHaveTitle(`${question} - SocialFlow.ai`);
       const creative = /Photoshop|DaVinci Resolve|Premiere Pro/.test(question);
       if (creative) {
-        await expect(page.getByRole("heading", { name: "What is free in OpenPost" })).toBeVisible();
-        await expect(page.getByRole("table", { name: "OpenPost Hosted plans" })).toHaveCount(0);
+        await expect(page.getByRole("heading", { name: "What is free in SocialFlow.ai" })).toBeVisible();
+        await expect(page.getByRole("table", { name: "SocialFlow.ai Hosted plans" })).toHaveCount(0);
       } else {
         await expect(
-          page.getByRole("complementary", { name: "OpenPost Hosted readiness" }),
+          page.getByRole("complementary", { name: "SocialFlow.ai Hosted readiness" }),
         ).toContainText("Check provider requirements and live-account readiness");
       }
       await expect(page.getByRole("heading", { name: "Sources", exact: true })).toBeVisible();
@@ -89,7 +89,7 @@ test("readers can filter comparisons, recover an empty search, and open a free e
   await expect(page.getByRole("status").filter({ hasText: "resource" })).toHaveText("1 resource");
   const photoshop = page
     .getByRole("link")
-    .filter({ has: page.getByRole("heading", { name: "OpenPost vs Photoshop", exact: true }) });
+    .filter({ has: page.getByRole("heading", { name: "SocialFlow.ai vs Photoshop", exact: true }) });
   await expect(photoshop).toBeVisible();
   await page
     .getByRole("searchbox", { name: "Search guides and comparisons" })
@@ -182,10 +182,10 @@ for (const width of [1440, 390, 320]) {
           await expect(tables.first().locator("tbody .cell-label").first()).toBeVisible();
         }
         if (creative) {
-          await expect(page.getByRole("table", { name: "OpenPost Hosted plans" })).toHaveCount(0);
+          await expect(page.getByRole("table", { name: "SocialFlow.ai Hosted plans" })).toHaveCount(0);
           await expect(tables.first()).toContainText("$0");
         } else {
-          await expect(page.getByRole("table", { name: "OpenPost Hosted plans" })).toContainText(
+          await expect(page.getByRole("table", { name: "SocialFlow.ai Hosted plans" })).toContainText(
             "Limits per workspace",
           );
         }
@@ -216,7 +216,7 @@ for (const width of [1440, 390, 320]) {
         await expect(page).toHaveURL(/\/comparisons$/);
         const comparison = page.getByRole("link").filter({
           has: page.getByRole("heading", {
-            name: `OpenPost vs ${name}`,
+            name: `SocialFlow.ai vs ${name}`,
             exact: true,
           }),
         });

@@ -93,7 +93,7 @@ it('keeps ordinary cloud recording saves out of recovery until persistence fails
 		expect(artifacts[0].scratchId).toBeDefined();
 		await expect.element(screen.getByRole('status')).toHaveTextContent('Saving');
 		await expect
-			.element(screen.getByRole('button', { name: 'Save to OpenPost', exact: true }))
+			.element(screen.getByRole('button', { name: 'Save to SocialFlow.ai', exact: true }))
 			.not.toBeInTheDocument();
 		await expect
 			.element(screen.getByRole('button', { name: 'Remove recording', exact: true }))
@@ -103,7 +103,7 @@ it('keeps ordinary cloud recording saves out of recovery until persistence fails
 			.not.toBeInTheDocument();
 		rejectSave(new Error('Fixture cloud storage unavailable'));
 		await expect
-			.element(screen.getByRole('button', { name: 'Save to OpenPost', exact: true }))
+			.element(screen.getByRole('button', { name: 'Save to SocialFlow.ai', exact: true }))
 			.toBeEnabled();
 		await expect.element(screen.getByText('A recording is still on this device.')).toBeVisible();
 		const recovered = await new ScreenCaptureRecorder().loadRecoverableArtifacts();
@@ -111,7 +111,7 @@ it('keeps ordinary cloud recording saves out of recovery until persistence fails
 		screen.getByRole('button', { name: 'Remove recording', exact: true }).element().focus();
 		await userEvent.keyboard('{Enter}');
 		await expect
-			.element(screen.getByRole('button', { name: 'Save to OpenPost', exact: true }))
+			.element(screen.getByRole('button', { name: 'Save to SocialFlow.ai', exact: true }))
 			.not.toBeInTheDocument();
 		expect(await new ScreenCaptureRecorder().loadRecoverableArtifacts()).toEqual([]);
 	} finally {

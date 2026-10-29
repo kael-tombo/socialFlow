@@ -20,7 +20,7 @@ const diagnosticsLogTailLines = 100
 func newInstanceCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "instance",
-		Short: "Manage OpenPost instance profiles",
+		Short: "Manage SocialFlow.ai instance profiles",
 	}
 	cmd.AddCommand(newInstanceAddCmd())
 	cmd.AddCommand(newInstanceListCmd())
@@ -236,7 +236,7 @@ func newInstanceDiagnosticsCmd() *cobra.Command {
 	var flags instanceDiagnosticsFlags
 	cmd := &cobra.Command{
 		Use:   "diagnostics",
-		Short: "Collect a safe support snapshot for an OpenPost instance",
+		Short: "Collect a safe support snapshot for an SocialFlow.ai instance",
 		Args:  cobra.NoArgs,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			cfg, err := runtimeFrom(cmd)
@@ -375,7 +375,7 @@ func newInstanceDiagnosticsCmd() *cobra.Command {
 	}
 	cmd.Flags().StringVar(&flags.deployment, "deployment", "", "deployment method being checked (docker, binary, nixos, cloud, other)")
 	cmd.Flags().StringVar(&flags.provider, "provider", "", "social provider being tested, such as x, mastodon, youtube, or tiktok")
-	cmd.Flags().StringVar(&flags.logsFile, "logs-file", "", "local OpenPost log file to include as a redacted last-100-line tail")
+	cmd.Flags().StringVar(&flags.logsFile, "logs-file", "", "local SocialFlow.ai log file to include as a redacted last-100-line tail")
 	return cmd
 }
 

@@ -5,7 +5,7 @@ appId: com.openpost.app
 - runFlow: open-link-guard.yaml
 - runFlow:
     when:
-      visible: "Open in.*OpenPost.*"
+      visible: "Open in.*SocialFlow.ai.*"
     commands:
       - tapOn: Open
 - runFlow: settings-guard.yaml

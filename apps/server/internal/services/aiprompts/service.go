@@ -20,7 +20,7 @@ const (
 	encryptedPrefix     = "openpost-ai-prompt:"
 )
 
-const FixedPostGenerationOutputPrompt = `Output requirements are managed by OpenPost. Return data that matches the supplied JSON Schema. Include one source_text value and every supplied target exactly once. Do not add targets or fields.`
+const FixedPostGenerationOutputPrompt = `Output requirements are managed by SocialFlow.ai. Return data that matches the supplied JSON Schema. Include one source_text value and every supplied target exactly once. Do not add targets or fields.`
 
 var (
 	ErrUnknownPrompt = errors.New("unknown AI prompt")

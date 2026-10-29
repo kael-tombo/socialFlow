@@ -392,8 +392,8 @@ func normalizedRequestPath(requestURL *url.URL) string {
 	return requestURL.Path
 }
 
-const managedEditionReviewMetadata = `<title data-openpost-review-fallback>OpenPost - content publishing workspace</title>
-		<meta data-openpost-review-fallback name="description" content="Create, adapt, schedule, publish, and review social content from one OpenPost workspace.">
+const managedEditionReviewMetadata = `<title data-openpost-review-fallback>SocialFlow.ai - content publishing workspace</title>
+		<meta data-openpost-review-fallback name="description" content="Create, adapt, schedule, publish, and review social content from one SocialFlow.ai workspace.">
 		<link data-openpost-review-fallback rel="canonical" href="https://app.openpo.st/">`
 
 // managedEditionReviewPlanIDs mirrors the catalogue display order
@@ -406,9 +406,9 @@ var managedEditionReviewPlanIDs = []string{"founder", "team", "agency"}
 
 const managedEditionReviewFallbackHead = `<main data-openpost-review-fallback style="box-sizing:border-box;max-width:42rem;margin:0 auto;padding:4rem 1.5rem;font:16px/1.6 system-ui,sans-serif;color:CanvasText;background:Canvas">
 		<h1 style="font-size:2rem;line-height:1.2">Your content operation, together in one workspace.</h1>
-		<p>Create one source, adapt it for each social platform, schedule every destination, and review publishing results from one OpenPost workspace.</p>`
+		<p>Create one source, adapt it for each social platform, schedule every destination, and review publishing results from one SocialFlow.ai workspace.</p>`
 
-const managedEditionReviewFallbackTail = `		<nav aria-label="OpenPost product and policies">
+const managedEditionReviewFallbackTail = `		<nav aria-label="SocialFlow.ai product and policies">
 			<a href="https://openpo.st/pricing">Compare plans</a>
 			<span aria-hidden="true"> · </span>
 			<a href="https://openpo.st/terms">Terms of service</a>
@@ -533,16 +533,16 @@ func loadPublicProfilePageMetadata(ctx context.Context, db *bun.DB, requestedUse
 }
 
 func renderPublicProfileHTML(indexData []byte, metadata *publicProfilePageMetadata, publicURL string) []byte {
-	head := `<title data-openpost-profile-meta>Public profile - OpenPost</title>
-		<meta data-openpost-profile-meta name="description" content="Public OpenPost publishing profile.">
+	head := `<title data-openpost-profile-meta>Public profile - SocialFlow.ai</title>
+		<meta data-openpost-profile-meta name="description" content="Public SocialFlow.ai publishing profile.">
 		<meta data-openpost-profile-meta name="robots" content="noindex">`
 	if metadata != nil {
 		displayName := metadata.DisplayName
 		if displayName == "" {
 			displayName = "@" + metadata.Username
 		}
-		title := displayName + " (@" + metadata.Username + ") - OpenPost"
-		description := "See " + displayName + "'s public publishing activity on OpenPost."
+		title := displayName + " (@" + metadata.Username + ") - SocialFlow.ai"
+		description := "See " + displayName + "'s public publishing activity on SocialFlow.ai."
 		canonicalURL := strings.TrimRight(publicURL, "/") + "/u/" + url.PathEscape(metadata.Username)
 		head = profileMetadataTags(title, description, canonicalURL, metadata.AvatarURL)
 	}

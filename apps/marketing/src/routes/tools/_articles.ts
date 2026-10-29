@@ -19,9 +19,9 @@ function previewOnlySection(tool: PreviewTool): ToolArticle['sections'] {
 	const platformName = tool.name.replace(' post preview', '');
 	return [
 		{
-			title: `Preview only: OpenPost does not publish to ${platformName}`,
+			title: `Preview only: SocialFlow.ai does not publish to ${platformName}`,
 			paragraphs: [
-				`This tool shows ${platformName}'s native layout so you can check your copy and media. OpenPost does not publish to ${platformName}; copy the finished text into ${platformName} to share it.`
+				`This tool shows ${platformName}'s native layout so you can check your copy and media. SocialFlow.ai does not publish to ${platformName}; copy the finished text into ${platformName} to share it.`
 			]
 		}
 	];
@@ -32,7 +32,7 @@ function previewArticle(tool: PreviewTool): ToolArticle {
 		title: tool.name,
 		description: tool.description,
 		privacy:
-			'Text and local files stay in your browser until you continue in OpenPost. Public image and video URLs load from their hosts.',
+			'Text and local files stay in your browser until you continue in SocialFlow.ai. Public image and video URLs load from their hosts.',
 		steps: [
 			'Write your post and choose a format.',
 			'Add your account details and media through Post details.',
@@ -47,7 +47,7 @@ function previewArticle(tool: PreviewTool): ToolArticle {
 			{
 				title: 'Native layout and publishing availability',
 				paragraphs: [
-					'These previews illustrate native network layouts. They do not publish anything, fetch a live account, or certify that a format can be published through OpenPost. Network apps, account types, and server settings can change the final appearance and limits.'
+					'These previews illustrate native network layouts. They do not publish anything, fetch a live account, or certify that a format can be published through SocialFlow.ai. Network apps, account types, and server settings can change the final appearance and limits.'
 				]
 			}
 		],
@@ -64,7 +64,7 @@ function previewArticle(tool: PreviewTool): ToolArticle {
 			{
 				question: 'Will my files upload?',
 				answer:
-					'Previewing does not upload local files. Schedule this post sends your draft to OpenPost, where selected files upload after sign-in. Closing or refreshing this tool clears its draft.'
+					'Previewing does not upload local files. Schedule this post sends your draft to SocialFlow.ai, where selected files upload after sign-in. Closing or refreshing this tool clears its draft.'
 			}
 		]
 	};
@@ -78,7 +78,7 @@ const authoredArticles = {
 	'multi-platform-character-counter': {
 		title: 'Social media character counter',
 		description: 'Paste your post. See how it fits on each channel.',
-		privacy: 'Your text stays in your browser until you choose to continue in OpenPost.',
+		privacy: 'Your text stays in your browser until you choose to continue in SocialFlow.ai.',
 		steps: [
 			'Paste or type your draft in the box.',
 			'Check the count for the channels you use.',
@@ -119,7 +119,7 @@ const authoredArticles = {
 					'The counter checks text length. Your account access, media, and the network’s other posting rules still matter.'
 			},
 			{
-				question: 'Do I need an OpenPost account?',
+				question: 'Do I need an SocialFlow.ai account?',
 				answer: 'No. The counter is free and runs in this page. Nothing you type is uploaded.'
 			}
 		]
@@ -128,7 +128,7 @@ const authoredArticles = {
 		title: 'Thread splitter',
 		description:
 			'Split your draft to fit each network. Review the parts, then copy or schedule the thread.',
-		privacy: 'Your draft stays in your browser until you choose to continue in OpenPost.',
+		privacy: 'Your draft stays in your browser until you choose to continue in SocialFlow.ai.',
 		steps: [
 			'Paste the full story.',
 			'Choose your channel and whether to number the posts.',
@@ -170,14 +170,14 @@ const authoredArticles = {
 			{
 				question: 'Can I schedule the result?',
 				answer:
-					'Choose Schedule this thread to open these exact parts in OpenPost. Sign in, review the supported channels, and choose when to publish.'
+					'Choose Schedule this thread to open these exact parts in SocialFlow.ai. Sign in, review the supported channels, and choose when to publish.'
 			}
 		]
 	},
 	'linkedin-text-formatter': {
 		title: 'LinkedIn text formatter',
 		description: 'Tidy your LinkedIn post before you share it.',
-		privacy: 'Your text stays in your browser until you choose to continue in OpenPost.',
+		privacy: 'Your text stays in your browser until you choose to continue in SocialFlow.ai.',
 		steps: [
 			'Paste your LinkedIn draft.',
 			'Choose a paragraph length and tidy the bullet points.',
@@ -262,7 +262,7 @@ const authoredArticles = {
 					'No. It adds campaign tags to the original URL. The finished link still opens the same page.'
 			},
 			{
-				question: 'Does OpenPost track clicks in this tool?',
+				question: 'Does SocialFlow.ai track clicks in this tool?',
 				answer:
 					'No. This tool builds a link locally. Use a compatible analytics service on your website to read the campaign tags.'
 			},
@@ -376,7 +376,7 @@ const authoredArticles = {
 		title: 'Social post preview',
 		description: 'See your post before you share it.',
 		privacy:
-			'Text and local files stay in your browser until you continue in OpenPost. Linked media loads from its source.',
+			'Text and local files stay in your browser until you continue in SocialFlow.ai. Linked media loads from its source.',
 		steps: [
 			'Choose a channel and write your post.',
 			'Add an image, video, or other supported format.',
@@ -426,7 +426,7 @@ const authoredArticles = {
 	'social-media-image-editor': {
 		title: 'Free social media image editor',
 		description: 'Make a post, carousel, or thumbnail. Download it without a watermark.',
-		privacy: 'Local designs stay on your device unless you save them to OpenPost.',
+		privacy: 'Local designs stay on your device unless you save them to SocialFlow.ai.',
 		steps: [
 			'Open the editor and choose a size or template.',
 			'Add your images, words, and brand colors.',
@@ -451,7 +451,7 @@ const authoredArticles = {
 				title: 'Download the right file for the job',
 				paragraphs: [
 					'PNG is useful for crisp text and transparency. JPEG works well for photographs. WebP can keep a web image compact. Choose the format and size that suit the place you plan to use the result, and check that the destination accepts it.',
-					'The editor adds no watermark. Local designs and imported images stay on your device unless you choose to save them to OpenPost. Download a copy of important finished work, because clearing local browser storage can remove local projects.'
+					'The editor adds no watermark. Local designs and imported images stay on your device unless you choose to save them to SocialFlow.ai. Download a copy of important finished work, because clearing local browser storage can remove local projects.'
 				]
 			}
 		],

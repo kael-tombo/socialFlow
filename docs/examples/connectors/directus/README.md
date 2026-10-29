@@ -1,6 +1,6 @@
 # Directus connector example
 
-This sidecar implements OpenPost Connector Protocol 1.0 and creates one Directus item for each published rendition. OpenPost talks only to the sidecar. The sidecar owns the Directus URL and token.
+This sidecar implements SocialFlow.ai Connector Protocol 1.0 and creates one Directus item for each published rendition. SocialFlow.ai talks only to the sidecar. The sidecar owns the Directus URL and token.
 
 The full setup guide covers collection permissions, secret files, network policy, connection, duplicate-write checks, and troubleshooting:
 
@@ -27,9 +27,9 @@ export DIRECTUS_COLLECTION=posts
 go run .
 ```
 
-Set `OPENPOST_CONNECTORS_FILE` on OpenPost to an absolute path containing a config based on [`openpost-connectors.example.json`](./openpost-connectors.example.json). Both services must read the same connector bearer-token secret. Restart OpenPost, open Social accounts, and connect the Directus card.
+Set `OPENPOST_CONNECTORS_FILE` on SocialFlow.ai to an absolute path containing a config based on [`openpost-connectors.example.json`](./openpost-connectors.example.json). Both services must read the same connector bearer-token secret. Restart SocialFlow.ai, open Social accounts, and connect the Directus card.
 
-The connector listens on `127.0.0.1:8787` by default. Set `CONNECTOR_LISTEN_ADDRESS=:8787` inside a container. Keep the port private to OpenPost.
+The connector listens on `127.0.0.1:8787` by default. Set `CONNECTOR_LISTEN_ADDRESS=:8787` inside a container. Keep the port private to SocialFlow.ai.
 
 To build the included container image:
 

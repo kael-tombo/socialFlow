@@ -72,7 +72,7 @@ export class HttpClient {
   requireToken(): string {
     if (!this.token) {
       throw new OpenPostError(
-        "Missing API token. Pass token or set OPENPOST_TOKEN (mint one under API tokens in OpenPost).",
+        "Missing API token. Pass token or set OPENPOST_TOKEN (mint one under API tokens in SocialFlow.ai).",
         { code: "missing_config" },
       );
     }

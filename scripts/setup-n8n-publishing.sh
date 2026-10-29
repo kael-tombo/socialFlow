@@ -187,7 +187,7 @@ finish() {
 TOTAL_STAGES=4
 : "$RED"
 
-banner "OpenPost n8n publishing setup"
+banner "SocialFlow.ai n8n publishing setup"
 
 stage "Reserve the package with a placeholder"
 say "npm cannot trust a GitHub workflow until the package name exists."
@@ -221,13 +221,13 @@ else
     '{' \
     '  "name": "@getopenpost/n8n-nodes-openpost",' \
     '  "version": "0.0.0",' \
-    '  "description": "Registry placeholder for the official OpenPost n8n package.",' \
+    '  "description": "Registry placeholder for the official SocialFlow.ai n8n package.",' \
     '  "license": "MIT",' \
     '  "repository": "https://github.com/getopenpost/openpost.git",' \
     '  "publishConfig": { "access": "public" }' \
     '}' > "$placeholder_dir/package.json"
   printf '%s\n' \
-    '# OpenPost n8n package placeholder' \
+    '# SocialFlow.ai n8n package placeholder' \
     '' \
     'This 0.0.0 package only reserves the npm name for trusted publishing.' \
     'Install version 0.1.0 or newer after the GitHub release workflow publishes it.' \

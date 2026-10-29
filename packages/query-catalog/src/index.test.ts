@@ -23,7 +23,7 @@ import {
   stableQueryStaleTime,
 } from "./index";
 
-describe("OpenPost query catalogue", () => {
+describe("SocialFlow.ai query catalogue", () => {
   it("applies the shared query policy to domain catalogues", () => {
     expect(openPostQueryPolicy(liveQueryStaleTime)).toMatchObject({
       gcTime: 1_800_000,

@@ -75,7 +75,7 @@ test("workspace effect presets persist and apply with undo", async ({
     await page.emulateMedia({ colorScheme, reducedMotion: "reduce" });
     if (!(await page.getByRole("dialog").isVisible())) {
       await page
-        .getByRole("navigation", { name: "OpenPost Image Editor tools", exact: true })
+        .getByRole("navigation", { name: "SocialFlow.ai Image Editor tools", exact: true })
         .getByRole("button", { name: "Properties", exact: true })
         .click();
     }

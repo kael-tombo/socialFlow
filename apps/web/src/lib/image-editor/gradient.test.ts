@@ -20,7 +20,7 @@ function gradient(type: ImageEditorGradientValue['type']): ImageEditorGradientVa
 	};
 }
 
-describe('OpenPost Image Editor gradients', () => {
+describe('SocialFlow.ai Image Editor gradients', () => {
 	it('normalizes and reverses ordered color stops', () => {
 		expect(
 			normalizedGradientStops(

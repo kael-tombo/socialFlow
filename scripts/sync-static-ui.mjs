@@ -20,12 +20,12 @@ const offline = `<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <meta name="color-scheme" content="light dark" />
-    <title>You're offline | OpenPost</title>
+    <title>You're offline | SocialFlow.ai</title>
     <style>${css}</style>
   </head>
   <body data-theme-button="dither">
     <main class="op-recovery op-recovery--compact">
-      <div class="op-recovery-brand">${mark.replace(/^[ \t]+$/gmu, "")}OpenPost</div>
+      <div class="op-recovery-brand">${mark.replace(/^[ \t]+$/gmu, "")}SocialFlow.ai</div>
       <div class="op-recovery-body">
         <div>
           <h1>You're offline</h1>
@@ -45,7 +45,7 @@ const offline = `<!doctype html>
         const copy = translations[language];
         if (!copy) continue;
         document.documentElement.lang = language;
-        document.title = copy[0] + ' | OpenPost';
+        document.title = copy[0] + ' | SocialFlow.ai';
         document.querySelector('h1').textContent = copy[0];
         document.querySelector('.op-recovery-copy').textContent = copy[1];
         document.querySelector('a').textContent = copy[2];

@@ -38,7 +38,7 @@ test("unknown documents return 404 with a complete recovery page", async ({ page
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeFocused();
   await expectNoSeriousAccessibilityViolations(page);
   await expect(page.getByText("HTTP 404")).toBeVisible();
-  await expect(page.getByRole("link", { name: "OpenPost home" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "SocialFlow.ai home" })).toBeVisible();
   await expect(page.getByRole("link", { name: "New post" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Posts" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Calendar" })).toBeVisible();

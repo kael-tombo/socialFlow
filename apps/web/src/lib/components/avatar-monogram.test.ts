@@ -8,7 +8,7 @@ describe('shared account monogram', () => {
 	it.each<[string, string | undefined, string]>([
 		['Rodrigo Garcia', undefined, 'RG'],
 		['Rodrigo', undefined, 'RO'],
-		['OpenPost', undefined, 'OP'],
+		['SocialFlow.ai', undefined, 'OP'],
 		['@ada', undefined, 'AD'],
 		['  Ada   Lovelace  ', undefined, 'AL'],
 		['x', undefined, 'X'],

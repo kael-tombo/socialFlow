@@ -55,14 +55,14 @@
 	let mcpActivityLoading = $state(true);
 	let mcpActivityError = $state('');
 	let apiTokenBusy = $state(false);
-	let apiTokenName = $state('OpenPost MCP');
+	let apiTokenName = $state('SocialFlow.ai MCP');
 	let apiTokenScope = $state<APITokenScope>('mcp:read');
 	let apiTokenWorkspaceScope = $state('current');
 	let apiTokenExpiryPreset = $state<APITokenExpiryPreset>('90');
 	let apiTokenCustomExpiry = $state('');
 	let savedAPITokenDraft = $state(
 		JSON.stringify({
-			name: 'OpenPost MCP',
+			name: 'SocialFlow.ai MCP',
 			scope: 'mcp:read',
 			workspace: 'current',
 			expiry: '90',
@@ -395,7 +395,7 @@
 		resetAPITokenCopyFeedback();
 		revokeDialogOpen = false;
 		pendingTokenID = '';
-		apiTokenName = 'OpenPost MCP';
+		apiTokenName = 'SocialFlow.ai MCP';
 		apiTokenScope = 'mcp:read';
 		apiTokenWorkspaceScope = 'current';
 		apiTokenExpiryPreset = '90';

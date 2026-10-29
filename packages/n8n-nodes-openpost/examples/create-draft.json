@@ -1,5 +1,5 @@
 {
-  "name": "OpenPost - Create a draft",
+  "name": "SocialFlow.ai - Create a draft",
   "nodes": [
     {
       "parameters": {},
@@ -19,7 +19,7 @@
           "mode": "id"
         },
         "title": "n8n draft example",
-        "sourceText": "Draft created from the OpenPost n8n community node.",
+        "sourceText": "Draft created from the SocialFlow.ai n8n community node.",
         "contentProfile": "short_text",
         "creationPreset": "post",
         "advancedJson": "{}"
@@ -32,7 +32,7 @@
       "credentials": {
         "openPostApi": {
           "id": "REPLACE_WITH_CREDENTIAL_ID",
-          "name": "OpenPost account"
+          "name": "SocialFlow.ai account"
         }
       }
     }

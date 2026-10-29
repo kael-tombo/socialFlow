@@ -102,10 +102,10 @@
 		rel="alternate"
 		type="application/atom+xml"
 		href="https://openpo.st/changelog.xml"
-		title="OpenPost changelog"
+		title="SocialFlow.ai changelog"
 	/>
 	<meta name="robots" content="index, follow" />
-	<meta property="og:site_name" content="OpenPost" />
+	<meta property="og:site_name" content="SocialFlow.ai" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={social.socialTitle} />
 	<meta property="og:description" content={social.description} />

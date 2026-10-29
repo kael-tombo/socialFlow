@@ -42,7 +42,7 @@
 
 <section class="section-pad" aria-labelledby="faq-answers-title">
 	<div class="marketing-shell">
-		<h2 id="faq-answers-title" class="sr-only">OpenPost questions and answers</h2>
+		<h2 id="faq-answers-title" class="sr-only">SocialFlow.ai questions and answers</h2>
 		<div class="faq-groups">
 			{#each faqCategories as category (category.id)}
 				{@const categoryFaqs = faqs.filter((faq) => faq.category === category.id)}
@@ -96,7 +96,7 @@
 			</h2>
 			<p class="mt-4 max-w-xl leading-7 text-muted-foreground">
 				Email us for help with your account or billing. Join the community to swap ideas and ask
-				about using OpenPost.
+				about using SocialFlow.ai.
 			</p>
 		</div>
 		<div class="contact-actions">

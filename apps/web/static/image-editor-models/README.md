@@ -1,7 +1,7 @@
-# OpenPost Image Editor background-removal assets
+# SocialFlow.ai Image Editor background-removal assets
 
 This directory contains the self-hosted runtime files and quantized `isnet_quint8`
-model used by `@imgly/background-removal` 1.7.0. OpenPost ships only the resource
+model used by `@imgly/background-removal` 1.7.0. SocialFlow.ai ships only the resource
 chunks required by that model plus its WebAssembly CPU/WebGPU runtimes.
 
 The files come from `@imgly/background-removal-data` 1.7.0. See `LICENSE.md` and

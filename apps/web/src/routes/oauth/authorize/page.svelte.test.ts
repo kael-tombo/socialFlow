@@ -135,7 +135,7 @@ describe('OAuth authorization request validation', () => {
 
 		const screen = await renderAuthorizePage();
 		await expect
-			.element(screen.getByRole('heading', { name: 'Authorize OpenPost MCP' }))
+			.element(screen.getByRole('heading', { name: 'Authorize SocialFlow.ai MCP' }))
 			.toBeVisible();
 		await expect
 			.element(screen.getByText('accounts:read', { exact: true }))

@@ -66,7 +66,7 @@ func TestPasskeyBeginRetryKeepsSameCeremony(t *testing.T) {
 	challenge := &models.AuthChallenge{ID: "mfa", UserID: "u", Type: authChallengeLoginMFA, Payload: `{"methods":["passkey"]}`, ExpiresAt: time.Now().Add(time.Minute), CreatedAt: time.Now()}
 	_, err = db.NewInsert().Model(challenge).Exec(t.Context())
 	require.NoError(t, err)
-	service, err := mfa.NewService("OpenPost", mfa.RelyingPartyConfig{Name: "OpenPost", ID: "localhost", Origins: []string{"http://localhost"}})
+	service, err := mfa.NewService("SocialFlow.ai", mfa.RelyingPartyConfig{Name: "SocialFlow.ai", ID: "localhost", Origins: []string{"http://localhost"}})
 	require.NoError(t, err)
 	e := echo.New()
 	api := humaecho.NewWithGroup(e, e.Group("/api/v1"), huma.DefaultConfig("test", "1"))

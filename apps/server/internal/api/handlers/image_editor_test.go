@@ -192,7 +192,7 @@ func TestImageEditorRevisionEndpointsHonorDisabledFlag(t *testing.T) {
 		var statusError huma.StatusError
 		require.ErrorAs(t, err, &statusError)
 		require.Equal(t, 404, statusError.GetStatus())
-		require.Contains(t, err.Error(), "OpenPost Image Editor is disabled")
+		require.Contains(t, err.Error(), "SocialFlow.ai Image Editor is disabled")
 	}
 
 	_, err := handler.listRevisions(ctx, &ListImageEditorRevisionsInput{PathID: "design-1"})
@@ -283,7 +283,7 @@ func newImageEditorHandlerTest(t *testing.T) (*ImageEditorHandler, context.Conte
 	}
 	_, err := db.NewInsert().Model(&users).Exec(ctx)
 	require.NoError(t, err)
-	_, err = db.NewInsert().Model(&models.Workspace{ID: "workspace-1", Name: "OpenPost Image Editor"}).Exec(ctx)
+	_, err = db.NewInsert().Model(&models.Workspace{ID: "workspace-1", Name: "SocialFlow.ai Image Editor"}).Exec(ctx)
 	require.NoError(t, err)
 	members := []models.WorkspaceMember{
 		{WorkspaceID: "workspace-1", UserID: "user-1", Role: models.WorkspaceRoleAdmin},

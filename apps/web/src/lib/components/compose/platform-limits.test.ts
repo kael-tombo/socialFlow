@@ -45,7 +45,7 @@ describe('platform-limits', () => {
 	});
 
 	it.each(['threads', 'youtube'])('uses UTF-8 bytes for %s', (platform) => {
-		expect(platformTextLength(platform, 'OpenPost')).toBe(8);
+		expect(platformTextLength(platform, 'SocialFlow.ai')).toBe(8);
 		expect(platformTextLength(platform, 'é')).toBe(2);
 		expect(platformTextLength(platform, '’')).toBe(3);
 		expect(platformTextLength(platform, '👋')).toBe(4);

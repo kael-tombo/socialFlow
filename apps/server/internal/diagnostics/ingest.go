@@ -260,7 +260,7 @@ func FormatDiscordPayload(report Report) ([]byte, error) {
 		Name: "Installation", Value: clip(report.InstallationID, discordFieldLimit), Inline: true,
 	})
 	payload := discordDiagnosticsPayload{
-		Username: "OpenPost diagnostics",
+		Username: "SocialFlow.ai diagnostics",
 		Embeds: []discordDiagnosticsEmbed{{
 			Title:       clip(report.ErrorCode, discordTitleLimit),
 			Description: clip(windowDescription(report), discordDescriptionLimit),

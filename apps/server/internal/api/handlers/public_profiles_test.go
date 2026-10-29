@@ -36,9 +36,9 @@ func TestPublicProfileReturnsOptInPublishingActivity(t *testing.T) {
 		DisplayName: "Rodrigo Dias", PublicProfile: true,
 		PublicProfileVisibilityJSON: "[]", CreatedAt: now.AddDate(-1, 0, 0),
 	}
-	organization := &models.Organization{ID: "organization-1", Name: "OpenPost", CreatedByID: user.ID, CreatedAt: now}
+	organization := &models.Organization{ID: "organization-1", Name: "SocialFlow.ai", CreatedByID: user.ID, CreatedAt: now}
 	organizationMember := &models.OrganizationMember{OrganizationID: organization.ID, UserID: user.ID, Role: models.OrganizationRoleOwner}
-	workspace := &models.Workspace{ID: "workspace-1", OrganizationID: organization.ID, Name: "OpenPost", CreatedAt: now}
+	workspace := &models.Workspace{ID: "workspace-1", OrganizationID: organization.ID, Name: "SocialFlow.ai", CreatedAt: now}
 	member := &models.WorkspaceMember{WorkspaceID: workspace.ID, UserID: user.ID, Role: models.WorkspaceRoleAdmin}
 	subscription := &models.BillingSubscription{
 		OrganizationID: organization.ID, Provider: models.BillingProviderPaddle,
@@ -78,7 +78,7 @@ func TestPublicProfileReturnsOptInPublishingActivity(t *testing.T) {
 	require.Equal(t, 2, *profile.Body.LongestStreak)
 	require.Len(t, profile.Body.Activity, publicProfileActivityDays)
 	require.Equal(t, PublicProfileRanking{Key: "x", Name: "x", Count: 2}, profile.Body.TopPlatforms[0])
-	require.Equal(t, PublicProfileRanking{Key: workspace.ID, Name: "OpenPost", Count: 3}, profile.Body.TopWorkspaces[0])
+	require.Equal(t, PublicProfileRanking{Key: workspace.ID, Name: "SocialFlow.ai", Count: 3}, profile.Body.TopWorkspaces[0])
 }
 
 func TestPublicProfileReturnsOnlyExplicitlyVisibleFields(t *testing.T) {

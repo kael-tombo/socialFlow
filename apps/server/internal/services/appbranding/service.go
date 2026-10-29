@@ -78,7 +78,7 @@ type AppBrandingSettings struct {
 //nolint:revive // OpenAPI schemas share a global registry; the prefix prevents collisions.
 type AppBrandingUpdate struct {
 	ExpectedRevision       int           `json:"expected_revision" minimum:"0"`
-	Profile                *ProfileInput `json:"profile,omitempty" doc:"Null restores OpenPost for an organization or inheritance for a workspace"`
+	Profile                *ProfileInput `json:"profile,omitempty" doc:"Null restores SocialFlow.ai for an organization or inheritance for a workspace"`
 	AllowWorkspaceOverride bool          `json:"allow_workspace_override,omitempty"`
 }
 
@@ -102,7 +102,7 @@ type Service struct {
 func New(db *bun.DB, storage mediastore.BlobStorage) *Service {
 	return &Service{db: db, storage: storage}
 }
-func Default() Profile { return Profile{DisplayName: "OpenPost"} }
+func Default() Profile { return Profile{DisplayName: "SocialFlow.ai"} }
 func scope(organizationID, workspaceID string) string {
 	if workspaceID != "" {
 		return "workspace:" + workspaceID

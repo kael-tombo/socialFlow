@@ -25,7 +25,7 @@ function key(
 	};
 }
 
-describe('OpenPost Image Editor command registry', () => {
+describe('SocialFlow.ai Image Editor command registry', () => {
 	it('has no shortcut collisions', () => {
 		expect(duplicateImageEditorShortcuts()).toEqual([]);
 	});

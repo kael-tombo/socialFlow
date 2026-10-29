@@ -68,7 +68,7 @@ export async function uploadBinaryMedia(
   if (sessionBodyResult.deduped) return sessionBodyResult;
 
   const upload = sessionBodyResult.upload;
-  if (!upload?.url) throw new Error("OpenPost did not return an upload target.");
+  if (!upload?.url) throw new Error("SocialFlow.ai did not return an upload target.");
 
   const completePath =
     sessionBodyResult.complete_url ||
@@ -87,7 +87,7 @@ export async function uploadBinaryMedia(
     parsedCompleteUrl.search ||
     parsedCompleteUrl.hash
   ) {
-    throw new Error("OpenPost returned an invalid upload completion URL.");
+    throw new Error("SocialFlow.ai returned an invalid upload completion URL.");
   }
 
   const uploadOptions: IHttpRequestOptions = {

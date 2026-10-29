@@ -41,7 +41,7 @@ export async function generateImageAltText(
 		return null;
 	}
 	if (error || !data) {
-		throw new Error(error?.detail ?? 'OpenPost could not generate image alt text.');
+		throw new Error(error?.detail ?? 'SocialFlow.ai could not generate image alt text.');
 	}
 	return data;
 }

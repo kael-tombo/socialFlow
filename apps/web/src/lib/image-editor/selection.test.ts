@@ -28,7 +28,7 @@ import {
 	pixelMaskTransformAround
 } from './selection';
 
-describe('OpenPost Image Editor area selection geometry', () => {
+describe('SocialFlow.ai Image Editor area selection geometry', () => {
 	it('normalizes reverse marquee drags', () => {
 		expect(normalizeSelectionBounds({ x: 80, y: 60 }, { x: 20, y: 10 })).toEqual({
 			x: 20,
@@ -60,7 +60,7 @@ describe('OpenPost Image Editor area selection geometry', () => {
 	});
 });
 
-describe('OpenPost Image Editor selection composition', () => {
+describe('SocialFlow.ai Image Editor selection composition', () => {
 	it('supports replace, add, subtract, intersect, and toggle without duplicate IDs', () => {
 		expect(mergeSelectionIDs(['a'], ['b', 'b'], 'replace')).toEqual(['b']);
 		expect(mergeSelectionIDs(['a'], ['a', 'b'], 'add')).toEqual(['a', 'b']);

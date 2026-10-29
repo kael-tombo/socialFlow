@@ -51,8 +51,8 @@ func TestTOTPRecoveryCodeLifecycle(t *testing.T) {
 	_, err = db.NewInsert().Model(user).Exec(ctx)
 	require.NoError(t, err)
 
-	mfaService, err := mfa.NewService("OpenPost", mfa.RelyingPartyConfig{
-		Name: "OpenPost", ID: "localhost", Origins: []string{"http://localhost"},
+	mfaService, err := mfa.NewService("SocialFlow.ai", mfa.RelyingPartyConfig{
+		Name: "SocialFlow.ai", ID: "localhost", Origins: []string{"http://localhost"},
 	})
 	require.NoError(t, err)
 	handler := NewAuthHandler(
@@ -93,8 +93,8 @@ func TestTOTPRecoveryCodeLifecycle(t *testing.T) {
 	}
 	require.Equal(t, "otpauth", setupURI.Scheme)
 	require.Equal(t, "totp", setupURI.Host)
-	require.Equal(t, "/OpenPost:user@example.com", setupURI.Path)
-	require.Equal(t, "OpenPost", setupURI.Query().Get("issuer"))
+	require.Equal(t, "/SocialFlow.ai:user@example.com", setupURI.Path)
+	require.Equal(t, "SocialFlow.ai", setupURI.Query().Get("issuer"))
 	if subtle.ConstantTimeCompare(
 		[]byte(setupBody.Body.ManualEntryKey),
 		[]byte(setupURI.Query().Get("secret")),

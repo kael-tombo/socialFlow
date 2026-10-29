@@ -4,21 +4,21 @@
   "credentials": {
     "openpost_api_token": {
       "type": "bearer",
-      "label": "OpenPost API token",
+      "label": "SocialFlow.ai API token",
       "generateUrl": "https://app.openpo.st/settings?tab=developer",
-      "setup": "Sign in to OpenPost, open Settings → Personal → Developer access, and create a token with the scope and workspace access you need."
+      "setup": "Sign in to SocialFlow.ai, open Settings → Personal → Developer access, and create a token with the scope and workspace access you need."
     },
     "openpost_mcp_oauth": {
       "type": "oauth2",
-      "label": "OpenPost MCP OAuth",
-      "setup": "Connect the MCP client and approve access in the browser. OpenPost uses authorization code with PKCE and supports mcp:read and mcp:full."
+      "label": "SocialFlow.ai MCP OAuth",
+      "setup": "Connect the MCP client and approve access in the browser. SocialFlow.ai uses authorization code with PKCE and supports mcp:read and mcp:full."
     }
   },
   "surfaces": [
     {
       "type": "http",
       "slug": "api",
-      "name": "OpenPost API",
+      "name": "SocialFlow.ai API",
       "docs": "https://openpo.st/docs/development/api-reference",
       "spec": "https://openpo.st/docs/openapi.json",
       "url": "https://app.openpo.st/api/v1",

@@ -1,13 +1,13 @@
 ---
 name: cuelume
-description: Add or audit OpenPost interaction sounds with Cuelume. Use for UI sound wiring, duplicate or missing cues, sound preferences, and semantic success or error feedback.
+description: Add or audit SocialFlow.ai interaction sounds with Cuelume. Use for UI sound wiring, duplicate or missing cues, sound preferences, and semantic success or error feedback.
 ---
 
-# Cuelume in OpenPost
+# Cuelume in SocialFlow.ai
 
 Use the pinned `cuelume` package for short browser interaction sounds. The official agent guide is [cuelume-site.pages.dev/agents.md](https://cuelume-site.pages.dev/agents.md).
 
-## OpenPost rules
+## SocialFlow.ai rules
 
 - Keep `soundPreferences` as the single owner of `bind()`, `setEnabled()`, persistence, and imperative playback.
 - Put declarative cues in shared UI components. Route-specific markup should add a cue only when no shared control owns the interaction.
@@ -25,7 +25,7 @@ import { bind, play, setEnabled, setVolume, sounds, type SoundName } from 'cuelu
 
 - `bind(root?)` installs delegated handlers and is idempotent per root.
 - `play(name, { volume }?)` plays an imperative cue and fails silently when audio is unavailable.
-- `setEnabled(enabled)` and `setVolume(volume)` change future playback. OpenPost owns persistence.
+- `setEnabled(enabled)` and `setVolume(volume)` change future playback. SocialFlow.ai owns persistence.
 - Declarative attributes are `data-cuelume-hover`, `data-cuelume-press`, `data-cuelume-release`, and `data-cuelume-toggle`.
 
 ## Verify

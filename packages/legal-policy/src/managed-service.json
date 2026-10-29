@@ -3,7 +3,7 @@
   "reviewed_on": "2026-08-11",
   "next_review_on": "2026-11-11",
   "contact": "openpost@rgo.pt",
-  "change_notice": "OpenPost updates this register before a new service starts receiving managed customer data. When a change materially affects the Privacy Policy, OpenPost also advances the policy version and gives an in-service or email notice when appropriate.",
+  "change_notice": "SocialFlow.ai updates this register before a new service starts receiving managed customer data. When a change materially affects the Privacy Policy, SocialFlow.ai also advances the policy version and gives an in-service or email notice when appropriate.",
   "stores": [
     {
       "id": "primary-host",
@@ -21,7 +21,7 @@
       "location": "Falkenstein, Germany (FSN1)",
       "data": "Daily PostgreSQL dumps, a synchronized media copy, and retained changed or deleted media versions.",
       "retention": "Routine database dumps and changed or deleted media versions are pruned by the next daily run after they are more than 14 days old. Operator-created repair or incident snapshots are reviewed separately and kept only while needed for recovery, security, legal duties, fraud prevention, or legal claims.",
-      "protection": "Recovery files are root-owned and not served by the application. OpenPost does not add a separate application-level encryption layer to each artifact. A weekly restore drill validates the latest database copy and the media inventory."
+      "protection": "Recovery files are root-owned and not served by the application. SocialFlow.ai does not add a separate application-level encryption layer to each artifact. A weekly restore drill validates the latest database copy and the media inventory."
     },
     {
       "id": "media-objects",
@@ -30,7 +30,7 @@
       "location": "Cloudflare automatic placement; no jurisdiction restriction is configured",
       "data": "Uploaded media, editor exports saved to Media, thumbnails, and object metadata.",
       "retention": "Live objects follow account, workspace, trash, and media-retention rules. The separate host recovery copy follows the retention described above.",
-      "protection": "OpenPost uses authenticated HTTPS access and private storage credentials. Objects that must be fetched by a selected social network can receive a signed or public delivery URL."
+      "protection": "SocialFlow.ai uses authenticated HTTPS access and private storage credentials. Objects that must be fetched by a selected social network can receive a signed or public delivery URL."
     },
     {
       "id": "browser-local",
@@ -62,10 +62,10 @@
       "name": "PostHog, Inc.",
       "role": "subprocessor",
       "use": "required",
-      "purpose": "Receives consent-aware product, public-site, service, and error telemetry so OpenPost can measure use, understand acquisition, diagnose failures, and improve the hosted service.",
-      "data": "Persistent first-party browser events and country for visitors who allow analytics cookies; limited cookieless personless events when visitors choose cookie-free analytics; opaque managed-service user and workspace identifiers; product and service events; browser, service, release, route-template, status, and sanitized error context. Raw client IP is discarded after approved browser enrichment. OpenPost does not enable session replay or send post content, media, credentials, request bodies, email addresses, names, usernames, query strings, or raw URLs as telemetry properties.",
+      "purpose": "Receives consent-aware product, public-site, service, and error telemetry so SocialFlow.ai can measure use, understand acquisition, diagnose failures, and improve the hosted service.",
+      "data": "Persistent first-party browser events and country for visitors who allow analytics cookies; limited cookieless personless events when visitors choose cookie-free analytics; opaque managed-service user and workspace identifiers; product and service events; browser, service, release, route-template, status, and sanitized error context. Raw client IP is discarded after approved browser enrichment. SocialFlow.ai does not enable session replay or send post content, media, credentials, request bodies, email addresses, names, usernames, query strings, or raw URLs as telemetry properties.",
       "location": "PostHog EU Cloud in Frankfurt, Germany.",
-      "transfer": "OpenPost selects PostHog's EU Cloud. PostHog describes its GDPR commitments and international-transfer safeguards in its privacy and GDPR documentation.",
+      "transfer": "SocialFlow.ai selects PostHog's EU Cloud. PostHog describes its GDPR commitments and international-transfer safeguards in its privacy and GDPR documentation.",
       "source_urls": [
         "https://posthog.com/privacy",
         "https://posthog.com/docs/privacy/gdpr-compliance",
@@ -95,7 +95,7 @@
       "use": "required",
       "purpose": "Sends account verification, password reset, security, and opted-in notification email.",
       "data": "Recipient address, sender address, email content, and delivery metadata.",
-      "location": "Provider-operated Amazon Web Services infrastructure; OpenPost does not pin a region in its SMTP configuration.",
+      "location": "Provider-operated Amazon Web Services infrastructure; SocialFlow.ai does not pin a region in its SMTP configuration.",
       "transfer": "A managed-service transfer mechanism has not yet been recorded in this register. This is an open operator and legal review item.",
       "source_urls": ["https://purelymail.com/privacy", "https://purelymail.com/docs/security"]
     },
@@ -151,7 +151,7 @@
       "purpose": "Receives feedback reports sent through the managed in-app feedback form.",
       "data": "The report text, optional screenshot, category, app version, route, workspace-safe diagnostics, and delivery metadata that the user chooses to submit.",
       "location": "Provider-controlled infrastructure; Discord identifies its EEA controller in the Netherlands and also operates in the United States.",
-      "transfer": "Discord's privacy policy describes its international processing. OpenPost does not claim a separate Discord DPA for this feedback path.",
+      "transfer": "Discord's privacy policy describes its international processing. SocialFlow.ai does not claim a separate Discord DPA for this feedback path.",
       "source_urls": ["https://discord.com/privacy"]
     },
     {
@@ -160,8 +160,8 @@
       "role": "user_requested_source",
       "use": "feature_triggered",
       "purpose": "Returns stock photo and video search results when the user searches the editor library.",
-      "data": "Search text, server request metadata, selection/download events required by the provider, and no OpenPost account credential.",
-      "location": "Provider-controlled infrastructure; no region is pinned by OpenPost.",
+      "data": "Search text, server request metadata, selection/download events required by the provider, and no SocialFlow.ai account credential.",
+      "location": "Provider-controlled infrastructure; no region is pinned by SocialFlow.ai.",
       "transfer": "The user initiates the search; Pexels' privacy terms apply to its processing.",
       "source_urls": ["https://www.pexels.com/privacy-policy/"]
     },
@@ -171,8 +171,8 @@
       "role": "user_requested_source",
       "use": "feature_triggered",
       "purpose": "Returns stock image and video search results when the user searches the editor library.",
-      "data": "Search text, server request metadata, and no OpenPost account credential.",
-      "location": "Provider-controlled infrastructure; no region is pinned by OpenPost.",
+      "data": "Search text, server request metadata, and no SocialFlow.ai account credential.",
+      "location": "Provider-controlled infrastructure; no region is pinned by SocialFlow.ai.",
       "transfer": "The user initiates the search; Pixabay's privacy terms apply to its processing.",
       "source_urls": ["https://pixabay.com/service/privacy/"]
     },
@@ -182,8 +182,8 @@
       "role": "user_requested_source",
       "use": "feature_triggered",
       "purpose": "Returns stock photo search results when the user searches the editor library.",
-      "data": "Search text, server request metadata, selection/download events required by the provider, and no OpenPost account credential.",
-      "location": "Provider-controlled infrastructure; no region is pinned by OpenPost.",
+      "data": "Search text, server request metadata, selection/download events required by the provider, and no SocialFlow.ai account credential.",
+      "location": "Provider-controlled infrastructure; no region is pinned by SocialFlow.ai.",
       "transfer": "The user initiates the search; Unsplash's privacy terms apply to its processing.",
       "source_urls": ["https://unsplash.com/privacy"]
     }
@@ -247,12 +247,12 @@
     }
   ],
   "human_access": {
-    "scope": "One named operator administers the managed production host. OpenPost has no separate support staff with standing server or database access.",
+    "scope": "One named operator administers the managed production host. SocialFlow.ai has no separate support staff with standing server or database access.",
     "authentication": "Production SSH accepts named public keys only, blocks password and keyboard-interactive login, blocks direct root login, and uses sudo for privileged work. At this review, one operator identity has four named device or maintenance-host keys.",
     "routine_access": "Automated services handle ordinary operations. The operator does not routinely review drafts, media, messages, or connected-account data.",
     "support_access": "A support request does not grant direct production access. The operator may inspect the minimum relevant records when a user requests help or when recovery, security, abuse, legal, or fraud work requires it.",
     "approval": "There is no two-person approval control. The same named operator authorizes and performs production access.",
-    "logging": "System and service journals record authentication and service events within size-bounded storage. The host does not provide a complete command-level audit trail, so OpenPost does not claim one.",
+    "logging": "System and service journals record authentication and service events within size-bounded storage. The host does not provide a complete command-level audit trail, so SocialFlow.ai does not claim one.",
     "emergency": "Emergency access uses the same named keys, sudo boundary, and logging. There is no hidden bypass or shared support account.",
     "review_and_revocation": "Authorized keys and production configuration are version-controlled. Access is reviewed when an operator device, maintenance host, role, or security configuration changes; obsolete keys are removed through the host deployment. No separate automated periodic access attestation exists."
   }

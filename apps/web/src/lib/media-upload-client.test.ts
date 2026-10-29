@@ -87,7 +87,7 @@ describe('media-upload-client', () => {
 		expect(headers.get('x-amz-meta-workspace')).toBe('ws-1');
 	});
 
-	it('sends OpenPost credentials only to instance-hosted upload targets', () => {
+	it('sends SocialFlow.ai credentials only to instance-hosted upload targets', () => {
 		const openPostHeaders = new Headers({
 			Authorization: 'Bearer op_cli_secret',
 			'X-PostHog-Distinct-ID': 'browser-user-1',

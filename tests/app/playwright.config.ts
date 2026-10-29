@@ -108,7 +108,7 @@ export default defineConfig({
           'THREADS_CLIENT_SECRET="e2e-threads-secret"',
           "OPENPOST_DISABLE_REGISTRATIONS=false",
           "OPENPOST_EMAIL_PROVIDER=smtp",
-          'OPENPOST_EMAIL_FROM="OpenPost <hello@openpost.test>"',
+          'OPENPOST_EMAIL_FROM="SocialFlow.ai <hello@openpost.test>"',
           `OPENPOST_SMTP_HOST=${host}`,
           `OPENPOST_SMTP_PORT=${smtpPort}`,
           "OPENPOST_SMTP_TLS_MODE=none",

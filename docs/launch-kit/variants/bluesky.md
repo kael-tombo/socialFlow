@@ -6,15 +6,15 @@
 
 AI can draft social posts. It should not publish them blind.
 
-I built OpenPost as the layer between an agent and social accounts: destination-specific work, human review, and a queue you can inspect. (1/5)
+I built SocialFlow.ai as the layer between an agent and social accounts: destination-specific work, human review, and a queue you can inspect. (1/5)
 
 ## Post 2/5
 
-The agent can inspect the selected OpenPost workspace, connected accounts, media, drafts, and schedule through MCP. It does not receive the provider credentials stored inside OpenPost. (2/5)
+The agent can inspect the selected SocialFlow.ai workspace, connected accounts, media, drafts, and schedule through MCP. It does not receive the provider credentials stored inside SocialFlow.ai. (2/5)
 
 ## Post 3/5
 
-One base message is not pasted everywhere. OpenPost keeps account-specific variants, so copy, media, thread shape, and settings can match each destination. (3/5)
+One base message is not pasted everywhere. SocialFlow.ai keeps account-specific variants, so copy, media, thread shape, and settings can match each destination. (3/5)
 
 ## Post 4/5
 

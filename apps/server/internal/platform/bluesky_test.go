@@ -16,7 +16,7 @@ import (
 func TestBuildBlueskyPostRecordAddsFacetsExternalCardAndSelfLabels(t *testing.T) {
 	adapter := NewBlueskyAdapter("")
 	record, err := adapter.buildPostRecord("did:plc:openpost", &PublishRequest{
-		Content: "Hello @atproto.com from #OpenPost https://example.com/path",
+		Content: "Hello @atproto.com from #SocialFlow.ai https://example.com/path",
 		Settings: map[string]interface{}{
 			"mention_dids":     "atproto.com=did:plc:ewvi7nxzyoun6zhxrhs64oiz",
 			"link_url":         "https://example.com/path",
@@ -33,7 +33,7 @@ func TestBuildBlueskyPostRecordAddsFacetsExternalCardAndSelfLabels(t *testing.T)
 	facets := record["facets"].([]map[string]interface{})
 	require.Len(t, facets, 3)
 	requireFacet(t, facets, 6, 18, "app.bsky.richtext.facet#mention", "did", "did:plc:ewvi7nxzyoun6zhxrhs64oiz")
-	requireFacet(t, facets, 24, 33, "app.bsky.richtext.facet#tag", "tag", "OpenPost")
+	requireFacet(t, facets, 24, 33, "app.bsky.richtext.facet#tag", "tag", "SocialFlow.ai")
 	requireFacet(t, facets, 34, 58, "app.bsky.richtext.facet#link", "uri", "https://example.com/path")
 
 	embed := record["embed"].(map[string]interface{})
@@ -100,9 +100,9 @@ func TestBuildBlueskyFacetsLinksTheWholeURL(t *testing.T) {
 }
 
 func TestBuildBlueskyFacetsDropsOverlappingTagInsideLink(t *testing.T) {
-	facets := buildBlueskyFacets("https://example.com/#OpenPost", nil)
+	facets := buildBlueskyFacets("https://example.com/#SocialFlow.ai", nil)
 	require.Len(t, facets, 1)
-	requireFacet(t, facets, 0, 29, "app.bsky.richtext.facet#link", "uri", "https://example.com/#OpenPost")
+	requireFacet(t, facets, 0, 29, "app.bsky.richtext.facet#link", "uri", "https://example.com/#SocialFlow.ai")
 }
 
 // Hashtags follow TAG_REGEX in @atproto/api's rich-text detection: any
@@ -123,7 +123,7 @@ func TestBuildBlueskyFacetsDetectsHashtagsLikeBluesky(t *testing.T) {
 		{text: "Visit #São_Paulo!", want: []tagFacet{{6, 17, "São_Paulo"}}},
 		{text: "Join #open-source, today", want: []tagFacet{{5, 17, "open-source"}}},
 		{text: "こんにちは\u3000#東京", want: []tagFacet{{18, 25, "東京"}}},
-		{text: "＃OpenPost", want: []tagFacet{{0, 11, "OpenPost"}}},
+		{text: "＃SocialFlow.ai", want: []tagFacet{{0, 11, "SocialFlow.ai"}}},
 		{text: "#2024 is here", want: nil},
 		{text: "C#sharp", want: nil},
 		{text: "#" + longTag, want: []tagFacet{{0, 65, longTag}}},

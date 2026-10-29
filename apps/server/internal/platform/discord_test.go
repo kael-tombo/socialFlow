@@ -240,7 +240,7 @@ func TestDiscordBotListsOnlyPermittedTextAndAnnouncementChannels(t *testing.T) {
 		case "/api/v10/guilds/100":
 			return jsonResponse(req, `{"id":"100","roles":[{"id":"100","permissions":"3072"},{"id":"role-1","permissions":"0"}]}`), nil
 		case "/api/v10/users/@me":
-			return jsonResponse(req, `{"id":"bot-1","username":"OpenPost"}`), nil
+			return jsonResponse(req, `{"id":"bot-1","username":"SocialFlow.ai"}`), nil
 		case "/api/v10/guilds/100/members/bot-1":
 			return jsonResponse(req, `{"roles":["role-1"],"user":{"id":"bot-1"}}`), nil
 		case "/api/v10/guilds/100/channels":

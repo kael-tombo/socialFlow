@@ -447,7 +447,7 @@ func (s *Service) SyncAccount(ctx context.Context, workspaceID, accountID string
 			return identityErr
 		}
 		if unresolved {
-			return s.recordOutcome(ctx, prepared.state, platform.NativePostPartial, "published_identity_pending", "An OpenPost publication is still resolving its provider identity. Import will retry without guessing authorship.", now.Add(15*time.Minute), now)
+			return s.recordOutcome(ctx, prepared.state, platform.NativePostPartial, "published_identity_pending", "An SocialFlow.ai publication is still resolving its provider identity. Import will retry without guessing authorship.", now.Add(15*time.Minute), now)
 		}
 		committed, err := s.commitPage(ctx, prepared.account, prepared.state, filterOwnPosts(page.Items, prepared.ownPostIDs), page.NextCursor, now)
 		if err != nil {
@@ -505,7 +505,7 @@ func (s *Service) prepareSync(ctx context.Context, workspaceID, accountID string
 	reader, ok := s.reader(account)
 	if !ok {
 		return nil, s.recordOutcome(ctx, state, platform.NativePostUnsupported,
-			"native_read_not_supported", "This provider does not expose native post reads in OpenPost.", now.Add(routineCadence), now)
+			"native_read_not_supported", "This provider does not expose native post reads in SocialFlow.ai.", now.Add(routineCadence), now)
 	}
 	if s.tokens == nil {
 		return nil, s.recordOutcome(ctx, state, platform.NativePostFailed,
@@ -572,7 +572,7 @@ func (s *Service) loadImportEligibility(ctx context.Context, workspaceID, accoun
 		}
 		reason := strings.TrimSpace(support.UnavailableReason)
 		if reason == "" {
-			reason = "This provider does not expose native post reads in OpenPost."
+			reason = "This provider does not expose native post reads in SocialFlow.ai."
 		}
 		return account, state, policy, false, s.recordOutcome(ctx, state, status,
 			"native_read_not_supported", boundedOutcomeMessage(reason), now.Add(routineCadence), now)
@@ -776,20 +776,20 @@ func (s *Service) recordReadFailure(ctx context.Context, state *models.PostImpor
 		case platform.NativePostRateLimited:
 			retryAfter := max(nativeErr.RetryAfter, time.Minute)
 			return s.recordOutcome(ctx, state, nativeErr.Status, firstNonEmpty(nativeErr.Code, "rate_limited"),
-				"The provider is rate limiting. OpenPost will retry.", now.Add(retryAfter), now)
+				"The provider is rate limiting. SocialFlow.ai will retry.", now.Add(retryAfter), now)
 		case platform.NativePostCostLimited:
 			return s.recordOutcome(ctx, state, nativeErr.Status, firstNonEmpty(nativeErr.Code, "cost_limited"),
 				"Native reads are disabled by the provider read-cost policy.", nextUTCDay(now), now)
 		case platform.NativePostUnsupported:
 			return s.recordOutcome(ctx, state, nativeErr.Status, firstNonEmpty(nativeErr.Code, "native_read_not_supported"),
-				"This provider does not expose native post reads in OpenPost.", now.Add(routineCadence), now)
+				"This provider does not expose native post reads in SocialFlow.ai.", now.Add(routineCadence), now)
 		default:
 			return s.recordOutcome(ctx, state, platform.NativePostFailed, firstNonEmpty(nativeErr.Code, "provider_error"),
-				"The provider is temporarily unavailable. OpenPost will retry.", now.Add(failureBackoff), now)
+				"The provider is temporarily unavailable. SocialFlow.ai will retry.", now.Add(failureBackoff), now)
 		}
 	}
 	return s.recordOutcome(ctx, state, platform.NativePostFailed, "provider_error",
-		"The provider is temporarily unavailable. OpenPost will retry.", now.Add(failureBackoff), now)
+		"The provider is temporarily unavailable. SocialFlow.ai will retry.", now.Add(failureBackoff), now)
 }
 
 func (s *Service) enqueueSync(ctx context.Context, workspaceID, accountID string, now time.Time) (bool, error) {

@@ -1,6 +1,6 @@
 # Collaboration-and-safety browser matrix
 
-The collaboration-and-safety release cohort uses the built OpenPost application, HTTP authorization, and database persistence. Browser tests cover the visible journeys. Service and handler tests cover concurrency, provider callbacks, atomic deletion, redaction, and permission states that a browser cannot reproduce reliably.
+The collaboration-and-safety release cohort uses the built SocialFlow.ai application, HTTP authorization, and database persistence. Browser tests cover the visible journeys. Service and handler tests cover concurrency, provider callbacks, atomic deletion, redaction, and permission states that a browser cannot reproduce reliably.
 
 ## Invitation lifecycle
 

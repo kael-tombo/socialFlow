@@ -17,7 +17,7 @@ test("editor audit controls fit desktop and phone widths in both schemes", async
       await page.setViewportSize({ width, height: 800 });
       await expect(page.getByRole("button", { name: "Export", exact: true })).toBeVisible();
       await expect(
-        page.getByRole("button", { name: "OpenPost Image Editor", exact: true }),
+        page.getByRole("button", { name: "SocialFlow.ai Image Editor", exact: true }),
       ).toBeInViewport();
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
         width,
@@ -69,7 +69,7 @@ test("ordinary start page opens workspace templates with their pages and editabl
   expect(templateResponse.ok()).toBe(true);
   await authenticatePage(page, auth.token);
   await page.goto("/image-editor");
-  await expect(page.getByRole("button", { name: "Saved to OpenPost", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Saved to SocialFlow.ai", exact: true })).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Workspace templates", exact: true }),
   ).toBeVisible();
@@ -80,7 +80,7 @@ test("ordinary start page opens workspace templates with their pages and editabl
   await page.getByRole("button", { name: "Local only", exact: true }).click();
   await expect(workspaceCard).toBeVisible();
   await expect(workspaceCard).toHaveAccessibleName(
-    "Audit workspace template: Create design, Saved to OpenPost",
+    "Audit workspace template: Create design, Saved to SocialFlow.ai",
   );
   for (const scheme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: scheme, reducedMotion: "reduce" });
@@ -189,7 +189,7 @@ for (const scheme of ["light", "dark"] as const) {
       ).toBeVisible();
       await expect(
         page.getByRole("button", {
-          name: "OpenPost Image Editor",
+          name: "SocialFlow.ai Image Editor",
           exact: true,
         }),
       ).toBeInViewport();
@@ -212,7 +212,7 @@ test("desktop page background Image opens a visible chooser", async ({ page }) =
   await page.getByRole("button", { name: "Image", exact: true }).click();
   await expect(
     page
-      .getByRole("navigation", { name: "OpenPost Image Editor tools", exact: true })
+      .getByRole("navigation", { name: "SocialFlow.ai Image Editor tools", exact: true })
       .getByRole("button", { name: "Add", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
 });
@@ -306,7 +306,7 @@ test("portable import edits only the imported design and updates the tab title",
   await expect(page.getByRole("textbox", { name: "Design title" })).toHaveValue(
     "Imported design only",
   );
-  await page.getByRole("button", { name: "OpenPost Image Editor", exact: true }).click();
+  await page.getByRole("button", { name: "SocialFlow.ai Image Editor", exact: true }).click();
   await expect(page).toHaveURL(/\/media$/);
 });
 

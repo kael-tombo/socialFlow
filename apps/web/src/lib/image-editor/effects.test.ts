@@ -14,7 +14,7 @@ function curve(type: ImageEditorTextCurve['type']): ImageEditorTextCurve {
 	return { type, strength: 0.7, offset: 0.25, reverse: false };
 }
 
-describe('OpenPost Image Editor layer effects', () => {
+describe('SocialFlow.ai Image Editor layer effects', () => {
 	it('converts shadow angle and distance into canvas offsets', () => {
 		const offset = shadowOffset(shadow);
 		expect(offset.x).toBeCloseTo(0);

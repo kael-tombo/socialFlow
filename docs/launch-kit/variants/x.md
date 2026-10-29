@@ -4,7 +4,7 @@
 
 AI can draft posts. It should not publish them blind.
 
-OpenPost lets an agent prepare account-specific versions without receiving provider credentials. You review each destination, then approve what enters the queue.
+SocialFlow.ai lets an agent prepare account-specific versions without receiving provider credentials. You review each destination, then approve what enters the queue.
 
 Hosted service or self-hosted: https://openpo.st
 

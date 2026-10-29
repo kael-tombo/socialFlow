@@ -296,13 +296,13 @@ func (s *SMTPSender) connect(ctx context.Context) (*smtp.Client, net.Conn, error
 
 func buildResetEmail(from, recipient *mail.Address, message ResetMessage) []byte {
 	expires := message.ExpiresAt.UTC().Format(time.RFC1123)
-	body := "A password reset was requested for your OpenPost account.\r\n\r\n" +
+	body := "A password reset was requested for your SocialFlow.ai account.\r\n\r\n" +
 		"Open this link to choose a new password:\r\n" + message.ResetURL + "\r\n\r\n" +
 		"This single-use link expires at " + expires + ".\r\n" +
 		"If you did not request this change, you can ignore this email.\r\n"
 
 	return []byte(fmt.Sprintf(
-		"Date: %s\r\nFrom: %s\r\nTo: %s\r\nSubject: Reset your OpenPost password\r\n"+
+		"Date: %s\r\nFrom: %s\r\nTo: %s\r\nSubject: Reset your SocialFlow.ai password\r\n"+
 			"MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n"+
 			"Content-Transfer-Encoding: 8bit\r\n\r\n%s",
 		time.Now().UTC().Format(time.RFC1123Z), from.String(), recipient.String(), body,
@@ -311,13 +311,13 @@ func buildResetEmail(from, recipient *mail.Address, message ResetMessage) []byte
 
 func buildVerificationEmail(from, recipient *mail.Address, message VerificationMessage) []byte {
 	expires := message.ExpiresAt.UTC().Format(time.RFC1123)
-	body := "Use this code to verify your OpenPost email address:\r\n\r\n" +
+	body := "Use this code to verify your SocialFlow.ai email address:\r\n\r\n" +
 		strings.TrimSpace(message.Code) + "\r\n\r\n" +
 		"This code expires at " + expires + ".\r\n" +
-		"If you did not create an OpenPost account, you can ignore this email.\r\n"
+		"If you did not create an SocialFlow.ai account, you can ignore this email.\r\n"
 
 	return []byte(fmt.Sprintf(
-		"Date: %s\r\nFrom: %s\r\nTo: %s\r\nSubject: Verify your OpenPost email\r\n"+
+		"Date: %s\r\nFrom: %s\r\nTo: %s\r\nSubject: Verify your SocialFlow.ai email\r\n"+
 			"MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n"+
 			"Content-Transfer-Encoding: 8bit\r\n\r\n%s",
 		time.Now().UTC().Format(time.RFC1123Z), from.String(), recipient.String(), body,

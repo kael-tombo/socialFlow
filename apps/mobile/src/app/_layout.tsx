@@ -130,7 +130,7 @@ function useSessionReady() {
           identity,
           state: {
             status: "error",
-            error: cause instanceof Error ? cause : new Error("Could not start OpenPost"),
+            error: cause instanceof Error ? cause : new Error("Could not start SocialFlow.ai"),
           },
         });
       });

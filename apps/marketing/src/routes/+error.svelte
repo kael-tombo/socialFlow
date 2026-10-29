@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>{isNotFound ? 'Page not found' : 'Something went wrong'} · OpenPost</title>
+	<title>{isNotFound ? 'Page not found' : 'Something went wrong'} · SocialFlow.ai</title>
 	<meta name="robots" content="noindex" />
 </svelte:head>
 

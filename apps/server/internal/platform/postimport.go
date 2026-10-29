@@ -138,7 +138,7 @@ func NativePostSupportFor(provider string) NativePostSupport {
 	case providerDiscord:
 		return NativePostSupport{UnavailableReason: "Discord webhook connections cannot read channel history. Bot connections cannot identify posts authored by the connected webhook."}
 	default:
-		return NativePostSupport{UnavailableReason: "This provider does not expose native post reads in OpenPost."}
+		return NativePostSupport{UnavailableReason: "This provider does not expose native post reads in SocialFlow.ai."}
 	}
 }
 

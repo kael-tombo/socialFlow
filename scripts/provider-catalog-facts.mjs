@@ -39,7 +39,7 @@ const totalCountPatterns = [
   new RegExp(`\\b${countToken} publishing destinations\\b`, "giu"),
   new RegExp(`\\b${countToken} social networks\\b`, "giu"),
   new RegExp(`\\b${countToken} social network limits\\b`, "giu"),
-  new RegExp(`\\b${countToken} OpenPost platforms\\b`, "giu"),
+  new RegExp(`\\b${countToken} (?:OpenPost|SocialFlow\\.ai) platforms\\b`, "giu"),
   new RegExp(`\\b(?:compare|preview) ${countToken} (?:limits|platforms)\\b`, "giu"),
   new RegExp(`\\b${countToken} equivalent providers\\b`, "giu"),
 ];

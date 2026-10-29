@@ -82,7 +82,7 @@
 
 <section class="landing-close" aria-labelledby="closing-title">
 	<div class="marketing-shell">
-		<h2 id="closing-title">Make your next post<br />with OpenPost.</h2>
+		<h2 id="closing-title">Make your next post<br />with SocialFlow.ai.</h2>
 		<Button href={managedSignupUrl} size="lg" class="landing-cta"
 			>Start your free trial <ArrowRight data-icon="inline-end" /></Button
 		>

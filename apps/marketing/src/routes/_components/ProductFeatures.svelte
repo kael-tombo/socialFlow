@@ -39,7 +39,7 @@
 		{
 			title: 'Connect your tools',
 			icon: '/assets/brand/features/automation.svg',
-			text: 'Bring OpenPost into the tools you already use. Call the TypeScript SDK, install the CLI from npm, draft with your AI assistant, or connect a workflow in n8n.',
+			text: 'Bring SocialFlow.ai into the tools you already use. Call the TypeScript SDK, install the CLI from npm, draft with your AI assistant, or connect a workflow in n8n.',
 			href: 'https://openpo.st/docs/automate',
 			link: 'Connect your tools'
 		},
@@ -86,7 +86,7 @@
 				lightSrcset="/assets/screenshots/calendar-detail-light-768.webp 768w, /assets/screenshots/calendar-detail-light-1536.webp 1536w, /assets/screenshots/calendar-detail-light.webp 2256w"
 				darkSrcset="/assets/screenshots/calendar-detail-dark-768.webp 768w, /assets/screenshots/calendar-detail-dark-1536.webp 1536w, /assets/screenshots/calendar-detail-dark.webp 2256w"
 				sizes={detailScreenshotSizes}
-				alt="OpenPost calendar showing scheduled posts across channels"
+				alt="SocialFlow.ai calendar showing scheduled posts across channels"
 				width={2256}
 				height={1612}
 				loading="lazy"
@@ -166,7 +166,7 @@
 					lightSrcset="/assets/screenshots/meme-creator-detail-light-768.webp 768w, /assets/screenshots/meme-creator-detail-light-1536.webp 1536w, /assets/screenshots/meme-creator-detail-light.webp 2764w"
 					darkSrcset="/assets/screenshots/meme-creator-detail-dark-768.webp 768w, /assets/screenshots/meme-creator-detail-dark-1536.webp 1536w, /assets/screenshots/meme-creator-detail-dark.webp 2764w"
 					sizes={detailScreenshotSizes}
-					alt="OpenPost meme creator with editable captions and a rendered Drakeposting preview"
+					alt="SocialFlow.ai meme creator with editable captions and a rendered Drakeposting preview"
 					width={2764}
 					height={1920}
 					loading="lazy"
@@ -200,7 +200,7 @@
 				lightSrcset="/assets/screenshots/analytics-detail-light-768.webp 768w, /assets/screenshots/analytics-detail-light-1536.webp 1536w, /assets/screenshots/analytics-detail-light.webp 2188w"
 				darkSrcset="/assets/screenshots/analytics-detail-dark-768.webp 768w, /assets/screenshots/analytics-detail-dark-1536.webp 1536w, /assets/screenshots/analytics-detail-dark.webp 2188w"
 				sizes={detailScreenshotSizes}
-				alt="Daily views chart in OpenPost analytics"
+				alt="Daily views chart in SocialFlow.ai analytics"
 				width={2188}
 				height={656}
 				loading="lazy"

@@ -24,7 +24,7 @@ export function assetTarget(
       return { os: "windows", arch: "amd64", extension: ".exe" };
     default:
       throw new Error(
-        `OpenPost CLI has no prebuilt binary for ${key}. ` +
+        `SocialFlow.ai CLI has no prebuilt binary for ${key}. ` +
           `Supported targets are linux-x64, linux-arm64, darwin-arm64, and win32-x64. ` +
           `Download a release manually from https://github.com/getopenpost/openpost/releases ` +
           `or build apps/cli from source.`,

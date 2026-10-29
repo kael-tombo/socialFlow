@@ -949,7 +949,7 @@ func (p *PinterestAdapter) publishPinterestVideo(ctx context.Context, accessToke
 		return p.ReconcilePublish(ctx, accessToken, accountID, req.ResumeProviderReference)
 	}
 	if req.ResumeProviderState == "creating" {
-		return PublishResult{ProviderState: "creating", RetrySafety: PublishRetryNever}, fmt.Errorf("pinterest video Pin create outcome is ambiguous; OpenPost will not replay it")
+		return PublishResult{ProviderState: "creating", RetrySafety: PublishRetryNever}, fmt.Errorf("pinterest video Pin create outcome is ambiguous; SocialFlow.ai will not replay it")
 	}
 	if err := p.ValidatePublishingTarget(ctx, accessToken, accountID, req.Settings); err != nil {
 		return PublishResult{}, err

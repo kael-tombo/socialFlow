@@ -75,11 +75,11 @@ test("Quick Cut keeps earlier cuts, supports undo, markers, and exports the edit
   await expect(markIn).toHaveValue("00:00.00");
   await markIn.press("Tab");
   await expect(page.getByRole("button", { name: "Undo", exact: true })).toBeDisabled();
-  await expect(page.getByRole("img", { name: /Saved to OpenPost/ })).toBeVisible();
+  await expect(page.getByRole("img", { name: /Saved to SocialFlow.ai/ })).toBeVisible();
   await page.reload();
   await expect(markIn).toHaveValue("00:00.00");
   await expect(markOut).toHaveValue(originalOut);
-  await expect(page.getByRole("img", { name: /Saved to OpenPost/ })).toBeVisible();
+  await expect(page.getByRole("img", { name: /Saved to SocialFlow.ai/ })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("qct-cold-restored.png") });
   await page
     .locator("summary")

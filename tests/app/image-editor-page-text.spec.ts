@@ -170,7 +170,7 @@ test("text range weight survives cloud save and reload without changing the whol
     await page.emulateMedia({ colorScheme, reducedMotion: "reduce" });
     if (!(await page.getByRole("dialog").isVisible())) {
       await page
-        .getByRole("navigation", { name: "OpenPost Image Editor tools", exact: true })
+        .getByRole("navigation", { name: "SocialFlow.ai Image Editor tools", exact: true })
         .getByRole("button", { name: "Properties", exact: true })
         .click();
     }
@@ -208,7 +208,7 @@ test("cloud autosave keeps the canvas text cursor and accepts continued typing",
   await expect(
     page
       .getByRole("banner")
-      .getByText("Saved to OpenPost", { exact: true })
+      .getByText("Saved to SocialFlow.ai", { exact: true })
       .filter({ visible: true })
       .first(),
   ).toBeVisible();

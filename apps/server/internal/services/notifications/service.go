@@ -906,7 +906,7 @@ func (s *Service) handleDailyDigestEmail(ctx context.Context, job emailDeliveryJ
 		preferencesURL = s.publicURL + "/settings?tab=notifications"
 	}
 	if err := s.email.DeliverNotificationEmail(ctx, EmailMessage{
-		Recipient: email, Title: "Your daily OpenPost digest", Body: body,
+		Recipient: email, Title: "Your daily SocialFlow.ai digest", Body: body,
 		PreferencesURL: preferencesURL, IdempotencyKey: "notification-digest-" + job.DeliveryID,
 	}); err != nil {
 		return err

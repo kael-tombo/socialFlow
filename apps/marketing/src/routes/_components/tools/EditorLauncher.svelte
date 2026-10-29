@@ -23,7 +23,7 @@
 			size="lg"
 			onclick={() =>
 				captureTelemetryEvent('public editor opened', { editor, source: 'marketing_tool' })}
-			>{isVideo ? 'Open OpenPost Video Editor' : 'Open the free editor'}<ArrowRight
+			>{isVideo ? 'Open SocialFlow.ai Video Editor' : 'Open the free editor'}<ArrowRight
 				data-icon="inline-end"
 			/></Button
 		><small
@@ -37,8 +37,8 @@
 			? '/assets/screenshots/video-editor-dark.webp'
 			: '/assets/screenshots/image-editor-dark.webp'}
 		alt={isVideo
-			? 'OpenPost Video Editor with a preview and timeline'
-			: 'OpenPost Image Editor with editable photos and text'}
+			? 'SocialFlow.ai Video Editor with a preview and timeline'
+			: 'SocialFlow.ai Image Editor with editable photos and text'}
 		width="2880"
 		height="1920"
 	/>

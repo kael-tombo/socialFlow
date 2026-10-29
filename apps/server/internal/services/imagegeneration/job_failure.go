@@ -37,7 +37,7 @@ func (s *Service) MarkTerminalJobFailure(ctx context.Context, db bun.IDB, payloa
 				stored.BillingState = "not_charged"
 			}
 		}
-		stored.ErrorMessage = "OpenPost could not finish this request. Any provider receipt and reported cost have been retained."
+		stored.ErrorMessage = "SocialFlow.ai could not finish this request. Any provider receipt and reported cost have been retained."
 	}
 	if stored.ProviderRequestID != "" && stored.BillingState == "pending" {
 		if time.Since(stored.CreatedAt) >= 72*time.Hour {

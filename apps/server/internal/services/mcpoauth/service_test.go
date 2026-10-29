@@ -34,7 +34,7 @@ func TestCreateAndExchangeCodeWithClientMetadata(t *testing.T) {
 		require.Equal(t, "/client.json", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
 		_, _ = fmt.Fprintf(w, `{
-			"client_name":"ChatGPT OpenPost",
+			"client_name":"ChatGPT SocialFlow.ai",
 			"redirect_uris":["%s"],
 			"token_endpoint_auth_method":"none",
 			"grant_types":["authorization_code"],
@@ -73,7 +73,7 @@ func TestCreateAndExchangeCodeWithClientMetadata(t *testing.T) {
 
 	var storedCode models.MCPOAuthCode
 	require.NoError(t, db.NewSelect().Model(&storedCode).Scan(ctx))
-	require.Equal(t, "ChatGPT OpenPost", storedCode.ClientName)
+	require.Equal(t, "ChatGPT SocialFlow.ai", storedCode.ClientName)
 	require.Equal(t, "ws-1", storedCode.WorkspaceID)
 	require.NotEqual(t, created.Code, storedCode.CodeHash)
 	require.Len(t, storedCode.CodeHash, 64)
@@ -96,7 +96,7 @@ func TestCreateAndExchangeCodeWithClientMetadata(t *testing.T) {
 	require.Equal(t, "mcp:read", principal.Scope)
 	require.Equal(t, "https://app.openpost.test/mcp", principal.Audience)
 	require.Equal(t, "ws-1", principal.WorkspaceID)
-	require.Equal(t, "ChatGPT OpenPost", principal.TokenName)
+	require.Equal(t, "ChatGPT SocialFlow.ai", principal.TokenName)
 	require.Equal(t, client.URL+"/client.json", principal.ClientID)
 
 	_, err = service.ExchangeCode(ctx, TokenRequest{

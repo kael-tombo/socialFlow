@@ -253,7 +253,7 @@ async function requiredSourceFile(source: QuickCutSource): Promise<File> {
 	if (source.file) return source.file;
 	if (source.handle) return source.handle.getFile();
 	throw new Error(
-		`Source ${source.name} is missing. Reconnect the file before saving to OpenPost.`
+		`Source ${source.name} is missing. Reconnect the file before saving to SocialFlow.ai.`
 	);
 }
 

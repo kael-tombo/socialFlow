@@ -21,7 +21,7 @@ func TestExpireIfNeededDoesNotOverwriteAConcurrentApproval(t *testing.T) {
 	now := time.Now().UTC()
 	stored := &models.CLIAuthSession{
 		ID: "approved-session", DeviceCodeHash: strings.Repeat("a", 64),
-		UserCodeHash: strings.Repeat("b", 64), ClientName: "OpenPost CLI",
+		UserCodeHash: strings.Repeat("b", 64), ClientName: "SocialFlow.ai CLI",
 		RequestedScopes: apitokens.ScopeCLI, Status: statusApproved,
 		IntervalSeconds: DefaultInterval, ExpiresAt: now.Add(-time.Minute), CreatedAt: now.Add(-time.Hour),
 	}

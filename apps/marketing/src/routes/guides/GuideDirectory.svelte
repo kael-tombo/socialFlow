@@ -95,7 +95,7 @@
 									</div>
 									<div class="card-copy">
 										<h3>
-											{guide.comparison ? 'OpenPost vs ' + guide.comparison.name : guide.question}
+											{guide.comparison ? 'SocialFlow.ai vs ' + guide.comparison.name : guide.question}
 										</h3>
 										<p>{guide.socialDescription}</p>
 										<span class="read"
@@ -136,7 +136,7 @@
 				<ShieldCheck size={21} aria-hidden="true" />
 				<h2>Check the sources.</h2>
 				<p>
-					Written by OpenPost. Competitor facts link to official sources and show a review date.
+					Written by SocialFlow.ai. Competitor facts link to official sources and show a review date.
 				</p>
 			</div>
 			<div class="sidebar-block">

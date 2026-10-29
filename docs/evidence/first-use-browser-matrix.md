@@ -1,6 +1,6 @@
 # First-use browser matrix
 
-The first-use release cohort uses the real OpenPost application, HTTP authorization, and Workspace persistence. Browser fixtures replace only external email, Paddle, and destination-provider boundaries.
+The first-use release cohort uses the real SocialFlow.ai application, HTTP authorization, and Workspace persistence. Browser fixtures replace only external email, Paddle, and destination-provider boundaries.
 
 ## Primary journey
 

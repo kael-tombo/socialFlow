@@ -5,7 +5,7 @@ export type TelemetryPreferenceStatus = TelemetryPreference | "undecided" | "una
 export const telemetryConsentCopy = {
   title: "Cookies",
   description:
-    "We use our own analytics cookies to understand how OpenPost is used and make it better. No ads or session recordings.",
+    "We use our own analytics cookies to understand how SocialFlow.ai is used and make it better. No ads or session recordings.",
   allowLabel: "Accept",
   offLabel: "Decline",
   optionsLabel: "More options",

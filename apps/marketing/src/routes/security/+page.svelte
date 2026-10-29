@@ -17,7 +17,7 @@
 			title: 'Keep account keys private',
 			icon: LockKeyhole,
 			detail:
-				'OpenPost encrypts the credentials saved for your connected social accounts. Your password is hashed before it is stored.'
+				'SocialFlow.ai encrypts the credentials saved for your connected social accounts. Your password is hashed before it is stored.'
 		},
 		{
 			title: 'Choose who has access',
@@ -32,7 +32,7 @@
 	<div>
 		<h1 class="marketing-title">Your accounts.<br /><HeroAccent>Your control.</HeroAccent></h1>
 		<p class="marketing-copy">
-			Your business depends on the accounts you connect. Here’s how OpenPost protects them, and the
+			Your business depends on the accounts you connect. Here’s how SocialFlow.ai protects them, and the
 			controls you have.
 		</p>
 		<div class="actions">
@@ -68,11 +68,11 @@
 				<summary>{control.control}</summary>
 				<dl>
 					<div>
-						<dt>In OpenPost</dt>
+						<dt>In SocialFlow.ai</dt>
 						<dd>{control.application}</dd>
 					</div>
 					<div>
-						<dt>On OpenPost Cloud</dt>
+						<dt>On SocialFlow.ai Cloud</dt>
 						<dd>{control.managed_service}</dd>
 					</div>
 					<div>

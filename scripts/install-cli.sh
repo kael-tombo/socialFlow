@@ -17,7 +17,7 @@ need() {
 
 usage() {
   cat <<'EOF'
-Install the OpenPost CLI from the latest GitHub release.
+Install the SocialFlow.ai CLI from the latest GitHub release.
 
 Usage:
   install-cli.sh [--with-mcp]
@@ -137,12 +137,12 @@ fi
 
 download_and_install "openpost-cli-${OS}-${ARCH}" "${INSTALL_DIR}/${BIN_NAME}"
 
-printf 'Installed OpenPost CLI to %s\n' "${INSTALL_DIR}/${BIN_NAME}"
+printf 'Installed SocialFlow.ai CLI to %s\n' "${INSTALL_DIR}/${BIN_NAME}"
 printf 'Now run: openpost auth login <instance>\n'
 
 if truthy "$INSTALL_MCP"; then
   download_and_install "openpost-mcp-${OS}-${ARCH}" "${INSTALL_DIR}/${MCP_BIN_NAME}"
-  printf 'Installed OpenPost MCP proxy to %s\n' "${INSTALL_DIR}/${MCP_BIN_NAME}"
+  printf 'Installed SocialFlow.ai MCP proxy to %s\n' "${INSTALL_DIR}/${MCP_BIN_NAME}"
   printf 'After logging in with openpost, run: openpost-mcp --profile <profile>\n'
 else
   printf 'To also install the MCP proxy, rerun the installer with --with-mcp.\n'

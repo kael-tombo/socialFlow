@@ -50,7 +50,7 @@ const channelStories = {
 		],
 		question: 'Can I use my personal Facebook profile?',
 		answer:
-			'OpenPost’s Facebook integration is for Pages. Personal profiles and Groups are not supported. You need permission to manage the Page you want to use.'
+			'SocialFlow.ai’s Facebook integration is for Pages. Personal profiles and Groups are not supported. You need permission to manage the Page you want to use.'
 	},
 	linkedin: {
 		title: 'Let your work do the talking on LinkedIn.',
@@ -81,7 +81,7 @@ const channelStories = {
 		],
 		question: 'Can I post to my profile and a company Page?',
 		answer:
-			'OpenPost includes personal-profile and company-Page posting. Company Pages need a connected member with the right Page permissions. Available posting options depend on that account.'
+			'SocialFlow.ai includes personal-profile and company-Page posting. Company Pages need a connected member with the right Page permissions. Available posting options depend on that account.'
 	},
 	tiktok: {
 		preview: studioPhoto,
@@ -143,7 +143,7 @@ const channelStories = {
 		],
 		question: 'Which Instagram accounts can I use?',
 		answer:
-			'OpenPost’s Instagram connection requires a professional account. Personal accounts are not supported. Reels, Stories, and feed posts have different requirements, so check the options shown for your account.'
+			'SocialFlow.ai’s Instagram connection requires a professional account. Personal accounts are not supported. Reels, Stories, and feed posts have different requirements, so check the options shown for your account.'
 	},
 	x: {
 		title: 'Keep the ideas coming on X.',
@@ -160,7 +160,7 @@ const channelStories = {
 			},
 			{
 				title: 'Make every character useful.',
-				text: 'Check the count as you write, including links. OpenPost uses the posting limit available to your connected account, so a short update and a longer post get the right checks.'
+				text: 'Check the count as you write, including links. SocialFlow.ai uses the posting limit available to your connected account, so a short update and a longer post get the right checks.'
 			},
 			{
 				title: 'Keep launch day from becoming a copy-and-paste job.',
@@ -174,7 +174,7 @@ const channelStories = {
 		],
 		question: 'Can I write longer posts with an X subscription?',
 		answer:
-			'OpenPost checks the subscription and posting limits available to your connected X account. When the account’s longer-post access cannot be confirmed, it uses the standard limit.'
+			'SocialFlow.ai checks the subscription and posting limits available to your connected X account. When the account’s longer-post access cannot be confirmed, it uses the standard limit.'
 	},
 	bluesky: {
 		title: 'Keep up with your people on Bluesky.',
@@ -191,7 +191,7 @@ const channelStories = {
 			},
 			{
 				title: 'Give longer ideas a thread.',
-				text: 'Keep each part short and readable. OpenPost keeps the order of your thread together while you edit, so you can follow the whole thought before it goes out.'
+				text: 'Keep each part short and readable. SocialFlow.ai keeps the order of your thread together while you edit, so you can follow the whole thought before it goes out.'
 			},
 			{
 				title: 'Bring Bluesky into your weekly plan.',
@@ -205,7 +205,7 @@ const channelStories = {
 		],
 		question: 'Do I use my usual Bluesky password?',
 		answer:
-			'Use an app password created in Bluesky’s settings. It gives OpenPost a separate connection you can remove without changing your main password.'
+			'Use an app password created in Bluesky’s settings. It gives SocialFlow.ai a separate connection you can remove without changing your main password.'
 	},
 	mastodon: {
 		title: 'Share with your Mastodon community.',
@@ -236,7 +236,7 @@ const channelStories = {
 		],
 		question: 'Can I connect my own Mastodon server?',
 		answer:
-			'You can connect an account on a public Mastodon server. Servers may set different post lengths and media limits. OpenPost checks the limits reported by the connected server.'
+			'You can connect an account on a public Mastodon server. Servers may set different post lengths and media limits. SocialFlow.ai checks the limits reported by the connected server.'
 	},
 	pixelfed: {
 		title: 'Put your photos where your Fediverse audience is.',
@@ -257,7 +257,7 @@ const channelStories = {
 			},
 			{
 				title: 'Respect the instance you publish to.',
-				text: 'Photo and album limits can differ by server. OpenPost checks the connected instance and validates before scheduling.'
+				text: 'Photo and album limits can differ by server. SocialFlow.ai checks the connected instance and validates before scheduling.'
 			}
 		],
 		ideas: [
@@ -267,7 +267,7 @@ const channelStories = {
 		],
 		question: 'Can I connect my own Pixelfed instance?',
 		answer:
-			'You can connect an account on a public Pixelfed instance. Photo and album limits can differ by server. OpenPost checks the limits reported by the connected instance.'
+			'You can connect an account on a public Pixelfed instance. Photo and album limits can differ by server. SocialFlow.ai checks the limits reported by the connected instance.'
 	},
 	peertube: {
 		title: 'Publish videos to your own channel.',
@@ -288,7 +288,7 @@ const channelStories = {
 			},
 			{
 				title: 'Trust the processing state.',
-				text: 'Transcoding takes time. OpenPost reports the video as published only after the instance confirms it, and keeps checking while it processes.'
+				text: 'Transcoding takes time. SocialFlow.ai reports the video as published only after the instance confirms it, and keeps checking while it processes.'
 			}
 		],
 		ideas: [
@@ -298,7 +298,7 @@ const channelStories = {
 		],
 		question: 'Which channel will my video publish to?',
 		answer:
-			'The channel you connect is the destination. If your account owns several channels, pick one during setup. Each channel is a separate destination in OpenPost.'
+			'The channel you connect is the destination. If your account owns several channels, pick one during setup. Each channel is a separate destination in SocialFlow.ai.'
 	},
 	lemmy: {
 		title: 'Join the Lemmy discussion properly.',
@@ -315,7 +315,7 @@ const channelStories = {
 			},
 			{
 				title: 'Keep the rules next to the editor.',
-				text: 'The community description and rules stay alongside your draft, and OpenPost rechecks posting restrictions before submission.'
+				text: 'The community description and rules stay alongside your draft, and SocialFlow.ai rechecks posting restrictions before submission.'
 			},
 			{
 				title: 'Stay for the conversation.',
@@ -358,7 +358,7 @@ const channelStories = {
 			'A link with a title written for the community',
 			'An update adapted from your launch notes'
 		],
-		question: 'How is PieFed different from Lemmy in OpenPost?',
+		question: 'How is PieFed different from Lemmy in SocialFlow.ai?',
 		answer:
 			'The authoring experience is shared, but PieFed connects through its own native API with its own adapter, validation, and community resolution.'
 	},
@@ -391,7 +391,7 @@ const channelStories = {
 		],
 		question: 'Can I post images and video on Threads?',
 		answer:
-			'OpenPost includes text, image, carousel, and video formats for Threads. Available formats and file limits depend on the connected account and the posting options shown in OpenPost.'
+			'SocialFlow.ai includes text, image, carousel, and video formats for Threads. Available formats and file limits depend on the connected account and the posting options shown in SocialFlow.ai.'
 	},
 	youtube: {
 		preview: { ...studioPhoto, title: 'From clay to coffee cup' },
@@ -452,7 +452,7 @@ const channelStories = {
 			'An event reminder with the date and timezone',
 			'A useful resource for new members'
 		],
-		question: 'Does OpenPost read my Discord conversations?',
+		question: 'Does SocialFlow.ai read my Discord conversations?',
 		answer:
 			'No. The Discord connection sends messages through a channel webhook. It does not read the channel inbox. You need permission to create that connection in your Discord server.'
 	},
@@ -467,7 +467,7 @@ const channelStories = {
 		sections: [
 			{
 				title: 'Connect the chat you run.',
-				text: 'Add the OpenPost bot as an administrator of your channel or group, then post a one-time command inside that chat. Refresh your accounts to confirm the chat appears.'
+				text: 'Add the SocialFlow.ai bot as an administrator of your channel or group, then post a one-time command inside that chat. Refresh your accounts to confirm the chat appears.'
 			},
 			{
 				title: 'Write the message once.',
@@ -475,7 +475,7 @@ const channelStories = {
 			},
 			{
 				title: 'Keep channel history in view.',
-				text: 'OpenPost observes channel posts from installation onward and records reaction counts. Earlier messages are never backfilled.'
+				text: 'SocialFlow.ai observes channel posts from installation onward and records reaction counts. Earlier messages are never backfilled.'
 			}
 		],
 		ideas: [
@@ -498,7 +498,7 @@ const channelStories = {
 		sections: [
 			{
 				title: 'Keep the terminal out of the routine.',
-				text: 'Connect your dev/null username and a dedicated SSH key once. OpenPost signs each commit the same way the official commit script does, so you can schedule from the composer instead.'
+				text: 'Connect your dev/null username and a dedicated SSH key once. SocialFlow.ai signs each commit the same way the official commit script does, so you can schedule from the composer instead.'
 			},
 			{
 				title: 'Write for the commit, not the feed.',
@@ -514,9 +514,9 @@ const channelStories = {
 			'A short lesson from building this week',
 			'An image of the change you just shipped'
 		],
-		question: 'Does OpenPost store my SSH private key?',
+		question: 'Does SocialFlow.ai store my SSH private key?',
 		answer:
-			'Yes, encrypted. OpenPost uses the key only to sign commit payloads, exactly like the official dev/null commit script. Use a dedicated key without a passphrase and keep its public half on your GitHub account.'
+			'Yes, encrypted. SocialFlow.ai uses the key only to sign commit payloads, exactly like the official dev/null commit script. Use a dedicated key without a passphrase and keep its public half on your GitHub account.'
 	}
 } satisfies Record<string, ChannelStory>;
 

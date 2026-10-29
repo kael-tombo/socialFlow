@@ -247,7 +247,7 @@ export function cloneImageEditorLayer(
 export function validateImageEditorDocument(document: ImageEditorDocument): string[] {
 	const errors: string[] = [];
 	if (document.schema_version !== 1 && document.schema_version !== IMAGE_EDITOR_SCHEMA_VERSION) {
-		errors.push('This OpenPost Image Editor document version is not supported.');
+		errors.push('This SocialFlow.ai Image Editor document version is not supported.');
 	}
 	if (!document.title.trim() || document.title.length > 160) {
 		errors.push('The design title must be between 1 and 160 characters.');
@@ -581,7 +581,7 @@ export function migrateImageEditorDocument(
 	if (!raw) {
 		return {
 			readOnly: true,
-			error: 'The OpenPost Image Editor document is missing.'
+			error: 'The SocialFlow.ai Image Editor document is missing.'
 		};
 	}
 	const version = parseImageEditorSchemaVersion(raw);
@@ -589,7 +589,7 @@ export function migrateImageEditorDocument(
 		if (!isDisplayableImageEditorDocument(raw)) {
 			return {
 				readOnly: true,
-				error: 'The newer OpenPost Image Editor document cannot be displayed safely.'
+				error: 'The newer SocialFlow.ai Image Editor document cannot be displayed safely.'
 			};
 		}
 		// SAFETY: Required display members use the compatible document contract checked above.
@@ -597,19 +597,19 @@ export function migrateImageEditorDocument(
 		return {
 			document,
 			readOnly: true,
-			error: 'This design was created by a newer OpenPost version and is read-only here.'
+			error: 'This design was created by a newer SocialFlow.ai version and is read-only here.'
 		};
 	}
 	if (version !== 1 && version !== IMAGE_EDITOR_SCHEMA_VERSION) {
 		return {
 			readOnly: true,
-			error: 'This OpenPost Image Editor document version cannot be migrated.'
+			error: 'This SocialFlow.ai Image Editor document version cannot be migrated.'
 		};
 	}
 	if (!isDisplayableImageEditorDocument(raw)) {
 		return {
 			readOnly: true,
-			error: 'The OpenPost Image Editor document is invalid.'
+			error: 'The SocialFlow.ai Image Editor document is invalid.'
 		};
 	}
 	try {
@@ -621,7 +621,7 @@ export function migrateImageEditorDocument(
 	} catch {
 		return {
 			readOnly: true,
-			error: 'The OpenPost Image Editor document is invalid.'
+			error: 'The SocialFlow.ai Image Editor document is invalid.'
 		};
 	}
 }

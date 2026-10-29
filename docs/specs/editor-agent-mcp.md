@@ -1,6 +1,6 @@
 # Agentic Image and Video Editing
 
-The connected editor is the execution boundary. Codex CLI, Claude Code and the built-in assistant use the same MCP operations and the same editor actions as the web UI. No OpenPost installation is required. Keep the browser project open while editing or rendering.
+The connected editor is the execution boundary. Codex CLI, Claude Code and the built-in assistant use the same MCP operations and the same editor actions as the web UI. No SocialFlow.ai installation is required. Keep the browser project open while editing or rendering.
 
 This document records the delivered contract and the boundary for future work. The operation catalog returned by `editor_reference` is authoritative for supported actions, fields and limits.
 
@@ -10,7 +10,7 @@ The user opens a project, connects an external agent or uses Assistant, and asks
 
 Assistant has a compact style selector, with Match project as the default, Auto, five starting styles and saved styles. A style applies to future requests. Choosing one never restyles the project. Preferences opens beside the conversation and supports editing, disabling, deleting and undoing saved rules. Learning can be switched off. Resetting project or personal choice history does not delete explicit rules, favorites or styles.
 
-The built-in assistant requires a signed-in user with edit access. Hosted also requires the organization's existing active paid-plan entitlement. External MCP does not buy inference from OpenPost and is available through ordinary workspace authorization. Self-hosted Assistant uses the instance's configured AI provider and model, without Hosted billing. `OPENROUTER_API_KEY` and `OPENPOST_EDITOR_AGENT_MODEL` configure inference through the existing AI adapter.
+The built-in assistant requires a signed-in user with edit access. Hosted also requires the organization's existing active paid-plan entitlement. External MCP does not buy inference from SocialFlow.ai and is available through ordinary workspace authorization. Self-hosted Assistant uses the instance's configured AI provider and model, without Hosted billing. `OPENROUTER_API_KEY` and `OPENPOST_EDITOR_AGENT_MODEL` configure inference through the existing AI adapter.
 
 The default model is `google/gemini-3.8-flash`. Its [OpenRouter contract](https://openrouter.ai/google/gemini-3.8-flash) supports images, audio and structured output, verified on 3 October 2026. A custom model must support the evidence it receives. Text or image support alone cannot establish that it listened to an audio preview.
 

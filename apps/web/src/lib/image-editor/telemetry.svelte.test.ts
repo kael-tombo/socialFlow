@@ -26,8 +26,8 @@ it('preserves entry-page profiling after navigation without retaining performanc
 	finish('error');
 	await expect
 		.poll(() => entries.map((entry) => entry.name))
-		.toEqual(['OpenPost/Image Editor/export']);
-	expect(performance.getEntriesByName('OpenPost/Image Editor/export')).toHaveLength(0);
+		.toEqual(['SocialFlow.ai/Image Editor/export']);
+	expect(performance.getEntriesByName('SocialFlow.ai/Image Editor/export')).toHaveLength(0);
 });
 
 it('keeps normal editor metrics working without enabling performance tracing', async () => {
@@ -42,5 +42,5 @@ it('keeps normal editor metrics working without enabling performance tracing', a
 	startImageEditorMetric('export')();
 	await new Promise(requestAnimationFrame);
 	expect(metric).toHaveBeenCalledOnce();
-	expect(entries.filter((entry) => entry.name.startsWith('OpenPost/'))).toHaveLength(0);
+	expect(entries.filter((entry) => entry.name.startsWith('SocialFlow.ai/'))).toHaveLength(0);
 });

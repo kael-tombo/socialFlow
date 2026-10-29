@@ -18,7 +18,7 @@
 			darkSrcset:
 				'/assets/screenshots/main-dark-768.webp 768w, /assets/screenshots/main-dark-1536.webp 1536w, /assets/screenshots/main-dark.webp 2880w',
 			sizes: '(max-width: 800px) calc(100vw - 32px), 1248px',
-			alt: 'OpenPost composer with a draft, six social destinations, and scheduling controls',
+			alt: 'SocialFlow.ai composer with a draft, six social destinations, and scheduling controls',
 			caption: 'Turn your next idea into a post.'
 		},
 		{
@@ -26,7 +26,7 @@
 			icon: '/assets/brand/features/image-editor.svg',
 			lightSrc: '/assets/screenshots/image-editor-light.webp',
 			darkSrc: '/assets/screenshots/image-editor-dark.webp',
-			alt: 'OpenPost Image Editor with a tram photo, editable layers, and color controls',
+			alt: 'SocialFlow.ai Image Editor with a tram photo, editable layers, and color controls',
 			caption: 'Build an image from editable layers.'
 		},
 		{
@@ -34,7 +34,7 @@
 			icon: '/assets/brand/features/video-editor.svg',
 			lightSrc: '/assets/screenshots/video-editor-light.webp',
 			darkSrc: '/assets/screenshots/video-editor-dark.webp',
-			alt: 'OpenPost Video Editor with a video preview and multitrack timeline',
+			alt: 'SocialFlow.ai Video Editor with a video preview and multitrack timeline',
 			caption: 'Cut, caption, and finish your video.'
 		},
 		{
@@ -42,7 +42,7 @@
 			icon: '/assets/brand/features/calendar.svg',
 			lightSrc: '/assets/screenshots/calendar-light.webp',
 			darkSrc: '/assets/screenshots/calendar-dark.webp',
-			alt: 'OpenPost monthly calendar with scheduled publications',
+			alt: 'SocialFlow.ai monthly calendar with scheduled publications',
 			caption: 'Keep the week in view.'
 		},
 		{
@@ -50,7 +50,7 @@
 			icon: '/assets/brand/features/analytics.svg',
 			lightSrc: '/assets/screenshots/analytics-light.webp',
 			darkSrc: '/assets/screenshots/analytics-dark.webp',
-			alt: 'OpenPost analytics with account growth and publication results',
+			alt: 'SocialFlow.ai analytics with account growth and publication results',
 			caption: 'Check the results from your connected accounts.'
 		},
 		{
@@ -58,7 +58,7 @@
 			icon: '/assets/brand/features/media.svg',
 			lightSrc: '/assets/screenshots/media-light.webp',
 			darkSrc: '/assets/screenshots/media-dark.webp',
-			alt: 'OpenPost media library with saved photos and reusable brand assets',
+			alt: 'SocialFlow.ai media library with saved photos and reusable brand assets',
 			caption: 'Keep your photos, clips, and brand assets together.'
 		},
 		{
@@ -66,7 +66,7 @@
 			icon: '/assets/brand/features/workflows.svg',
 			lightSrc: '/assets/screenshots/workflows-light.webp',
 			darkSrc: '/assets/screenshots/workflows-dark.webp',
-			alt: 'OpenPost Workflows sends breaking changes through AI writing, approval, and scheduling, while other releases become shortened drafts with tracking links',
+			alt: 'SocialFlow.ai Workflows sends breaking changes through AI writing, approval, and scheduling, while other releases become shortened drafts with tracking links',
 			caption: 'Announce breaking changes. Save smaller updates for later.'
 		}
 	];
@@ -120,7 +120,7 @@
 	use:ditherSurface
 	class="product-tour"
 	role="region"
-	aria-label="OpenPost screenshot tour"
+	aria-label="SocialFlow.ai screenshot tour"
 	aria-roledescription="carousel"
 	bind:this={container}
 	onpointerenter={() => (hovered = true)}
@@ -129,7 +129,7 @@
 		if (!(event.target instanceof Element && event.target.closest('.tour-playback'))) paused = true;
 	}}
 >
-	<div class="view-picker" role="group" aria-label="Explore OpenPost">
+	<div class="view-picker" role="group" aria-label="Explore SocialFlow.ai">
 		{#each views as item, index (item.name)}
 			<button
 				type="button"

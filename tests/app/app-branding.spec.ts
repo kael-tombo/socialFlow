@@ -14,7 +14,7 @@ test("organization branding saves, previews, reloads and stays separate from pub
   await authenticatePage(page, token);
   await page.goto("/settings?tab=appearance");
   await page.getByRole("tab", { name: "App branding", exact: true }).click();
-  await expect(page.getByLabel("App display name", { exact: true })).toHaveValue("OpenPost");
+  await expect(page.getByLabel("App display name", { exact: true })).toHaveValue("SocialFlow.ai");
   await page.getByLabel("App display name", { exact: true }).fill("Studio Social");
   await page.getByLabel("Square logo", { exact: true }).setInputFiles({
     name: "studio.png",
@@ -108,7 +108,7 @@ test("a delayed branding read cannot replace a successful save", async ({ page, 
   await authenticatePage(page, token);
   await page.goto("/settings?tab=appearance");
   await page.getByRole("tab", { name: "App branding", exact: true }).click();
-  await expect(page.getByLabel("App display name", { exact: true })).toHaveValue("OpenPost");
+  await expect(page.getByLabel("App display name", { exact: true })).toHaveValue("SocialFlow.ai");
   let releaseRead = () => {};
   let markStarted = () => {};
   const started = new Promise<void>((resolve) => (markStarted = resolve));

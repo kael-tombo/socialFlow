@@ -6,7 +6,7 @@ Status: approved by owner in session (all open questions answered). This spec is
 
 Replace the retired Video Editor with two local-first editing surfaces and a rebuilt recorder, while keeping signed-in authored projects portable through Cloud Video Projects:
 
-1. **Video Editor** (`/video-editor`) — multi-track timeline editor ported from FreeCut (MIT). Signed-in projects belong to the current OpenPost Workspace by default. Users can still create Local-only projects in a chosen folder. Transcription, transcript/text-based cutting, subtitles, silence removal, export.
+1. **Video Editor** (`/video-editor`) — multi-track timeline editor ported from FreeCut (MIT). Signed-in projects belong to the current SocialFlow.ai Workspace by default. Users can still create Local-only projects in a chosen folder. Transcription, transcript/text-based cutting, subtitles, silence removal, export.
 2. **Quick Cut** (`/quick-cut`) — fast lossless trimmer inspired by LosslessCut (**GPL-2.0: behavioral reference only, zero code ported**). No transcoding for eligible cuts; stream copy via mediabunny. Signed-in source projects save to the current Workspace by default, with an explicit Local-only mode.
 3. **Recorder** — screen / webcam / combined / audio capture, one shared module, entry points both standalone (`/record`) and inside the Video Editor. Signed-in recordings become required Project Assets in a Cloud Video Project by default. Local-only capture still downloads ordinary files.
 
@@ -14,7 +14,7 @@ Cloud projects synchronize portable authored state, required original Project As
 
 ## Naming and domain terms
 
-- Full editor product name: **OpenPost Video Editor**, route `/video-editor`.
+- Full editor product name: **SocialFlow.ai Video Editor**, route `/video-editor`.
 - Lossless tool: **Quick Cut** (established domain term), route `/quick-cut`. The old in-editor "quick-cut" mode is deleted.
 - Durable domain terms to retain in Hindsight: **Cloud Video Project** (Workspace-owned portable authored state and required Project Assets), **Project Asset** (source material required to reproduce a project), **Local-only project** (user-chosen disk folder holding project data), and **Recording** (capture produced by the recorder).
 - `/video-editor`, `/quick-cut`, and `/record` are the only editor routes. The old `/video-studio` and `/studio` aliases do not exist.
@@ -54,15 +54,15 @@ Dependencies in `apps/web/package.json`: `mediabunny@^1.51.0`, `@mediabunny/pror
 
 ## Quick Cut (lossless)
 
-mediabunny-based (no ffmpeg.wasm): open file(s) → keyframe map via `EncodedPacketSink` → set segments (start/end, keyboard-driven, loop playback modes) → export via `Conversion` stream-copy trim; fall back to transcode only when an exact cut requires it (keyframe-cut toggle like LosslessCut's, implemented ourselves); merge segments; save to a Cloud Video Project or hand off to Send-to-OpenPost. Cloud Quick Cut documents use stable source and segment targets, upload originals as Project Assets, and fetch them only when the project is opened. Explicit Local-only projects keep their multi-file project JSON in the chosen workspace folder. UX reference: LosslessCut segment list/colors/playback modes/streams picker; code reference: none (GPL).
+mediabunny-based (no ffmpeg.wasm): open file(s) → keyframe map via `EncodedPacketSink` → set segments (start/end, keyboard-driven, loop playback modes) → export via `Conversion` stream-copy trim; fall back to transcode only when an exact cut requires it (keyframe-cut toggle like LosslessCut's, implemented ourselves); merge segments; save to a Cloud Video Project or hand off to Send-to-SocialFlow.ai. Cloud Quick Cut documents use stable source and segment targets, upload originals as Project Assets, and fetch them only when the project is opened. Explicit Local-only projects keep their multi-file project JSON in the chosen workspace folder. UX reference: LosslessCut segment list/colors/playback modes/streams picker; code reference: none (GPL).
 
 ## Recorder
 
 The recorder uses `getDisplayMedia` for screen capture and `getUserMedia` for webcam and microphone capture. Screen and camera share a monotonic timebase and write WebM or MP4 chunks through a crash-safe worker. Microphone audio stays in the camera file, or the screen file when no camera is selected; screen and microphone audio are mixed when both belong to the screen. Microphone-only capture remains an audio file. The standalone `/record` page turns a signed-in capture into one Cloud Video Project with aligned clips, while Local-only mode downloads ordinary files. Video clips expose Detach audio for separate linked editing, with link and unlink independent of audio playback ownership. The Video Editor Record action uploads each capture as a Project Asset before inserting its linked timeline item. Recoverable scratch artifacts remain on the device until the cloud save or local download succeeds.
 
-## Send to OpenPost
+## Send to SocialFlow.ai
 
-After any export completes (Video Editor exports folder, Quick Cut output, finished recording): "Send to OpenPost" uploads the file via the existing media upload endpoints into the workspace Media library, with success state + "Compose" deep link reusing the existing composer attach flow. No return-token round trip; the old `/video-editor/return-tokens` contract dies with the backend deletion. Composer keeps its outbound "Edit video" handoff: `/video-editor/new?source=media:<id>` offers Quick Cut or Video Editor, then imports the workspace media into the selected editor. The user sends results back manually. Composer-side error keys for return tokens are removed.
+After any export completes (Video Editor exports folder, Quick Cut output, finished recording): "Send to SocialFlow.ai" uploads the file via the existing media upload endpoints into the workspace Media library, with success state + "Compose" deep link reusing the existing composer attach flow. No return-token round trip; the old `/video-editor/return-tokens` contract dies with the backend deletion. Composer keeps its outbound "Edit video" handoff: `/video-editor/new?source=media:<id>` offers Quick Cut or Video Editor, then imports the workspace media into the selected editor. The user sends results back manually. Composer-side error keys for return tokens are removed.
 
 ## Deletions (Phase 0)
 
@@ -77,8 +77,8 @@ Docs/marketing/legal: docs-site `usage/video-editor.md` rewritten for the new mo
 ## Acceptance criteria
 
 1. Old editor fully gone; `bun run check -- backend`, `-- frontend`, `-- contracts` pass; app boots with no dangling references.
-2. Video Editor: pick workspace folder → create project → import media (copy/link) → multi-track timeline edit (split/trim/move/delete/undo-redo) → frame-accurate preview with audio → transcribe → edit by text (delete words applies ripple cut) → remove silence (signal + speech modes) → add transcript captions (burn-in + .srt sidecar) → export mp4/webm → exports listed → Send to OpenPost works.
-3. Quick Cut: open file → mark in/out → lossless export verified stream-copied (no re-encode when eligible) → merge segments → send to OpenPost.
+2. Video Editor: pick workspace folder → create project → import media (copy/link) → multi-track timeline edit (split/trim/move/delete/undo-redo) → frame-accurate preview with audio → transcribe → edit by text (delete words applies ripple cut) → remove silence (signal + speech modes) → add transcript captions (burn-in + .srt sidecar) → export mp4/webm → exports listed → Send to SocialFlow.ai works.
+3. Quick Cut: open file → mark in/out → lossless export verified stream-copied (no re-encode when eligible) → merge segments → send to SocialFlow.ai.
 4. Recorder: screen, webcam, audio, combined recordings land in workspace and import into the editor.
 5. Chromium-only gate shows the existing unsupported page elsewhere.
 6. i18n complete in en, es, fr, de, pt, pt-BR, tr, ja, ko, and zh; ux-consistency bar passes; cuelume sounds on key interactions.

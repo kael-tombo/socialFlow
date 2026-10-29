@@ -6,7 +6,7 @@ AI can write the post.
 
 The part I care about is what happens next: which account gets it, how the copy changes for that destination, what media goes with it, and whether a person has actually reviewed the result.
 
-OpenPost gives the agent workspace context without handing it social-provider credentials. I can review every variant in the web app, then approve the exact schedule that enters one visible queue.
+SocialFlow.ai gives the agent workspace context without handing it social-provider credentials. I can review every variant in the web app, then approve the exact schedule that enters one visible queue.
 
 Hosted service or self-hosted. Same AGPL product.
 

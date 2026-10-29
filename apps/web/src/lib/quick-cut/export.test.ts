@@ -121,7 +121,7 @@ describe('quick-cut preflight', () => {
 				})
 			).rejects.toThrow('Not enough storage');
 			await expect.poll(() => entries.length).toBe(1);
-			expect(entries[0]).toMatchObject({ name: 'OpenPost/Quick Cut/Preflight', duration: 20 });
+			expect(entries[0]).toMatchObject({ name: 'SocialFlow.ai/Quick Cut/Preflight', duration: 20 });
 		} finally {
 			configureProfiling({ enabled: false });
 			clock.mockRestore();

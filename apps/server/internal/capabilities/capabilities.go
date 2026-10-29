@@ -2235,7 +2235,7 @@ func validateInstagramSettings(profile string, settings map[string]any) []Valida
 	if providerlimits.InstagramOmitsCollaborators(profile) && len(collaborators) > 0 {
 		issues = append(issues, ValidationIssue{
 			Severity: "warning", Code: "instagram_story_collaborators_omitted",
-			Message:  "Instagram Stories do not support collaborators. OpenPost will publish the Story without them.",
+			Message:  "Instagram Stories do not support collaborators. SocialFlow.ai will publish the Story without them.",
 			Provider: ProviderInstagram, Profile: profile, Field: "collaborators",
 		})
 	}
@@ -2388,7 +2388,7 @@ func validateMediaItem(capability Capability, item MediaItem) []ValidationIssue 
 		}
 	}
 	if capability.Media.RequiresPublicURL && !item.PublicURLReady {
-		issues = append(issues, ValidationIssue{Severity: "error", Code: "public_url_unreachable", Message: firstNonEmpty(item.PublicURLError, "Media publishing to this account requires a public HTTPS media URL. Ask an OpenPost administrator to configure OPENPOST_MEDIA_URL."), Provider: capability.Provider, Profile: capability.Profile, MediaID: item.ID})
+		issues = append(issues, ValidationIssue{Severity: "error", Code: "public_url_unreachable", Message: firstNonEmpty(item.PublicURLError, "Media publishing to this account requires a public HTTPS media URL. Ask an SocialFlow.ai administrator to configure OPENPOST_MEDIA_URL."), Provider: capability.Provider, Profile: capability.Profile, MediaID: item.ID})
 	} else if !capability.Media.RequiresPublicURL && capability.Media.RequiresHTTPSFetchable && item.URL != "" {
 		parsed, err := url.Parse(item.URL)
 		if err != nil || parsed.Scheme != "https" || parsed.Host == "" {
@@ -2784,7 +2784,7 @@ func youtubeSettings() []SettingField {
 		{Key: "thumbnail_media_id", Label: "Thumbnail", Type: "media", Control: "media_picker"},
 		{Key: "caption_media_id", Label: "Caption file", Type: "media", Control: "captions_file"},
 		{Key: "caption_language", Label: "Caption language", Type: "text", Control: "language", Dependencies: []SettingCondition{{Key: "caption_media_id", Operator: "present"}}},
-		{Key: "publish_at", Label: "YouTube publish time", Type: "text", PostOnly: true, Constraints: SettingConstraint{DateTime: true}, Dependencies: []SettingCondition{{Key: "privacy", Operator: "equals", Value: "private"}}, Help: "RFC 3339 time with a timezone, for example 2030-10-12T12:00:00Z. YouTube makes the video public at this time. A past time publishes immediately. OpenPost's schedule controls when the upload starts."},
+		{Key: "publish_at", Label: "YouTube publish time", Type: "text", PostOnly: true, Constraints: SettingConstraint{DateTime: true}, Dependencies: []SettingCondition{{Key: "privacy", Operator: "equals", Value: "private"}}, Help: "RFC 3339 time with a timezone, for example 2030-10-12T12:00:00Z. YouTube makes the video public at this time. A past time publishes immediately. SocialFlow.ai's schedule controls when the upload starts."},
 		{Key: "license", Label: "License", Type: "select", Default: "youtube", Options: []string{"youtube", "creativeCommon"}},
 		{Key: "embeddable", Label: "Allow embedding", Type: "boolean", Default: true},
 		{Key: "self_declared_made_for_kids", Label: "Made for kids", Type: "boolean", Control: "optional_boolean"},

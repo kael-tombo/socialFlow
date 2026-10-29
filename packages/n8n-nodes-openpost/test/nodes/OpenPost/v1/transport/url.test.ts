@@ -5,7 +5,7 @@ import {
   openPostApiUrl,
 } from "../../../../../nodes/OpenPost/v1/transport/url";
 
-describe("OpenPost credential URL normalization", () => {
+describe("SocialFlow.ai credential URL normalization", () => {
   test("accepts an origin and builds the API URL", () => {
     expect(normalizeOpenPostBaseUrl("https://openpost.example/")).toBe("https://openpost.example");
     expect(openPostApiUrl("https://openpost.example", "/workspaces")).toBe(
@@ -21,7 +21,7 @@ describe("OpenPost credential URL normalization", () => {
       "without /api or /api/v1",
     );
     expect(() => normalizeOpenPostBaseUrl("https://openpost.example/workspaces")).toThrow(
-      "only the OpenPost origin",
+      "only the SocialFlow.ai origin",
     );
   });
 });

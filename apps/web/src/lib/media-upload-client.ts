@@ -609,7 +609,7 @@ async function waitForVideoProcessing(
 		}
 		if (metadata.processing_status === 'failed' || metadata.analysis_status === 'failed') {
 			throw new UploadRequestError(
-				metadata.analysis_error || 'OpenPost could not process this video',
+				metadata.analysis_error || 'SocialFlow.ai could not process this video',
 				422
 			);
 		}

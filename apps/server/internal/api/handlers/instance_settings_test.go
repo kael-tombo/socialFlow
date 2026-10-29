@@ -88,7 +88,7 @@ func TestInstanceSettingsAdminListsAndSavesRedactedSettings(t *testing.T) {
 
 	save := requestInstanceSettings(t, e, http.MethodPut, map[string]any{"settings": []map[string]any{
 		{"key": "OPENPOST_EMAIL_PROVIDER", "value": "resend"},
-		{"key": "OPENPOST_EMAIL_FROM", "value": "OpenPost <hello@example.com>"},
+		{"key": "OPENPOST_EMAIL_FROM", "value": "SocialFlow.ai <hello@example.com>"},
 		{"key": "OPENPOST_RESEND_API_KEY", "value": "re_private"},
 		{"key": "FAL_KEY", "value": "fal_private"},
 	}})

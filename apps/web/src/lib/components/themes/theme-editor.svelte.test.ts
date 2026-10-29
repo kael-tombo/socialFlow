@@ -140,7 +140,7 @@ describe('ThemeEditor', () => {
 
 		await expect
 			.element(screen.getByRole('alert'))
-			.toHaveTextContent('Theme ID is managed by OpenPost');
+			.toHaveTextContent('Theme ID is managed by SocialFlow.ai');
 	});
 
 	it('applies valid manifest edits before returning to guided controls', async () => {

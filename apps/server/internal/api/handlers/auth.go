@@ -152,7 +152,7 @@ var (
 type RegisterInput struct {
 	Body struct {
 		Email               string `json:"email" format:"email" doc:"User email address"`
-		Username            string `json:"username,omitempty" minLength:"3" maxLength:"30" pattern:"^[A-Za-z0-9](?:[A-Za-z0-9_-]*[A-Za-z0-9])?$" doc:"Optional unique public username; OpenPost creates one from the email when omitted"`
+		Username            string `json:"username,omitempty" minLength:"3" maxLength:"30" pattern:"^[A-Za-z0-9](?:[A-Za-z0-9_-]*[A-Za-z0-9])?$" doc:"Optional unique public username; SocialFlow.ai creates one from the email when omitted"`
 		Password            string `json:"password" minLength:"12" maxLength:"1024" doc:"User password (min 12 characters)"`
 		AcceptedLegal       *bool  `json:"accepted_legal,omitempty" doc:"Whether the user accepted the current terms and privacy policy"`
 		PurchaseChoiceToken string `json:"purchase_choice_token,omitempty" doc:"Integrity-protected hosted plan and billing-period choice; required for hosted registration"`
@@ -328,7 +328,7 @@ type MeOutput struct {
 
 type AuthSessionStateOutput struct {
 	Body struct {
-		Authenticated bool         `json:"authenticated" doc:"Whether the request has a valid OpenPost session"`
+		Authenticated bool         `json:"authenticated" doc:"Whether the request has a valid SocialFlow.ai session"`
 		User          *UserProfile `json:"user,omitempty"`
 	}
 }

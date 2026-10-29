@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildPublicationPayload } from './modes';
 
-const youtube = { id: 'yt-1', platform: 'youtube', account_username: 'OpenPost' };
+const youtube = { id: 'yt-1', platform: 'youtube', account_username: 'SocialFlow.ai' };
 const tiktok = { id: 'tt-1', platform: 'tiktok', account_username: 'openpost' };
 
 describe('publication composer payloads', () => {
@@ -12,7 +12,7 @@ describe('publication composer payloads', () => {
 			{ id: 'threads-1', platform: 'threads', account_username: 'openpost' },
 			{ id: 'x-1', platform: 'x', account_username: 'openpost' },
 			{ id: 'mastodon-1', platform: 'mastodon', account_username: 'openpost' },
-			{ id: 'linkedin-1', platform: 'linkedin', account_username: 'OpenPost' }
+			{ id: 'linkedin-1', platform: 'linkedin', account_username: 'SocialFlow.ai' }
 		];
 		const payload = buildPublicationPayload({
 			mode: 'post',
@@ -197,7 +197,7 @@ describe('publication composer payloads', () => {
 	it.each(['A destination-specific description', ''])(
 		'stores first comments and destination media options with alt text %j',
 		(altText) => {
-			const linkedin = { id: 'li-1', platform: 'linkedin', account_username: 'OpenPost' };
+			const linkedin = { id: 'li-1', platform: 'linkedin', account_username: 'SocialFlow.ai' };
 			const payload = buildPublicationPayload({
 				mode: 'post',
 				workspaceId: 'ws-1',
@@ -257,7 +257,7 @@ describe('publication composer payloads', () => {
 	);
 
 	it('joins a shared thread for a single-post destination', () => {
-		const linkedin = { id: 'li-1', platform: 'linkedin', account_username: 'OpenPost' };
+		const linkedin = { id: 'li-1', platform: 'linkedin', account_username: 'SocialFlow.ai' };
 		const payload = buildPublicationPayload({
 			mode: 'thread',
 			workspaceId: 'ws-1',

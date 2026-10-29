@@ -17,7 +17,7 @@
 			<ThemeImage
 				lightSrc="/assets/brand/logo.svg"
 				darkSrc="/assets/brand/logo-dark.svg"
-				alt="OpenPost"
+				alt="SocialFlow.ai"
 				width={150}
 				height={40}
 				loading="eager"

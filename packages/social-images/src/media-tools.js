@@ -11,7 +11,7 @@ export const imageConversions = imageFormats.flatMap((input) =>
     .map((output) => ({
       slug: `${input.extension}-to-${output.extension}`,
       name: `${input.name} to ${output.name}`,
-      title: `Free ${input.name} to ${output.name} converter, full resolution - OpenPost`,
+      title: `Free ${input.name} to ${output.name} converter, full resolution - SocialFlow.ai`,
       description: `Convert ${input.name} images to ${output.name} at their original dimensions. Free, private, and processed in your browser. No account or watermark.`,
       category: "Convert",
       input: input.id,
@@ -57,7 +57,7 @@ const conversionTools = (pairs, formats, mode, category) =>
     return {
       slug: `${input}-to-${output}`,
       name: `${source} to ${destination}`,
-      title: `Free ${source} to ${destination} converter - OpenPost`,
+      title: `Free ${source} to ${destination} converter - SocialFlow.ai`,
       description: `Convert ${source} ${mode} to ${destination} on your device. Choose output settings and download for free, without an account or upload.`,
       category,
       mode,
@@ -69,7 +69,7 @@ export const mediaConversionTools = [
   {
     slug: "video-converter",
     name: "Video converter",
-    title: "Free video converter, MP4, MKV, WebM and MOV - OpenPost",
+    title: "Free video converter, MP4, MKV, WebM and MOV - SocialFlow.ai",
     description:
       "Change a video's container or codec in your browser. Convert MP4, MKV, WebM and MOV locally, with no account or watermark.",
     category: "Video",
@@ -80,7 +80,7 @@ export const mediaConversionTools = [
   {
     slug: "video-codec-converter",
     name: "Video codec converter",
-    title: "Free video codec converter, H.264, H.265, VP9 and AV1 - OpenPost",
+    title: "Free video codec converter, H.264, H.265, VP9 and AV1 - SocialFlow.ai",
     description:
       "Change your video codec with the encoders available on your device. Choose a container, codec and bitrate, then download locally.",
     category: "Video",
@@ -90,7 +90,7 @@ export const mediaConversionTools = [
   {
     slug: "video-compressor",
     name: "Video compressor",
-    title: "Free video compressor, adjust bitrate and resolution - OpenPost",
+    title: "Free video compressor, adjust bitrate and resolution - SocialFlow.ai",
     description:
       "Reduce video size by choosing a lower bitrate or resolution. Compress locally, compare the output size, and download without a watermark.",
     category: "Video",
@@ -100,7 +100,7 @@ export const mediaConversionTools = [
   {
     slug: "remove-audio-from-video",
     name: "Remove audio from video",
-    title: "Remove audio from video for free - OpenPost",
+    title: "Remove audio from video for free - SocialFlow.ai",
     description:
       "Make a silent video by removing its audio track. Keep compatible video data without re-encoding and download the result locally.",
     category: "Video",
@@ -110,7 +110,7 @@ export const mediaConversionTools = [
   {
     slug: "audio-converter",
     name: "Audio converter",
-    title: "Free audio converter, MP3, WAV, M4A, Ogg and FLAC - OpenPost",
+    title: "Free audio converter, MP3, WAV, M4A, Ogg and FLAC - SocialFlow.ai",
     description:
       "Convert audio on your device. Choose MP3, WAV, M4A, Ogg or FLAC, adjust the audio settings, and download without an account.",
     category: "Audio",
@@ -121,7 +121,7 @@ export const mediaConversionTools = [
   {
     slug: "extract-audio-from-video",
     name: "Extract audio from video",
-    title: "Extract audio from video, MP3, WAV or M4A - OpenPost",
+    title: "Extract audio from video, MP3, WAV or M4A - SocialFlow.ai",
     description:
       "Save a video's soundtrack as an audio file. Extract its primary audio track and download MP3, WAV, M4A, Ogg or FLAC locally.",
     category: "Audio",
@@ -131,7 +131,7 @@ export const mediaConversionTools = [
   {
     slug: "media-info",
     name: "Video and audio file info",
-    title: "Check video and audio codecs, dimensions and duration - OpenPost",
+    title: "Check video and audio codecs, dimensions and duration - SocialFlow.ai",
     description:
       "Inspect a media file's container, codecs, dimensions, audio channels and duration without uploading it. Free, private, and no account required.",
     category: "Video",
@@ -154,7 +154,7 @@ export const mediaTools = [
   {
     slug: "background-remover",
     name: "Background remover",
-    title: "Free background remover, full-resolution PNG - OpenPost",
+    title: "Free background remover, full-resolution PNG - SocialFlow.ai",
     description:
       "Remove an image background in your browser. Download or copy a full-resolution transparent PNG, free and without a watermark.",
     category: "Images",
@@ -162,7 +162,7 @@ export const mediaTools = [
   {
     slug: "image-color-picker",
     name: "Image color picker",
-    title: "Free image color picker and palette extractor - OpenPost",
+    title: "Free image color picker and palette extractor - SocialFlow.ai",
     description:
       "Pick colors from an image and copy HEX, RGB, or HSL values. Extract a palette locally, without uploading your image.",
     category: "Images",
@@ -170,7 +170,7 @@ export const mediaTools = [
   {
     slug: "paste-image",
     name: "Paste image to download",
-    title: "Paste an image and download PNG, JPEG, or WebP - OpenPost",
+    title: "Paste an image and download PNG, JPEG, or WebP - SocialFlow.ai",
     description:
       "Turn a clipboard image into a file. Paste and download a full-resolution PNG automatically. Free, with no account or upload.",
     category: "Images",
@@ -178,7 +178,7 @@ export const mediaTools = [
   {
     slug: "logo-maker",
     name: "Logo maker",
-    title: "Free logo maker, PNG and SVG downloads - OpenPost",
+    title: "Free logo maker, PNG and SVG downloads - SocialFlow.ai",
     description:
       "Choose an icon, set its colors and background, and download your logo as PNG or SVG. Free, with no account or watermark.",
     category: "Images",
@@ -186,7 +186,7 @@ export const mediaTools = [
   {
     slug: "quick-cut",
     name: "Quick Cut",
-    title: "Free video trimmer and cutter - OpenPost Quick Cut",
+    title: "Free video trimmer and cutter - SocialFlow.ai Quick Cut",
     description:
       "Trim and join compatible video segments locally with Quick Cut. A separate, focused tool for cuts without re-encoding.",
     category: "Video",
@@ -194,7 +194,7 @@ export const mediaTools = [
   {
     slug: "image-converter",
     name: "Image converter",
-    title: "Free image converter, PNG, JPEG and WebP - OpenPost",
+    title: "Free image converter, PNG, JPEG and WebP - SocialFlow.ai",
     description:
       "Convert images to PNG, JPEG, or WebP in your browser. Keep the original dimensions, choose quality, and download without a watermark.",
     category: "Convert",

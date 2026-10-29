@@ -1,6 +1,6 @@
-# OpenPost Frontend
+# SocialFlow.ai Frontend
 
-The OpenPost web app is a Svelte 5 and SvelteKit application embedded in the Go server. The standalone Expo app in `apps/mobile/` owns native Android delivery.
+The SocialFlow.ai web app is a Svelte 5 and SvelteKit application embedded in the Go server. The standalone Expo app in `apps/mobile/` owns native Android delivery.
 
 Use the repository-owned commands from the project root:
 

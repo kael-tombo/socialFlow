@@ -389,7 +389,7 @@ func BuiltInStyles() []Style {
 		{"calm-explainer", "Calm explainer", "tutorial", []string{"Preserve pauses around explanations. Use restrained captions and motion."}},
 		{"announcement", "Product announcement", "announcement", []string{"Make the product name, announcement and call to action clear.", "Use brand assets where available."}},
 	} {
-		styles = append(styles, Style{ID: "builtin:" + item.id, Version: 1, Name: item.name, EditorKind: "both", Context: item.context, BuiltIn: true, Shared: true, Definition: StyleDefinition{Guidance: item.guidance, Palette: []string{}, Library: []LibraryReference{}, Interpretations: []string{}}, SourceInstruction: fmt.Sprintf("OpenPost %s starting style", item.name)})
+		styles = append(styles, Style{ID: "builtin:" + item.id, Version: 1, Name: item.name, EditorKind: "both", Context: item.context, BuiltIn: true, Shared: true, Definition: StyleDefinition{Guidance: item.guidance, Palette: []string{}, Library: []LibraryReference{}, Interpretations: []string{}}, SourceInstruction: fmt.Sprintf("SocialFlow.ai %s starting style", item.name)})
 	}
 	return styles
 }

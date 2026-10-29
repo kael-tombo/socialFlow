@@ -1,6 +1,6 @@
 # Fourteen-Day Activation and Guardrail Plan
 
-> **Product-usage measurement template — no automatic launch metrics are implied.** OpenPost's social-provider Analytics page measures connected accounts and posts; it does not include a product-usage analytics vendor or automatic launch KPI dashboard. Assign a human owner and a reproducible evidence source for every value.
+> **Product-usage measurement template — no automatic launch metrics are implied.** SocialFlow.ai's social-provider Analytics page measures connected accounts and posts; it does not include a product-usage analytics vendor or automatic launch KPI dashboard. Assign a human owner and a reproducible evidence source for every value.
 
 ## Window and definitions
 
@@ -11,7 +11,7 @@
 - Test/internal accounts excluded by: `[RULE]`
 - Duplicate users/workspaces handled by: `[RULE]`
 
-Write the definitions before collecting results. For example, define a qualified registration, connected destination, destination-specific campaign, successful schedule, and successful publish in terms that can be checked from current OpenPost records.
+Write the definitions before collecting results. For example, define a qualified registration, connected destination, destination-specific campaign, successful schedule, and successful publish in terms that can be checked from current SocialFlow.ai records.
 
 ## Primary activation targets
 

@@ -24,7 +24,7 @@ test("signed-in Image Editor defaults new projects to workspace storage", async 
 
   const storage = page.getByRole("group", { name: "Save new projects to", exact: true });
   await expect(
-    storage.getByRole("button", { name: "Saved to OpenPost", exact: true }),
+    storage.getByRole("button", { name: "Saved to SocialFlow.ai", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await expect(storage.getByRole("button", { name: "Local only", exact: true })).toHaveAttribute(
     "aria-pressed",

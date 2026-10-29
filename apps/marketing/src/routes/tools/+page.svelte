@@ -70,7 +70,7 @@
 		<h1 id="tools-title">Free tools.<br /><HeroAccent>For your next post.</HeroAccent></h1>
 		<p class="intro">
 			Preview a post, split a thread, format LinkedIn text, or edit your media. Start with a tool,
-			then continue your draft in OpenPost when you are ready to publish.
+			then continue your draft in SocialFlow.ai when you are ready to publish.
 		</p>
 		<p class="privacy">
 			<ShieldCheck size={18} aria-hidden="true" /> No account required. Media tools run on your device,
