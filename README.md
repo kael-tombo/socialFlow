@@ -74,17 +74,19 @@ Or with Docker: `docker build -t socialflow-lite . && docker run --env-file .env
 | `LINKEDIN_API_VERSION` | no | `YYYYMM`; defaults to last month (LinkedIn versions are not always live on the 1st) |
 | `X_CONSUMER_KEY`, `X_CONSUMER_SECRET` | for X | API key/secret of an X app with **Read and write** permission, OAuth 1.0a enabled, callback URL registered. X API is pay-per-use |
 
+`LINKEDIN_AUTH_BASE`, `LINKEDIN_API_BASE` and `X_API_BASE` override the provider hosts, for an egress proxy or local
+end-to-end tests against stand-in servers. Leave them unset in production.
+
 A provider whose credentials are missing is reported as `provider_unavailable` on connect — never faked.
 
 ## Connect Banyan to it
 
 1. Deploy SocialFlow Lite on a **public HTTPS hostname**. Banyan's SSRF guard (`src/lib/net/safe-fetch.ts`)
    refuses private and loopback addresses, so a Docker-internal URL such as `http://socialflow:8080` will be
-   blocked unless Banyan gains an explicit allowlist for it.
+   blocked unless Banyan runs with `SOCIALFLOW_ALLOW_PRIVATE_NETWORK=true`.
 2. In Banyan: `SOCIALFLOW_API_URL=https://<host>` and store the API key on the workspace's SocialFlow connection.
 3. Run the live smoke test (Banyan US-037): connect your own LinkedIn and X, publish one post and one 2-post
-   thread, read them back with `GET /v1/posts/:id`. (Banyan's adapter comment names `npm run smoke:socialflow`;
-   that script does not exist yet.)
+   thread, read them back with `GET /v1/posts/:id`. Use Banyan's `npm run smoke:socialflow` (`--connect linkedin|x`, then `--publish`).
 4. Only then set `SOCIALFLOW_VERIFIED=true` in Banyan.
 
 ## Security notes
@@ -107,6 +109,10 @@ against X's published signature example.
 
 Every `/v1` response the tests produce has also been validated against Banyan's zod schemas
 (`SFL_CONTRACT_DUMP=<dir> go test ./internal/server/` writes them; 43/43 conformed on 2026-11-01).
+
+**Cross-repo check (2026-11-01):** Banyan's real adapter, driven by `npm run smoke:socialflow`, connected both
+accounts through the browser flow and published a LinkedIn post and a 2-post X thread through this binary, against
+stand-in LinkedIn and X servers. Every check passed: no duplicate on replay, and status read back as published.
 
 **Not yet verified:** a real post on real LinkedIn and X accounts. That needs the developer apps above and is
 the step that turns this from "built" into "verified".

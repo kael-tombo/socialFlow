@@ -111,10 +111,12 @@ func serve(log *slog.Logger) error {
 		LinkedIn: &providers.LinkedIn{
 			ClientID: env("LINKEDIN_CLIENT_ID", ""), ClientSecret: env("LINKEDIN_CLIENT_SECRET", ""),
 			RedirectURL: pub + "/oauth/linkedin/callback", HTTP: httpClient,
+			AuthBase: env("LINKEDIN_AUTH_BASE", ""), APIBase: env("LINKEDIN_API_BASE", ""),
 		},
 		X: &providers.X{
 			ConsumerKey: env("X_CONSUMER_KEY", ""), ConsumerSecret: env("X_CONSUMER_SECRET", ""),
 			CallbackURL: pub + "/oauth/x/callback", HTTP: httpClient,
+			APIBase: env("X_API_BASE", ""),
 		},
 	}
 	if !s.LinkedIn.Configured() && !s.X.Configured() {
