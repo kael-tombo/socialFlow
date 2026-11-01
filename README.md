@@ -12,6 +12,12 @@ OAuth flows, commentary escaping, API version lag) follow OpenPost's adapters in
 Licensed **AGPL-3.0** like its upstream — see [LICENSE](LICENSE). If you run a modified version as a network
 service, you must offer its source to its users.
 
+Lives on the `socialflow-lite` branch of [kael-tombo/socialFlow](https://github.com/kael-tombo/socialFlow/tree/socialflow-lite), with its own history (it shares no files with `main`):
+
+```bash
+git clone -b socialflow-lite --single-branch https://github.com/kael-tombo/socialFlow.git socialflow-lite
+```
+
 ## What it does and does not do
 
 | Does | Does not |
