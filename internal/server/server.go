@@ -56,7 +56,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("GET /oauth/linkedin/callback", s.linkedInCallback)
 	mux.HandleFunc("GET /oauth/x/callback", s.xCallback)
 
-	return securityHeaders(mux)
+	return s.accessLog(securityHeaders(mux))
 }
 
 // ───────── plumbing ─────────
@@ -77,6 +77,7 @@ func (s *Server) auth(h http.HandlerFunc) http.Handler {
 			writeErr(w, 401, providers.CodeAuthFailed, "Invalid or revoked API key.")
 			return
 		}
+		noteOrg(r.Context(), org.ID)
 		r.Body = http.MaxBytesReader(w, r.Body, maxBodyBytes)
 		h(w, r.WithContext(context.WithValue(r.Context(), ctxKey{}, org)))
 	})

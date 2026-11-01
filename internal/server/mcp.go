@@ -2,6 +2,7 @@ package server
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -234,7 +235,7 @@ func (s *Server) runTool(r *http.Request, t *mcpTool, args map[string]any) map[s
 		raw, _ := json.Marshal(t.body(args))
 		body = bytes.NewReader(raw)
 	}
-	inner := httptest.NewRequest(t.method, path, body).WithContext(r.Context())
+	inner := httptest.NewRequest(t.method, path, body).WithContext(context.WithValue(r.Context(), internalKey{}, true))
 	inner.Header.Set("Authorization", r.Header.Get("Authorization"))
 	inner.Header.Set("Content-Type", "application/json")
 	if t.header != nil {
@@ -246,6 +247,9 @@ func (s *Server) runTool(r *http.Request, t *mcpTool, args map[string]any) map[s
 	}
 	rec := httptest.NewRecorder()
 	s.Handler().ServeHTTP(rec, inner)
+	if info, ok := r.Context().Value(reqInfoKey{}).(*reqInfo); ok {
+		s.Log.Info("mcp tool", "tool", t.Name, "status", rec.Code, "org", info.org)
+	}
 	var parsed any
 	if err := json.Unmarshal(rec.Body.Bytes(), &parsed); err != nil {
 		parsed = map[string]any{}
