@@ -52,14 +52,38 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 - `200` — the key was seen before; the stored post is returned. A reused key with a different body is `422`.
 - Without `account_id`, the single active account for `channel` is used.
 
+## Set up the developer consoles
+
+Set `PUBLIC_URL` and `ENCRYPTION_KEY`, then run:
+
+```bash
+./socialflow-lite doctor --offline
+```
+
+It prints exactly what to enter in each console: the LinkedIn products, redirect URL and scopes, and the X OAuth
+1.0a setting, permissions and callback URL. Paste the keys you get back into `.env`, then run `doctor` again
+**without** `--offline`. It now checks them live, with no user sign-in needed:
+
+- **X:** it requests a real OAuth 1.0a request token. That proves the API key and secret, that OAuth 1.0a is
+  enabled, and that the callback URL is registered exactly as this service sends it.
+- **LinkedIn:** it exchanges a deliberately invalid code. LinkedIn answers `invalid_client` only when the client id
+  or secret is wrong, so any other refusal proves them. The redirect URL is confirmed the first time you connect
+  an account.
+
+`doctor` exits non-zero on any FAIL line.
+
 ## Run it
 
 ```bash
 cp .env.example .env              # fill in, see below
 go build -o socialflow-lite ./cmd/socialflow-lite
-./socialflow-lite keys create "Banyan"   # prints the API key once
+./socialflow-lite doctor                  # check the configuration
+./socialflow-lite keys create "Banyan"    # prints the API key once
 ./socialflow-lite serve
 ```
+
+Keys: `keys list` shows key ids (never secrets). To rotate, run `keys add <org_id>` for a second key, switch the
+client to it, then `keys revoke <key_id>` the old one.
 
 Or with Docker: `docker build -t socialflow-lite . && docker run --env-file .env -p 8080:8080 -v sfl-data:/data socialflow-lite`
 (then `docker run --rm --env-file .env -v sfl-data:/data socialflow-lite keys create "Banyan"`).
@@ -93,8 +117,7 @@ A provider whose credentials are missing is reported as `provider_unavailable` o
 
 - The `connect_url` is a bearer capability: anyone holding it in its 30 minutes can attach *their* account to
   the organisation. Deliver it only to the signed-in founder's browser.
-- API keys are shown once and stored as SHA-256 hashes. There is no key-rotation command yet; to revoke a key,
-  set `revoked_at` on its row in `api_keys`.
+- API keys are shown once and stored as SHA-256 hashes. Rotate them with `keys add` and `keys revoke`.
 - Provider responses are never echoed in full; errors carry a short reason at most. Tokens never appear in logs.
 - No built-in rate limiting on the API: it is meant to sit behind Banyan, not on the open internet for
   arbitrary clients.

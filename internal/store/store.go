@@ -377,3 +377,79 @@ func (s *Store) RecoverStuck(ctx context.Context, olderThan time.Duration) (int6
 	b, _ := r2.RowsAffected()
 	return a + b, nil
 }
+
+// ───────── key management ─────────
+
+type KeyInfo struct {
+	OrgID, OrgName, HashPrefix string
+	CreatedAt                  time.Time
+	Revoked                    bool
+}
+
+// ListKeys returns every API key by organisation; the secret itself is never stored.
+func (s *Store) ListKeys(ctx context.Context) ([]KeyInfo, error) {
+	rows, err := s.db.QueryContext(ctx, `SELECT o.id, o.name, k.hash, k.created_at, k.revoked_at FROM api_keys k
+		JOIN organizations o ON o.id = k.org_id ORDER BY k.created_at`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []KeyInfo
+	for rows.Next() {
+		var k KeyInfo
+		var hash string
+		var created, revoked sql.NullString
+		if err := rows.Scan(&k.OrgID, &k.OrgName, &hash, &created, &revoked); err != nil {
+			return nil, err
+		}
+		k.HashPrefix, k.Revoked = hash[:12], revoked.Valid
+		if t := parseTime(created); t != nil {
+			k.CreatedAt = *t
+		}
+		out = append(out, k)
+	}
+	return out, rows.Err()
+}
+
+// RevokeKey revokes the one active key whose hash starts with prefix (from ListKeys).
+// The prefix must be at least 8 characters and match exactly one key.
+func (s *Store) RevokeKey(ctx context.Context, prefix string) (KeyInfo, error) {
+	if len(prefix) < 8 {
+		return KeyInfo{}, errors.New("give at least 8 characters of the key id shown by keys list")
+	}
+	keys, err := s.ListKeys(ctx)
+	if err != nil {
+		return KeyInfo{}, err
+	}
+	var match []KeyInfo
+	for _, k := range keys {
+		if strings.HasPrefix(k.HashPrefix, prefix) || strings.HasPrefix(prefix, k.HashPrefix) {
+			match = append(match, k)
+		}
+	}
+	if len(match) == 0 {
+		return KeyInfo{}, ErrNotFound
+	}
+	if len(match) > 1 {
+		return KeyInfo{}, errors.New("that prefix matches several keys; give more characters")
+	}
+	if match[0].Revoked {
+		return match[0], errors.New("that key is already revoked")
+	}
+	_, err = s.db.ExecContext(ctx, `UPDATE api_keys SET revoked_at = ? WHERE hash LIKE ? AND revoked_at IS NULL`, now(), match[0].HashPrefix+"%")
+	return match[0], err
+}
+
+// AddKey issues an additional key for an existing organisation (rotation: add, switch, then revoke the old).
+func (s *Store) AddKey(ctx context.Context, orgID string) (string, error) {
+	var exists int
+	if err := s.db.QueryRowContext(ctx, `SELECT COUNT(*) FROM organizations WHERE id = ?`, orgID).Scan(&exists); err != nil {
+		return "", err
+	}
+	if exists == 0 {
+		return "", ErrNotFound
+	}
+	key := NewAPIKey()
+	_, err := s.db.ExecContext(ctx, `INSERT INTO api_keys (hash, org_id, created_at) VALUES (?, ?, ?)`, HashKey(key), orgID, now())
+	return key, err
+}
