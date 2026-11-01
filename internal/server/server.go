@@ -48,6 +48,9 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /v1/posts/{id}/analytics", s.auth(s.analytics))          // C9
 	mux.Handle("DELETE /v1/accounts/{id}", s.auth(s.revoke))                 // C10
 
+	// The same operations as MCP tools (Model Context Protocol, Streamable HTTP, stateless).
+	mux.Handle("POST /mcp", s.auth(s.mcp))
+
 	// Browser-facing connect flow (the connect_url is a single-use capability).
 	mux.HandleFunc("GET /connect/{id}", s.connectRedirect)
 	mux.HandleFunc("GET /oauth/linkedin/callback", s.linkedInCallback)

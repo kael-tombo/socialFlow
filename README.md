@@ -58,6 +58,37 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 - `200` — the key was seen before; the stored post is returned. A reused key with a different body is `422`.
 - Without `account_id`, the single active account for `channel` is used.
 
+## MCP
+
+The same operations are also served as **Model Context Protocol tools** at `POST /mcp` (Streamable HTTP, stateless,
+JSON responses; protocol versions `2025-06-18` and `2025-03-26`). Authenticate with the same `Authorization: Bearer <api key>`.
+
+| Tool | Mirrors | Annotations |
+| --- | --- | --- |
+| `whoami` | C1 `GET /v1/me` | read-only |
+| `list_accounts` | C3 | read-only |
+| `get_account_capabilities` | C4 | read-only |
+| `start_account_connection` | C2, returns a `connect_url` that only a person can complete | not destructive |
+| `publish_post` | C5, requires `idempotency_key` | idempotent, open world |
+| `schedule_post` | C6 | idempotent, open world |
+| `get_post_status` | C7 | read-only |
+| `disconnect_account` | C10 | **destructive** |
+
+Each tool runs through the REST handler it mirrors, so validation, idempotency (one store for both transports),
+limits and error codes are identical. Every result carries `structuredContent: { status, body, retry_after? }`:
+the REST status and body. `isError` is set from status 400 and up, so a client can apply the contract's retry rules
+unchanged. Checked with the official `@modelcontextprotocol/sdk` client (1.17.4): handshake, tool listing, publish,
+idempotent replay and tool errors.
+
+Example client config (any MCP client that supports Streamable HTTP):
+
+```json
+{ "mcpServers": { "socialflow": { "url": "https://social.example.com/mcp", "headers": { "Authorization": "Bearer sfl_…" } } } }
+```
+
+The server instructions tell agents to publish only human-approved text and always pass an idempotency key. Accounts
+can only be connected by a person through the `connect_url`.
+
 ## Set up the developer consoles
 
 Set `PUBLIC_URL` and `ENCRYPTION_KEY`, then run:
