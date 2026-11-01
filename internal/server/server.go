@@ -155,14 +155,21 @@ type accountJSON struct {
 	Handle       string                 `json:"handle"`
 	Status       string                 `json:"status"`
 	Capabilities providers.Capabilities `json:"capabilities"`
+	// When the platform token stops working (LinkedIn: ~60 days); null when it does not expire (X).
+	TokenExpiresAt *time.Time `json:"token_expires_at"`
 }
 
 func (s *Server) accountView(a store.Account) accountJSON {
 	_, caps, _ := s.provider(a.Platform)
-	if a.Status != "active" {
+	status := a.Status
+	// An expired token is reported as needing reconnection now, not when the next post fails.
+	if status == "active" && a.TokenExpiresAt != nil && time.Now().After(*a.TokenExpiresAt) {
+		status = "error"
+	}
+	if status != "active" {
 		caps.Publish, caps.Schedule = false, false
 	}
-	return accountJSON{ID: a.ID, Platform: a.Platform, Handle: a.Handle, Status: a.Status, Capabilities: caps}
+	return accountJSON{ID: a.ID, Platform: a.Platform, Handle: a.Handle, Status: status, Capabilities: caps, TokenExpiresAt: a.TokenExpiresAt}
 }
 
 func (s *Server) accounts(w http.ResponseWriter, r *http.Request) {

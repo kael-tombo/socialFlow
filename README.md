@@ -35,7 +35,7 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 | --- | --- | --- |
 | C1 | `GET /v1/me` | `{organization_id, name}` |
 | C2 | `POST /v1/accounts/connect` `{platform}` | `{connect_url, expires_at}` — send the founder's browser there; single use, 30 min |
-| C3 | `GET /v1/accounts` | `{accounts:[{id, platform, handle, status, capabilities}]}`; status `active` \| `error` (reconnect) \| `revoked` |
+| C3 | `GET /v1/accounts` | `{accounts:[{id, platform, handle, status, capabilities, token_expires_at}]}`; status `active` | `error` (reconnect; also shown as soon as a token expires) | `revoked`. `token_expires_at` is null for X |\| `error` (reconnect) \| `revoked` |
 | C4 | `GET /v1/accounts/:id/capabilities` | `{publish, schedule, analytics, formats, max_length}` |
 | C5/C6 | `POST /v1/posts` `{channel, text, account_id?, title?, scheduled_at?}` + `Idempotency-Key` | See below |
 | C7 | `GET /v1/posts/:id` | Post with `status` `queued` \| `scheduled` \| `published` \| `failed`, `url`, `error`, `external_ids` |

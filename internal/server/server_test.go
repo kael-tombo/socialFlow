@@ -456,3 +456,42 @@ func TestConcurrentSameKeyPublishesOnce(t *testing.T) {
 		t.Fatalf("10 concurrent requests with one key produced %d posts", n)
 	}
 }
+
+func TestTokenExpiryIsReported(t *testing.T) {
+	e := newEnv(t)
+	e.connectLinkedIn()
+	e.connectX()
+	list := e.call("GET", "/v1/accounts", e.key, nil, nil).body["accounts"].([]any)
+	var li, x map[string]any
+	for _, a := range list {
+		m := a.(map[string]any)
+		if m["platform"] == "linkedin" {
+			li = m
+		} else {
+			x = m
+		}
+	}
+	exp, err := time.Parse(time.RFC3339Nano, li["token_expires_at"].(string))
+	if err != nil || exp.Before(time.Now().Add(59*24*time.Hour)) || exp.After(time.Now().Add(61*24*time.Hour)) {
+		t.Fatalf("LinkedIn expiry should be ~60 days out, got %v (%v)", li["token_expires_at"], err)
+	}
+	if x["token_expires_at"] != nil {
+		t.Fatalf("X tokens do not expire, got %v", x["token_expires_at"])
+	}
+
+	// A token past its expiry is reported as needing reconnection immediately.
+	sealed, _ := e.srv.Sealer.Seal("li-token")
+	if _, err := e.srv.Store.UpsertAccount(context.Background(), e.orgID(), "linkedin", "abc123", "Ada Founder", sealed, time.Now().Add(-time.Hour)); err != nil {
+		t.Fatal(err)
+	}
+	for _, a := range e.call("GET", "/v1/accounts", e.key, nil, nil).body["accounts"].([]any) {
+		m := a.(map[string]any)
+		if m["platform"] == "linkedin" && (m["status"] != "error" || m["capabilities"].(map[string]any)["publish"] != false) {
+			t.Fatalf("expired LinkedIn account must report error: %v", m)
+		}
+	}
+}
+
+func (e *env) orgID() string {
+	return e.call("GET", "/v1/me", e.key, nil, nil).body["organization_id"].(string)
+}
