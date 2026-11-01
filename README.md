@@ -45,6 +45,7 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 | C4 | `GET /v1/accounts/:id/capabilities` | `{publish, schedule, analytics, formats, max_length}` |
 | C5/C6 | `POST /v1/posts` `{channel, text, account_id?, title?, scheduled_at?}` + `Idempotency-Key` | See below |
 | C7 | `GET /v1/posts/:id` | Post with `status` `queued` \| `scheduled` \| `published` \| `failed`, `url`, `error`, `external_ids` |
+| C8 | `DELETE /v1/posts/:id` | Cancels a scheduled (or failed) post; idempotent. 409 if it is being published or already published |
 | C9 | `GET /v1/posts/:id/analytics` | Always `404 not_found` (not collected) |
 | C10 | `DELETE /v1/accounts/:id` | Destroys the token locally, asks the provider to revoke it (`provider_revoked`) |
 
@@ -60,7 +61,7 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 
 ## MCP
 
-The same operations are also served as **Model Context Protocol tools** at `POST /mcp` (Streamable HTTP, stateless,
+The same operations are also served as **Model Context Protocol tools** (nine) at `POST /mcp` (Streamable HTTP, stateless,
 JSON responses; protocol versions `2025-06-18` and `2025-03-26`). Authenticate with the same `Authorization: Bearer <api key>`.
 
 | Tool | Mirrors | Annotations |
@@ -72,6 +73,7 @@ JSON responses; protocol versions `2025-06-18` and `2025-03-26`). Authenticate w
 | `publish_post` | C5, requires `idempotency_key` | idempotent, open world |
 | `schedule_post` | C6 | idempotent, open world |
 | `get_post_status` | C7 | read-only |
+| `cancel_post` | C8 | destructive, idempotent |
 | `disconnect_account` | C10 | **destructive** |
 
 Each tool runs through the REST handler it mirrors, so validation, idempotency (one store for both transports),

@@ -131,6 +131,12 @@ var mcpTools = []mcpTool{
 		method: http.MethodGet, path: pathParam("/v1/posts/", "post_id", ""),
 	},
 	{
+		Name: "cancel_post", Title: "Cancel a scheduled post",
+		Description: "Stops a scheduled (or failed) post before it goes out (C8). A post already published cannot be cancelled here.",
+		InputSchema: obj(map[string]any{"post_id": pString}, "post_id"), Annotations: map[string]any{"readOnlyHint": false, "destructiveHint": true, "idempotentHint": true, "openWorldHint": false},
+		method: http.MethodDelete, path: pathParam("/v1/posts/", "post_id", ""),
+	},
+	{
 		Name: "disconnect_account", Title: "Disconnect an account",
 		Description: "Revokes an account: its token is destroyed here and revocation is requested from the platform (C10). Publishing to it stops until a person reconnects.",
 		InputSchema: obj(map[string]any{"account_id": pString}, "account_id"), Annotations: map[string]any{"readOnlyHint": false, "destructiveHint": true, "idempotentHint": true, "openWorldHint": true},

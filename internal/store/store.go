@@ -453,3 +453,17 @@ func (s *Store) AddKey(ctx context.Context, orgID string) (string, error) {
 	_, err := s.db.ExecContext(ctx, `INSERT INTO api_keys (hash, org_id, created_at) VALUES (?, ?, ?)`, HashKey(key), orgID, now())
 	return key, err
 }
+
+// CancelPost stops a post that has not gone out: scheduled, pending, or failed. It reports the
+// post as it stands afterwards and whether this call cancelled it. A post being published
+// (queued) or already published is left alone.
+func (s *Store) CancelPost(ctx context.Context, orgID, id string) (Post, bool, error) {
+	res, err := s.db.ExecContext(ctx, `UPDATE posts SET status = 'cancelled', updated_at = ?
+		WHERE org_id = ? AND id = ? AND status IN ('scheduled', 'pending', 'failed')`, now(), orgID, id)
+	if err != nil {
+		return Post{}, false, err
+	}
+	n, _ := res.RowsAffected()
+	p, err := s.Post(ctx, orgID, id)
+	return p, n == 1, err
+}

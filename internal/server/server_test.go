@@ -495,3 +495,46 @@ func TestTokenExpiryIsReported(t *testing.T) {
 func (e *env) orgID() string {
 	return e.call("GET", "/v1/me", e.key, nil, nil).body["organization_id"].(string)
 }
+
+func TestCancelScheduledPost(t *testing.T) {
+	e := newEnv(t)
+	e.connectLinkedIn()
+	at := time.Now().Add(time.Hour).UTC().Format(time.RFC3339)
+	body := map[string]string{"channel": "linkedin", "text": "later", "scheduled_at": at}
+	hdr := map[string]string{"Idempotency-Key": "c1"}
+	s := e.call("POST", "/v1/posts", e.key, body, hdr)
+	id := s.body["id"].(string)
+
+	c := e.call("DELETE", "/v1/posts/"+id, e.key, nil, nil)
+	if c.status != 200 || c.body["status"] != "cancelled" {
+		t.Fatalf("cancel: %d %s", c.status, c.raw)
+	}
+	if again := e.call("DELETE", "/v1/posts/"+id, e.key, nil, nil); again.status != 200 || again.body["status"] != "cancelled" {
+		t.Fatalf("cancelling twice must be idempotent: %d %s", again.status, again.raw)
+	}
+	e.srv.TickAt(context.Background(), time.Now().Add(2*time.Hour))
+	if len(e.fake.linkedInPosts) != 0 {
+		t.Fatal("a cancelled post must never be published by the scheduler")
+	}
+	if replay := e.call("POST", "/v1/posts", e.key, body, hdr); replay.body["status"] != "cancelled" || len(e.fake.linkedInPosts) != 0 {
+		t.Fatalf("replaying the original request must not resurrect it: %s", replay.raw)
+	}
+
+	_, otherKey, _ := e.srv.Store.CreateOrgWithKey(context.Background(), "Other")
+	if r := e.call("DELETE", "/v1/posts/"+id, otherKey, nil, nil); r.status != 404 {
+		t.Fatalf("another org must get 404, got %d", r.status)
+	}
+}
+
+func TestCancelPublishedPostIsRefused(t *testing.T) {
+	e := newEnv(t)
+	e.connectLinkedIn()
+	p := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "now"}, map[string]string{"Idempotency-Key": "n1"})
+	r := e.call("DELETE", "/v1/posts/"+p.body["id"].(string), e.key, nil, nil)
+	if r.status != 409 || errCode(r) != "validation" || !strings.Contains(r.raw, "already published") {
+		t.Fatalf("cancelling a published post: %d %s", r.status, r.raw)
+	}
+	if status, body, _ := e.tool("cancel_post", map[string]any{"post_id": p.body["id"]}); status != 409 || body["error"] == nil {
+		t.Fatalf("MCP cancel_post on a published post: %d %v", status, body)
+	}
+}

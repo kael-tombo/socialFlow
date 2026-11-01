@@ -44,6 +44,7 @@ func (s *Server) Handler() http.Handler {
 	mux.Handle("GET /v1/accounts", s.auth(s.accounts))                       // C3
 	mux.Handle("GET /v1/accounts/{id}/capabilities", s.auth(s.capabilities)) // C4
 	mux.Handle("POST /v1/posts", s.auth(s.createPost))                       // C5, C6
+	mux.Handle("DELETE /v1/posts/{id}", s.auth(s.cancelPost))                // C8: cancel a scheduled post
 	mux.Handle("GET /v1/posts/{id}", s.auth(s.getPost))                      // C7
 	mux.Handle("GET /v1/posts/{id}/analytics", s.auth(s.analytics))          // C9
 	mux.Handle("DELETE /v1/accounts/{id}", s.auth(s.revoke))                 // C10
@@ -568,4 +569,29 @@ func (s *Server) finishConnect(w http.ResponseWriter, ctx context.Context, cs st
 	}
 	s.Log.Info("account connected", "org", cs.OrgID, "platform", platform)
 	renderPage(w, 200, "Connected "+p.Handle, "Your "+map[string]string{"linkedin": "LinkedIn", "x": "X"}[platform]+" account is connected. You can close this tab and return to the app.")
+}
+
+// cancelPost stops a scheduled (or failed) post before it goes out. The scheduler only publishes
+// posts still in "scheduled", so a cancelled post can never be published.
+func (s *Server) cancelPost(w http.ResponseWriter, r *http.Request) {
+	p, cancelled, err := s.Store.CancelPost(r.Context(), orgFrom(r).ID, r.PathValue("id"))
+	if errors.Is(err, store.ErrNotFound) {
+		writeErr(w, 404, providers.CodeNotFound, "No such post.")
+		return
+	} else if err != nil {
+		s.internal(w, err)
+		return
+	}
+	if !cancelled {
+		switch p.Status {
+		case "cancelled":
+			writeJSON(w, 200, postView(p)) // already cancelled: idempotent
+		case "published":
+			writeErr(w, 409, providers.CodeValidation, "This post is already published; delete it on the platform itself.")
+		default:
+			writeErr(w, 409, providers.CodeValidation, "This post is being published right now and cannot be cancelled.")
+		}
+		return
+	}
+	writeJSON(w, 200, postView(p))
 }
