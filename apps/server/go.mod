@@ -17,7 +17,7 @@ require (
 	github.com/dghubble/oauth1 v0.7.3
 	github.com/disintegration/imaging v1.6.2
 	github.com/gen2brain/avif v0.6.0
-	github.com/go-jose/go-jose/v4 v4.1.4
+	github.com/go-jose/go-jose/v4 v4.1.6
 	github.com/go-text/render v0.2.1
 	github.com/go-text/typesetting v0.3.5
 	github.com/go-webauthn/webauthn v0.17.2
