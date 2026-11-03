@@ -91,6 +91,10 @@ Example client config (any MCP client that supports Streamable HTTP):
 The server instructions tell agents to publish only human-approved text and always pass an idempotency key. Accounts
 can only be connected by a person through the `connect_url`.
 
+**Operate it in plain language with OpenCode.** [`opencode/`](opencode/) holds an OpenCode agent wired to these tools:
+ask which accounts are connected or what happened to a post; publishing, scheduling and cancelling ask you every
+time, and disconnecting is denied. See [opencode/README.md](opencode/README.md).
+
 ## Set up the developer consoles
 
 Set `PUBLIC_URL` and `ENCRYPTION_KEY`, then run:
