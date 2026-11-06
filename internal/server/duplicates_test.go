@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync/atomic"
 	"testing"
 	"time"
 
@@ -18,13 +19,13 @@ import (
 type dropAfterReceiving struct {
 	inner http.Handler
 	match string
-	hits  int
-	on    bool
+	hits  atomic.Int32
+	on    atomic.Bool
 }
 
 func (d *dropAfterReceiving) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if d.on && r.URL.Path == d.match {
-		d.hits++
+	if d.on.Load() && r.URL.Path == d.match {
+		d.hits.Add(1)
 		conn, _, err := w.(http.Hijacker).Hijack()
 		if err == nil {
 			conn.Close()
@@ -88,7 +89,8 @@ func TestClientHangingUpDoesNotLoseThePublishedState(t *testing.T) {
 func TestDroppedConnectionAfterSendingStopsForAPerson(t *testing.T) {
 	e := connectedEnv(t, "linkedin")
 	// Route provider calls through a server that hangs up after receiving the post.
-	drop := &dropAfterReceiving{inner: e.fake.handler(t), match: "/rest/posts", on: true}
+	drop := &dropAfterReceiving{inner: e.fake.handler(t), match: "/rest/posts"}
+	drop.on.Store(true)
 	prov := httptest.NewServer(drop)
 	defer prov.Close()
 	e.srv.LinkedIn.APIBase, e.srv.LinkedIn.HTTP = prov.URL, prov.Client()
@@ -106,13 +108,13 @@ func TestDroppedConnectionAfterSendingStopsForAPerson(t *testing.T) {
 	}
 
 	// Banyan or a person replays the key. Nothing more may reach the provider.
-	drop.on = false
+	drop.on.Store(false)
 	replay := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "maybe"}, postKey("drop"))
 	if replay.status != 200 || replay.body["status"] != "failed" {
 		t.Fatalf("replay: %d %s", replay.status, replay.raw)
 	}
-	if drop.hits != 1 || len(e.fake.linkedInPosts) != 0 {
-		t.Fatalf("replay re-sent the post: hits=%d posts=%d", drop.hits, len(e.fake.linkedInPosts))
+	if drop.hits.Load() != 1 || len(e.fake.linkedInPosts) != 0 {
+		t.Fatalf("replay re-sent the post: hits=%d posts=%d", drop.hits.Load(), len(e.fake.linkedInPosts))
 	}
 
 	// A new key is the deliberate way to send it again.
@@ -143,9 +145,9 @@ func TestProviderNeverReachedIsStillSafeToRetry(t *testing.T) {
 func TestProviderAcceptingWithoutAnIDIsNotRetried(t *testing.T) {
 	e := connectedEnv(t, "x")
 	// X says yes but gives no id. It went out, so a retry would post it twice.
-	calls := 0
+	var calls atomic.Int32
 	prov := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		calls++
+		calls.Add(1)
 		w.WriteHeader(201)
 		w.Write([]byte(`{"data":{}}`))
 	}))
@@ -157,8 +159,8 @@ func TestProviderAcceptingWithoutAnIDIsNotRetried(t *testing.T) {
 		t.Fatalf("got %d %s", r.status, r.raw)
 	}
 	e.call("POST", "/v1/posts", e.key, body, postKey("noid"))
-	if calls != 1 {
-		t.Fatalf("X was called %d times", calls)
+	if calls.Load() != 1 {
+		t.Fatalf("X was called %d times", calls.Load())
 	}
 }
 
