@@ -340,6 +340,13 @@ func (s *Store) MarkFailed(ctx context.Context, id, code, message string) error 
 	return err
 }
 
+// Reschedule puts a post back on the schedule after a transient failure, keeping the reason visible.
+func (s *Store) Reschedule(ctx context.Context, id string, at time.Time, code, message string) error {
+	_, err := s.db.ExecContext(ctx, `UPDATE posts SET status = 'scheduled', scheduled_at = ?, error_code = ?, error_message = ?, updated_at = ? WHERE id = ?`,
+		at.UTC().Format(time.RFC3339Nano), code, message, now(), id)
+	return err
+}
+
 // DuePosts lists scheduled posts whose time has come.
 func (s *Store) DuePosts(ctx context.Context, at time.Time) ([]Post, error) {
 	rows, err := s.db.QueryContext(ctx, `SELECT `+postCols+` FROM posts WHERE status = 'scheduled' AND scheduled_at <= ? ORDER BY scheduled_at LIMIT 50`,
@@ -359,23 +366,18 @@ func (s *Store) DuePosts(ctx context.Context, at time.Time) ([]Post, error) {
 	return out, rows.Err()
 }
 
-// RecoverStuck returns posts left "queued" by a crash: scheduled ones go back
-// to the schedule, the rest become a retryable failure the caller can resume.
+// RecoverStuck closes posts left "queued" by a crash. The request may have reached the provider,
+// so none of them is republished automatically, scheduled ones included: a person checks the
+// account and decides. Posts whose outcome is known never stay queued.
 func (s *Store) RecoverStuck(ctx context.Context, olderThan time.Duration) (int64, error) {
 	cutoff := time.Now().UTC().Add(-olderThan).Format(time.RFC3339Nano)
-	r1, err := s.db.ExecContext(ctx, `UPDATE posts SET status = 'scheduled', updated_at = ? WHERE status = 'queued' AND scheduled_at IS NOT NULL AND updated_at < ?`, now(), cutoff)
+	res, err := s.db.ExecContext(ctx, `UPDATE posts SET status = 'failed', error_code = 'outcome_unknown',
+		error_message = 'Publishing was interrupted: it may have gone out. Check the account; to send it again, use a new Idempotency-Key', updated_at = ?
+		WHERE status = 'queued' AND updated_at < ?`, now(), cutoff)
 	if err != nil {
 		return 0, err
 	}
-	r2, err := s.db.ExecContext(ctx, `UPDATE posts SET status = 'failed', error_code = 'provider_unavailable',
-		error_message = 'Publishing was interrupted; retry with the same Idempotency-Key to resume', updated_at = ?
-		WHERE status = 'queued' AND scheduled_at IS NULL AND updated_at < ?`, now(), cutoff)
-	if err != nil {
-		return 0, err
-	}
-	a, _ := r1.RowsAffected()
-	b, _ := r2.RowsAffected()
-	return a + b, nil
+	return res.RowsAffected()
 }
 
 // ───────── key management ─────────

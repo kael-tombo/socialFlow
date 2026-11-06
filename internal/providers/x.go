@@ -138,7 +138,8 @@ func (x *X) PostThread(ctx context.Context, tok, sec string, parts, done []strin
 			Data struct{ ID string } `json:"data"`
 		}
 		if json.Unmarshal(body, &r) != nil || r.Data.ID == "" {
-			return ids, Errf(CodeProviderUnavailable, "X accepted a post but returned no id")
+			// Accepted, so it went out. Retrying would post it twice.
+			return ids, &Error{Code: CodeProviderUnavailable, Message: "X accepted a post but returned no id", OutcomeUnknown: true}
 		}
 		ids = append(ids, r.Data.ID)
 		if progress != nil {

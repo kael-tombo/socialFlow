@@ -3,6 +3,7 @@ package server
 import (
 	"context"
 	"errors"
+	"slices"
 	"strconv"
 	"sync"
 	"time"
@@ -14,10 +15,21 @@ import (
 var retryAfters sync.Map // post id → time.Duration, from the last rate-limited attempt
 
 func (s *Server) lastRetryAfter(postID string) time.Duration {
-	if v, ok := retryAfters.Load(postID); ok {
+	if v, ok := retryAfters.LoadAndDelete(postID); ok {
 		return v.(time.Duration)
 	}
 	return 0
+}
+
+// A scheduled post has nobody waiting to retry it, so the scheduler does, a bounded number of times.
+const maxScheduledAttempts = 5
+
+func scheduledRetryDelay(attempt int, retryAfter time.Duration) time.Duration {
+	delay := time.Minute << max(0, attempt-1)
+	if retryAfter > delay {
+		delay = retryAfter
+	}
+	return min(delay, 6*time.Hour) + time.Second
 }
 
 func itoa(n int) string { return strconv.Itoa(n) }
@@ -32,12 +44,15 @@ func (s *Server) execute(ctx context.Context, p store.Post, from ...string) (sto
 	if !claimed {
 		return s.Store.Post(ctx, p.OrgID, p.ID)
 	}
-	pubCtx, cancel := context.WithTimeout(context.WithoutCancel(ctx), 90*time.Second)
+	// From here the outcome must be recorded even if the caller hangs up or the server is stopping.
+	// A provider may have accepted the post, and losing that fact is how a retry posts it twice.
+	recordCtx := context.WithoutCancel(ctx)
+	pubCtx, cancel := context.WithTimeout(recordCtx, 90*time.Second)
 	defer cancel()
 
 	ids, url, perr := s.publish(pubCtx, p)
 	if perr == nil {
-		err = s.Store.MarkPublished(ctx, p.ID, url, ids)
+		err = s.Store.MarkPublished(recordCtx, p.ID, url, ids)
 	} else {
 		var e *providers.Error
 		if !errors.As(perr, &e) {
@@ -47,15 +62,24 @@ func (s *Server) execute(ctx context.Context, p store.Post, from ...string) (sto
 			retryAfters.Store(p.ID, e.RetryAfter)
 		}
 		if e.Code == providers.CodeAuthFailed && e.HTTPStatus == 401 {
-			_ = s.Store.SetAccountStatus(ctx, p.AccountID, "error")
+			_ = s.Store.SetAccountStatus(recordCtx, p.AccountID, "error")
 		}
-		s.Log.Warn("publish failed", "post", p.ID, "platform", p.Platform, "code", e.Code, "attempt", p.Attempts+1)
-		err = s.Store.MarkFailed(ctx, p.ID, e.Code, e.Message)
+		s.Log.Warn("publish failed", "post", p.ID, "platform", p.Platform, "code", e.Code, "attempt", p.Attempts+1, "outcome_unknown", e.OutcomeUnknown)
+		switch {
+		case e.OutcomeUnknown:
+			err = s.Store.MarkFailed(recordCtx, p.ID, providers.CodeOutcomeUnknown, e.Message+": it may have gone out. Check the account; to send it again, use a new Idempotency-Key")
+		case e.Retryable() && slices.Contains(from, "scheduled") && p.Attempts+1 < maxScheduledAttempts:
+			next := time.Now().Add(scheduledRetryDelay(p.Attempts+1, e.RetryAfter))
+			s.Log.Info("scheduled post will retry", "post", p.ID, "at", next.UTC().Format(time.RFC3339))
+			err = s.Store.Reschedule(recordCtx, p.ID, next, e.Code, e.Message)
+		default:
+			err = s.Store.MarkFailed(recordCtx, p.ID, e.Code, e.Message)
+		}
 	}
 	if err != nil {
 		return p, err
 	}
-	return s.Store.Post(ctx, p.OrgID, p.ID)
+	return s.Store.Post(recordCtx, p.OrgID, p.ID)
 }
 
 func (s *Server) publish(ctx context.Context, p store.Post) (ids []string, url string, err error) {
@@ -117,8 +141,8 @@ func cut(token string) (string, string, bool) {
 	return "", "", false
 }
 
-// RunScheduler publishes due scheduled posts until ctx ends. A scheduled post
-// that fails is final (status failed); the caller decides whether to retry.
+// RunScheduler publishes due scheduled posts until ctx ends. A transient failure is retried
+// with backoff, up to maxScheduledAttempts. Anything else is final (status failed).
 func (s *Server) RunScheduler(ctx context.Context, every time.Duration) {
 	if n, err := s.Store.RecoverStuck(ctx, 0); err == nil && n > 0 {
 		s.Log.Info("recovered interrupted posts", "count", n)

@@ -234,7 +234,11 @@ func serve(log *slog.Logger) error {
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
-	go s.RunScheduler(ctx, 20*time.Second)
+	schedulerDone := make(chan struct{})
+	go func() {
+		defer close(schedulerDone)
+		s.RunScheduler(ctx, 20*time.Second)
+	}()
 
 	srv := &http.Server{
 		Addr:              ":" + env("PORT", "8080"),
@@ -254,6 +258,12 @@ func serve(log *slog.Logger) error {
 		"linkedin_redirect_url", li.RedirectURL, "x_callback_url", x.CallbackURL)
 	if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 		return err
+	}
+	// Let a publish in progress finish. Dying mid-request leaves a post whose outcome nobody knows.
+	select {
+	case <-schedulerDone:
+	case <-time.After(100 * time.Second):
+		log.Warn("scheduler still publishing at shutdown; interrupted posts will be marked for review on restart")
 	}
 	return nil
 }

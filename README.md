@@ -26,7 +26,7 @@ git clone -b socialflow-lite --single-branch https://github.com/kael-tombo/socia
 | Connect X accounts (OAuth 1.0a user context) | Instagram, TikTok, YouTube, Facebook, Threads, … |
 | Publish text posts; X threads (Banyan's `1/ … 2/ …` format) | Images, video, documents, polls |
 | Schedule posts (`scheduled_at`), published by an in-process scheduler | Analytics — `GET /posts/:id/analytics` honestly answers `not_found` |
-| Idempotency: same `Idempotency-Key` never posts twice; a failed thread resumes where it stopped | LinkedIn token refresh (member tokens last ~60 days; the account then shows `error` and must be reconnected) |
+| Idempotency: same `Idempotency-Key` never publishes twice from a known state; a failed thread resumes where it stopped; an unknown outcome stops for a person | LinkedIn token refresh (member tokens last ~60 days; the account then shows `error` and must be reconnected) |
 | Encrypt tokens at rest (AES-256-GCM); store only API-key hashes | Webhooks, inbox, comments, teams, billing, UI |
 
 Upstream is ~7,800 files across a Go server, a web app, mobile, CLI and docs. This is ~2,000 lines of Go (plus ~600 of tests).
@@ -41,9 +41,9 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 | --- | --- | --- |
 | C1 | `GET /v1/me` | `{organization_id, name}` |
 | C2 | `POST /v1/accounts/connect` `{platform}` | `{connect_url, expires_at}` — send the founder's browser there; single use, 30 min |
-| C3 | `GET /v1/accounts` | `{accounts:[{id, platform, handle, status, capabilities, token_expires_at}]}`; status `active` | `error` (reconnect; also shown as soon as a token expires) | `revoked`. `token_expires_at` is null for X |\| `error` (reconnect) \| `revoked` |
+| C3 | `GET /v1/accounts` | `{accounts:[{id, platform, handle, status, capabilities, token_expires_at}]}`; status `active` \| `error` (reconnect; also shown as soon as a token expires) \| `revoked`. `token_expires_at` is null for X |
 | C4 | `GET /v1/accounts/:id/capabilities` | `{publish, schedule, analytics, formats, max_length}` |
-| C5/C6 | `POST /v1/posts` `{channel, text, account_id?, title?, scheduled_at?}` + `Idempotency-Key` | See below |
+| C5/C6 | `POST /v1/posts` `{channel, text, account_id?, title?, scheduled_at?}` + **required** `Idempotency-Key` | See below |
 | C7 | `GET /v1/posts/:id` | Post with `status` `queued` \| `scheduled` \| `published` \| `failed`, `url`, `error`, `external_ids` |
 | C8 | `DELETE /v1/posts/:id` | Cancels a scheduled (or failed) post; idempotent. 409 if it is being published or already published |
 | C9 | `GET /v1/posts/:id/analytics` | Always `404 not_found` (not collected) |
@@ -55,9 +55,18 @@ All `/v1` routes need `Authorization: Bearer <api key>`. Errors are always
 - `201` + `status: "scheduled"` — will be published at `scheduled_at` (anything under 30 s away publishes now).
 - `201` + `status: "failed"` — a permanent failure (`auth_failed`, `validation`, …). Fix the cause, then retry.
 - `429 rate_limited` (with `Retry-After`) or `502 provider_unavailable` — transient. **Retry with the same
-  `Idempotency-Key`**: the post resumes (a thread continues from the next post), it is never duplicated.
-- `200` — the key was seen before; the stored post is returned. A reused key with a different body is `422`.
+  `Idempotency-Key`**: the post resumes (a thread continues from the next post).
+- `200` — the key was seen before; the stored post is returned, even if the account has since been disconnected.
+  A reused key with a different body is `422`.
 - Without `account_id`, the single active account for `channel` is used.
+- A scheduled post retries transient failures by itself with backoff, up to 5 attempts, then ends `failed`.
+
+**When nobody knows whether a post went out.** If the connection drops after the request was sent, a gateway times
+out, a provider accepts a post but returns no id, or the process dies mid-publish, the post ends `failed` with code
+`validation` and a message saying it may have gone out. A replay with the same key returns that post and **does not
+publish again**, because a duplicate in someone's name is worse than a failed post a person can check. To send it
+again, use a new key. This is the one case where a thread cannot resume by itself. A provider that gives no
+idempotency key of its own leaves no way to do better.
 
 ## MCP
 
@@ -169,8 +178,9 @@ A provider whose credentials are missing is reported as `provider_unavailable` o
 
 `go test ./...` runs against fake LinkedIn and X servers: OAuth connect flows (including single-use callbacks),
 publish, idempotent replay, a 3-post thread that fails at post 2 and resumes without duplicating post 1, rate
-limits with `Retry-After`, a rejected token marking the account for reconnect, scheduling, revocation, org
-isolation, and 10 concurrent requests with one key producing exactly one post. The OAuth 1.0a signer is checked
+limits with `Retry-After`, a rejected token marking the account for reconnect, scheduling and its retries, revocation,
+org isolation, 10 concurrent requests with one key producing exactly one post, a client hanging up mid-publish, a
+connection dropped after sending, and recovery after a crash. The OAuth 1.0a signer is checked
 against X's published signature example.
 
 Every `/v1` response the tests produce has also been validated against Banyan's zod schemas

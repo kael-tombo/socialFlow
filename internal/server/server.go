@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/kael-tombo/socialflow-lite/internal/providers"
 	"github.com/kael-tombo/socialflow-lite/internal/store"
@@ -265,7 +266,11 @@ func postView(p store.Post) postJSON {
 		v.URL = &u
 	}
 	if p.Status == "failed" && p.ErrorCode != "" {
-		v.Error = map[string]string{"code": p.ErrorCode, "message": p.ErrorMessage}
+		code := p.ErrorCode
+		if code == providers.CodeOutcomeUnknown {
+			code = providers.CodeValidation // the contract's non-retryable code; the message says what happened
+		}
+		v.Error = map[string]string{"code": code, "message": p.ErrorMessage}
 	}
 	return v
 }
@@ -288,8 +293,28 @@ func (s *Server) createPost(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, 400, providers.CodeValidation, "channel and text are required.")
 		return
 	}
-	if _, _, known := s.provider(body.Channel); !known {
+	_, caps, known := s.provider(body.Channel)
+	if !known {
 		writeErr(w, 422, providers.CodeUnsupportedFormat, "SocialFlow Lite publishes to linkedin and x only; "+body.Channel+" is not supported.")
+		return
+	}
+	// Without a key a retry is a second post. Refuse rather than risk it.
+	idemKey := strings.TrimSpace(r.Header.Get("Idempotency-Key"))
+	if idemKey == "" {
+		writeErr(w, 400, providers.CodeValidation, "An Idempotency-Key header is required to create a post.")
+		return
+	}
+	// A replay answers from what was stored. It must not depend on the account still being connected,
+	// or a post that already went out would come back as an error and look like it needs redoing.
+	if prior, err := s.Store.PostByIdemKey(r.Context(), org.ID, idemKey); err == nil {
+		if prior.BodyHash != postHash(prior.AccountID, body.Channel, body.Text, body.Title, body.ScheduledAt) || (body.AccountID != "" && body.AccountID != prior.AccountID) {
+			writeErr(w, 422, providers.CodeValidation, "This Idempotency-Key was already used for a different request.")
+			return
+		}
+		s.finishCreate(w, r, prior, true)
+		return
+	} else if !errors.Is(err, store.ErrNotFound) {
+		s.internal(w, err)
 		return
 	}
 	var scheduledAt *time.Time
@@ -309,6 +334,9 @@ func (s *Server) createPost(w http.ResponseWriter, r *http.Request) {
 			writeErr(w, 422, verr.Code, verr.Message)
 			return
 		}
+	} else if caps.MaxLength > 0 && utf8.RuneCountInString(body.Text) > caps.MaxLength {
+		writeErr(w, 422, providers.CodeUnsupportedFormat, body.Channel+" allows "+itoa(caps.MaxLength)+" characters; this post has "+itoa(utf8.RuneCountInString(body.Text))+".")
+		return
 	}
 
 	account, status, code, msg := s.resolveAccount(r.Context(), org.ID, body.Channel, body.AccountID)
@@ -317,27 +345,38 @@ func (s *Server) createPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	sum := sha256.Sum256([]byte(account.ID + "\x00" + body.Channel + "\x00" + body.Text + "\x00" + body.Title + "\x00" + body.ScheduledAt))
+	hash := postHash(account.ID, body.Channel, body.Text, body.Title, body.ScheduledAt)
 	initial := "pending"
 	if scheduledAt != nil {
 		initial = "scheduled"
 	}
 	post, existing, err := s.Store.CreatePost(r.Context(), store.Post{
-		OrgID: org.ID, AccountID: account.ID, Platform: body.Channel, IdemKey: strings.TrimSpace(r.Header.Get("Idempotency-Key")),
-		BodyHash: hex.EncodeToString(sum[:]), Text: body.Text, Title: body.Title, ScheduledAt: scheduledAt, Status: initial,
+		OrgID: org.ID, AccountID: account.ID, Platform: body.Channel, IdemKey: idemKey,
+		BodyHash: hash, Text: body.Text, Title: body.Title, ScheduledAt: scheduledAt, Status: initial,
 	})
 	if err != nil {
 		s.internal(w, err)
 		return
 	}
-	if existing && post.BodyHash != hex.EncodeToString(sum[:]) {
+	if existing && post.BodyHash != hash { // lost a race with another request using this key
 		writeErr(w, 422, providers.CodeValidation, "This Idempotency-Key was already used for a different request.")
 		return
 	}
+	s.finishCreate(w, r, post, existing)
+}
 
-	// Publish now: a new immediate post, or a retry of a failed one with the
-	// same key (resumes a thread; a failed scheduled post is past its time).
-	if post.Status == "pending" || (existing && post.Status == "failed") {
+func postHash(accountID, channel, text, title, scheduledAt string) string {
+	sum := sha256.Sum256([]byte(accountID + "\x00" + channel + "\x00" + text + "\x00" + title + "\x00" + scheduledAt))
+	return hex.EncodeToString(sum[:])
+}
+
+// finishCreate publishes if this request should, then answers with the post.
+func (s *Server) finishCreate(w http.ResponseWriter, r *http.Request, post store.Post, existing bool) {
+	// Publish now: a new immediate post, or a retry of a failed one with the same key (resumes a
+	// thread; a failed scheduled post is past its time). Never when the outcome is unknown: that
+	// post may already be live, so sending it again takes a person's decision and a new key.
+	if post.Status == "pending" || (existing && post.Status == "failed" && post.ErrorCode != providers.CodeOutcomeUnknown) {
+		var err error
 		post, err = s.execute(r.Context(), post, "pending", "failed")
 		if err != nil {
 			s.internal(w, err)

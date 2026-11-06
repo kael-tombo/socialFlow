@@ -7,9 +7,11 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/http/httptrace"
 	"regexp"
 	"strconv"
 	"strings"
+	"sync/atomic"
 	"time"
 	"unicode/utf8"
 )
@@ -25,12 +27,21 @@ const (
 	CodeProviderUnavailable = "provider_unavailable"
 )
 
+// CodeOutcomeUnknown is stored on a post when nobody can say whether it went out: the connection
+// dropped after the request was sent, or the process died mid-publish. It is deliberately not in the
+// contract's vocabulary. The API reports it as a non-retryable validation failure, and a replay with
+// the same key never publishes again, because a duplicate post in someone's name is worse than a
+// failed one that a person can check and resend.
+const CodeOutcomeUnknown = "outcome_unknown"
+
 // Error is a classified provider or request failure.
 type Error struct {
 	Code       string
 	Message    string
 	HTTPStatus int           // provider status, 0 when no response
 	RetryAfter time.Duration // set for rate limits when the provider says
+	// OutcomeUnknown means the request reached the provider, or may have, and no clear answer came back.
+	OutcomeUnknown bool
 }
 
 func (e *Error) Error() string { return e.Code + ": " + e.Message }
@@ -65,14 +76,20 @@ const maxProviderBody = 1 << 20
 // do executes req and returns the body; any non-2xx becomes a classified *Error.
 // Provider bodies are never echoed to callers beyond a short, trimmed reason.
 func do(client *http.Client, req *http.Request, platform string) ([]byte, http.Header, error) {
+	// A failure before the request was written is safe to retry. After it, the provider may have acted.
+	var sent atomic.Bool
+	req = req.WithContext(httptrace.WithClientTrace(req.Context(), &httptrace.ClientTrace{WroteHeaders: func() { sent.Store(true) }}))
 	resp, err := client.Do(req)
 	if err != nil {
+		if sent.Load() {
+			return nil, nil, &Error{Code: CodeProviderUnavailable, Message: platform + " did not answer", OutcomeUnknown: true}
+		}
 		return nil, nil, &Error{Code: CodeProviderUnavailable, Message: platform + " could not be reached"}
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(io.LimitReader(resp.Body, maxProviderBody))
 	if err != nil {
-		return nil, nil, &Error{Code: CodeProviderUnavailable, Message: "reading the " + platform + " response failed"}
+		return nil, nil, &Error{Code: CodeProviderUnavailable, Message: "reading the " + platform + " response failed", OutcomeUnknown: resp.StatusCode >= 200 && resp.StatusCode < 300}
 	}
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
 		return nil, resp.Header, classify(resp.StatusCode, resp.Header, body, platform)
@@ -100,6 +117,9 @@ func classify(status int, h http.Header, body []byte, platform string) *Error {
 		e.Code, e.Message = CodeValidation, platform+" rejected the post"
 	case status == http.StatusNotFound:
 		e.Code, e.Message = CodeNotFound, platform+" could not find the resource"
+	case status == http.StatusGatewayTimeout:
+		// A gateway gave up waiting; the provider behind it may still have posted.
+		e.Code, e.Message, e.OutcomeUnknown = CodeProviderUnavailable, platform+" timed out", true
 	case status >= 500:
 		e.Code, e.Message = CodeProviderUnavailable, platform+" is unavailable"
 	default:

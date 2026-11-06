@@ -132,7 +132,8 @@ func (l *LinkedIn) Post(ctx context.Context, token, memberID, text string) (urn,
 		return "", "", nil
 	}
 	if !linkedInPostID.MatchString(urn) {
-		return "", "", Errf(CodeProviderUnavailable, "LinkedIn returned an unrecognised post id")
+		// A 2xx means it went out. Retrying would post it twice.
+		return "", "", &Error{Code: CodeProviderUnavailable, Message: "LinkedIn accepted the post but returned an unrecognised id", OutcomeUnknown: true}
 	}
 	return urn, "https://www.linkedin.com/feed/update/" + urn + "/", nil
 }

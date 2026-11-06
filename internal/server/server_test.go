@@ -30,6 +30,7 @@ type fake struct {
 	failTweetCall int // 1-based call number that returns 503 once
 	liStatus      int // when set, /rest/posts answers this status
 	liRetryAfter  string
+	onLIPost      func() // runs as LinkedIn receives a post
 }
 
 func (f *fake) handler(t *testing.T) http.Handler {
@@ -52,6 +53,9 @@ func (f *fake) handler(t *testing.T) http.Handler {
 			}
 			w.Write([]byte(`{"sub":"abc123","name":"Ada Founder","given_name":"Ada"}`))
 		case "POST /rest/posts":
+			if f.onLIPost != nil {
+				f.onLIPost()
+			}
 			if f.liStatus != 0 {
 				if f.liRetryAfter != "" {
 					w.Header().Set("Retry-After", f.liRetryAfter)
@@ -342,7 +346,7 @@ func TestRejectedTokenMarksAccountForReconnect(t *testing.T) {
 	e := newEnv(t)
 	e.connectLinkedIn()
 	e.fake.liStatus = 401
-	r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "hello"}, nil)
+	r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "hello"}, postKey("auto-1"))
 	if r.status != 201 || r.body["status"] != "failed" || errCode(r) != "auth_failed" {
 		t.Fatalf("401: %d %s", r.status, r.raw)
 	}
@@ -350,14 +354,14 @@ func TestRejectedTokenMarksAccountForReconnect(t *testing.T) {
 	if a := acc.body["accounts"].([]any)[0].(map[string]any); a["status"] != "error" || a["capabilities"].(map[string]any)["publish"] != false {
 		t.Fatalf("account should need reconnect: %s", acc.raw)
 	}
-	next := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "again"}, nil)
+	next := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "again"}, postKey("auto-2"))
 	if next.status != 409 || errCode(next) != "auth_failed" {
 		t.Fatalf("publishing to an account needing reconnect: %d %s", next.status, next.raw)
 	}
 	// Reconnecting restores it.
 	e.fake.liStatus = 0
 	e.connectLinkedIn()
-	if again := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "again"}, nil); again.body["status"] != "published" {
+	if again := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "again"}, postKey("auto-3")); again.body["status"] != "published" {
 		t.Fatalf("after reconnect: %s", again.raw)
 	}
 }
@@ -365,13 +369,13 @@ func TestRejectedTokenMarksAccountForReconnect(t *testing.T) {
 func TestValidationAndUnsupported(t *testing.T) {
 	e := newEnv(t)
 	e.connectX()
-	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "shortvideo", "text": "script"}, nil); r.status != 422 || errCode(r) != "unsupported_format" {
+	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "shortvideo", "text": "script"}, postKey("auto-4")); r.status != 422 || errCode(r) != "unsupported_format" {
 		t.Fatalf("shortvideo: %d %s", r.status, r.raw)
 	}
-	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "x", "text": strings.Repeat("a", 281)}, nil); r.status != 422 || errCode(r) != "unsupported_format" {
+	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "x", "text": strings.Repeat("a", 281)}, postKey("auto-5")); r.status != 422 || errCode(r) != "unsupported_format" {
 		t.Fatalf("long tweet: %d %s", r.status, r.raw)
 	}
-	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "no account"}, nil); r.status != 422 || errCode(r) != "validation" {
+	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "no account"}, postKey("auto-6")); r.status != 422 || errCode(r) != "validation" {
 		t.Fatalf("no linkedin account: %d %s", r.status, r.raw)
 	}
 	if r := e.call("POST", "/v1/accounts/connect", e.key, map[string]string{"platform": "tiktok"}, nil); errCode(r) != "unsupported_format" {
@@ -408,7 +412,7 @@ func TestScheduledPostPublishesWhenDue(t *testing.T) {
 func TestRevokeAndOrgIsolation(t *testing.T) {
 	e := newEnv(t)
 	e.connectLinkedIn()
-	post := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "mine"}, nil)
+	post := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "mine"}, postKey("auto-7"))
 	accID := e.call("GET", "/v1/accounts", e.key, nil, nil).body["accounts"].([]any)[0].(map[string]any)["id"].(string)
 
 	_, otherKey, _ := e.srv.Store.CreateOrgWithKey(context.Background(), "Other")
@@ -418,7 +422,7 @@ func TestRevokeAndOrgIsolation(t *testing.T) {
 	if r := e.call("DELETE", "/v1/accounts/"+accID, otherKey, nil, nil); r.status != 404 {
 		t.Fatalf("another org must not revoke the account: %d", r.status)
 	}
-	if r := e.call("POST", "/v1/posts", otherKey, map[string]string{"channel": "linkedin", "text": "x", "account_id": accID}, nil); r.status != 404 {
+	if r := e.call("POST", "/v1/posts", otherKey, map[string]string{"channel": "linkedin", "text": "x", "account_id": accID}, postKey("auto-8")); r.status != 404 {
 		t.Fatalf("another org must not post as the account: %d %s", r.status, r.raw)
 	}
 
@@ -426,7 +430,7 @@ func TestRevokeAndOrgIsolation(t *testing.T) {
 	if rv.status != 200 || rv.body["status"] != "revoked" {
 		t.Fatalf("revoke: %d %s", rv.status, rv.raw)
 	}
-	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "after", "account_id": accID}, nil); r.status != 409 || errCode(r) != "revoked" {
+	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "after", "account_id": accID}, postKey("auto-9")); r.status != 409 || errCode(r) != "revoked" {
 		t.Fatalf("post after revoke: %d %s", r.status, r.raw)
 	}
 }
