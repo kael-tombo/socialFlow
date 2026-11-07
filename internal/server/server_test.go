@@ -542,3 +542,30 @@ func TestCancelPublishedPostIsRefused(t *testing.T) {
 		t.Fatalf("MCP cancel_post on a published post: %d %v", status, body)
 	}
 }
+
+func TestSchedulingPastTokenExpiryIsRefused(t *testing.T) {
+	e := newEnv(t)
+	e.connectLinkedIn() // the fake grants a ~60-day token
+	far := time.Now().Add(90 * 24 * time.Hour).UTC().Format(time.RFC3339)
+	r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "too late", "scheduled_at": far}, map[string]string{"Idempotency-Key": "late1"})
+	if r.status != 409 || errCode(r) != "auth_failed" || !strings.Contains(string(r.raw), "Reconnect") {
+		t.Fatalf("a post due after the token expires must be refused now: %d %s", r.status, r.raw)
+	}
+	near := time.Now().Add(24 * time.Hour).UTC().Format(time.RFC3339)
+	if r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "in time", "scheduled_at": near}, map[string]string{"Idempotency-Key": "late2"}); r.status != 201 {
+		t.Fatalf("a post due before the token expires is accepted: %d %s", r.status, r.raw)
+	}
+}
+
+func TestExpiredTokenIsNotChosenForANewPost(t *testing.T) {
+	e := newEnv(t)
+	e.connectLinkedIn()
+	sealed, _ := e.srv.Sealer.Seal("li-token")
+	if _, err := e.srv.Store.UpsertAccount(context.Background(), e.orgID(), "linkedin", "abc123", "Ada Founder", sealed, time.Now().Add(-time.Hour)); err != nil {
+		t.Fatal(err)
+	}
+	r := e.call("POST", "/v1/posts", e.key, map[string]string{"channel": "linkedin", "text": "now"}, map[string]string{"Idempotency-Key": "exp1"})
+	if r.status != 409 || errCode(r) != "auth_failed" || len(e.fake.linkedInPosts) != 0 {
+		t.Fatalf("an expired account must ask for reconnection before a post is created: %d %s", r.status, r.raw)
+	}
+}

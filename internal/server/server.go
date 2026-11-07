@@ -165,11 +165,16 @@ type accountJSON struct {
 	TokenExpiresAt *time.Time `json:"token_expires_at"`
 }
 
+// expiredBy reports whether the account's platform token no longer works at t.
+func expiredBy(a store.Account, t time.Time) bool {
+	return a.TokenExpiresAt != nil && !t.Before(*a.TokenExpiresAt)
+}
+
 func (s *Server) accountView(a store.Account) accountJSON {
 	_, caps, _ := s.provider(a.Platform)
 	status := a.Status
 	// An expired token is reported as needing reconnection now, not when the next post fails.
-	if status == "active" && a.TokenExpiresAt != nil && time.Now().After(*a.TokenExpiresAt) {
+	if status == "active" && expiredBy(a, time.Now()) {
 		status = "error"
 	}
 	if status != "active" {
@@ -345,6 +350,13 @@ func (s *Server) createPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// A post scheduled after the token expires would be accepted now and fail unseen later. Say so now,
+	// while there is time to reconnect.
+	if scheduledAt != nil && expiredBy(account, *scheduledAt) {
+		writeErr(w, 409, providers.CodeAuthFailed, "The "+body.Channel+" connection expires on "+account.TokenExpiresAt.UTC().Format("2006-01-02")+", before this post's scheduled time. Reconnect the account, then schedule the post.")
+		return
+	}
+
 	hash := postHash(account.ID, body.Channel, body.Text, body.Title, body.ScheduledAt)
 	initial := "pending"
 	if scheduledAt != nil {
@@ -418,7 +430,7 @@ func (s *Server) resolveAccount(ctx context.Context, orgID, channel, accountID s
 		if a.Status == "revoked" {
 			return a, 409, providers.CodeRevoked, "This account was disconnected; reconnect it first."
 		}
-		if a.Status != "active" {
+		if a.Status != "active" || expiredBy(a, time.Now()) {
 			return a, 409, providers.CodeAuthFailed, "This account needs to be reconnected."
 		}
 		return a, 0, "", ""
@@ -431,9 +443,9 @@ func (s *Server) resolveAccount(ctx context.Context, orgID, channel, accountID s
 	needsReconnect := false
 	for _, a := range list {
 		if a.Platform == channel {
-			if a.Status == "active" {
+			if a.Status == "active" && !expiredBy(a, time.Now()) {
 				active = append(active, a)
-			} else if a.Status == "error" {
+			} else if a.Status == "active" || a.Status == "error" {
 				needsReconnect = true
 			}
 		}

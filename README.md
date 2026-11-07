@@ -26,7 +26,7 @@ git clone -b socialflow-lite --single-branch https://github.com/kael-tombo/socia
 | Connect X accounts (OAuth 1.0a user context) | Instagram, TikTok, YouTube, Facebook, Threads, … |
 | Publish text posts; X threads (Banyan's `1/ … 2/ …` format) | Images, video, documents, polls |
 | Schedule posts (`scheduled_at`), published by an in-process scheduler | Analytics — `GET /posts/:id/analytics` honestly answers `not_found` |
-| Idempotency: same `Idempotency-Key` never publishes twice from a known state; a failed thread resumes where it stopped; an unknown outcome stops for a person | LinkedIn token refresh (member tokens last ~60 days; the account then shows `error` and must be reconnected) |
+| Idempotency: same `Idempotency-Key` never publishes twice from a known state; a failed thread resumes where it stopped; an unknown outcome stops for a person | LinkedIn token refresh (member tokens last ~60 days; the account then shows `error` and must be reconnected; a post scheduled past the expiry is refused when it is created) |
 | Encrypt tokens at rest (AES-256-GCM); store only API-key hashes | Webhooks, inbox, comments, teams, billing, UI |
 
 Upstream is ~7,800 files across a Go server, a web app, mobile, CLI and docs. This is ~2,000 lines of Go (plus ~600 of tests).
